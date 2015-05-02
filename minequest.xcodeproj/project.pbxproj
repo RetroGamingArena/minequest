@@ -10,6 +10,7 @@
 		6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BA0A1AF044C4006A0842 /* OctreeEntry.cpp */; };
 		6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAF91AF177A8006A0842 /* lodepng.cpp */; };
 		6440BAFF1AF17D71006A0842 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAFD1AF17D71006A0842 /* Engine.cpp */; };
+		6440BB041AF508E9006A0842 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB021AF508E9006A0842 /* Scene.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -297,6 +298,8 @@
 		6440BAFD1AF17D71006A0842 /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Engine.cpp; path = src/engine/Engine.cpp; sourceTree = SOURCE_ROOT; };
 		6440BAFE1AF17D71006A0842 /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Engine.h; path = src/engine/Engine.h; sourceTree = SOURCE_ROOT; };
 		6440BB001AF3E54D006A0842 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = textures/font.png; sourceTree = SOURCE_ROOT; };
+		6440BB021AF508E9006A0842 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		6440BB031AF508E9006A0842 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -606,6 +609,16 @@
 			path = depends/lodepng;
 			sourceTree = SOURCE_ROOT;
 		};
+		6440BB011AF508E9006A0842 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB021AF508E9006A0842 /* Scene.cpp */,
+				6440BB031AF508E9006A0842 /* Scene.h */,
+			);
+			name = scene;
+			path = src/scene;
+			sourceTree = SOURCE_ROOT;
+		};
 		646172ED1A5B38B20008EBA0 /* textures */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +656,7 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6440BB011AF508E9006A0842 /* scene */,
 				645D4A021AF000F700CA8592 /* main.cpp */,
 				645D4A031AF000F700CA8592 /* main.h */,
 				642FC3C81A5DAC6100DC8A94 /* octree */,
@@ -745,6 +759,7 @@
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
 				6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */,
 				645D4A041AF000F700CA8592 /* main.cpp in Sources */,
+				6440BB041AF508E9006A0842 /* Scene.cpp in Sources */,
 				6440BAFF1AF17D71006A0842 /* Engine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,8 +1,8 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "Scene.h"
 
-OctreeEntry::OctreeEntry()
+Scene::Scene()
 {
 	// Start of user code constructor
 	// End of user code
