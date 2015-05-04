@@ -1,13 +1,14 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "WorldShader.h"
 // Start of user code includes
 // End of user code
 
 
-OctreeEntry::OctreeEntry()
+WorldShader::WorldShader()
 {
 	// Start of user code constructor
+    Shader::Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);
 	// End of user code
 }
 

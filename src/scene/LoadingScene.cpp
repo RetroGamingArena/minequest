@@ -1,11 +1,11 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "LoadingScene.h"
 // Start of user code includes
 // End of user code
 
 
-OctreeEntry::OctreeEntry()
+LoadingScene::LoadingScene()
 {
 	// Start of user code constructor
 	// End of user code

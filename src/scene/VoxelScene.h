@@ -1,21 +1,22 @@
-#ifndef __OctreeEntry__
-#define __OctreeEntry__
+#ifndef __VoxelScene__
+#define __VoxelScene__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
 
+#include "VBOScene.h"
 
 
 using namespace std;
 
-class OctreeEntry
+class VoxelScene : public VBOScene
 {
 
 	public:
 		// Start of user code public
 		// End of user code
-		OctreeEntry();
+		VoxelScene();
 };
 
 #endif

@@ -1,11 +1,11 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "Camera.h"
 // Start of user code includes
 // End of user code
 
 
-OctreeEntry::OctreeEntry()
+Camera::Camera()
 {
 	// Start of user code constructor
 	// End of user code

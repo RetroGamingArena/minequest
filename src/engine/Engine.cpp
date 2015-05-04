@@ -1,6 +1,17 @@
 #include <cstdlib>
 
 #include "Engine.h"
+// Start of user code includes
+#include "LoadingScene.h"
+#include "WorldShader.h"
+// End of user code
+
+Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight)
+{
+	window = _window;
+	windowWidth = _windowWidth;
+	windowHeight = _windowHeight;
+}
 
 Engine::Engine()
 {
@@ -16,8 +27,48 @@ Engine::Engine()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     GLFWmonitor *monitor = NULL;
     window = glfwCreateWindow(windowWidth, windowHeight, "Minequest", monitor, NULL);
+    
+    glfwMakeContextCurrent(window);
+    
+    glfwSetMouseButtonCallback(window, mouseButtonCallback);
+    glfwSetCursorPosCallback(window, cursorPositionCallback);
+    glfwSetScrollCallback(window, scrollCallback);
+    glfwSetKeyCallback(window, keyCallBack);
+    
+    glewExperimental = GL_TRUE;
+    if (glewInit() != GLEW_OK)
+        exit(EXIT_FAILURE);
+    if(!GLEW_EXT_geometry_shader4)
+    {
+        fprintf(stderr, "No support for geometry shaders found\n");
+        exit(1);
+    }
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glEnable(GL_DEPTH_TEST);
+    glCreateShader(GL_GEOMETRY_SHADER);
+    glDepthFunc(GL_LESS);
+    
+    shaders.push_back(new WorldShader());
+    
+    //VBOScene::programID = ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
+    //Scene::matrixID = glGetUniformLocation(VBOScene::programID, "MVP");
+    
+    /*Scene::mMatrixID = glGetUniformLocation(VBOScene::programID, "M");
+    Scene::vMatrixID = glGetUniformLocation(VBOScene::programID, "V");
+    Scene::pMatrixID = glGetUniformLocation(VBOScene::programID, "P");*/
+    
+    player = new Player();
+    
+    //camera = new TrackBallCamera();
+    scene = new LoadingScene();
+    //scene = new VoxelScene(window);
+    scene->init();
 	// End of user code
 }
+
+// Start of user code methods
+// End of user code
 
 Engine* Engine::instance = NULL;
 
@@ -96,13 +147,28 @@ int Engine::run()
 	// End of user code
 }
 
-Engine* Engine::getInstance()
+void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
+	// Start of user code mouseButtonCallback
 	// End of user code
-	return instance;
+}
+
+void Engine::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
+{
+	// Start of user code cursorPositionCallback
+	// End of user code
+}
+
+void Engine::scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	// Start of user code scrollCallback
+	// End of user code
+}
+
+void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	// Start of user code keyCallBack
+	// End of user code
 }
 
 Scene* Engine::getScene()
@@ -117,3 +183,31 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+Player* Engine::getPlayer()
+{
+	// Start of user code getPlayer
+	// End of user code
+	return player;
+}
+
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
+}
+					
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+

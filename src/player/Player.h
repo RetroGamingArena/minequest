@@ -1,5 +1,5 @@
-#ifndef __OctreeEntry__
-#define __OctreeEntry__
+#ifndef __Player__
+#define __Player__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -9,13 +9,13 @@
 
 using namespace std;
 
-class OctreeEntry
+class Player
 {
 
 	public:
 		// Start of user code public
 		// End of user code
-		OctreeEntry();
+		Player();
 };
 
 #endif

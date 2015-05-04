@@ -1,11 +1,11 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "VoxelScene.h"
 // Start of user code includes
 // End of user code
 
 
-OctreeEntry::OctreeEntry()
+VoxelScene::VoxelScene()
 {
 	// Start of user code constructor
 	// End of user code
