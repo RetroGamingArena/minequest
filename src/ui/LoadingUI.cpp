@@ -1,15 +1,15 @@
 #include <cstdlib>
 
-#include "LoadingScene.h"
-// Start of user code includes
 #include "LoadingUI.h"
+// Start of user code includes
+#include "Label.h"
 // End of user code
 
 
-LoadingScene::LoadingScene()
+LoadingUI::LoadingUI()
 {
 	// Start of user code constructor
-    this->uI = new LoadingUI();
+    controls.push_back(new Label("Loading...", 20, 20));
 	// End of user code
 }
 

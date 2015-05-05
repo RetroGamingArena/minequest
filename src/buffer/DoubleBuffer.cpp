@@ -32,18 +32,6 @@ void DoubleBuffer::setIndiceBuffer(IndiceBuffer* _indiceBuffer)
 	indiceBuffer = _indiceBuffer;
 }
 					
-VBO* DoubleBuffer::getVBO()
-{
-	// Start of user code getVBO
-	// End of user code
-	return vBO;
-}
-
-void DoubleBuffer::setVBO(VBO* _vBO)
-{
-	vBO = _vBO;
-}
-					
 VertexBuffer* DoubleBuffer::getVertexBuffer()
 {
 	// Start of user code getVertexBuffer
@@ -54,5 +42,17 @@ VertexBuffer* DoubleBuffer::getVertexBuffer()
 void DoubleBuffer::setVertexBuffer(VertexBuffer* _vertexBuffer)
 {
 	vertexBuffer = _vertexBuffer;
+}
+					
+VBO* DoubleBuffer::getVBO()
+{
+	// Start of user code getVBO
+	// End of user code
+	return vBO;
+}
+
+void DoubleBuffer::setVBO(VBO* _vBO)
+{
+	vBO = _vBO;
 }
 					

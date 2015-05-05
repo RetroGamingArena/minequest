@@ -4,6 +4,7 @@
 // Start of user code includes
 #include "LoadingScene.h"
 #include "WorldShader.h"
+#include "TextShader.h"
 // End of user code
 
 Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight)
@@ -50,6 +51,7 @@ Engine::Engine()
     glDepthFunc(GL_LESS);
     
     shaders.push_back(new WorldShader());
+    shaders.push_back(new TextShader());
     
     //VBOScene::programID = ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
     //Scene::matrixID = glGetUniformLocation(VBOScene::programID, "MVP");
@@ -168,18 +170,6 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 	// End of user code
 }
 
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
 Scene* Engine::getScene()
 {
 	// Start of user code getScene
@@ -192,13 +182,18 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
-vector<Shader*> Engine::getShaders()
+Player* Engine::getPlayer()
 {
-	// Start of user code getShaders
+	// Start of user code getPlayer
 	// End of user code
-	return shaders;
+	return player;
 }
 
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
+}
+					
 Engine* Engine::getInstance()
 {
 	// Start of user code getInstance
@@ -206,5 +201,12 @@ Engine* Engine::getInstance()
         instance = new Engine();
 	// End of user code
 	return instance;
+}
+
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
 }
 

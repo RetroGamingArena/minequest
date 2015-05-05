@@ -44,6 +44,8 @@ class Shader
 		void setVMatrixID(GLuint _vMatrixID);
 		GLuint getPMatrixID();
 		void setPMatrixID(GLuint _pMatrixID);
+		static void load_png_texture(char* file_name);
+		static void flip_image_vertical(unsigned char* data, unsigned int width, unsigned int height);
 };
 
 #endif

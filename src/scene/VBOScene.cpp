@@ -108,7 +108,7 @@ void VBOScene::render()
     }
     
     //2D
-    //ui->render();
+    uI->render();
 	// End of user code
 }
 

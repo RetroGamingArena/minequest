@@ -5150,9 +5150,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "8"
-            endingLineNumber = "8"
-            landmarkName = "Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight)"
-            landmarkType = "5">
+            endingLineNumber = "8">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
