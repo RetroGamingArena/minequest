@@ -5,20 +5,23 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 
+#include "../depends/glm/glm.hpp"
+#include "../depends/glm/gtc/matrix_transform.hpp"
 
+
+#include "Player.h"
+#include "Scene.h"
 #include "Shader.h"
 #include "Engine.h"
-#include "Scene.h"
-#include "Player.h"
 
 using namespace std;
 
 class Engine
 {
+	Player* player;
+	Scene* scene;
 	vector<Shader*> shaders;
 	static Engine* instance;
-	Scene* scene;
-	Player* player;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -41,12 +44,12 @@ class Engine
 		static void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
-		vector<Shader*> getShaders();
-		static Engine* getInstance();
-		Scene* getScene();
-		void setScene(Scene* _scene);
 		Player* getPlayer();
 		void setPlayer(Player* _player);
+		Scene* getScene();
+		void setScene(Scene* _scene);
+		vector<Shader*> getShaders();
+		static Engine* getInstance();
 };
 
 #endif

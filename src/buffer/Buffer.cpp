@@ -21,5 +21,14 @@ Buffer::Buffer()
 
 
 
+GLuint Buffer::getId()
+{
+	return id;
+}
+
+void Buffer::setId(GLuint _id)
+{
+	id = _id;
+}
 
 

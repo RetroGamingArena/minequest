@@ -25,6 +25,9 @@
 		6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB311AF820AB006A0842 /* DoubleBuffer.cpp */; };
 		6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB331AF820AB006A0842 /* IndiceBuffer.cpp */; };
 		6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB351AF820AB006A0842 /* VertexBuffer.cpp */; };
+		6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB3B1AF8FB9E006A0842 /* Attribute.cpp */; };
+		6440BB421AF8FB9E006A0842 /* VBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB3D1AF8FB9E006A0842 /* VBO.cpp */; };
+		6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB3F1AF8FB9E006A0842 /* VoxelVBO.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -342,6 +345,12 @@
 		6440BB341AF820AB006A0842 /* IndiceBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndiceBuffer.h; sourceTree = "<group>"; };
 		6440BB351AF820AB006A0842 /* VertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
 		6440BB361AF820AB006A0842 /* VertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexBuffer.h; sourceTree = "<group>"; };
+		6440BB3B1AF8FB9E006A0842 /* Attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Attribute.cpp; sourceTree = "<group>"; };
+		6440BB3C1AF8FB9E006A0842 /* Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attribute.h; sourceTree = "<group>"; };
+		6440BB3D1AF8FB9E006A0842 /* VBO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VBO.cpp; sourceTree = "<group>"; };
+		6440BB3E1AF8FB9E006A0842 /* VBO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBO.h; sourceTree = "<group>"; };
+		6440BB3F1AF8FB9E006A0842 /* VoxelVBO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelVBO.cpp; sourceTree = "<group>"; };
+		6440BB401AF8FB9E006A0842 /* VoxelVBO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelVBO.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -708,6 +717,12 @@
 		6440BB2E1AF820AB006A0842 /* buffer */ = {
 			isa = PBXGroup;
 			children = (
+				6440BB3B1AF8FB9E006A0842 /* Attribute.cpp */,
+				6440BB3C1AF8FB9E006A0842 /* Attribute.h */,
+				6440BB3D1AF8FB9E006A0842 /* VBO.cpp */,
+				6440BB3E1AF8FB9E006A0842 /* VBO.h */,
+				6440BB3F1AF8FB9E006A0842 /* VoxelVBO.cpp */,
+				6440BB401AF8FB9E006A0842 /* VoxelVBO.h */,
 				6440BB2F1AF820AB006A0842 /* Buffer.cpp */,
 				6440BB301AF820AB006A0842 /* Buffer.h */,
 				6440BB311AF820AB006A0842 /* DoubleBuffer.cpp */,
@@ -864,10 +879,13 @@
 			files = (
 				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
+				6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
+				6440BB421AF8FB9E006A0842 /* VBO.cpp in Sources */,
 				6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */,
 				6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
+				6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */,
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
 				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,
 				6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */,

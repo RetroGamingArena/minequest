@@ -5,6 +5,9 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 
+#include "../depends/glm/glm.hpp"
+#include "../depends/glm/gtc/matrix_transform.hpp"
+
 
 
 using namespace std;
@@ -20,6 +23,8 @@ class Buffer
 		// End of user code
 		Buffer(GLuint _id);
 		Buffer();
+		GLuint getId();
+		void setId(GLuint _id);
 };
 
 #endif

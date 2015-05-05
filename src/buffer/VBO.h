@@ -1,5 +1,5 @@
-#ifndef __OctreeEntry__
-#define __OctreeEntry__
+#ifndef __VBO__
+#define __VBO__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -9,18 +9,25 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 
+#include "Attribute.h"
 
 using namespace std;
 
-class OctreeEntry
+class VBO
 {
+	unsigned int size;
 
 	protected:
+	vector<Attribute*> attributes;
 
 	public:
 		// Start of user code public
 		// End of user code
-		OctreeEntry();
+		VBO(unsigned int _size);
+		VBO();
+		unsigned int getSize();
+		void setSize(unsigned int _size);
+		vector<Attribute*> getAttributes();
 };
 
 #endif

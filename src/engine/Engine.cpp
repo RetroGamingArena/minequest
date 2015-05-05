@@ -78,28 +78,28 @@ GLFWwindow* Engine::getWindow()
 	return window;
 }
 
-	void Engine::setWindow(GLFWwindow* _window)
-	{
-		window = _window;
-	}
+void Engine::setWindow(GLFWwindow* _window)
+{
+	window = _window;
+}
 int Engine::getWindowWidth()
 {
 	return windowWidth;
 }
 
-	void Engine::setWindowWidth(int _windowWidth)
-	{
-		windowWidth = _windowWidth;
-	}
+void Engine::setWindowWidth(int _windowWidth)
+{
+	windowWidth = _windowWidth;
+}
 int Engine::getWindowHeight()
 {
 	return windowHeight;
 }
 
-	void Engine::setWindowHeight(int _windowHeight)
-	{
-		windowHeight = _windowHeight;
-	}
+void Engine::setWindowHeight(int _windowHeight)
+{
+	windowHeight = _windowHeight;
+}
 
 int Engine::run()
 {
@@ -168,6 +168,30 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 	// End of user code
 }
 
+Player* Engine::getPlayer()
+{
+	// Start of user code getPlayer
+	// End of user code
+	return player;
+}
+
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
+}
+					
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
+}
+					
 vector<Shader*> Engine::getShaders()
 {
 	// Start of user code getShaders
@@ -184,27 +208,3 @@ Engine* Engine::getInstance()
 	return instance;
 }
 
-Scene* Engine::getScene()
-{
-	// Start of user code getScene
-	// End of user code
-	return scene;
-}
-
-void Engine::setScene(Scene* _scene)
-{
-	scene = _scene;
-}
-					
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
