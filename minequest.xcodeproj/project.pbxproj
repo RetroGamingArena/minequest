@@ -33,6 +33,12 @@
 		6440BB4F1AF91866006A0842 /* LoadingUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB491AF91866006A0842 /* LoadingUI.cpp */; };
 		6440BB501AF91866006A0842 /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB4B1AF91866006A0842 /* UI.cpp */; };
 		6440BB531AF91E44006A0842 /* TextShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB511AF91E44006A0842 /* TextShader.cpp */; };
+		6440BB541AF95890006A0842 /* fragmentShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA0D1AF1778D006A0842 /* fragmentShader.glsl */; };
+		6440BB551AF95890006A0842 /* geometryShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA0E1AF1778D006A0842 /* geometryShader.glsl */; };
+		6440BB561AF95890006A0842 /* uiFragmentShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA0F1AF1778D006A0842 /* uiFragmentShader.glsl */; };
+		6440BB571AF95890006A0842 /* uiVertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA101AF1778D006A0842 /* uiVertexShader.glsl */; };
+		6440BB581AF95890006A0842 /* vertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA111AF1778D006A0842 /* vertexShader.glsl */; };
+		6440BB591AF958A4006A0842 /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BB001AF3E54D006A0842 /* font.png */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -49,6 +55,7 @@
 			dstPath = ../resources/textures;
 			dstSubfolderSpec = 1;
 			files = (
+				6440BB591AF958A4006A0842 /* font.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,11 @@
 			dstPath = ../Resources/shaders;
 			dstSubfolderSpec = 1;
 			files = (
+				6440BB541AF95890006A0842 /* fragmentShader.glsl in CopyFiles */,
+				6440BB551AF95890006A0842 /* geometryShader.glsl in CopyFiles */,
+				6440BB561AF95890006A0842 /* uiFragmentShader.glsl in CopyFiles */,
+				6440BB571AF95890006A0842 /* uiVertexShader.glsl in CopyFiles */,
+				6440BB581AF95890006A0842 /* vertexShader.glsl in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
