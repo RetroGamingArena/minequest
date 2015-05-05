@@ -21,6 +21,10 @@
 		6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB231AF7B849006A0842 /* ShaderLoader.cpp */; };
 		6440BB2A1AF7CFEA006A0842 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB281AF7CFEA006A0842 /* Player.cpp */; };
 		6440BB2D1AF7D271006A0842 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB2B1AF7D271006A0842 /* LoadingScene.cpp */; };
+		6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB2F1AF820AB006A0842 /* Buffer.cpp */; };
+		6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB311AF820AB006A0842 /* DoubleBuffer.cpp */; };
+		6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB331AF820AB006A0842 /* IndiceBuffer.cpp */; };
+		6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB351AF820AB006A0842 /* VertexBuffer.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -330,6 +334,14 @@
 		6440BB291AF7CFEA006A0842 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		6440BB2B1AF7D271006A0842 /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingScene.cpp; sourceTree = "<group>"; };
 		6440BB2C1AF7D271006A0842 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
+		6440BB2F1AF820AB006A0842 /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
+		6440BB301AF820AB006A0842 /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer.h; sourceTree = "<group>"; };
+		6440BB311AF820AB006A0842 /* DoubleBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DoubleBuffer.cpp; sourceTree = "<group>"; };
+		6440BB321AF820AB006A0842 /* DoubleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleBuffer.h; sourceTree = "<group>"; };
+		6440BB331AF820AB006A0842 /* IndiceBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndiceBuffer.cpp; sourceTree = "<group>"; };
+		6440BB341AF820AB006A0842 /* IndiceBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndiceBuffer.h; sourceTree = "<group>"; };
+		6440BB351AF820AB006A0842 /* VertexBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
+		6440BB361AF820AB006A0842 /* VertexBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexBuffer.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -693,6 +705,22 @@
 			path = src/player;
 			sourceTree = SOURCE_ROOT;
 		};
+		6440BB2E1AF820AB006A0842 /* buffer */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB2F1AF820AB006A0842 /* Buffer.cpp */,
+				6440BB301AF820AB006A0842 /* Buffer.h */,
+				6440BB311AF820AB006A0842 /* DoubleBuffer.cpp */,
+				6440BB321AF820AB006A0842 /* DoubleBuffer.h */,
+				6440BB331AF820AB006A0842 /* IndiceBuffer.cpp */,
+				6440BB341AF820AB006A0842 /* IndiceBuffer.h */,
+				6440BB351AF820AB006A0842 /* VertexBuffer.cpp */,
+				6440BB361AF820AB006A0842 /* VertexBuffer.h */,
+			);
+			name = buffer;
+			path = src/buffer;
+			sourceTree = SOURCE_ROOT;
+		};
 		646172ED1A5B38B20008EBA0 /* textures */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +758,7 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6440BB2E1AF820AB006A0842 /* buffer */,
 				6440BB271AF7CFEA006A0842 /* player */,
 				6440BB1C1AF7B409006A0842 /* shader */,
 				6440BB0E1AF6A75B006A0842 /* camera */,
@@ -833,11 +862,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
+				6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */,
 				6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
+				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,
+				6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */,
 				6440BB0D1AF6A304006A0842 /* VoxelScene.cpp in Sources */,
 				6440BB131AF6A75B006A0842 /* Camera.cpp in Sources */,
 				645D4A041AF000F700CA8592 /* main.cpp in Sources */,

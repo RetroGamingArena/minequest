@@ -70,6 +70,7 @@ Engine::Engine()
 // Start of user code methods
 // End of user code
 
+
 Engine* Engine::instance = NULL;
 
 GLFWwindow* Engine::getWindow()
@@ -77,28 +78,28 @@ GLFWwindow* Engine::getWindow()
 	return window;
 }
 
-void Engine::setWindow(GLFWwindow* _window)
-{
-	window = _window;
-}
+	void Engine::setWindow(GLFWwindow* _window)
+	{
+		window = _window;
+	}
 int Engine::getWindowWidth()
 {
 	return windowWidth;
 }
 
-void Engine::setWindowWidth(int _windowWidth)
-{
-	windowWidth = _windowWidth;
-}
+	void Engine::setWindowWidth(int _windowWidth)
+	{
+		windowWidth = _windowWidth;
+	}
 int Engine::getWindowHeight()
 {
 	return windowHeight;
 }
 
-void Engine::setWindowHeight(int _windowHeight)
-{
-	windowHeight = _windowHeight;
-}
+	void Engine::setWindowHeight(int _windowHeight)
+	{
+		windowHeight = _windowHeight;
+	}
 
 int Engine::run()
 {
@@ -112,8 +113,8 @@ int Engine::run()
     
     while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 )
     {
-        /*scene->getCamera()->look();
-        scene->render();*/
+        scene->getCamera()->look();
+        scene->render();
         
         //FPS
         /*nbFrames++;
@@ -146,29 +147,41 @@ int Engine::run()
     return 0;
 	// End of user code
 }
-
 void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
 	// Start of user code mouseButtonCallback
 	// End of user code
 }
-
 void Engine::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
 	// Start of user code cursorPositionCallback
 	// End of user code
 }
-
 void Engine::scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
 	// Start of user code scrollCallback
 	// End of user code
 }
-
 void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	// Start of user code keyCallBack
 	// End of user code
+}
+
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
 }
 
 Scene* Engine::getScene()
@@ -183,13 +196,6 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -202,12 +208,3 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-

@@ -16,3 +16,10 @@ Camera::Camera()
 
 
 
+
+void Camera::look()
+{
+	// Start of user code look
+	// End of user code
+}
+

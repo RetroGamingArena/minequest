@@ -6,22 +6,24 @@
 #include <vector>
 
 
-#include "Scene.h"
 #include "Shader.h"
-#include "Player.h"
 #include "Engine.h"
+#include "Scene.h"
+#include "Player.h"
 
 using namespace std;
 
 class Engine
 {
-	Scene* scene;
 	vector<Shader*> shaders;
-	Player* player;
 	static Engine* instance;
+	Scene* scene;
+	Player* player;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
+
+	protected:
 
 	public:
 		// Start of user code public
@@ -39,12 +41,12 @@ class Engine
 		static void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
+		vector<Shader*> getShaders();
+		static Engine* getInstance();
 		Scene* getScene();
 		void setScene(Scene* _scene);
-		vector<Shader*> getShaders();
 		Player* getPlayer();
 		void setPlayer(Player* _player);
-		static Engine* getInstance();
 };
 
 #endif

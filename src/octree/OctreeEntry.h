@@ -12,6 +12,8 @@ using namespace std;
 class OctreeEntry
 {
 
+	protected:
+
 	public:
 		// Start of user code public
 		// End of user code

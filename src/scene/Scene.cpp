@@ -16,11 +16,7 @@ Scene::Scene()
 
 
 
-void Scene::init()
-{
-	// Start of user code init
-	// End of user code
-}
+
 
 Camera* Scene::getCamera()
 {

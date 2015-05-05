@@ -13,6 +13,8 @@ using namespace std;
 class LoadingScene : public VBOScene
 {
 
+	protected:
+
 	public:
 		// Start of user code public
 		// End of user code

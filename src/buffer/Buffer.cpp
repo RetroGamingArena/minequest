@@ -1,14 +1,18 @@
 #include <cstdlib>
 
-#include "WorldShader.h"
+#include "Buffer.h"
 // Start of user code includes
 // End of user code
 
+Buffer::Buffer(GLuint _id)
+{
+	id = _id;
+}
 
-WorldShader::WorldShader()
+Buffer::Buffer()
 {
 	// Start of user code constructor
-    Shader::Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);
+     glGenBuffers(1, &id);
 	// End of user code
 }
 

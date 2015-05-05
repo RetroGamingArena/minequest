@@ -14,11 +14,14 @@ class Scene
 {
 	Camera* camera;
 
+	protected:
+
 	public:
 		// Start of user code public
 		// End of user code
 		Scene();
-		void init();
+		virtual void init() = 0;
+		virtual void render() = 0;
 		Camera* getCamera();
 		void setCamera(Camera* _camera);
 };

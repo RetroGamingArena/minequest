@@ -1,24 +1,25 @@
-#ifndef __WorldShader__
-#define __WorldShader__
+#ifndef __Buffer__
+#define __Buffer__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
 
-#include "Shader.h"
 
 
 using namespace std;
 
-class WorldShader : public Shader
+class Buffer
 {
 
 	protected:
+	GLuint id;
 
 	public:
 		// Start of user code public
 		// End of user code
-		WorldShader();
+		Buffer(GLuint _id);
+		Buffer();
 };
 
 #endif

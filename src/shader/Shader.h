@@ -19,6 +19,8 @@ class Shader
 	GLuint vMatrixID;
 	GLuint pMatrixID;
 
+	protected:
+
 	public:
 		// Start of user code public
         Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path);
