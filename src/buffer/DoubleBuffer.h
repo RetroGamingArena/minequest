@@ -9,17 +9,17 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 
-#include "VertexBuffer.h"
-#include "VBO.h"
 #include "IndiceBuffer.h"
+#include "VBO.h"
+#include "VertexBuffer.h"
 
 using namespace std;
 
 class DoubleBuffer
 {
-	VertexBuffer* vertexBuffer;
-	VBO* vBO;
 	IndiceBuffer* indiceBuffer;
+	VBO* vBO;
+	VertexBuffer* vertexBuffer;
 
 	protected:
 
@@ -27,12 +27,12 @@ class DoubleBuffer
 		// Start of user code public
 		// End of user code
 		DoubleBuffer();
-		VertexBuffer* getVertexBuffer();
-		void setVertexBuffer(VertexBuffer* _vertexBuffer);
-		VBO* getVBO();
-		void setVBO(VBO* _vBO);
 		IndiceBuffer* getIndiceBuffer();
 		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
+		VBO* getVBO();
+		void setVBO(VBO* _vBO);
+		VertexBuffer* getVertexBuffer();
+		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 };
 
 #endif

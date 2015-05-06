@@ -20,7 +20,9 @@ Label::Label()
 // Start of user code methods
 Label::Label(char* _caption, int _x, int _y)
 {
-    Label(caption);
+    this->caption = new char[strlen(_caption)];
+    strcpy(this->caption, _caption);
+    //Label(caption);
     x = _x;
     y = _y;
 }

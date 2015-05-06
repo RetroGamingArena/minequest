@@ -16,7 +16,6 @@ using namespace std;
 class TextShader : public Shader
 {
 	GLuint textureSamplerID;
-	GLuint fontID;
 	GLuint vertexArrayID;
 	GLuint fontVertexBufferID;
 	GLuint fontUVBufferID;
@@ -26,12 +25,10 @@ class TextShader : public Shader
 	public:
 		// Start of user code public
 		// End of user code
-		TextShader(GLuint _textureSamplerID, GLuint _fontID, GLuint _vertexArrayID, GLuint _fontVertexBufferID, GLuint _fontUVBufferID);
+		TextShader(GLuint _textureSamplerID, GLuint _vertexArrayID, GLuint _fontVertexBufferID, GLuint _fontUVBufferID);
 		TextShader();
 		GLuint getTextureSamplerID();
 		void setTextureSamplerID(GLuint _textureSamplerID);
-		GLuint getFontID();
-		void setFontID(GLuint _fontID);
 		GLuint getVertexArrayID();
 		void setVertexArrayID(GLuint _vertexArrayID);
 		GLuint getFontVertexBufferID();

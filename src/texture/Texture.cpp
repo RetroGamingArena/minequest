@@ -22,6 +22,9 @@ Texture::Texture()
 // Start of user code methods
 Texture::Texture(unsigned int _glTexture, char* _fileName)
 {
+    this->fileName = new char[strlen(_fileName)];
+    strcpy(this->fileName, _fileName);
+    
     glGenTextures(1, &textureID);
     glActiveTexture(_glTexture);
     glBindTexture(GL_TEXTURE_2D, textureID);

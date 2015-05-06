@@ -4,10 +4,9 @@
 // Start of user code includes
 // End of user code
 
-TextShader::TextShader(GLuint _textureSamplerID, GLuint _fontID, GLuint _vertexArrayID, GLuint _fontVertexBufferID, GLuint _fontUVBufferID)
+TextShader::TextShader(GLuint _textureSamplerID, GLuint _vertexArrayID, GLuint _fontVertexBufferID, GLuint _fontUVBufferID)
 {
 	textureSamplerID = _textureSamplerID;
-	fontID = _fontID;
 	vertexArrayID = _vertexArrayID;
 	fontVertexBufferID = _fontVertexBufferID;
 	fontUVBufferID = _fontUVBufferID;
@@ -60,15 +59,6 @@ GLuint TextShader::getTextureSamplerID()
 void TextShader::setTextureSamplerID(GLuint _textureSamplerID)
 {
 	textureSamplerID = _textureSamplerID;
-}
-GLuint TextShader::getFontID()
-{
-	return fontID;
-}
-
-void TextShader::setFontID(GLuint _fontID)
-{
-	fontID = _fontID;
 }
 GLuint TextShader::getVertexArrayID()
 {

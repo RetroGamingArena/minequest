@@ -13,7 +13,8 @@ UI::UI()
 // End of user code
 {
 	// Start of user code constructor
-    shader = new TextShader();
+    doubleBuffer = new DoubleBuffer();
+    shader = Engine::getInstance()->getShaders()[1];
     //TextShader* textShader = dynamic_cast<TextShader*>(shader);
     /*buffer = new GlobalBuffer();
     
@@ -166,18 +167,6 @@ vector<Control*> UI::getControls()
 	return controls;
 }
 
-Shader* UI::getShader()
-{
-	// Start of user code getShader
-	// End of user code
-	return shader;
-}
-
-void UI::setShader(Shader* _shader)
-{
-	shader = _shader;
-}
-					
 DoubleBuffer* UI::getDoubleBuffer()
 {
 	// Start of user code getDoubleBuffer
@@ -200,5 +189,17 @@ Texture* UI::getFontTexture()
 void UI::setFontTexture(Texture* _fontTexture)
 {
 	fontTexture = _fontTexture;
+}
+					
+Shader* UI::getShader()
+{
+	// Start of user code getShader
+	// End of user code
+	return shader;
+}
+
+void UI::setShader(Shader* _shader)
+{
+	shader = _shader;
 }
 					

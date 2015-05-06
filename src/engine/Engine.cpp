@@ -19,55 +19,6 @@ Engine::Engine()
 // End of user code
 {
 	// Start of user code constructor
-    windowWidth = 1024;
-    windowHeight = 768;
-    if (!glfwInit())
-        exit(EXIT_FAILURE);
-    glfwWindowHint(GLFW_SAMPLES, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, 1);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWmonitor *monitor = NULL;
-    window = glfwCreateWindow(windowWidth, windowHeight, "Minequest", monitor, NULL);
-    
-    glfwMakeContextCurrent(window);
-    
-    glfwSetMouseButtonCallback(window, mouseButtonCallback);
-    glfwSetCursorPosCallback(window, cursorPositionCallback);
-    glfwSetScrollCallback(window, scrollCallback);
-    glfwSetKeyCallback(window, keyCallBack);
-    
-    glewExperimental = GL_TRUE;
-    if (glewInit() != GLEW_OK)
-        exit(EXIT_FAILURE);
-    if(!GLEW_EXT_geometry_shader4)
-    {
-        fprintf(stderr, "No support for geometry shaders found\n");
-        exit(1);
-    }
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glEnable(GL_DEPTH_TEST);
-    glCreateShader(GL_GEOMETRY_SHADER);
-    glDepthFunc(GL_LESS);
-    
-    shaders.push_back(new WorldShader());
-    shaders.push_back(new TextShader());
-    
-    //VBOScene::programID = ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
-    //Scene::matrixID = glGetUniformLocation(VBOScene::programID, "MVP");
-    
-    /*Scene::mMatrixID = glGetUniformLocation(VBOScene::programID, "M");
-    Scene::vMatrixID = glGetUniformLocation(VBOScene::programID, "V");
-    Scene::pMatrixID = glGetUniformLocation(VBOScene::programID, "P");*/
-    
-    player = new Player();
-    
-    //camera = new TrackBallCamera();
-    scene = new LoadingScene();
-    //scene = new VoxelScene(window);
-    scene->init();
 	// End of user code
 }
 
@@ -108,6 +59,8 @@ void Engine::setWindowHeight(int _windowHeight)
 int Engine::run()
 {
 	// Start of user code run
+    init();
+    
     //window open
     if (!window)
     {
@@ -171,26 +124,61 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 	// Start of user code keyCallBack
 	// End of user code
 }
-
-vector<Shader*> Engine::getShaders()
+void Engine::init()
 {
-	// Start of user code getShaders
+	// Start of user code init
+    windowWidth = 1024;
+    windowHeight = 768;
+    if (!glfwInit())
+        exit(EXIT_FAILURE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, 1);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    GLFWmonitor *monitor = NULL;
+    window = glfwCreateWindow(windowWidth, windowHeight, "Minequest", monitor, NULL);
+    
+    glfwMakeContextCurrent(window);
+    
+    glfwSetMouseButtonCallback(window, mouseButtonCallback);
+    glfwSetCursorPosCallback(window, cursorPositionCallback);
+    glfwSetScrollCallback(window, scrollCallback);
+    glfwSetKeyCallback(window, keyCallBack);
+    
+    glewExperimental = GL_TRUE;
+    if (glewInit() != GLEW_OK)
+        exit(EXIT_FAILURE);
+    if(!GLEW_EXT_geometry_shader4)
+    {
+        fprintf(stderr, "No support for geometry shaders found\n");
+        exit(1);
+    }
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glEnable(GL_DEPTH_TEST);
+    glCreateShader(GL_GEOMETRY_SHADER);
+    glDepthFunc(GL_LESS);
+    
+    shaders.push_back(new WorldShader());
+    shaders.push_back(new TextShader());
+    
+    //VBOScene::programID = ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
+    //Scene::matrixID = glGetUniformLocation(VBOScene::programID, "MVP");
+    
+    /*Scene::mMatrixID = glGetUniformLocation(VBOScene::programID, "M");
+     Scene::vMatrixID = glGetUniformLocation(VBOScene::programID, "V");
+     Scene::pMatrixID = glGetUniformLocation(VBOScene::programID, "P");*/
+    
+    player = new Player();
+    
+    //camera = new TrackBallCamera();
+    scene = new LoadingScene();
+    //scene = new VoxelScene(window);
+    scene->init();
 	// End of user code
-	return shaders;
 }
 
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
 Scene* Engine::getScene()
 {
 	// Start of user code getScene
@@ -203,6 +191,25 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
+Player* Engine::getPlayer()
+{
+	// Start of user code getPlayer
+	// End of user code
+	return player;
+}
+
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
+}
+					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
 Engine* Engine::getInstance()
 {
 	// Start of user code getInstance

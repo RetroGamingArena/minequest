@@ -29,7 +29,7 @@ Shader::Shader()
 Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path) : Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0)
 {
     //Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0);
-    ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
+    programID = ShaderLoader::load( _vertex_file_path, _fragment_file_path, _geometry_file_path);//"shaders/geometryShader.glsl");
     
     mMatrixID = glGetUniformLocation(programID, "M");
     vMatrixID = glGetUniformLocation(programID, "V");

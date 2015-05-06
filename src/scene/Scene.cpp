@@ -20,18 +20,6 @@ Scene::Scene()
 
 
 
-Camera* Scene::getCamera()
-{
-	// Start of user code getCamera
-	// End of user code
-	return camera;
-}
-
-void Scene::setCamera(Camera* _camera)
-{
-	camera = _camera;
-}
-					
 UI* Scene::getUI()
 {
 	// Start of user code getUI
@@ -42,5 +30,17 @@ UI* Scene::getUI()
 void Scene::setUI(UI* _uI)
 {
 	uI = _uI;
+}
+					
+Camera* Scene::getCamera()
+{
+	// Start of user code getCamera
+	// End of user code
+	return camera;
+}
+
+void Scene::setCamera(Camera* _camera)
+{
+	camera = _camera;
 }
 					
