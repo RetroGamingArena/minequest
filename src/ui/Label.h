@@ -27,6 +27,7 @@ class Label : public Control
 		Label();
 		char* getCaption();
 		void setCaption(char* _caption);
+		void render();
 };
 
 #endif

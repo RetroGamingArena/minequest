@@ -12,8 +12,13 @@ Camera::Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection)
 }
 
 Camera::Camera()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
+    float FoV = 70.0f;
+    projection = glm::perspective(FoV, 4.0f / 3.0f, 0.0009f, 200.0f);
+    model = glm::mat4(1.0f);
 	// End of user code
 }
 

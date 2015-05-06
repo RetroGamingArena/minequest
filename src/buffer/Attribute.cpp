@@ -12,6 +12,8 @@ Attribute::Attribute(int _size, int _divisor, const char * _name)
 }
 
 Attribute::Attribute()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
 	// End of user code

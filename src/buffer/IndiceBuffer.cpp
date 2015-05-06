@@ -10,6 +10,8 @@ IndiceBuffer::IndiceBuffer(vector<unsigned int> _data)
 }
 
 IndiceBuffer::IndiceBuffer()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
     Buffer::Buffer();

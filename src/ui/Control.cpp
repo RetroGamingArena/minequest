@@ -11,6 +11,8 @@ Control::Control(int _x, int _y)
 }
 
 Control::Control()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
 	// End of user code
@@ -40,9 +42,4 @@ void Control::setY(int _y)
 	y = _y;
 }
 
-void Control::render()
-{
-	// Start of user code render
-	// End of user code
-}
 

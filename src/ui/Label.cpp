@@ -10,6 +10,8 @@ Label::Label(char* _caption)
 }
 
 Label::Label()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
 	// End of user code
@@ -24,6 +26,11 @@ Label::Label(char* _caption, int _x, int _y)
 }
 // End of user code
 
+void Label::render()
+{
+	// Start of user code render
+	// End of user code
+}
 
 
 char* Label::getCaption()

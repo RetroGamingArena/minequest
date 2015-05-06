@@ -5,12 +5,16 @@
 #include "Engine.h"
 #include "Shader.h"
 #include "VoxelVBO.h"
+#include "TrackBallCamera.h"
 // End of user code
 
 
 VBOScene::VBOScene()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
+    camera = new TrackBallCamera();
     doubleBuffer = new DoubleBuffer();
     VBO* vBO = new VoxelVBO();
     vBO->setSize(6);

@@ -10,6 +10,8 @@ VertexBuffer::VertexBuffer(vector<GLfloat> _data)
 }
 
 VertexBuffer::VertexBuffer()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
     Buffer::Buffer();

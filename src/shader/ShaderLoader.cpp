@@ -8,6 +8,8 @@
 
 
 ShaderLoader::ShaderLoader()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
 	// End of user code

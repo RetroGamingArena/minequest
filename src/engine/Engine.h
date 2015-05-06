@@ -9,19 +9,19 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 
-#include "Scene.h"
-#include "Player.h"
-#include "Engine.h"
 #include "Shader.h"
+#include "Player.h"
+#include "Scene.h"
+#include "Engine.h"
 
 using namespace std;
 
 class Engine
 {
-	Scene* scene;
-	Player* player;
-	static Engine* instance;
 	vector<Shader*> shaders;
+	Player* player;
+	Scene* scene;
+	static Engine* instance;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -44,12 +44,12 @@ class Engine
 		static void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
-		Scene* getScene();
-		void setScene(Scene* _scene);
+		vector<Shader*> getShaders();
 		Player* getPlayer();
 		void setPlayer(Player* _player);
+		Scene* getScene();
+		void setScene(Scene* _scene);
 		static Engine* getInstance();
-		vector<Shader*> getShaders();
 };
 
 #endif

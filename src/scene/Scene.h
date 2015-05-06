@@ -9,16 +9,16 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 
-#include "UI.h"
 #include "Camera.h"
+#include "UI.h"
 
 using namespace std;
 
 class Scene
 {
-	Camera* camera;
 
 	protected:
+	Camera* camera;
 	UI* uI;
 
 	public:
@@ -27,10 +27,10 @@ class Scene
 		Scene();
 		virtual void init() = 0;
 		virtual void render() = 0;
-		UI* getUI();
-		void setUI(UI* _uI);
 		Camera* getCamera();
 		void setCamera(Camera* _camera);
+		UI* getUI();
+		void setUI(UI* _uI);
 };
 
 #endif

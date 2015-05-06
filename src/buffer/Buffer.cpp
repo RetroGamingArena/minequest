@@ -10,6 +10,8 @@ Buffer::Buffer(GLuint _id)
 }
 
 Buffer::Buffer()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
      glGenBuffers(1, &id);

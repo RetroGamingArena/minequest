@@ -6,6 +6,8 @@
 
 
 VoxelVBO::VoxelVBO()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
     attributes.push_back(new Attribute(3,0,"Point"));

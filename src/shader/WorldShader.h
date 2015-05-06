@@ -22,6 +22,7 @@ class WorldShader : public Shader
 		// Start of user code public
 		// End of user code
 		WorldShader();
+		void poly();
 };
 
 #endif

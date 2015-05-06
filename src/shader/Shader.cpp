@@ -18,15 +18,17 @@ Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path,
 }
 
 Shader::Shader()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
 	// End of user code
 }
 
 // Start of user code methods
-Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path)
+Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path) : Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0)
 {
-    Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0);
+    //Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0);
     ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
     
     mMatrixID = glGetUniformLocation(programID, "M");
@@ -101,33 +103,4 @@ void Shader::setPMatrixID(GLuint _pMatrixID)
 	pMatrixID = _pMatrixID;
 }
 
-void Shader::load_png_texture(char* file_name)
-{
-	// Start of user code load_png_texture
-    unsigned int error;
-    unsigned char *data;
-    unsigned int width, height;
-    error = lodepng_decode32_file(&data, &width, &height, file_name);
-    if (error) {
-        fprintf(stderr, "error %u: %s\n", error, lodepng_error_text(error));
-    }
-    flip_image_vertical(data, width, height);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-    free(data);
-	// End of user code
-}
-void Shader::flip_image_vertical(unsigned char* data, unsigned int width, unsigned int height)
-{
-	// Start of user code flip_image_vertical
-    unsigned int size = width * height * 4;
-    unsigned int stride = sizeof(char) * width * 4;
-    unsigned char *new_data = (unsigned char *)malloc(sizeof(unsigned char) * size);
-    for (unsigned int i = 0; i < height; i++) {
-        unsigned int j = height - i - 1;
-        memcpy(new_data + j * stride, data + i * stride, stride);
-    }
-    memcpy(data, new_data, size);
-    free(new_data);
-	// End of user code
-}
 

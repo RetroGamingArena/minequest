@@ -28,7 +28,7 @@ class Control
 		void setX(int _x);
 		int getY();
 		void setY(int _y);
-		void render();
+		virtual void render() = 0;
 };
 
 #endif

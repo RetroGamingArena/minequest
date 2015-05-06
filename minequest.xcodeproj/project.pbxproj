@@ -39,6 +39,7 @@
 		6440BB571AF95890006A0842 /* uiVertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA101AF1778D006A0842 /* uiVertexShader.glsl */; };
 		6440BB581AF95890006A0842 /* vertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA111AF1778D006A0842 /* vertexShader.glsl */; };
 		6440BB591AF958A4006A0842 /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BB001AF3E54D006A0842 /* font.png */; };
+		6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB5B1AFA4C78006A0842 /* Texture.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -378,6 +379,8 @@
 		6440BB4C1AF91866006A0842 /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
 		6440BB511AF91E44006A0842 /* TextShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextShader.cpp; sourceTree = "<group>"; };
 		6440BB521AF91E44006A0842 /* TextShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextShader.h; sourceTree = "<group>"; };
+		6440BB5B1AFA4C78006A0842 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		6440BB5C1AFA4C78006A0842 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -781,6 +784,16 @@
 			path = src/ui;
 			sourceTree = SOURCE_ROOT;
 		};
+		6440BB5A1AFA4C78006A0842 /* texture */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB5B1AFA4C78006A0842 /* Texture.cpp */,
+				6440BB5C1AFA4C78006A0842 /* Texture.h */,
+			);
+			name = texture;
+			path = src/texture;
+			sourceTree = SOURCE_ROOT;
+		};
 		646172ED1A5B38B20008EBA0 /* textures */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,6 +831,7 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6440BB5A1AFA4C78006A0842 /* texture */,
 				6440BB441AF91866006A0842 /* ui */,
 				6440BB2E1AF820AB006A0842 /* buffer */,
 				6440BB271AF7CFEA006A0842 /* player */,
@@ -924,6 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
+				6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
 				6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,

@@ -7,6 +7,8 @@
 
 
 LoadingUI::LoadingUI()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
     controls.push_back(new Label("Loading...", 20, 20));

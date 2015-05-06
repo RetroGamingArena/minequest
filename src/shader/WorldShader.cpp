@@ -6,15 +6,23 @@
 
 
 WorldShader::WorldShader()
+// Start of user code super class
+: Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL)
+// End of user code
 {
 	// Start of user code constructor
-    Shader::Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);
+    //Shader::Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);
 	// End of user code
 }
 
 // Start of user code methods
 // End of user code
 
+void WorldShader::poly()
+{
+	// Start of user code poly
+	// End of user code
+}
 
 
 

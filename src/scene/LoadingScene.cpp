@@ -7,6 +7,8 @@
 
 
 LoadingScene::LoadingScene()
+// Start of user code super class
+// End of user code
 {
 	// Start of user code constructor
     this->uI = new LoadingUI();
