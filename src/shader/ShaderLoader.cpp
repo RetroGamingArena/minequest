@@ -4,6 +4,8 @@
 // Start of user code includes
 #include <string>
 #include <fstream>
+
+//#include "../depends/lodepng/lodepng.h"
 // End of user code
 
 

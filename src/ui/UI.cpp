@@ -13,8 +13,8 @@ UI::UI()
 // End of user code
 {
 	// Start of user code constructor
-    doubleBuffer = new DoubleBuffer();
     shader = Engine::getInstance()->getShaders()[1];
+    
     //TextShader* textShader = dynamic_cast<TextShader*>(shader);
     /*buffer = new GlobalBuffer();
     
@@ -41,7 +41,7 @@ UI::UI()
     glGenBuffers(1, &fontUVBufferID);*/
     
     
-    
+    doubleBuffer = new DoubleBuffer();
     /*glGenBuffers(1, &bufferID);
     glBindBuffer(GL_ARRAY_BUFFER, bufferID);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*buffer->getData()->size(), &(*buffer->getData())[0], GL_STATIC_DRAW);

@@ -3,7 +3,6 @@
 #include "Shader.h"
 // Start of user code includes
 #include "ShaderLoader.h"
-#include "../depends/lodepng/lodepng.h"
 // End of user code
 
 Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path, GLuint _programID, GLuint _mMatrixID, GLuint _vMatrixID, GLuint _pMatrixID)
