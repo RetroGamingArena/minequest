@@ -1,17 +1,15 @@
 #include <cstdlib>
 
-#include "LoadingUI.h"
+#include "Item.h"
 // Start of user code includes
-#include "Label.h"
 // End of user code
 
 
-LoadingUI::LoadingUI()
+Item::Item()
 // Start of user code super class
 // End of user code
 {
 	// Start of user code constructor
-    controls.push_back(new Label("Loading...", 20, 20));
 	// End of user code
 }
 
@@ -22,4 +20,9 @@ LoadingUI::LoadingUI()
 
 
 
+void Item::live(double dt)
+{
+	// Start of user code live
+	// End of user code
+}
 

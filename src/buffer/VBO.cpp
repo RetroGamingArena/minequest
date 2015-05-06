@@ -22,6 +22,7 @@ VBO::VBO()
 
 
 
+
 unsigned int VBO::getSize()
 {
 	return size;

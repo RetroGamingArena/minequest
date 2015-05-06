@@ -5,6 +5,7 @@
 #include "LoadingScene.h"
 #include "WorldShader.h"
 #include "TextShader.h"
+#include "IterativeProcessor.h"
 // End of user code
 
 Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight)
@@ -27,6 +28,7 @@ Engine::Engine()
 
 
 Engine* Engine::instance = NULL;
+
 
 GLFWwindow* Engine::getWindow()
 {
@@ -127,6 +129,8 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 void Engine::init()
 {
 	// Start of user code init
+    worldProcessor = new IterativeProcessor();
+    
     windowWidth = 1024;
     windowHeight = 768;
     if (!glfwInit())
@@ -179,18 +183,34 @@ void Engine::init()
 	// End of user code
 }
 
-Scene* Engine::getScene()
+Engine* Engine::getInstance()
 {
-	// Start of user code getScene
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
 	// End of user code
-	return scene;
+	return instance;
 }
 
-void Engine::setScene(Scene* _scene)
+WorldProcessor* Engine::getWorldProcessor()
 {
-	scene = _scene;
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
 }
 					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -203,19 +223,27 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
-vector<Shader*> Engine::getShaders()
+World* Engine::getWorld()
 {
-	// Start of user code getShaders
+	// Start of user code getWorld
 	// End of user code
-	return shaders;
+	return world;
 }
 
-Engine* Engine::getInstance()
+void Engine::setWorld(World* _world)
 {
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
+	world = _world;
+}
+					
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
 	// End of user code
-	return instance;
+	return scene;
 }
 
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
+}
+					

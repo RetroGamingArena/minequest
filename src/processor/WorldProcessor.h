@@ -1,5 +1,5 @@
-#ifndef __VBOScene__
-#define __VBOScene__
+#ifndef __WorldProcessor__
+#define __WorldProcessor__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -11,28 +11,24 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "World.h"
+#include "GameScene.h"
 // End of user code
 
-#include "Scene.h"
 
-#include "DoubleBuffer.h"
 
 using namespace std;
 
-class VBOScene : public Scene
+class WorldProcessor
 {
-	DoubleBuffer* doubleBuffer;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VBOScene();
-		DoubleBuffer* getDoubleBuffer();
-		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
-		void init();
-		void render();
+		WorldProcessor();
+		virtual void bufferize(GameScene * gameScene, World * world) = 0;
 };
 
 #endif

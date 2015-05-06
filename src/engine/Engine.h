@@ -4,24 +4,33 @@
 #include <glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
+#include <thread>
+#include <mutex>
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code includes
+// End of user code
 
-#include "Scene.h"
-#include "Player.h"
-#include "Shader.h"
+
 #include "Engine.h"
+#include "WorldProcessor.h"
+#include "Shader.h"
+#include "Player.h"
+#include "World.h"
+#include "Scene.h"
 
 using namespace std;
 
 class Engine
 {
-	Scene* scene;
-	Player* player;
-	vector<Shader*> shaders;
 	static Engine* instance;
+	WorldProcessor* worldProcessor;
+	vector<Shader*> shaders;
+	Player* player;
+	World* world;
+	Scene* scene;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -45,12 +54,16 @@ class Engine
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
 		void init();
-		Scene* getScene();
-		void setScene(Scene* _scene);
+		static Engine* getInstance();
+		WorldProcessor* getWorldProcessor();
+		void setWorldProcessor(WorldProcessor* _worldProcessor);
+		vector<Shader*> getShaders();
 		Player* getPlayer();
 		void setPlayer(Player* _player);
-		vector<Shader*> getShaders();
-		static Engine* getInstance();
+		World* getWorld();
+		void setWorld(World* _world);
+		Scene* getScene();
+		void setScene(Scene* _scene);
 };
 
 #endif

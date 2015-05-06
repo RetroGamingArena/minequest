@@ -119,6 +119,7 @@ void VBOScene::render()
 
 
 
+
 DoubleBuffer* VBOScene::getDoubleBuffer()
 {
 	// Start of user code getDoubleBuffer

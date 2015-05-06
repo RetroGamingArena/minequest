@@ -1,23 +1,26 @@
 #include <cstdlib>
 
-#include "LoadingUI.h"
+#include "IterativeProcessor.h"
 // Start of user code includes
-#include "Label.h"
 // End of user code
 
 
-LoadingUI::LoadingUI()
+IterativeProcessor::IterativeProcessor()
 // Start of user code super class
 // End of user code
 {
 	// Start of user code constructor
-    controls.push_back(new Label("Loading...", 20, 20));
 	// End of user code
 }
 
 // Start of user code methods
 // End of user code
 
+void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
+{
+	// Start of user code bufferize
+	// End of user code
+}
 
 
 

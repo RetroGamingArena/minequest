@@ -51,6 +51,7 @@ void TextShader::poly()
 }
 
 
+
 GLuint TextShader::getTextureSamplerID()
 {
 	return textureSamplerID;

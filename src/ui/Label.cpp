@@ -35,6 +35,7 @@ void Label::render()
 }
 
 
+
 char* Label::getCaption()
 {
 	return caption;

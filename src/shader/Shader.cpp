@@ -38,6 +38,7 @@ Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path,
 
 
 
+
 const char * Shader::getVertex_file_path()
 {
 	return vertex_file_path;

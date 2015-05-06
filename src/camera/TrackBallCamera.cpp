@@ -32,6 +32,7 @@ TrackBallCamera::TrackBallCamera()
 
 
 
+
 glm::vec3 TrackBallCamera::getPosition()
 {
 	return position;

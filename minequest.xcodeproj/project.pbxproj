@@ -19,7 +19,6 @@
 		6440BB211AF7B409006A0842 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB1D1AF7B409006A0842 /* Shader.cpp */; };
 		6440BB221AF7B409006A0842 /* WorldShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB1F1AF7B409006A0842 /* WorldShader.cpp */; };
 		6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB231AF7B849006A0842 /* ShaderLoader.cpp */; };
-		6440BB2A1AF7CFEA006A0842 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB281AF7CFEA006A0842 /* Player.cpp */; };
 		6440BB2D1AF7D271006A0842 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB2B1AF7D271006A0842 /* LoadingScene.cpp */; };
 		6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB2F1AF820AB006A0842 /* Buffer.cpp */; };
 		6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB311AF820AB006A0842 /* DoubleBuffer.cpp */; };
@@ -40,6 +39,11 @@
 		6440BB581AF95890006A0842 /* vertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BA111AF1778D006A0842 /* vertexShader.glsl */; };
 		6440BB591AF958A4006A0842 /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6440BB001AF3E54D006A0842 /* font.png */; };
 		6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB5B1AFA4C78006A0842 /* Texture.cpp */; };
+		6440BB631AFAA22B006A0842 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB5F1AFAA22B006A0842 /* Item.cpp */; };
+		6440BB641AFAA22B006A0842 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB611AFAA22B006A0842 /* Player.cpp */; };
+		6440BB6A1AFAA88A006A0842 /* IterativeProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB661AFAA88A006A0842 /* IterativeProcessor.cpp */; };
+		6440BB6B1AFAA88A006A0842 /* WorldProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB681AFAA88A006A0842 /* WorldProcessor.cpp */; };
+		6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB6D1AFAAA08006A0842 /* World.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -351,8 +355,6 @@
 		6440BB201AF7B409006A0842 /* WorldShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldShader.h; sourceTree = "<group>"; };
 		6440BB231AF7B849006A0842 /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
 		6440BB241AF7B849006A0842 /* ShaderLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderLoader.h; sourceTree = "<group>"; };
-		6440BB281AF7CFEA006A0842 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		6440BB291AF7CFEA006A0842 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		6440BB2B1AF7D271006A0842 /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingScene.cpp; sourceTree = "<group>"; };
 		6440BB2C1AF7D271006A0842 /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
 		6440BB2F1AF820AB006A0842 /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
@@ -381,6 +383,16 @@
 		6440BB521AF91E44006A0842 /* TextShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextShader.h; sourceTree = "<group>"; };
 		6440BB5B1AFA4C78006A0842 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		6440BB5C1AFA4C78006A0842 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		6440BB5F1AFAA22B006A0842 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		6440BB601AFAA22B006A0842 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		6440BB611AFAA22B006A0842 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		6440BB621AFAA22B006A0842 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		6440BB661AFAA88A006A0842 /* IterativeProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IterativeProcessor.cpp; sourceTree = "<group>"; };
+		6440BB671AFAA88A006A0842 /* IterativeProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeProcessor.h; sourceTree = "<group>"; };
+		6440BB681AFAA88A006A0842 /* WorldProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldProcessor.cpp; sourceTree = "<group>"; };
+		6440BB691AFAA88A006A0842 /* WorldProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldProcessor.h; sourceTree = "<group>"; };
+		6440BB6D1AFAAA08006A0842 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		6440BB6E1AFAAA08006A0842 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -736,16 +748,6 @@
 			path = src/shader;
 			sourceTree = SOURCE_ROOT;
 		};
-		6440BB271AF7CFEA006A0842 /* player */ = {
-			isa = PBXGroup;
-			children = (
-				6440BB281AF7CFEA006A0842 /* Player.cpp */,
-				6440BB291AF7CFEA006A0842 /* Player.h */,
-			);
-			name = player;
-			path = src/player;
-			sourceTree = SOURCE_ROOT;
-		};
 		6440BB2E1AF820AB006A0842 /* buffer */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +796,40 @@
 			path = src/texture;
 			sourceTree = SOURCE_ROOT;
 		};
+		6440BB5E1AFAA22B006A0842 /* item */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB5F1AFAA22B006A0842 /* Item.cpp */,
+				6440BB601AFAA22B006A0842 /* Item.h */,
+				6440BB611AFAA22B006A0842 /* Player.cpp */,
+				6440BB621AFAA22B006A0842 /* Player.h */,
+			);
+			name = item;
+			path = src/item;
+			sourceTree = SOURCE_ROOT;
+		};
+		6440BB651AFAA88A006A0842 /* processor */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB661AFAA88A006A0842 /* IterativeProcessor.cpp */,
+				6440BB671AFAA88A006A0842 /* IterativeProcessor.h */,
+				6440BB681AFAA88A006A0842 /* WorldProcessor.cpp */,
+				6440BB691AFAA88A006A0842 /* WorldProcessor.h */,
+			);
+			name = processor;
+			path = src/processor;
+			sourceTree = SOURCE_ROOT;
+		};
+		6440BB6C1AFAAA08006A0842 /* world */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB6D1AFAAA08006A0842 /* World.cpp */,
+				6440BB6E1AFAAA08006A0842 /* World.h */,
+			);
+			name = world;
+			path = src/world;
+			sourceTree = SOURCE_ROOT;
+		};
 		646172ED1A5B38B20008EBA0 /* textures */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,10 +867,12 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6440BB6C1AFAAA08006A0842 /* world */,
+				6440BB651AFAA88A006A0842 /* processor */,
+				6440BB5E1AFAA22B006A0842 /* item */,
 				6440BB5A1AFA4C78006A0842 /* texture */,
 				6440BB441AF91866006A0842 /* ui */,
 				6440BB2E1AF820AB006A0842 /* buffer */,
-				6440BB271AF7CFEA006A0842 /* player */,
 				6440BB1C1AF7B409006A0842 /* shader */,
 				6440BB0E1AF6A75B006A0842 /* camera */,
 				6440BB011AF508E9006A0842 /* scene */,
@@ -939,6 +977,7 @@
 			files = (
 				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
 				6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */,
+				6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
 				6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
@@ -952,18 +991,21 @@
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
 				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,
 				6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */,
+				6440BB6B1AFAA88A006A0842 /* WorldProcessor.cpp in Sources */,
 				6440BB501AF91866006A0842 /* UI.cpp in Sources */,
 				6440BB0D1AF6A304006A0842 /* VoxelScene.cpp in Sources */,
 				6440BB131AF6A75B006A0842 /* Camera.cpp in Sources */,
+				6440BB6A1AFAA88A006A0842 /* IterativeProcessor.cpp in Sources */,
 				645D4A041AF000F700CA8592 /* main.cpp in Sources */,
-				6440BB2A1AF7CFEA006A0842 /* Player.cpp in Sources */,
 				6440BB2D1AF7D271006A0842 /* LoadingScene.cpp in Sources */,
+				6440BB631AFAA22B006A0842 /* Item.cpp in Sources */,
 				6440BB4E1AF91866006A0842 /* Label.cpp in Sources */,
 				6440BB221AF7B409006A0842 /* WorldShader.cpp in Sources */,
 				6440BB4F1AF91866006A0842 /* LoadingUI.cpp in Sources */,
 				6440BB211AF7B409006A0842 /* Shader.cpp in Sources */,
 				6440BB0C1AF6A304006A0842 /* GameScene.cpp in Sources */,
 				6440BB041AF508E9006A0842 /* Scene.cpp in Sources */,
+				6440BB641AFAA22B006A0842 /* Player.cpp in Sources */,
 				6440BAFF1AF17D71006A0842 /* Engine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

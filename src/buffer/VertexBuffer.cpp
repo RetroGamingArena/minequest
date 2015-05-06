@@ -26,6 +26,7 @@ VertexBuffer::VertexBuffer()
 
 
 
+
 vector<GLfloat> VertexBuffer::getData()
 {
 	return data;

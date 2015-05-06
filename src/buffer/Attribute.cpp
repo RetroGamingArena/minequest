@@ -24,6 +24,7 @@ Attribute::Attribute()
 
 
 
+
 int Attribute::getSize()
 {
 	return size;

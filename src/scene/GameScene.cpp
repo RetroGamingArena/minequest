@@ -14,9 +14,21 @@ GameScene::GameScene()
 }
 
 // Start of user code methods
+GameScene::GameScene(Player* player)
+{
+    items.push_back(player);
+}
 // End of user code
 
 
 
 
+
+
+vector<Item*> GameScene::getItems()
+{
+	// Start of user code getItems
+	// End of user code
+	return items;
+}
 

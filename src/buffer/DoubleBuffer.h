@@ -4,22 +4,27 @@
 #include <glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
+#include <thread>
+#include <mutex>
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code includes
+// End of user code
 
+
+#include "VertexBuffer.h"
 #include "IndiceBuffer.h"
 #include "VBO.h"
-#include "VertexBuffer.h"
 
 using namespace std;
 
 class DoubleBuffer
 {
+	VertexBuffer* vertexBuffer;
 	IndiceBuffer* indiceBuffer;
 	VBO* vBO;
-	VertexBuffer* vertexBuffer;
 
 	protected:
 
@@ -27,12 +32,12 @@ class DoubleBuffer
 		// Start of user code public
 		// End of user code
 		DoubleBuffer();
+		VertexBuffer* getVertexBuffer();
+		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 		IndiceBuffer* getIndiceBuffer();
 		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
 		VBO* getVBO();
 		void setVBO(VBO* _vBO);
-		VertexBuffer* getVertexBuffer();
-		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 };
 
 #endif

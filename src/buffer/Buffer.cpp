@@ -23,6 +23,7 @@ Buffer::Buffer()
 
 
 
+
 GLuint Buffer::getId()
 {
 	return id;

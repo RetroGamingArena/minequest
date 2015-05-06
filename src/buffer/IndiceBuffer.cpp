@@ -26,6 +26,7 @@ IndiceBuffer::IndiceBuffer()
 
 
 
+
 vector<unsigned int> IndiceBuffer::getData()
 {
 	return data;

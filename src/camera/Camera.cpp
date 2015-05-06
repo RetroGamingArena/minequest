@@ -27,6 +27,7 @@ Camera::Camera()
 
 
 
+
 glm::mat4 Camera::getModel()
 {
 	return model;

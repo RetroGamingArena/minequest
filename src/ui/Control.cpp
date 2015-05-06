@@ -23,6 +23,7 @@ Control::Control()
 
 
 
+
 int Control::getX()
 {
 	return x;

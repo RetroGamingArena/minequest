@@ -4,6 +4,10 @@
 // Start of user code includes
 // End of user code
 
+Player::Player(bool _falling)
+{
+	falling = _falling;
+}
 
 Player::Player()
 // Start of user code super class
@@ -18,5 +22,15 @@ Player::Player()
 
 
 
+
+bool Player::getFalling()
+{
+	return falling;
+}
+
+void Player::setFalling(bool _falling)
+{
+	falling = _falling;
+}
 
 

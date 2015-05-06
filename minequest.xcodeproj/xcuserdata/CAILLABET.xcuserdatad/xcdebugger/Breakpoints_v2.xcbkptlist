@@ -5146,11 +5146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/engine/Engine.cpp"
-            timestampString = "452271927.322971"
+            timestampString = "452637690.360423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8"
-            endingLineNumber = "8">
+            startingLineNumber = "9"
+            endingLineNumber = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5504,12 +5504,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/engine/Engine.cpp"
-            timestampString = "452622344.211972"
+            timestampString = "452637690.360423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "Engine::getShaders()"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "Engine::getPlayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5638,6 +5638,22 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "Texture::Texture(unsigned int _glTexture, char* _fileName)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/scene/LoadingScene.cpp"
+            timestampString = "452637434.73766"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "LoadingScene::render()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

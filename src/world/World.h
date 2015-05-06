@@ -1,5 +1,5 @@
-#ifndef __VBOScene__
-#define __VBOScene__
+#ifndef __World__
+#define __World__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -13,26 +13,19 @@
 // Start of user code includes
 // End of user code
 
-#include "Scene.h"
 
-#include "DoubleBuffer.h"
 
 using namespace std;
 
-class VBOScene : public Scene
+class World
 {
-	DoubleBuffer* doubleBuffer;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VBOScene();
-		DoubleBuffer* getDoubleBuffer();
-		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
-		void init();
-		void render();
+		World();
 };
 
 #endif

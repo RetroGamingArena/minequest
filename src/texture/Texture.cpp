@@ -39,6 +39,7 @@ Texture::Texture(unsigned int _glTexture, char* _fileName)
 
 
 
+
 GLuint Texture::getTextureID()
 {
 	return textureID;
