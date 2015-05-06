@@ -15,16 +15,16 @@
 
 
 #include "VertexBuffer.h"
-#include "IndiceBuffer.h"
 #include "VBO.h"
+#include "IndiceBuffer.h"
 
 using namespace std;
 
 class DoubleBuffer
 {
 	VertexBuffer* vertexBuffer;
-	IndiceBuffer* indiceBuffer;
 	VBO* vBO;
+	IndiceBuffer* indiceBuffer;
 
 	protected:
 
@@ -34,10 +34,10 @@ class DoubleBuffer
 		DoubleBuffer();
 		VertexBuffer* getVertexBuffer();
 		void setVertexBuffer(VertexBuffer* _vertexBuffer);
-		IndiceBuffer* getIndiceBuffer();
-		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
 		VBO* getVBO();
 		void setVBO(VBO* _vBO);
+		IndiceBuffer* getIndiceBuffer();
+		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
 };
 
 #endif

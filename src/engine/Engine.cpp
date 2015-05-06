@@ -183,34 +183,6 @@ void Engine::init()
 	// End of user code
 }
 
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
-WorldProcessor* Engine::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -223,6 +195,22 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -233,6 +221,18 @@ World* Engine::getWorld()
 void Engine::setWorld(World* _world)
 {
 	world = _world;
+}
+					
+WorldProcessor* Engine::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
 }
 					
 Scene* Engine::getScene()

@@ -14,22 +14,22 @@
 // End of user code
 
 
-#include "Engine.h"
-#include "WorldProcessor.h"
-#include "Shader.h"
 #include "Player.h"
+#include "Shader.h"
+#include "Engine.h"
 #include "World.h"
+#include "WorldProcessor.h"
 #include "Scene.h"
 
 using namespace std;
 
 class Engine
 {
-	static Engine* instance;
-	WorldProcessor* worldProcessor;
-	vector<Shader*> shaders;
 	Player* player;
+	vector<Shader*> shaders;
+	static Engine* instance;
 	World* world;
+	WorldProcessor* worldProcessor;
 	Scene* scene;
 	GLFWwindow* window;
 	int windowWidth;
@@ -54,14 +54,14 @@ class Engine
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
 		void init();
-		static Engine* getInstance();
-		WorldProcessor* getWorldProcessor();
-		void setWorldProcessor(WorldProcessor* _worldProcessor);
-		vector<Shader*> getShaders();
 		Player* getPlayer();
 		void setPlayer(Player* _player);
+		vector<Shader*> getShaders();
+		static Engine* getInstance();
 		World* getWorld();
 		void setWorld(World* _world);
+		WorldProcessor* getWorldProcessor();
+		void setWorldProcessor(WorldProcessor* _worldProcessor);
 		Scene* getScene();
 		void setScene(Scene* _scene);
 };

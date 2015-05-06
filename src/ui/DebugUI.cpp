@@ -1,17 +1,15 @@
 #include <cstdlib>
 
-#include "VoxelScene.h"
-// Start of user code includes
 #include "DebugUI.h"
+// Start of user code includes
 // End of user code
 
 
-VoxelScene::VoxelScene()
+DebugUI::DebugUI()
 // Start of user code super class
 // End of user code
 {
 	// Start of user code constructor
-    this->uI = new DebugUI();
 	// End of user code
 }
 

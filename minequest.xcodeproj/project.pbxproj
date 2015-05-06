@@ -44,6 +44,7 @@
 		6440BB6A1AFAA88A006A0842 /* IterativeProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB661AFAA88A006A0842 /* IterativeProcessor.cpp */; };
 		6440BB6B1AFAA88A006A0842 /* WorldProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB681AFAA88A006A0842 /* WorldProcessor.cpp */; };
 		6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB6D1AFAAA08006A0842 /* World.cpp */; };
+		6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB701AFABCE8006A0842 /* DebugUI.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -393,6 +394,8 @@
 		6440BB691AFAA88A006A0842 /* WorldProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldProcessor.h; sourceTree = "<group>"; };
 		6440BB6D1AFAAA08006A0842 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		6440BB6E1AFAAA08006A0842 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		6440BB701AFABCE8006A0842 /* DebugUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugUI.cpp; sourceTree = "<group>"; };
+		6440BB711AFABCE8006A0842 /* DebugUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUI.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -773,6 +776,8 @@
 		6440BB441AF91866006A0842 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				6440BB701AFABCE8006A0842 /* DebugUI.cpp */,
+				6440BB711AFABCE8006A0842 /* DebugUI.h */,
 				6440BB451AF91866006A0842 /* Control.cpp */,
 				6440BB461AF91866006A0842 /* Control.h */,
 				6440BB471AF91866006A0842 /* Label.cpp */,
@@ -985,6 +990,7 @@
 				6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */,
 				6440BB4D1AF91866006A0842 /* Control.cpp in Sources */,
 				6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */,
+				6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
 				6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */,
 				6440BB531AF91E44006A0842 /* TextShader.cpp in Sources */,
