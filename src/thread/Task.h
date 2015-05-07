@@ -1,5 +1,5 @@
-#ifndef __VoxelScene__
-#define __VoxelScene__
+#ifndef __Task__
+#define __Task__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -11,17 +11,18 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "Pool.h"
 // End of user code
 
-#include "VBOScene.h"
 
 
 using namespace std;
 
 // Start of user code class import
+class Pool;
 // End of user code
 
-class VoxelScene : public VBOScene
+class Task
 {
 
 	protected:
@@ -29,7 +30,8 @@ class VoxelScene : public VBOScene
 	public:
 		// Start of user code public
 		// End of user code
-		VoxelScene();
+		Task();
+		static void run(Pool * pool);
 };
 
 #endif

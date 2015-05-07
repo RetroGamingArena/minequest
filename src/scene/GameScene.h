@@ -20,6 +20,9 @@
 
 using namespace std;
 
+// Start of user code class import
+// End of user code
+
 class GameScene : public VoxelScene
 {
 	vector<Item*> items;

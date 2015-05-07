@@ -45,9 +45,16 @@
 		6440BB6B1AFAA88A006A0842 /* WorldProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB681AFAA88A006A0842 /* WorldProcessor.cpp */; };
 		6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB6D1AFAAA08006A0842 /* World.cpp */; };
 		6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB701AFABCE8006A0842 /* DebugUI.cpp */; };
+		6440BB781AFAC3AD006A0842 /* PerlinGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB741AFAC3AD006A0842 /* PerlinGenerator.cpp */; };
+		6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB761AFAC3AD006A0842 /* WorldGenerator.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
+		64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864A1AFACD4300A5B62E /* Pool.cpp */; };
+		64C986511AFACE9B00A5B62E /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864D1AFACE9B00A5B62E /* Task.cpp */; };
+		64C986521AFACE9B00A5B62E /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864F1AFACE9B00A5B62E /* Thread.cpp */; };
+		64C986571AFBBFBB00A5B62E /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986531AFBBFBB00A5B62E /* Chunk.cpp */; };
+		64C986581AFBBFBB00A5B62E /* ChunkTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986551AFBBFBB00A5B62E /* ChunkTask.cpp */; };
 		64E590C81A61AB1300F65FC8 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64E590C61A61AAFE00F65FC8 /* Info.plist */; };
 		64E85D531A4F6C6E0042EE5A /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */; };
 		64E85D551A4F701D0042EE5A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D541A4F701D0042EE5A /* OpenGL.framework */; };
@@ -396,10 +403,24 @@
 		6440BB6E1AFAAA08006A0842 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		6440BB701AFABCE8006A0842 /* DebugUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugUI.cpp; sourceTree = "<group>"; };
 		6440BB711AFABCE8006A0842 /* DebugUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUI.h; sourceTree = "<group>"; };
+		6440BB741AFAC3AD006A0842 /* PerlinGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerlinGenerator.cpp; sourceTree = "<group>"; };
+		6440BB751AFAC3AD006A0842 /* PerlinGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinGenerator.h; sourceTree = "<group>"; };
+		6440BB761AFAC3AD006A0842 /* WorldGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldGenerator.cpp; sourceTree = "<group>"; };
+		6440BB771AFAC3AD006A0842 /* WorldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldGenerator.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
 		64687A411A6C2F2D00C0CAC3 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		64C9864A1AFACD4300A5B62E /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
+		64C9864B1AFACD4300A5B62E /* Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
+		64C9864D1AFACE9B00A5B62E /* Task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Task.cpp; sourceTree = "<group>"; };
+		64C9864E1AFACE9B00A5B62E /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		64C9864F1AFACE9B00A5B62E /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		64C986501AFACE9B00A5B62E /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		64C986531AFBBFBB00A5B62E /* Chunk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chunk.cpp; sourceTree = "<group>"; };
+		64C986541AFBBFBB00A5B62E /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chunk.h; sourceTree = "<group>"; };
+		64C986551AFBBFBB00A5B62E /* ChunkTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChunkTask.cpp; sourceTree = "<group>"; };
+		64C986561AFBBFBB00A5B62E /* ChunkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkTask.h; sourceTree = "<group>"; };
 		64E590C61A61AAFE00F65FC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64E85D411A4F65C30042EE5A /* Voxelengine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Voxelengine; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
@@ -828,11 +849,27 @@
 		6440BB6C1AFAAA08006A0842 /* world */ = {
 			isa = PBXGroup;
 			children = (
+				64C986531AFBBFBB00A5B62E /* Chunk.cpp */,
+				64C986541AFBBFBB00A5B62E /* Chunk.h */,
+				64C986551AFBBFBB00A5B62E /* ChunkTask.cpp */,
+				64C986561AFBBFBB00A5B62E /* ChunkTask.h */,
 				6440BB6D1AFAAA08006A0842 /* World.cpp */,
 				6440BB6E1AFAAA08006A0842 /* World.h */,
 			);
 			name = world;
 			path = src/world;
+			sourceTree = SOURCE_ROOT;
+		};
+		6440BB731AFAC3AD006A0842 /* generator */ = {
+			isa = PBXGroup;
+			children = (
+				6440BB741AFAC3AD006A0842 /* PerlinGenerator.cpp */,
+				6440BB751AFAC3AD006A0842 /* PerlinGenerator.h */,
+				6440BB761AFAC3AD006A0842 /* WorldGenerator.cpp */,
+				6440BB771AFAC3AD006A0842 /* WorldGenerator.h */,
+			);
+			name = generator;
+			path = src/generator;
 			sourceTree = SOURCE_ROOT;
 		};
 		646172ED1A5B38B20008EBA0 /* textures */ = {
@@ -843,6 +880,20 @@
 			name = textures;
 			path = ../textures;
 			sourceTree = "<group>";
+		};
+		64C986491AFACD4300A5B62E /* thread */ = {
+			isa = PBXGroup;
+			children = (
+				64C9864D1AFACE9B00A5B62E /* Task.cpp */,
+				64C9864E1AFACE9B00A5B62E /* Task.h */,
+				64C9864F1AFACE9B00A5B62E /* Thread.cpp */,
+				64C986501AFACE9B00A5B62E /* Thread.h */,
+				64C9864A1AFACD4300A5B62E /* Pool.cpp */,
+				64C9864B1AFACD4300A5B62E /* Pool.h */,
+			);
+			name = thread;
+			path = src/thread;
+			sourceTree = SOURCE_ROOT;
 		};
 		64E85D381A4F65C30042EE5A = {
 			isa = PBXGroup;
@@ -872,6 +923,8 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				64C986491AFACD4300A5B62E /* thread */,
+				6440BB731AFAC3AD006A0842 /* generator */,
 				6440BB6C1AFAAA08006A0842 /* world */,
 				6440BB651AFAA88A006A0842 /* processor */,
 				6440BB5E1AFAA22B006A0842 /* item */,
@@ -981,17 +1034,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
+				6440BB781AFAC3AD006A0842 /* PerlinGenerator.cpp in Sources */,
 				6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */,
 				6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
 				6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
+				64C986511AFACE9B00A5B62E /* Task.cpp in Sources */,
 				6440BB421AF8FB9E006A0842 /* VBO.cpp in Sources */,
 				6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */,
 				6440BB4D1AF91866006A0842 /* Control.cpp in Sources */,
 				6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */,
 				6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */,
+				64C986521AFACE9B00A5B62E /* Thread.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
+				6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */,
 				6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */,
 				6440BB531AF91E44006A0842 /* TextShader.cpp in Sources */,
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
@@ -1005,9 +1062,12 @@
 				645D4A041AF000F700CA8592 /* main.cpp in Sources */,
 				6440BB2D1AF7D271006A0842 /* LoadingScene.cpp in Sources */,
 				6440BB631AFAA22B006A0842 /* Item.cpp in Sources */,
+				64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */,
 				6440BB4E1AF91866006A0842 /* Label.cpp in Sources */,
+				64C986571AFBBFBB00A5B62E /* Chunk.cpp in Sources */,
 				6440BB221AF7B409006A0842 /* WorldShader.cpp in Sources */,
 				6440BB4F1AF91866006A0842 /* LoadingUI.cpp in Sources */,
+				64C986581AFBBFBB00A5B62E /* ChunkTask.cpp in Sources */,
 				6440BB211AF7B409006A0842 /* Shader.cpp in Sources */,
 				6440BB0C1AF6A304006A0842 /* GameScene.cpp in Sources */,
 				6440BB041AF508E9006A0842 /* Scene.cpp in Sources */,

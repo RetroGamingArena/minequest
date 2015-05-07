@@ -18,6 +18,9 @@
 
 using namespace std;
 
+// Start of user code class import
+// End of user code
+
 class IndiceBuffer : public Buffer
 {
 	vector<unsigned int> data;

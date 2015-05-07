@@ -1,0 +1,24 @@
+
+Thu May 07 00:04:55 CEST 2015
+================================================================================
+Start of user code getWorldGenerators
+	// End of user code
+
+Thu May 07 17:50:25 CEST 2015
+================================================================================
+Start of user code buildTask
+    if( mutex->try_lock() && hasNext())
+    {
+        Chunk* chunk = chunks[chunkIndice];
+        ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
+        chunkIndice = chunkIndice+1;
+        mutex->unlock();
+        return chunkTask;
+    }
+    return NULL;
+	// End of user code
+
+Thu May 07 17:52:34 CEST 2015
+================================================================================
+Start of user code * buildTask
+	// End of user code

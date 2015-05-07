@@ -1,5 +1,5 @@
-#ifndef __VoxelScene__
-#define __VoxelScene__
+#ifndef __Chunk__
+#define __Chunk__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -13,7 +13,6 @@
 // Start of user code includes
 // End of user code
 
-#include "VBOScene.h"
 
 
 using namespace std;
@@ -21,15 +20,25 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class VoxelScene : public VBOScene
+class Chunk
 {
+	float p;
+	float q;
+	float r;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VoxelScene();
+		Chunk(float _p, float _q, float _r);
+		Chunk();
+		float getP();
+		void setP(float _p);
+		float getQ();
+		void setQ(float _q);
+		float getR();
+		void setR(float _r);
 };
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef __VoxelScene__
-#define __VoxelScene__
+#ifndef __ChunkTask__
+#define __ChunkTask__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -11,9 +11,11 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "Chunk.h"
+#include "WorldGenerator.h"
 // End of user code
 
-#include "VBOScene.h"
+#include "Task.h"
 
 
 using namespace std;
@@ -21,15 +23,16 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class VoxelScene : public VBOScene
+class ChunkTask : public Task
 {
 
 	protected:
 
 	public:
 		// Start of user code public
+        ChunkTask(Chunk* chunk, WorldGenerator* worldGenerator);
 		// End of user code
-		VoxelScene();
+		ChunkTask();
 };
 
 #endif

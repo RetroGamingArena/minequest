@@ -1,5 +1,5 @@
-#ifndef __VoxelScene__
-#define __VoxelScene__
+#ifndef __Thread__
+#define __Thread__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -13,23 +13,33 @@
 // Start of user code includes
 // End of user code
 
-#include "VBOScene.h"
 
+#include "Task.h"
 
 using namespace std;
 
 // Start of user code class import
+class Task;
 // End of user code
 
-class VoxelScene : public VBOScene
+class Thread
 {
+	Task* task;
+	std::mutex* mutex;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VoxelScene();
+		Thread(std::mutex* _mutex);
+		Thread();
+		std::mutex* getMutex();
+		void setMutex(std::mutex* _mutex);
+		void start();
+		bool isBusy();
+		Task* getTask();
+		void setTask(Task* _task);
 };
 
 #endif

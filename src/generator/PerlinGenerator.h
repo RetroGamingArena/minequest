@@ -1,5 +1,5 @@
-#ifndef __VoxelScene__
-#define __VoxelScene__
+#ifndef __PerlinGenerator__
+#define __PerlinGenerator__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -13,7 +13,7 @@
 // Start of user code includes
 // End of user code
 
-#include "VBOScene.h"
+#include "WorldGenerator.h"
 
 
 using namespace std;
@@ -21,7 +21,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class VoxelScene : public VBOScene
+class PerlinGenerator : public WorldGenerator
 {
 
 	protected:
@@ -29,7 +29,7 @@ class VoxelScene : public VBOScene
 	public:
 		// Start of user code public
 		// End of user code
-		VoxelScene();
+		PerlinGenerator();
 };
 
 #endif

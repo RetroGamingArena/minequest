@@ -17,6 +17,9 @@
 
 using namespace std;
 
+// Start of user code class import
+// End of user code
+
 class Shader
 {
 	const char * vertex_file_path;
