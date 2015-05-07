@@ -19,8 +19,8 @@
 
 #include "Task.h"
 
-#include "Chunk.h"
 #include "WorldGenerator.h"
+#include "Chunk.h"
 
 using namespace std;
 
@@ -29,8 +29,8 @@ using namespace std;
 
 class ChunkTask : public Task
 {
-	Chunk* chunk;
 	WorldGenerator* worldGenerator;
+	Chunk* chunk;
 
 	protected:
 
@@ -39,10 +39,10 @@ class ChunkTask : public Task
         ChunkTask(Chunk* chunk, WorldGenerator* worldGenerator);
 		// End of user code
 		ChunkTask();
-		Chunk* getChunk();
-		void setChunk(Chunk* _chunk);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
+		Chunk* getChunk();
+		void setChunk(Chunk* _chunk);
 		void run(Pool * pool);
 };
 
