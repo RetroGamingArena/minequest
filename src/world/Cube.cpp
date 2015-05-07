@@ -1,15 +1,15 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "Cube.h"
 // Start of user code includes
 // End of user code
 
-OctreeEntry::OctreeEntry(int _NODE)
+Cube::Cube(int _size)
 {
-	NODE = _NODE;
+	size = _size;
 }
 
-OctreeEntry::OctreeEntry()
+Cube::Cube()
 // Start of user code super class
 // End of user code
 {
@@ -22,7 +22,7 @@ OctreeEntry::OctreeEntry()
 
 
 
-int OctreeEntry::NODE = 1;	
+int Cube::size = 16;	
 
 
 

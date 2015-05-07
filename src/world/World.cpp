@@ -61,11 +61,6 @@ bool World::hasNext()
 
 int World::size = 1;	
 
-int World::getSize()
-{
-	return size;
-}
-
 int World::getChunkIndice()
 {
 	return chunkIndice;
@@ -76,6 +71,13 @@ void World::setChunkIndice(int _chunkIndice)
 	chunkIndice = _chunkIndice;
 }
 
+
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
 
 WorldGenerator* World::getWorldGenerator()
 {
@@ -89,10 +91,3 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-

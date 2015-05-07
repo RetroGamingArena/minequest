@@ -2,13 +2,16 @@
 
 #include "Chunk.h"
 // Start of user code includes
+#include "Cube.h"
 // End of user code
 
-Chunk::Chunk(float _p, float _q, float _r)
+Chunk::Chunk(float _p, float _q, float _r, int _size, int _subsize)
 {
 	p = _p;
 	q = _q;
 	r = _r;
+	size = _size;
+	subsize = _subsize;
 }
 
 Chunk::Chunk()
@@ -20,10 +23,18 @@ Chunk::Chunk()
 }
 
 // Start of user code methods
+Chunk::Chunk(float _p, float _q, float _r)
+{
+    p = _p;
+    q = _q;
+    r = _r;
+}
 // End of user code
 
 
 
+int Chunk::size = 16;	
+int Chunk::subsize = 16;	
 
 float Chunk::getP()
 {
@@ -53,4 +64,27 @@ void Chunk::setR(float _r)
 	r = _r;
 }
 
+void Chunk::generate(WorldGenerator * worldGenerator)
+{
+	// Start of user code generate
+    float pp = p * Chunk::size * Chunk::subsize * Cube::size;
+    float rr = r * Chunk::size * Chunk::subsize * Cube::size;
+    
+    unsigned char type = 0;
+    
+    octree->generate(worldGenerator, p*Chunk::size * Chunk::subsize, q, r*Chunk::size * Chunk::subsize, size*subsize);
+	// End of user code
+}
 
+Octree* Chunk::getOctree()
+{
+	// Start of user code getOctree
+	// End of user code
+	return octree;
+}
+
+void Chunk::setOctree(Octree* _octree)
+{
+	octree = _octree;
+}
+					

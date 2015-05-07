@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -17,6 +19,8 @@
 
 #include "Task.h"
 
+#include "Chunk.h"
+#include "WorldGenerator.h"
 
 using namespace std;
 
@@ -25,6 +29,8 @@ using namespace std;
 
 class ChunkTask : public Task
 {
+	Chunk* chunk;
+	WorldGenerator* worldGenerator;
 
 	protected:
 
@@ -33,6 +39,11 @@ class ChunkTask : public Task
         ChunkTask(Chunk* chunk, WorldGenerator* worldGenerator);
 		// End of user code
 		ChunkTask();
+		Chunk* getChunk();
+		void setChunk(Chunk* _chunk);
+		WorldGenerator* getWorldGenerator();
+		void setWorldGenerator(WorldGenerator* _worldGenerator);
+		void run(Pool * pool);
 };
 
 #endif

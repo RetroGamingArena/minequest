@@ -20,9 +20,4 @@ Task::Task()
 
 
 
-void Task::run(Pool * pool)
-{
-	// Start of user code run
-	// End of user code
-}
 

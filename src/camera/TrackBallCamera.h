@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"

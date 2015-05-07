@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -14,10 +16,10 @@
 // End of user code
 
 
-#include "Texture.h"
-#include "DoubleBuffer.h"
-#include "Shader.h"
 #include "Control.h"
+#include "Texture.h"
+#include "Shader.h"
+#include "DoubleBuffer.h"
 
 using namespace std;
 
@@ -28,10 +30,10 @@ class UI
 {
 
 	protected:
-	Texture* fontTexture;
-	DoubleBuffer* doubleBuffer;
-	Shader* shader;
 	vector<Control*> controls;
+	Texture* fontTexture;
+	Shader* shader;
+	DoubleBuffer* doubleBuffer;
 
 	public:
 		// Start of user code public
@@ -39,13 +41,13 @@ class UI
 		UI();
 		void render();
 		void printText(const char * text, int x, int y, int size);
+		vector<Control*> getControls();
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);
-		DoubleBuffer* getDoubleBuffer();
-		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 		Shader* getShader();
 		void setShader(Shader* _shader);
-		vector<Control*> getControls();
+		DoubleBuffer* getDoubleBuffer();
+		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 };
 
 #endif

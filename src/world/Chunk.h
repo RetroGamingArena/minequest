@@ -6,14 +6,18 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "WorldGenerator.h"
 // End of user code
 
 
+#include "Octree.h"
 
 using namespace std;
 
@@ -22,6 +26,7 @@ using namespace std;
 
 class Chunk
 {
+	Octree* octree;
 	float p;
 	float q;
 	float r;
@@ -30,8 +35,11 @@ class Chunk
 
 	public:
 		// Start of user code public
+        Chunk(float _p, float _q, float _r);
 		// End of user code
-		Chunk(float _p, float _q, float _r);
+	static int size;
+	static int subsize;
+		Chunk(float _p, float _q, float _r, int _size, int _subsize);
 		Chunk();
 		float getP();
 		void setP(float _p);
@@ -39,6 +47,9 @@ class Chunk
 		void setQ(float _q);
 		float getR();
 		void setR(float _r);
+		void generate(WorldGenerator * worldGenerator);
+		Octree* getOctree();
+		void setOctree(Octree* _octree);
 };
 
 #endif

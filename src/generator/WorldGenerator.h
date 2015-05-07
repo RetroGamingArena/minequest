@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -29,6 +31,7 @@ class WorldGenerator
 		// Start of user code public
 		// End of user code
 		WorldGenerator();
+		virtual float getY(float x, float z) = 0;
 };
 
 #endif

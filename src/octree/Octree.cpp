@@ -1,15 +1,11 @@
 #include <cstdlib>
 
-#include "OctreeEntry.h"
+#include "Octree.h"
 // Start of user code includes
 // End of user code
 
-OctreeEntry::OctreeEntry(int _NODE)
-{
-	NODE = _NODE;
-}
 
-OctreeEntry::OctreeEntry()
+Octree::Octree()
 // Start of user code super class
 // End of user code
 {
@@ -22,7 +18,6 @@ OctreeEntry::OctreeEntry()
 
 
 
-int OctreeEntry::NODE = 1;	
 
 
 

@@ -6,11 +6,14 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "WorldGenerator.h"
 // End of user code
 
 
@@ -28,7 +31,13 @@ class OctreeEntry
 	public:
 		// Start of user code public
 		// End of user code
+	static int NODE;
+		OctreeEntry(int _NODE);
 		OctreeEntry();
+		virtual void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size) = 0;
+		virtual bool isCompressible() = 0;
+		virtual int getCode() = 0;
+		virtual unsigned char getAbs(int x, int y, int z, int size) = 0;
 };
 
 #endif

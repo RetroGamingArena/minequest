@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -14,12 +16,12 @@
 // End of user code
 
 
-#include "Player.h"
 #include "Shader.h"
-#include "Engine.h"
-#include "World.h"
 #include "WorldProcessor.h"
+#include "Engine.h"
 #include "Scene.h"
+#include "World.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -28,12 +30,12 @@ using namespace std;
 
 class Engine
 {
-	Player* player;
 	vector<Shader*> shaders;
-	static Engine* instance;
-	World* world;
 	WorldProcessor* worldProcessor;
+	static Engine* instance;
 	Scene* scene;
+	World* world;
+	Player* player;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -57,16 +59,16 @@ class Engine
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
 		void init();
-		Player* getPlayer();
-		void setPlayer(Player* _player);
 		vector<Shader*> getShaders();
-		static Engine* getInstance();
-		World* getWorld();
-		void setWorld(World* _world);
 		WorldProcessor* getWorldProcessor();
 		void setWorldProcessor(WorldProcessor* _worldProcessor);
+		static Engine* getInstance();
 		Scene* getScene();
 		void setScene(Scene* _scene);
+		World* getWorld();
+		void setWorld(World* _world);
+		Player* getPlayer();
+		void setPlayer(Player* _player);
 };
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef __VertexBuffer__
-#define __VertexBuffer__
+#ifndef __Octree__
+#define __Octree__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -15,7 +15,7 @@
 // Start of user code includes
 // End of user code
 
-#include "Buffer.h"
+#include "Node.h"
 
 
 using namespace std;
@@ -23,19 +23,15 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class VertexBuffer : public Buffer
+class Octree : public Node
 {
-	vector<GLfloat> data;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VertexBuffer(vector<GLfloat> _data);
-		VertexBuffer();
-		vector<GLfloat> getData();
-		void setData(GLfloat _data);
+		Octree();
 };
 
 #endif

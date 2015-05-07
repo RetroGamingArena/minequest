@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -14,8 +16,8 @@
 // End of user code
 
 
-#include "Camera.h"
 #include "UI.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -26,8 +28,8 @@ class Scene
 {
 
 	protected:
-	Camera* camera;
 	UI* uI;
+	Camera* camera;
 
 	public:
 		// Start of user code public
@@ -35,10 +37,10 @@ class Scene
 		Scene();
 		virtual void init() = 0;
 		virtual void render() = 0;
-		Camera* getCamera();
-		void setCamera(Camera* _camera);
 		UI* getUI();
 		void setUI(UI* _uI);
+		Camera* getCamera();
+		void setCamera(Camera* _camera);
 };
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef __VertexBuffer__
-#define __VertexBuffer__
+#ifndef __Leaf__
+#define __Leaf__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -15,7 +15,7 @@
 // Start of user code includes
 // End of user code
 
-#include "Buffer.h"
+#include "OctreeEntry.h"
 
 
 using namespace std;
@@ -23,19 +23,23 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class VertexBuffer : public Buffer
+class Leaf : public OctreeEntry
 {
-	vector<GLfloat> data;
+	unsigned char type;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VertexBuffer(vector<GLfloat> _data);
-		VertexBuffer();
-		vector<GLfloat> getData();
-		void setData(GLfloat _data);
+		Leaf(unsigned char _type);
+		Leaf();
+		unsigned char getType();
+		void setType(unsigned char _type);
+		void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
+		bool isCompressible();
+		int getCode();
+		unsigned char getAbs(int x, int y, int z, int size);
 };
 
 #endif

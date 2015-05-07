@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -31,7 +33,7 @@ class Task
 		// Start of user code public
 		// End of user code
 		Task();
-		static void run(Pool * pool);
+		virtual void run(Pool * pool) = 0;
 };
 
 #endif

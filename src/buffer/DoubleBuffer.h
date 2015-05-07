@@ -6,6 +6,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <noise/noise.h>
+#include "noiseutils.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -14,9 +16,9 @@
 // End of user code
 
 
-#include "VertexBuffer.h"
 #include "VBO.h"
 #include "IndiceBuffer.h"
+#include "VertexBuffer.h"
 
 using namespace std;
 
@@ -25,9 +27,9 @@ using namespace std;
 
 class DoubleBuffer
 {
-	VertexBuffer* vertexBuffer;
 	VBO* vBO;
 	IndiceBuffer* indiceBuffer;
+	VertexBuffer* vertexBuffer;
 
 	protected:
 
@@ -35,12 +37,12 @@ class DoubleBuffer
 		// Start of user code public
 		// End of user code
 		DoubleBuffer();
-		VertexBuffer* getVertexBuffer();
-		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 		VBO* getVBO();
 		void setVBO(VBO* _vBO);
 		IndiceBuffer* getIndiceBuffer();
 		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
+		VertexBuffer* getVertexBuffer();
+		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 };
 
 #endif
