@@ -77,11 +77,17 @@ void VBOScene::render()
         glEnableVertexAttribArray(4);
         glEnableVertexAttribArray(5);*/
         
+        int size = 0;
+        
         for(int i = 0; i < attributes.size(); i++)
         {
-            glVertexAttribPointer( 2, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, sizeof(GLfloat) * vBO->getSize(), (void*)(0) ); //0, NULL);
+            if( attributes[i]->getSize() == 3)
+                size=0;
+            
+            glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, sizeof(GLfloat) * vBO->getSize(), (void*)(size) ); //0, NULL);
             if(attributes[i]->getDivisor()>0)
-                glVertexAttribDivisor( 2, attributes[i]->getDivisor());
+                glVertexAttribDivisor( i, attributes[i]->getDivisor());
+            size += attributes[i]->getSize();
         }
     
         /*glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)0 );
@@ -104,7 +110,7 @@ void VBOScene::render()
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, data->size()-32/6 );//(buffers[i]->getData()->size()-32)/6 );           // element array buffer offset
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, (data->size()-32)/6 );//(buffers[i]->getData()->size()-32)/6 );           // element array buffer offset
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         
         for(int i = 0; i < attributes.size(); i++)

@@ -98,6 +98,8 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
 
 unsigned char Leaf::getType()
 {
+	// Start of user code getType
+	// End of user code
 	return type;
 }
 

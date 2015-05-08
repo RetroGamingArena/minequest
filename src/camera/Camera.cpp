@@ -36,6 +36,8 @@ Camera::~Camera()
 
 glm::mat4 Camera::getModel()
 {
+	// Start of user code getModel
+	// End of user code
 	return model;
 }
 
@@ -45,6 +47,8 @@ void Camera::setModel(glm::mat4 _model)
 }
 glm::mat4 Camera::getView()
 {
+	// Start of user code getView
+	// End of user code
 	return view;
 }
 
@@ -54,6 +58,8 @@ void Camera::setView(glm::mat4 _view)
 }
 glm::mat4 Camera::getProjection()
 {
+	// Start of user code getProjection
+	// End of user code
 	return projection;
 }
 

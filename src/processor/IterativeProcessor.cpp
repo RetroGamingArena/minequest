@@ -107,6 +107,8 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
         gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
         chunkData->clear();
     }
+    
+    gameScene->getDoubleBuffer()->getIndiceBuffer()->bind();
 	// End of user code
 }
 Task* IterativeProcessor::buildTask()

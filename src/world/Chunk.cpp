@@ -54,6 +54,8 @@ int Chunk::subsize = 16;
 
 float Chunk::getP()
 {
+	// Start of user code getP
+	// End of user code
 	return p;
 }
 
@@ -63,6 +65,8 @@ void Chunk::setP(float _p)
 }
 float Chunk::getQ()
 {
+	// Start of user code getQ
+	// End of user code
 	return q;
 }
 
@@ -72,6 +76,8 @@ void Chunk::setQ(float _q)
 }
 float Chunk::getR()
 {
+	// Start of user code getR
+	// End of user code
 	return r;
 }
 

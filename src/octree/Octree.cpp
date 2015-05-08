@@ -37,6 +37,8 @@ int Octree::subSize = 0;
 
 float Octree::getP()
 {
+	// Start of user code getP
+	// End of user code
 	return p;
 }
 
@@ -46,6 +48,8 @@ void Octree::setP(float _p)
 }
 float Octree::getQ()
 {
+	// Start of user code getQ
+	// End of user code
 	return q;
 }
 
@@ -55,6 +59,8 @@ void Octree::setQ(float _q)
 }
 float Octree::getR()
 {
+	// Start of user code getR
+	// End of user code
 	return r;
 }
 

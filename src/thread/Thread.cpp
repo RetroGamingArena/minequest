@@ -32,6 +32,8 @@ Thread::~Thread()
 
 std::mutex* Thread::getMutex()
 {
+	// Start of user code getMutex
+	// End of user code
 	return mutex;
 }
 

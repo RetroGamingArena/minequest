@@ -37,6 +37,7 @@ class IndiceBuffer : public Buffer
 		~IndiceBuffer();
 		vector<unsigned int>* getData();
 		void setData(unsigned int _data);
+		void bind();
 };
 
 #endif

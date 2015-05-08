@@ -44,6 +44,8 @@ void Label::render()
 
 char* Label::getCaption()
 {
+	// Start of user code getCaption
+	// End of user code
 	return caption;
 }
 

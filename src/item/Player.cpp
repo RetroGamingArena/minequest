@@ -31,6 +31,8 @@ Player::~Player()
 
 bool Player::getFalling()
 {
+	// Start of user code getFalling
+	// End of user code
 	return falling;
 }
 

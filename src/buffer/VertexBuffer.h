@@ -38,6 +38,7 @@ class VertexBuffer : public Buffer
 		vector<GLfloat>* getData();
 		void setData(GLfloat _data);
 		void init();
+		void bind();
 };
 
 #endif

@@ -48,6 +48,8 @@ Texture::Texture(unsigned int _glTexture, char* _fileName)
 
 GLuint Texture::getTextureID()
 {
+	// Start of user code getTextureID
+	// End of user code
 	return textureID;
 }
 
@@ -57,6 +59,8 @@ void Texture::setTextureID(GLuint _textureID)
 }
 unsigned int Texture::getGlTexture()
 {
+	// Start of user code getGlTexture
+	// End of user code
 	return glTexture;
 }
 
@@ -66,6 +70,8 @@ void Texture::setGlTexture(unsigned int _glTexture)
 }
 char* Texture::getFileName()
 {
+	// Start of user code getFileName
+	// End of user code
 	return fileName;
 }
 

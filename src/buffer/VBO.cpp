@@ -31,6 +31,8 @@ VBO::~VBO()
 
 unsigned int VBO::getSize()
 {
+	// Start of user code getSize
+	// End of user code
 	return size;
 }
 

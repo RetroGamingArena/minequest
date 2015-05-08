@@ -61,6 +61,8 @@ std::mutex* LoadingScene::mutex = new std::mutex();
 
 std::thread* LoadingScene::getThread()
 {
+	// Start of user code getThread
+	// End of user code
 	return thread;
 }
 
@@ -70,6 +72,8 @@ void LoadingScene::setThread(std::thread* _thread)
 }
 std::mutex* LoadingScene::getMutex()
 {
+	// Start of user code getMutex
+	// End of user code
 	return mutex;
 }
 

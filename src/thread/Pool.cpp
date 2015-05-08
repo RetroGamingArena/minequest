@@ -37,6 +37,8 @@ Pool::~Pool()
 
 int Pool::getThreadCount()
 {
+	// Start of user code getThreadCount
+	// End of user code
 	return threadCount;
 }
 
@@ -46,6 +48,8 @@ void Pool::setThreadCount(int _threadCount)
 }
 bool Pool::getRunning()
 {
+	// Start of user code getRunning
+	// End of user code
 	return running;
 }
 
@@ -55,6 +59,8 @@ void Pool::setRunning(bool _running)
 }
 std::thread* Pool::getWork()
 {
+	// Start of user code getWork
+	// End of user code
 	return work;
 }
 
@@ -64,6 +70,8 @@ void Pool::setWork(std::thread* _work)
 }
 std::mutex* Pool::getMutex()
 {
+	// Start of user code getMutex
+	// End of user code
 	return mutex;
 }
 

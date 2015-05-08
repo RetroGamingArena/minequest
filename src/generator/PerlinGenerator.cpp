@@ -67,6 +67,8 @@ float PerlinGenerator::getY(float x, float z)
 
 utils::NoiseMap PerlinGenerator::getHeightMap()
 {
+	// Start of user code getHeightMap
+	// End of user code
 	return heightMap;
 }
 

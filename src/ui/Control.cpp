@@ -32,6 +32,8 @@ Control::~Control()
 
 int Control::getX()
 {
+	// Start of user code getX
+	// End of user code
 	return x;
 }
 
@@ -41,6 +43,8 @@ void Control::setX(int _x)
 }
 int Control::getY()
 {
+	// Start of user code getY
+	// End of user code
 	return y;
 }
 

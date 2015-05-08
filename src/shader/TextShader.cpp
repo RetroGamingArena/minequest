@@ -60,6 +60,8 @@ void TextShader::poly()
 
 GLuint TextShader::getTextureSamplerID()
 {
+	// Start of user code getTextureSamplerID
+	// End of user code
 	return textureSamplerID;
 }
 
@@ -69,6 +71,8 @@ void TextShader::setTextureSamplerID(GLuint _textureSamplerID)
 }
 GLuint TextShader::getVertexArrayID()
 {
+	// Start of user code getVertexArrayID
+	// End of user code
 	return vertexArrayID;
 }
 
@@ -78,6 +82,8 @@ void TextShader::setVertexArrayID(GLuint _vertexArrayID)
 }
 GLuint TextShader::getFontVertexBufferID()
 {
+	// Start of user code getFontVertexBufferID
+	// End of user code
 	return fontVertexBufferID;
 }
 
@@ -87,6 +93,8 @@ void TextShader::setFontVertexBufferID(GLuint _fontVertexBufferID)
 }
 GLuint TextShader::getFontUVBufferID()
 {
+	// Start of user code getFontUVBufferID
+	// End of user code
 	return fontUVBufferID;
 }
 

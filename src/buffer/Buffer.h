@@ -37,6 +37,7 @@ class Buffer
 		GLuint getId();
 		void setId(GLuint _id);
 		void init();
+		virtual void bind() = 0;
 };
 
 #endif

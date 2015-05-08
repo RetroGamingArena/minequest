@@ -31,6 +31,8 @@ Buffer::~Buffer()
 
 GLuint Buffer::getId()
 {
+	// Start of user code getId
+	// End of user code
 	return id;
 }
 

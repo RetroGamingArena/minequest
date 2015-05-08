@@ -279,7 +279,7 @@
          contextName = "VBOScene::render():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "indices-&gt;getData()-&gt;size()">
+               value = "getCamera()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -310,6 +310,14 @@
       </ContextState>
       <ContextState
          contextName = "OctreeEntry&lt;unsigned char&gt;::getAbs(int, int, int):OctreeEntry.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "TrackBallCamera::TrackBallCamera():TrackBallCamera.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "getPosition()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -28,13 +28,16 @@ class TrackBallCamera : public Camera
 	glm::vec3 position;
 	glm::vec3 center;
 	glm::vec3 up;
+	float angleY;
+	float angleZ;
+	float distance;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up);
+		TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up, float _angleY, float _angleZ, float _distance);
 		TrackBallCamera();
 		~TrackBallCamera();
 		glm::vec3 getPosition();
@@ -43,6 +46,12 @@ class TrackBallCamera : public Camera
 		void setCenter(glm::vec3 _center);
 		glm::vec3 getUp();
 		void setUp(glm::vec3 _up);
+		float getAngleY();
+		void setAngleY(float _angleY);
+		float getAngleZ();
+		void setAngleZ(float _angleZ);
+		float getDistance();
+		void setDistance(float _distance);
 };
 
 #endif

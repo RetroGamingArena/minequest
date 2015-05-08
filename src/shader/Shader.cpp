@@ -47,6 +47,8 @@ Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path,
 
 const char * Shader::getVertex_file_path()
 {
+	// Start of user code getVertex_file_path
+	// End of user code
 	return vertex_file_path;
 }
 
@@ -56,6 +58,8 @@ void Shader::setVertex_file_path(const char * _vertex_file_path)
 }
 const char * Shader::getFragment_file_path()
 {
+	// Start of user code getFragment_file_path
+	// End of user code
 	return fragment_file_path;
 }
 
@@ -65,6 +69,8 @@ void Shader::setFragment_file_path(const char * _fragment_file_path)
 }
 const char * Shader::getGeometry_file_path()
 {
+	// Start of user code getGeometry_file_path
+	// End of user code
 	return geometry_file_path;
 }
 
@@ -74,6 +80,8 @@ void Shader::setGeometry_file_path(const char * _geometry_file_path)
 }
 GLuint Shader::getProgramID()
 {
+	// Start of user code getProgramID
+	// End of user code
 	return programID;
 }
 
@@ -83,6 +91,8 @@ void Shader::setProgramID(GLuint _programID)
 }
 GLuint Shader::getMMatrixID()
 {
+	// Start of user code getMMatrixID
+	// End of user code
 	return mMatrixID;
 }
 
@@ -92,6 +102,8 @@ void Shader::setMMatrixID(GLuint _mMatrixID)
 }
 GLuint Shader::getVMatrixID()
 {
+	// Start of user code getVMatrixID
+	// End of user code
 	return vMatrixID;
 }
 
@@ -101,6 +113,8 @@ void Shader::setVMatrixID(GLuint _vMatrixID)
 }
 GLuint Shader::getPMatrixID()
 {
+	// Start of user code getPMatrixID
+	// End of user code
 	return pMatrixID;
 }
 

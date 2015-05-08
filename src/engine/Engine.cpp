@@ -38,6 +38,8 @@ Engine* Engine::instance = NULL;
 
 GLFWwindow* Engine::getWindow()
 {
+	// Start of user code getWindow
+	// End of user code
 	return window;
 }
 
@@ -47,6 +49,8 @@ void Engine::setWindow(GLFWwindow* _window)
 }
 int Engine::getWindowWidth()
 {
+	// Start of user code getWindowWidth
+	// End of user code
 	return windowWidth;
 }
 
@@ -56,6 +60,8 @@ void Engine::setWindowWidth(int _windowWidth)
 }
 int Engine::getWindowHeight()
 {
+	// Start of user code getWindowHeight
+	// End of user code
 	return windowHeight;
 }
 
@@ -189,42 +195,6 @@ void Engine::init()
 	// End of user code
 }
 
-Scene* Engine::getScene()
-{
-	// Start of user code getScene
-	// End of user code
-	return scene;
-}
-
-void Engine::setScene(Scene* _scene)
-{
-	scene = _scene;
-}
-					
-World* Engine::getWorld()
-{
-	// Start of user code getWorld
-	// End of user code
-	return world;
-}
-
-void Engine::setWorld(World* _world)
-{
-	world = _world;
-}
-					
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
 WorldProcessor* Engine::getWorldProcessor()
 {
 	// Start of user code getWorldProcessor
@@ -237,6 +207,18 @@ void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
+}
+					
 vector<Shader*> Engine::getShaders()
 {
 	// Start of user code getShaders
@@ -244,6 +226,18 @@ vector<Shader*> Engine::getShaders()
 	return shaders;
 }
 
+Player* Engine::getPlayer()
+{
+	// Start of user code getPlayer
+	// End of user code
+	return player;
+}
+
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
+}
+					
 Engine* Engine::getInstance()
 {
 	// Start of user code getInstance
@@ -253,3 +247,15 @@ Engine* Engine::getInstance()
 	return instance;
 }
 
+World* Engine::getWorld()
+{
+	// Start of user code getWorld
+	// End of user code
+	return world;
+}
+
+void Engine::setWorld(World* _world)
+{
+	world = _world;
+}
+					

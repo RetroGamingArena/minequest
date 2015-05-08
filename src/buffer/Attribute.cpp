@@ -33,6 +33,8 @@ Attribute::~Attribute()
 
 int Attribute::getSize()
 {
+	// Start of user code getSize
+	// End of user code
 	return size;
 }
 
@@ -42,6 +44,8 @@ void Attribute::setSize(int _size)
 }
 int Attribute::getDivisor()
 {
+	// Start of user code getDivisor
+	// End of user code
 	return divisor;
 }
 
@@ -51,6 +55,8 @@ void Attribute::setDivisor(int _divisor)
 }
 const char * Attribute::getName()
 {
+	// Start of user code getName
+	// End of user code
 	return name;
 }
 
