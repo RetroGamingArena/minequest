@@ -30,6 +30,7 @@ class VoxelScene : public VBOScene
 
 	public:
 		// Start of user code public
+        void render();
 		// End of user code
 		VoxelScene();
 		~VoxelScene();

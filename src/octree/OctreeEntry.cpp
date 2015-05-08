@@ -31,9 +31,4 @@ OctreeEntry::~OctreeEntry()
 int OctreeEntry::NODE = 1;	
 
 
-void OctreeEntry::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
-{
-	// Start of user code bufferize
-	// End of user code
-}
 

@@ -3,6 +3,8 @@
 #include "Leaf.h"
 // Start of user code includes
 #include "Chunk.h"
+#include "Engine.h"
+#include "World.h"
 // End of user code
 
 Leaf::Leaf(unsigned char _type)
@@ -75,6 +77,20 @@ unsigned char Leaf::getAbs(int x, int y, int z, int size)
 {
 	// Start of user code getAbs
     return type;
+	// End of user code
+}
+void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
+{
+	// Start of user code bufferize
+    World* world = Engine::getInstance()->getWorld();
+    
+    if(getType() > 0)
+    {
+        if(world->isCubeVisible(p,q,r,size))
+        {
+            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
+        }
+    }
 	// End of user code
 }
 

@@ -42,6 +42,9 @@ class World : public Pool
 		~World();
 		int getChunkIndice();
 		void setChunkIndice(int _chunkIndice);
+		bool isCubeVisible(int x, int y, int z, int size);
+		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, int p, int q, int r, int width);
+		unsigned char getCube(int x, int y, int z);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		vector<Chunk*> getChunks();

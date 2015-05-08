@@ -177,6 +177,21 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
         return entry->getAbs(offset_x,offset_y,offset_z, size/2);
 	// End of user code
 }
+void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
+{
+	// Start of user code bufferize
+    for(int i = 0; i < 8; i++)
+    {
+        int x = (i%4)%2;
+        int y = i/4;
+        int z = (i%4)/2;
+        
+        //bufferize(scene, this->entries[i], p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
+        if(this->octreeEntries[i] != NULL)
+            this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
+    }
+	// End of user code
+}
 
 
 

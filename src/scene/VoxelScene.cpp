@@ -22,6 +22,11 @@ VoxelScene::~VoxelScene()
 }
 
 // Start of user code methods
+void VoxelScene::render()
+{
+    VBOScene::render();
+    glClearColor(0.5f, 0.9f, 1.0f, 0.0f);
+}
 // End of user code
 
 

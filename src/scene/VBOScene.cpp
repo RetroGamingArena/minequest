@@ -102,7 +102,9 @@ void VBOScene::render()
         
         glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());//bufferIDs[i]);
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, doubleBuffer->getVertexBuffer()->getData().size()-32/6 );//(buffers[i]->getData()->size()-32)/6 );           // element array buffer offset
+        vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
+        
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, data->size()-32/6 );//(buffers[i]->getData()->size()-32)/6 );           // element array buffer offset
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         
         for(int i = 0; i < attributes.size(); i++)

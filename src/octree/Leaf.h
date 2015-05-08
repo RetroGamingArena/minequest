@@ -41,6 +41,7 @@ class Leaf : public OctreeEntry
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);
+		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
 };
 
 #endif

@@ -76,7 +76,9 @@ void UI::render()
     
     glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
     
-    glDrawArrays(GL_TRIANGLES, 0, doubleBuffer->getVertexBuffer()->getData().size());
+    vector<GLfloat> data = *doubleBuffer->getVertexBuffer()->getData();
+    
+    glDrawArrays(GL_TRIANGLES, 0, data.size());
     
     glDisableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -167,25 +169,6 @@ void UI::printText(const char * text, int x, int y, int size)
 	// End of user code
 }
 
-vector<Control*> UI::getControls()
-{
-	// Start of user code getControls
-	// End of user code
-	return controls;
-}
-
-Shader* UI::getShader()
-{
-	// Start of user code getShader
-	// End of user code
-	return shader;
-}
-
-void UI::setShader(Shader* _shader)
-{
-	shader = _shader;
-}
-					
 DoubleBuffer* UI::getDoubleBuffer()
 {
 	// Start of user code getDoubleBuffer
@@ -210,3 +193,22 @@ void UI::setFontTexture(Texture* _fontTexture)
 	fontTexture = _fontTexture;
 }
 					
+Shader* UI::getShader()
+{
+	// Start of user code getShader
+	// End of user code
+	return shader;
+}
+
+void UI::setShader(Shader* _shader)
+{
+	shader = _shader;
+}
+					
+vector<Control*> UI::getControls()
+{
+	// Start of user code getControls
+	// End of user code
+	return controls;
+}
+

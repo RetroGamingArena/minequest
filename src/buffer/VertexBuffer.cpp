@@ -4,7 +4,7 @@
 // Start of user code includes
 // End of user code
 
-VertexBuffer::VertexBuffer(vector<GLfloat> _data)
+VertexBuffer::VertexBuffer(vector<GLfloat>* _data)
 {
 	data = _data;
 }
@@ -14,6 +14,7 @@ VertexBuffer::VertexBuffer()
 // End of user code
 {
 	// Start of user code constructor
+    data = new vector<GLfloat>();
 	// End of user code
 }
 
@@ -29,7 +30,7 @@ VertexBuffer::~VertexBuffer()
 
 
 
-vector<GLfloat> VertexBuffer::getData()
+vector<GLfloat>* VertexBuffer::getData()
 {
 	return data;
 }
@@ -40,7 +41,7 @@ void VertexBuffer::init()
 	// Start of user code init
     Buffer::init();
     glBindBuffer(GL_ARRAY_BUFFER, id);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*data.size(), &data[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*data->size(), &(*data)[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 	// End of user code
 }

@@ -25,17 +25,17 @@ using namespace std;
 
 class IndiceBuffer : public Buffer
 {
-	vector<unsigned int> data;
+	vector<unsigned int>* data;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		IndiceBuffer(vector<unsigned int> _data);
+		IndiceBuffer(vector<unsigned int>* _data);
 		IndiceBuffer();
 		~IndiceBuffer();
-		vector<unsigned int> getData();
+		vector<unsigned int>* getData();
 		void setData(unsigned int _data);
 };
 

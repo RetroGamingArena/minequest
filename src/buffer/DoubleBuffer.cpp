@@ -31,19 +31,22 @@ DoubleBuffer::~DoubleBuffer()
 void DoubleBuffer::bufferizeIndice(float indice)
 {
 	// Start of user code bufferizeIndice
-    int size = indiceBuffer->getData().size()/36;
-    indiceBuffer->getData().push_back(size*8+indice);
+    int size = indiceBuffer->getData()->size()/36;
+    indiceBuffer->getData()->push_back(size*8+indice);
 	// End of user code
 }
 void DoubleBuffer::bufferizeVertex(float x, float y, float z, float type, float ao)
 {
 	// Start of user code bufferizeVertex
-    getVertexBuffer()->getData().push_back(x);
-    getVertexBuffer()->getData().push_back(y);
-    getVertexBuffer()->getData().push_back(z);
-    getVertexBuffer()->getData().push_back(ao);
-    getVertexBuffer()->getData().push_back(1);
-    getVertexBuffer()->getData().push_back(1);
+    
+    //vector<GLfloat> data = *getVertexBuffer()->getData();
+    
+    getVertexBuffer()->getData()->push_back(x);
+    getVertexBuffer()->getData()->push_back(y);
+    getVertexBuffer()->getData()->push_back(z);
+    getVertexBuffer()->getData()->push_back(ao);
+    getVertexBuffer()->getData()->push_back(1);
+    getVertexBuffer()->getData()->push_back(1);
 	// End of user code
 }
 void DoubleBuffer::bufferizeSquare(float x1, float y1, float z1, float x2, float y2, float z2, float type, float* ao)
@@ -73,18 +76,6 @@ void DoubleBuffer::bufferizeSquare(float x1, float y1, float z1, float x2, float
 	// End of user code
 }
 
-VBO* DoubleBuffer::getVBO()
-{
-	// Start of user code getVBO
-	// End of user code
-	return vBO;
-}
-
-void DoubleBuffer::setVBO(VBO* _vBO)
-{
-	vBO = _vBO;
-}
-					
 VertexBuffer* DoubleBuffer::getVertexBuffer()
 {
 	// Start of user code getVertexBuffer
@@ -95,6 +86,18 @@ VertexBuffer* DoubleBuffer::getVertexBuffer()
 void DoubleBuffer::setVertexBuffer(VertexBuffer* _vertexBuffer)
 {
 	vertexBuffer = _vertexBuffer;
+}
+					
+VBO* DoubleBuffer::getVBO()
+{
+	// Start of user code getVBO
+	// End of user code
+	return vBO;
+}
+
+void DoubleBuffer::setVBO(VBO* _vBO)
+{
+	vBO = _vBO;
 }
 					
 IndiceBuffer* DoubleBuffer::getIndiceBuffer()

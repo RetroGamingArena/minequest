@@ -101,8 +101,11 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     {
         Chunk* chunk = world->getChunks()[i];
     
-        gameScene->getDoubleBuffer()->getVertexBuffer()->getData().insert(gameScene->getDoubleBuffer()->getVertexBuffer()->getData().end(), gameScene->getDoubleBuffer()->getVertexBuffer()->getData().begin(), chunk->getVertexBuffer()->getData().end());
-        chunk->getVertexBuffer()->getData().clear();
+        vector<GLfloat>* gameSceneData = gameScene->getDoubleBuffer()->getVertexBuffer()->getData();
+        vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
+        
+        gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
+        chunkData->clear();
     }
 	// End of user code
 }
