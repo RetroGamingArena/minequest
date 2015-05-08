@@ -39,6 +39,8 @@ class VBOScene : public Scene
 		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 		void init();
 		void render();
+		void onMouseMotion(double xpos, double ypos);
+		void onMouseScroll(double xoffset, double yoffset);
 };
 
 #endif

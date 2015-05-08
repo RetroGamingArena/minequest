@@ -17,8 +17,8 @@
 
 #include "Pool.h"
 
-#include "Chunk.h"
 #include "WorldGenerator.h"
+#include "Chunk.h"
 
 using namespace std;
 
@@ -27,8 +27,8 @@ using namespace std;
 
 class World : public Pool
 {
-	vector<Chunk*> chunks;
 	WorldGenerator* worldGenerator;
+	vector<Chunk*> chunks;
 	int chunkIndice;
 
 	protected:
@@ -45,9 +45,9 @@ class World : public Pool
 		bool isCubeVisible(int x, int y, int z, int size);
 		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, int p, int q, int r, int width);
 		unsigned char getCube(int x, int y, int z);
-		vector<Chunk*> getChunks();
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
+		vector<Chunk*> getChunks();
 		Task* buildTask();
 		bool hasNext();
 };

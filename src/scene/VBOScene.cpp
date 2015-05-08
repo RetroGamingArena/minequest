@@ -130,6 +130,18 @@ void VBOScene::render()
     uI->render();
 	// End of user code
 }
+void VBOScene::onMouseMotion(double xpos, double ypos)
+{
+	// Start of user code onMouseMotion
+    camera->onMouseMotion(xpos, ypos);
+	// End of user code
+}
+void VBOScene::onMouseScroll(double xoffset, double yoffset)
+{
+	// Start of user code onMouseScroll
+    camera->onMouseWheel(xoffset, yoffset);
+	// End of user code
+}
 
 
 

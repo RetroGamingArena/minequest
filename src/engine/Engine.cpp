@@ -121,16 +121,22 @@ int Engine::run()
 void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
 	// Start of user code mouseButtonCallback
+    Engine* engine = getInstance();
+    engine->getScene()->getCamera()->onMouseButton(button, action);
 	// End of user code
 }
 void Engine::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
 	// Start of user code cursorPositionCallback
+    Engine* engine = getInstance();
+    engine->getScene()->onMouseMotion(xpos, ypos);
 	// End of user code
 }
 void Engine::scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
 	// Start of user code scrollCallback
+    Engine* engine = getInstance();
+    engine->getScene()->onMouseScroll(xoffset, yoffset);
 	// End of user code
 }
 void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -195,16 +201,16 @@ void Engine::init()
 	// End of user code
 }
 
-WorldProcessor* Engine::getWorldProcessor()
+Player* Engine::getPlayer()
 {
-	// Start of user code getWorldProcessor
+	// Start of user code getPlayer
 	// End of user code
-	return worldProcessor;
+	return player;
 }
 
-void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+void Engine::setPlayer(Player* _player)
 {
-	worldProcessor = _worldProcessor;
+	player = _player;
 }
 					
 Scene* Engine::getScene()
@@ -219,34 +225,6 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -257,5 +235,33 @@ World* Engine::getWorld()
 void Engine::setWorld(World* _world)
 {
 	world = _world;
+}
+					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
+WorldProcessor* Engine::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
 }
 					

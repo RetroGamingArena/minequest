@@ -173,13 +173,13 @@
          contextName = "VBOScene::bindBuffer():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
+               value = "sizeof(g_vertex_buffer_data)">
+            </PersistentString>
+            <PersistentString
                value = "getVertexCount()">
             </PersistentString>
             <PersistentString
                value = "sizeof(GLfloat)*9">
-            </PersistentString>
-            <PersistentString
-               value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -208,6 +208,14 @@
             </PersistentString>
             <PersistentString
                value = "y/(double)Chunk::subsize">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TrackBallCamera::getRealPosition():TrackBallCamera.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "getPosition()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -256,10 +264,10 @@
          contextName = "Node::generate(WorldGenerator*, int, int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "this-&gt;entries[i]">
+               value = "q+y*size/2.0">
             </PersistentString>
             <PersistentString
-               value = "q+y*size/2.0">
+               value = "this-&gt;entries[i]">
             </PersistentString>
             <PersistentString
                value = "(q+size*(y+1)/2)">

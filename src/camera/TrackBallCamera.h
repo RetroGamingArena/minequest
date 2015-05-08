@@ -31,13 +31,18 @@ class TrackBallCamera : public Camera
 	float angleY;
 	float angleZ;
 	float distance;
+	float oldX;
+	float oldY;
+	bool hold;
+	float motionSensitivity;
+	float scrollSensitivity;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up, float _angleY, float _angleZ, float _distance);
+		TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up, float _angleY, float _angleZ, float _distance, float _oldX, float _oldY, bool _hold, float _motionSensitivity, float _scrollSensitivity);
 		TrackBallCamera();
 		~TrackBallCamera();
 		glm::vec3 getPosition();
@@ -52,6 +57,23 @@ class TrackBallCamera : public Camera
 		void setAngleZ(float _angleZ);
 		float getDistance();
 		void setDistance(float _distance);
+		float getOldX();
+		void setOldX(float _oldX);
+		float getOldY();
+		void setOldY(float _oldY);
+		bool getHold();
+		void setHold(bool _hold);
+		float getMotionSensitivity();
+		void setMotionSensitivity(float _motionSensitivity);
+		float getScrollSensitivity();
+		void setScrollSensitivity(float _scrollSensitivity);
+		void onMouseMotion(double xpos, double ypos);
+		void onKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods);
+		void onMouseButton(int button, int action);
+		void onMouseWheel(double xoffset, double yoffset);
+		glm::vec3 getRealPosition();
+		glm::vec3 getRealCenter();
+		glm::vec3 getRealUp();
 };
 
 #endif

@@ -38,6 +38,8 @@ class Scene
 		~Scene();
 		virtual void init() = 0;
 		virtual void render() = 0;
+		virtual void onMouseMotion(double xpos, double ypos) = 0;
+		virtual void onMouseScroll(double xoffset, double yoffset) = 0;
 		Camera* getCamera();
 		void setCamera(Camera* _camera);
 		UI* getUI();
