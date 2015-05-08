@@ -36,14 +36,15 @@ class ChunkTask : public Task
 
 	public:
 		// Start of user code public
-        ChunkTask(Chunk* chunk, WorldGenerator* worldGenerator);
+        ChunkTask(Chunk* _chunk, WorldGenerator* _worldGenerator);
 		// End of user code
 		ChunkTask();
+		~ChunkTask();
 		Chunk* getChunk();
 		void setChunk(Chunk* _chunk);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
-		void run(Pool * pool);
+		void run();
 };
 
 #endif

@@ -34,6 +34,7 @@ class Node : public OctreeEntry
 		// Start of user code public
 		// End of user code
 		Node();
+		~Node();
 		void compress(int x, int y, int z, unsigned char type);
 		OctreeEntry* get(int x, int y, int z);
 		void split();
@@ -42,7 +43,6 @@ class Node : public OctreeEntry
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);
-		void bufferize(VertexBuffer , float p, float q, float r, float size);
 };
 
 #endif

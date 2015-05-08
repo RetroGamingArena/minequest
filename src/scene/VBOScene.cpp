@@ -16,9 +16,16 @@ VBOScene::VBOScene()
 	// Start of user code constructor
     camera = new TrackBallCamera();
     doubleBuffer = new DoubleBuffer();
+    doubleBuffer->getVertexBuffer()->init();
     VBO* vBO = new VoxelVBO();
     vBO->setSize(6);
     doubleBuffer->setVBO(vBO);
+	// End of user code
+}
+
+VBOScene::~VBOScene()
+{
+	// Start of user code destructor
 	// End of user code
 }
 

@@ -43,6 +43,7 @@ class Chunk
 	static int subsize;
 		Chunk(float _p, float _q, float _r, int _size, int _subsize);
 		Chunk();
+		~Chunk();
 		float getP();
 		void setP(float _p);
 		float getQ();

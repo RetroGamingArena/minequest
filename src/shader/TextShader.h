@@ -37,6 +37,7 @@ class TextShader : public Shader
 		// End of user code
 		TextShader(GLuint _textureSamplerID, GLuint _vertexArrayID, GLuint _fontVertexBufferID, GLuint _fontUVBufferID);
 		TextShader();
+		~TextShader();
 		GLuint getTextureSamplerID();
 		void setTextureSamplerID(GLuint _textureSamplerID);
 		GLuint getVertexArrayID();

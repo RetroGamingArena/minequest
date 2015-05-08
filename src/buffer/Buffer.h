@@ -33,8 +33,10 @@ class Buffer
 		// End of user code
 		Buffer(GLuint _id);
 		Buffer();
+		~Buffer();
 		GLuint getId();
 		void setId(GLuint _id);
+		void init();
 };
 
 #endif

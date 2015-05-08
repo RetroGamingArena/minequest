@@ -32,6 +32,7 @@ class VoxelVBO : public VBO
 		// Start of user code public
 		// End of user code
 		VoxelVBO();
+		~VoxelVBO();
 };
 
 #endif

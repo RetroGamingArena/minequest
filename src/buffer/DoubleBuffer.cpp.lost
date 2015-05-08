@@ -1,0 +1,38 @@
+
+Fri May 08 14:21:20 CEST 2015
+================================================================================
+Start of user code bufferizeIndice
+    int size = indiceBuffer->getData().size()/36;
+    indiceBuffer->getData().push_back(size*8+indice);
+	// End of user code
+Start of user code bufferizeVertex
+    getVertexBuffer()->getData().push_back(x);
+    getVertexBuffer()->getData().push_back(y);
+    getVertexBuffer()->getData().push_back(z);
+    getVertexBuffer()->getData().push_back(ao);
+    getVertexBuffer()->getData().push_back(1);
+    getVertexBuffer()->getData().push_back(1);
+	// End of user code
+Start of user code bufferizeSquare
+    if(x1==x2)
+    {
+        bufferizeVertex(x1, y1, z1, type, ao[0]);
+        bufferizeVertex(x1, y1, z2, type, ao[1]);
+        bufferizeVertex(x1, y2, z1, type, ao[2]);
+        bufferizeVertex(x1, y2, z2, type, ao[3]);
+    }
+    else if(y1==y2)
+    {
+        bufferizeVertex(x1, y1, z1, type, ao[0]);
+        bufferizeVertex(x1, y1, z2, type, ao[1]);
+        bufferizeVertex(x2, y1, z1, type, ao[2]);
+        bufferizeVertex(x2, y1, z2, type, ao[3]);
+    }
+    else if(z1==z2)
+    {
+        bufferizeVertex(x1, y1, z1, type, ao[0]);
+        bufferizeVertex(x1, y2, z1, type, ao[1]);
+        bufferizeVertex(x2, y1, z1, type, ao[2]);
+        bufferizeVertex(x2, y2, z1, type, ao[3]);
+    }
+	// End of user code

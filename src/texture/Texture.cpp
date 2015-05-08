@@ -20,6 +20,12 @@ Texture::Texture()
 	// End of user code
 }
 
+Texture::~Texture()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 Texture::Texture(unsigned int _glTexture, char* _fileName)
 {

@@ -36,6 +36,7 @@ class GameScene : public VoxelScene
         GameScene(Player* player);
 		// End of user code
 		GameScene();
+		~GameScene();
 		vector<Item*> getItems();
 };
 

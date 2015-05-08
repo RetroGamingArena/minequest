@@ -8,3 +8,14 @@ Fri May 08 00:54:31 CEST 2015
 ================================================================================
 Start of user code bufferrize
 	// End of user code
+
+Fri May 08 14:21:20 CEST 2015
+================================================================================
+Start of user code bufferize
+    float pp = p * Chunk::size * Cube::size;
+    float qq = q * Chunk::size * Cube::size;
+    float rr = r * Chunk::size * Cube::size;
+    octree->bufferize(buffer, 0, 0, 0);
+	// End of user code
+Start of user code getVertexBuffer
+	// End of user code

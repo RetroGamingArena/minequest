@@ -31,6 +31,7 @@ class Item
 		// Start of user code public
 		// End of user code
 		Item();
+		~Item();
 		void live(double dt);
 };
 

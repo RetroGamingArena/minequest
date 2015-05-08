@@ -22,12 +22,28 @@ Chunk::Chunk()
 	// End of user code
 }
 
+Chunk::~Chunk()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 Chunk::Chunk(float _p, float _q, float _r)
 {
-    p = _p;
-    q = _q;
-    r = _r;
+    this->vertexBuffer = new VertexBuffer();
+    
+    this->p=_p;
+    this->q=_q;
+    this->r=_r;
+    
+    this->octree = new Octree();
+    Octree::size = Chunk::size*Chunk::subsize;
+    Octree::subSize = Chunk::subsize;
+    
+    octree->setP(p);
+    octree->setQ(q);
+    octree->setR(r);
 }
 // End of user code
 
@@ -78,10 +94,7 @@ void Chunk::generate(WorldGenerator * worldGenerator)
 void Chunk::bufferize()
 {
 	// Start of user code bufferize
-    float pp = p * Chunk::size * Cube::size;
-    float qq = q * Chunk::size * Cube::size;
-    float rr = r * Chunk::size * Cube::size;
-    octree->bufferize(buffer, 0, 0, 0);
+    octree->bufferize(vertexBuffer, 0, 0, 0);
 	// End of user code
 }
 

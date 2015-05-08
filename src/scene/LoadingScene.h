@@ -36,6 +36,7 @@ class LoadingScene : public VBOScene
 		// End of user code
 		LoadingScene(std::thread* _thread, std::mutex* _mutex);
 		LoadingScene();
+		~LoadingScene();
 		std::thread* getThread();
 		void setThread(std::thread* _thread);
 		static std::mutex* getMutex();

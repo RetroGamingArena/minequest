@@ -26,13 +26,26 @@ using namespace std;
 
 class Octree : public Node
 {
+	float p;
+	float q;
+	float r;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
+	static int size;
+	static int subSize;
+		Octree(float _p, float _q, float _r, int _size, int _subSize);
 		Octree();
+		~Octree();
+		float getP();
+		void setP(float _p);
+		float getQ();
+		void setQ(float _q);
+		float getR();
+		void setR(float _r);
 		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r);
 };
 

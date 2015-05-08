@@ -26,17 +26,16 @@ using namespace std;
 
 class IterativeProcessor : public WorldProcessor, public Pool
 {
-	int chunkIndice;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
+	int chunkIndice;
 		IterativeProcessor(int _chunkIndice);
 		IterativeProcessor();
-		int getChunkIndice();
-		void setChunkIndice(int _chunkIndice);
+		~IterativeProcessor();
 		void bufferize(GameScene * gameScene, World * world);
 		Task* buildTask();
 		bool hasNext();

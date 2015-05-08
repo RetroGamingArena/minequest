@@ -13,6 +13,12 @@ GameScene::GameScene()
 	// End of user code
 }
 
+GameScene::~GameScene()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 GameScene::GameScene(Player* player)
 {

@@ -36,6 +36,7 @@ class Texture
         // End of user code
 		Texture(GLuint _textureID, unsigned int _glTexture, char* _fileName);
 		Texture();
+		~Texture();
 		GLuint getTextureID();
 		void setTextureID(GLuint _textureID);
 		unsigned int getGlTexture();

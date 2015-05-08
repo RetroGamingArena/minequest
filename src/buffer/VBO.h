@@ -35,6 +35,7 @@ class VBO
 		// End of user code
 		VBO(unsigned int _size);
 		VBO();
+		~VBO();
 		unsigned int getSize();
 		void setSize(unsigned int _size);
 		vector<Attribute*> getAttributes();

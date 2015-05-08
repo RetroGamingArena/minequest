@@ -18,6 +18,14 @@ Pool::Pool()
 // End of user code
 {
 	// Start of user code constructor
+    running=false;
+    mutex=new std::mutex();
+	// End of user code
+}
+
+Pool::~Pool()
+{
+	// Start of user code destructor
 	// End of user code
 }
 
@@ -106,6 +114,26 @@ void Pool::run(Pool * pool)
             }
         }
     }
+	// End of user code
+}
+bool Pool::isRunning()
+{
+	// Start of user code isRunning
+    for(int i = 0; i < threads.size(); i++)
+    {
+        if( threads[i] != NULL )
+            if( threads[i]->isBusy() )
+            {
+                return true;
+            }
+        /*else
+         {
+         delete threads[i];
+         threads.erase(threads.begin()+i);
+         threads.insert(threads.begin()+i, NULL);
+         }*/
+    }
+    return false;
 	// End of user code
 }
 

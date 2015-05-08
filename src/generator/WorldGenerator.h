@@ -31,6 +31,7 @@ class WorldGenerator
 		// Start of user code public
 		// End of user code
 		WorldGenerator();
+		~WorldGenerator();
 		virtual float getY(float x, float z) = 0;
 };
 

@@ -1,0 +1,7 @@
+
+Fri May 08 14:21:20 CEST 2015
+================================================================================
+Start of user code render
+    VBOScene::render();
+    glClearColor(0.5f, 0.9f, 1.0f, 0.0f);
+	// End of user code

@@ -34,6 +34,7 @@ class Player : public Item
 		// End of user code
 		Player(bool _falling);
 		Player();
+		~Player();
 		bool getFalling();
 		void setFalling(bool _falling);
 };

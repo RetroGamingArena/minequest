@@ -18,6 +18,7 @@ World::World()
 // End of user code
 {
 	// Start of user code constructor
+    chunkIndice = 0;
     worldGenerator = new PerlinGenerator();
     
     for(int p=-size; p<=size; p++)
@@ -30,7 +31,13 @@ World::World()
     
     threadCount = 5;
     this->start();
-    while(getRunning()){}
+    while(isRunning()){}
+	// End of user code
+}
+
+World::~World()
+{
+	// Start of user code destructor
 	// End of user code
 }
 
@@ -72,13 +79,6 @@ void World::setChunkIndice(int _chunkIndice)
 }
 
 
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-
 WorldGenerator* World::getWorldGenerator()
 {
 	// Start of user code getWorldGenerator
@@ -91,3 +91,10 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
+

@@ -34,6 +34,7 @@ class VBOScene : public Scene
 		// Start of user code public
 		// End of user code
 		VBOScene();
+		~VBOScene();
 		DoubleBuffer* getDoubleBuffer();
 		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 		void init();

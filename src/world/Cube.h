@@ -33,6 +33,7 @@ class Cube
 	static int size;
 		Cube(int _size);
 		Cube();
+		~Cube();
 };
 
 #endif

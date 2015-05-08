@@ -34,13 +34,13 @@ class Leaf : public OctreeEntry
 		// End of user code
 		Leaf(unsigned char _type);
 		Leaf();
+		~Leaf();
 		unsigned char getType();
 		void setType(unsigned char _type);
 		void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);
-		void bufferize(VertexBuffer , float p, float q, float r, float size);
 };
 
 #endif

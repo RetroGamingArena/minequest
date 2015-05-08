@@ -33,7 +33,8 @@ class Task
 		// Start of user code public
 		// End of user code
 		Task();
-		virtual void run(Pool * pool) = 0;
+		~Task();
+		virtual void run() = 0;
 };
 
 #endif

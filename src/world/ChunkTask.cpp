@@ -13,14 +13,21 @@ ChunkTask::ChunkTask()
 	// End of user code
 }
 
-// Start of user code methods
-ChunkTask::ChunkTask(Chunk* chunk, WorldGenerator* worldGenerator)
+ChunkTask::~ChunkTask()
 {
+	// Start of user code destructor
+	// End of user code
+}
 
+// Start of user code methods
+ChunkTask::ChunkTask(Chunk* _chunk, WorldGenerator* _worldGenerator)
+{
+    chunk = _chunk;
+    worldGenerator = _worldGenerator;
 }
 // End of user code
 
-void ChunkTask::run(Pool * pool)
+void ChunkTask::run()
 {
 	// Start of user code run
     chunk->generate(worldGenerator);

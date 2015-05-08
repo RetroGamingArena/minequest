@@ -20,6 +20,12 @@ VoxelVBO::VoxelVBO()
 	// End of user code
 }
 
+VoxelVBO::~VoxelVBO()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 // End of user code
 

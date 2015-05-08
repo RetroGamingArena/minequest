@@ -14,10 +14,17 @@ IndiceBuffer::IndiceBuffer()
 // End of user code
 {
 	// Start of user code constructor
-    Buffer::Buffer();
+    Buffer::init();
+    //Buffer::Buffer();
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*data.size(), &data[0] , GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	// End of user code
+}
+
+IndiceBuffer::~IndiceBuffer()
+{
+	// Start of user code destructor
 	// End of user code
 }
 

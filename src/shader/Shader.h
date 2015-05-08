@@ -40,6 +40,7 @@ class Shader
 		// End of user code
 		Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path, GLuint _programID, GLuint _mMatrixID, GLuint _vMatrixID, GLuint _pMatrixID);
 		Shader();
+		~Shader();
 		const char * getVertex_file_path();
 		void setVertex_file_path(const char * _vertex_file_path);
 		const char * getFragment_file_path();

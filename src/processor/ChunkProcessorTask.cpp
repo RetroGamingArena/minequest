@@ -13,10 +13,16 @@ ChunkProcessorTask::ChunkProcessorTask()
 	// End of user code
 }
 
+ChunkProcessorTask::~ChunkProcessorTask()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 // End of user code
 
-void ChunkProcessorTask::run(Pool * pool)
+void ChunkProcessorTask::run()
 {
 	// Start of user code run
     chunk->bufferize();//chunk->getVertexBuffer());

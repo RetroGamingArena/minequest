@@ -32,6 +32,7 @@ class LoadingUI : public UI
 		// Start of user code public
 		// End of user code
 		LoadingUI();
+		~LoadingUI();
 };
 
 #endif

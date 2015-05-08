@@ -34,6 +34,7 @@ class PerlinGenerator : public WorldGenerator
 		// End of user code
 		PerlinGenerator(utils::NoiseMap _heightMap);
 		PerlinGenerator();
+		~PerlinGenerator();
 		utils::NoiseMap getHeightMap();
 		void setHeightMap(utils::NoiseMap _heightMap);
 		float getY(float x, float z);

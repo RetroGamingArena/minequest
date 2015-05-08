@@ -14,6 +14,7 @@
 
 // Start of user code includes
 #include "WorldGenerator.h"
+#include "VertexBuffer.h"
 // End of user code
 
 
@@ -34,11 +35,12 @@ class OctreeEntry
 	static int NODE;
 		OctreeEntry(int _NODE);
 		OctreeEntry();
+		~OctreeEntry();
 		virtual void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size) = 0;
 		virtual bool isCompressible() = 0;
 		virtual int getCode() = 0;
 		virtual unsigned char getAbs(int x, int y, int z, int size) = 0;
-		virtual void bufferize(VertexBuffer , float p, float q, float r, float size) = 0;
+		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
 };
 
 #endif

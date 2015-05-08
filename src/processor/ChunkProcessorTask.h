@@ -34,9 +34,10 @@ class ChunkProcessorTask : public Task
 		// Start of user code public
 		// End of user code
 		ChunkProcessorTask();
+		~ChunkProcessorTask();
 		Chunk* getChunk();
 		void setChunk(Chunk* _chunk);
-		void run(Pool * pool);
+		void run();
 };
 
 #endif

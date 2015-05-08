@@ -36,6 +36,7 @@ class TrackBallCamera : public Camera
 		// End of user code
 		TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up);
 		TrackBallCamera();
+		~TrackBallCamera();
 		glm::vec3 getPosition();
 		void setPosition(glm::vec3 _position);
 		glm::vec3 getCenter();

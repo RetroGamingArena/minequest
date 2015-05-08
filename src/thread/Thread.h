@@ -36,10 +36,12 @@ class Thread
 		// End of user code
 		Thread(std::mutex* _mutex);
 		Thread();
+		~Thread();
 		std::mutex* getMutex();
 		void setMutex(std::mutex* _mutex);
 		void start();
 		bool isBusy();
+		static void run(Thread * thread);
 		Task* getTask();
 		void setTask(Task* _task);
 };

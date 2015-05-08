@@ -18,7 +18,14 @@ LoadingScene::LoadingScene()
 // End of user code
 {
 	// Start of user code constructor
+    thread = NULL;
     this->uI = new LoadingUI();
+	// End of user code
+}
+
+LoadingScene::~LoadingScene()
+{
+	// Start of user code destructor
 	// End of user code
 }
 
@@ -36,11 +43,13 @@ void LoadingScene::render()
         GameScene* gameScene = new GameScene(Engine::getInstance()->getPlayer());
         gameScene->init();
         
-        Engine::getInstance()->getWorldProcessor()->bufferize(gameScene, Engine::getInstance()->getWorld());
+        Engine* engine = Engine::getInstance();
+        
+        engine->getWorldProcessor()->bufferize(gameScene, engine->getWorld());
         
         //gameScene->bindBuffer();
-        Engine::getInstance()->setScene(gameScene);
-        Engine::getInstance()->getPlayer()->setFalling(true);
+        engine->setScene(gameScene);
+        engine->getPlayer()->setFalling(true);
         mutex->unlock();
     }
 }

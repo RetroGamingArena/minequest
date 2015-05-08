@@ -33,6 +33,7 @@ class WorldProcessor
 		// Start of user code public
 		// End of user code
 		WorldProcessor();
+		~WorldProcessor();
 		virtual void bufferize(GameScene * gameScene, World * world) = 0;
 };
 

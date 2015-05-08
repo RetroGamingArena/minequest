@@ -31,6 +31,7 @@ class CubeType
 		// Start of user code public
 		// End of user code
 		CubeType();
+		~CubeType();
 		static unsigned char getTypeFromHeight(int height);
 };
 

@@ -35,6 +35,7 @@ class Label : public Control
 		// End of user code
 		Label(char* _caption);
 		Label();
+		~Label();
 		char* getCaption();
 		void setCaption(char* _caption);
 		void render();

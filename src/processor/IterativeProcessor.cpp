@@ -17,6 +17,13 @@ IterativeProcessor::IterativeProcessor()
 // End of user code
 {
 	// Start of user code constructor
+    chunkIndice = 0;
+	// End of user code
+}
+
+IterativeProcessor::~IterativeProcessor()
+{
+	// Start of user code destructor
 	// End of user code
 }
 
@@ -93,8 +100,9 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     for(int i=0; i < world->getChunks().size() ; i++)
     {
         Chunk* chunk = world->getChunks()[i];
-        scene->getBuffer()->getData()->insert(scene->getBuffer()->getData()->end(), chunk->getBuffer()->getData()->begin(), chunk->getBuffer()->getData()->end());
-        chunk->getBuffer()->getData()->clear();
+    
+        gameScene->getDoubleBuffer()->getVertexBuffer()->getData().insert(gameScene->getDoubleBuffer()->getVertexBuffer()->getData().end(), gameScene->getDoubleBuffer()->getVertexBuffer()->getData().begin(), chunk->getVertexBuffer()->getData().end());
+        chunk->getVertexBuffer()->getData().clear();
     }
 	// End of user code
 }
@@ -105,7 +113,8 @@ Task* IterativeProcessor::buildTask()
     {
         std::vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
         Chunk* chunk = chunks[chunkIndice];
-        ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask(chunk);
+        ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask();
+        chunkProcessorTask->setChunk(chunk);
         chunkIndice = chunkIndice+1;
         mutex->unlock();
         return chunkProcessorTask;
@@ -123,14 +132,5 @@ bool IterativeProcessor::hasNext()
 
 
 
-int IterativeProcessor::getChunkIndice()
-{
-	return chunkIndice;
-}
-
-void IterativeProcessor::setChunkIndice(int _chunkIndice)
-{
-	chunkIndice = _chunkIndice;
-}
 
 

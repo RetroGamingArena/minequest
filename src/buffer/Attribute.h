@@ -35,6 +35,7 @@ class Attribute
 		// End of user code
 		Attribute(int _size, int _divisor, const char * _name);
 		Attribute();
+		~Attribute();
 		int getSize();
 		void setSize(int _size);
 		int getDivisor();

@@ -35,6 +35,7 @@ class Camera
 		// End of user code
 		Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection);
 		Camera();
+		~Camera();
 		glm::mat4 getModel();
 		void setModel(glm::mat4 _model);
 		glm::mat4 getView();

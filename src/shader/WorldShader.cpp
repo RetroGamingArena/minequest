@@ -15,6 +15,12 @@ WorldShader::WorldShader()
 	// End of user code
 }
 
+WorldShader::~WorldShader()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 // End of user code
 

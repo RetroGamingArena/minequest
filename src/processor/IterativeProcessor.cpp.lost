@@ -1,26 +1,21 @@
 
-Thu May 07 00:04:55 CEST 2015
+Fri May 08 14:21:20 CEST 2015
 ================================================================================
-Start of user code getWorldGenerators
+Start of user code hasNext
+    World* world = Engine::getInstance()->getWorld();
+    return chunkIndice < world->getChunks().size();
 	// End of user code
-
-Thu May 07 17:50:25 CEST 2015
-================================================================================
 Start of user code buildTask
     if( mutex->try_lock() && hasNext())
     {
+        std::vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
         Chunk* chunk = chunks[chunkIndice];
-        ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
+        ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask(chunk);
         chunkIndice = chunkIndice+1;
         mutex->unlock();
-        return chunkTask;
+        return chunkProcessorTask;
     }
     return NULL;
-	// End of user code
-
-Thu May 07 17:52:34 CEST 2015
-================================================================================
-Start of user code * buildTask
 	// End of user code
 
 Fri May 08 15:31:52 CEST 2015

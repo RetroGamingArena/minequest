@@ -32,6 +32,7 @@ class DebugUI : public UI
 		// Start of user code public
 		// End of user code
 		DebugUI();
+		~DebugUI();
 };
 
 #endif

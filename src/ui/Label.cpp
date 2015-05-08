@@ -17,6 +17,12 @@ Label::Label()
 	// End of user code
 }
 
+Label::~Label()
+{
+	// Start of user code destructor
+	// End of user code
+}
+
 // Start of user code methods
 Label::Label(char* _caption, int _x, int _y)
 {

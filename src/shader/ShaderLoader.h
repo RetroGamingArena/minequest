@@ -31,6 +31,7 @@ class ShaderLoader
 		// Start of user code public
 		// End of user code
 		ShaderLoader();
+		~ShaderLoader();
 		static int load(const char * vertex_file_path, const char * fragment_file_path, const char * geometry_file_path);
 };
 

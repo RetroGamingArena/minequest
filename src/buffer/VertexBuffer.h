@@ -34,8 +34,10 @@ class VertexBuffer : public Buffer
 		// End of user code
 		VertexBuffer(vector<GLfloat> _data);
 		VertexBuffer();
+		~VertexBuffer();
 		vector<GLfloat> getData();
 		void setData(GLfloat _data);
+		void init();
 };
 
 #endif
