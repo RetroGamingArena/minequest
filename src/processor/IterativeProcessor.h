@@ -16,6 +16,7 @@
 // End of user code
 
 #include "WorldProcessor.h"
+#include "Pool.h"
 
 
 using namespace std;
@@ -23,16 +24,22 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class IterativeProcessor : public WorldProcessor
+class IterativeProcessor : public WorldProcessor, public Pool
 {
+	int chunkIndice;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
+		IterativeProcessor(int _chunkIndice);
 		IterativeProcessor();
+		int getChunkIndice();
+		void setChunkIndice(int _chunkIndice);
 		void bufferize(GameScene * gameScene, World * world);
+		Task* buildTask();
+		bool hasNext();
 };
 
 #endif

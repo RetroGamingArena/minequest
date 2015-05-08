@@ -2,8 +2,15 @@
 
 #include "IterativeProcessor.h"
 // Start of user code includes
+#include "Engine.h"
+#include "Chunk.h"
+#include "ChunkProcessorTask.h"
 // End of user code
 
+IterativeProcessor::IterativeProcessor(int _chunkIndice)
+{
+	chunkIndice = _chunkIndice;
+}
 
 IterativeProcessor::IterativeProcessor()
 // Start of user code super class
@@ -19,7 +26,7 @@ IterativeProcessor::IterativeProcessor()
 void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
 {
 	// Start of user code bufferize
-    /*int x = 0;
+    int x = 0;
     int y = 0;
     int z = 0;
     
@@ -38,44 +45,46 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     ao[2] = 0;
     ao[3] = 0;
     
-    Cube::bufferizeSquare(scene, x+p, y+q,      z+r, x+p+size, y+q,      z+r+size, type, ao); //bottom
+    gameScene->getDoubleBuffer()->bufferizeSquare(x+p, y+q,      z+r, x+p+size, y+q,      z+r+size, type, ao);
     
-    Cube::bufferizeIndice(scene, 0);
-    Cube::bufferizeIndice(scene, 1);
-    Cube::bufferizeIndice(scene, 2);
-    Cube::bufferizeIndice(scene, 3);
+    gameScene->getDoubleBuffer()->bufferizeIndice(0);
+    gameScene->getDoubleBuffer()->bufferizeIndice(1);
+    gameScene->getDoubleBuffer()->bufferizeIndice(2);
+    gameScene->getDoubleBuffer()->bufferizeIndice(3);
     
     ao[0] = 1;
     ao[1] = 1;
     ao[2] = 1;
     ao[3] = 1;
     
-    Cube::bufferizeSquare(scene, x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
+    gameScene->getDoubleBuffer()->bufferizeSquare(x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
     
-    Cube::bufferizeIndice(scene, 4);
-    Cube::bufferizeIndice(scene, 5);
-    Cube::bufferizeIndice(scene, 6);
-    Cube::bufferizeIndice(scene, 7);
+    gameScene->getDoubleBuffer()->bufferizeIndice(4);
+    gameScene->getDoubleBuffer()->bufferizeIndice(5);
+    gameScene->getDoubleBuffer()->bufferizeIndice(6);
+    gameScene->getDoubleBuffer()->bufferizeIndice(7);
     
-    Cube::bufferizeIndice(scene, 0);
-    Cube::bufferizeIndice(scene, 1);
-    Cube::bufferizeIndice(scene, 4);
-    Cube::bufferizeIndice(scene, 5);
+    gameScene->getDoubleBuffer()->bufferizeIndice(0);
+    gameScene->getDoubleBuffer()->bufferizeIndice(1);
+    gameScene->getDoubleBuffer()->bufferizeIndice(4);
+    gameScene->getDoubleBuffer()->bufferizeIndice(5);
+
+
+    gameScene->getDoubleBuffer()->bufferizeIndice(1);
+    gameScene->getDoubleBuffer()->bufferizeIndice(3);
+    gameScene->getDoubleBuffer()->bufferizeIndice(5);
+    gameScene->getDoubleBuffer()->bufferizeIndice(7);
     
-    Cube::bufferizeIndice(scene, 1);
-    Cube::bufferizeIndice(scene, 3);
-    Cube::bufferizeIndice(scene, 5);
-    Cube::bufferizeIndice(scene, 7);
     
-    Cube::bufferizeIndice(scene, 3);
-    Cube::bufferizeIndice(scene, 2);
-    Cube::bufferizeIndice(scene, 7);
-    Cube::bufferizeIndice(scene, 6);
+    gameScene->getDoubleBuffer()->bufferizeIndice(3);
+    gameScene->getDoubleBuffer()->bufferizeIndice(2);
+    gameScene->getDoubleBuffer()->bufferizeIndice(7);
+    gameScene->getDoubleBuffer()->bufferizeIndice(6);
     
-    Cube::bufferizeIndice(scene, 2);
-    Cube::bufferizeIndice(scene, 0);
-    Cube::bufferizeIndice(scene, 6);
-    Cube::bufferizeIndice(scene, 4);
+    gameScene->getDoubleBuffer()->bufferizeIndice(2);
+    gameScene->getDoubleBuffer()->bufferizeIndice(0);
+    gameScene->getDoubleBuffer()->bufferizeIndice(6);
+    gameScene->getDoubleBuffer()->bufferizeIndice(4);
     
     threadCount = 5;
     this->start();
@@ -86,11 +95,42 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
         Chunk* chunk = world->getChunks()[i];
         scene->getBuffer()->getData()->insert(scene->getBuffer()->getData()->end(), chunk->getBuffer()->getData()->begin(), chunk->getBuffer()->getData()->end());
         chunk->getBuffer()->getData()->clear();
-    }*/
+    }
+	// End of user code
+}
+Task* IterativeProcessor::buildTask()
+{
+	// Start of user code buildTask
+    if( mutex->try_lock() && hasNext())
+    {
+        std::vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
+        Chunk* chunk = chunks[chunkIndice];
+        ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask(chunk);
+        chunkIndice = chunkIndice+1;
+        mutex->unlock();
+        return chunkProcessorTask;
+    }
+    return NULL;
+	// End of user code
+}
+bool IterativeProcessor::hasNext()
+{
+	// Start of user code hasNext
+    World* world = Engine::getInstance()->getWorld();
+    return chunkIndice < world->getChunks().size();
 	// End of user code
 }
 
 
 
+int IterativeProcessor::getChunkIndice()
+{
+	return chunkIndice;
+}
+
+void IterativeProcessor::setChunkIndice(int _chunkIndice)
+{
+	chunkIndice = _chunkIndice;
+}
 
 

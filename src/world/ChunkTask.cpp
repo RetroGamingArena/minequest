@@ -31,18 +31,6 @@ void ChunkTask::run(Pool * pool)
 
 
 
-WorldGenerator* ChunkTask::getWorldGenerator()
-{
-	// Start of user code getWorldGenerator
-	// End of user code
-	return worldGenerator;
-}
-
-void ChunkTask::setWorldGenerator(WorldGenerator* _worldGenerator)
-{
-	worldGenerator = _worldGenerator;
-}
-					
 Chunk* ChunkTask::getChunk()
 {
 	// Start of user code getChunk
@@ -53,5 +41,17 @@ Chunk* ChunkTask::getChunk()
 void ChunkTask::setChunk(Chunk* _chunk)
 {
 	chunk = _chunk;
+}
+					
+WorldGenerator* ChunkTask::getWorldGenerator()
+{
+	// Start of user code getWorldGenerator
+	// End of user code
+	return worldGenerator;
+}
+
+void ChunkTask::setWorldGenerator(WorldGenerator* _worldGenerator)
+{
+	worldGenerator = _worldGenerator;
 }
 					

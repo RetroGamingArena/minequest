@@ -71,6 +71,11 @@ unsigned char Leaf::getAbs(int x, int y, int z, int size)
     return type;
 	// End of user code
 }
+void Leaf::bufferize(VertexBuffer , float p, float q, float r, float size)
+{
+	// Start of user code bufferize
+	// End of user code
+}
 
 
 

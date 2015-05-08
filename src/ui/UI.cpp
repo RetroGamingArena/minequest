@@ -185,6 +185,13 @@ void UI::setFontTexture(Texture* _fontTexture)
 	fontTexture = _fontTexture;
 }
 					
+vector<Control*> UI::getControls()
+{
+	// Start of user code getControls
+	// End of user code
+	return controls;
+}
+
 Shader* UI::getShader()
 {
 	// Start of user code getShader
@@ -197,10 +204,3 @@ void UI::setShader(Shader* _shader)
 	shader = _shader;
 }
 					
-vector<Control*> UI::getControls()
-{
-	// Start of user code getControls
-	// End of user code
-	return controls;
-}
-

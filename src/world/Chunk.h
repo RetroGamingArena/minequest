@@ -18,6 +18,7 @@
 
 
 #include "Octree.h"
+#include "VertexBuffer.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ using namespace std;
 class Chunk
 {
 	Octree* octree;
+	VertexBuffer* vertexBuffer;
 	float p;
 	float q;
 	float r;
@@ -48,8 +50,11 @@ class Chunk
 		float getR();
 		void setR(float _r);
 		void generate(WorldGenerator * worldGenerator);
+		void bufferize();
 		Octree* getOctree();
 		void setOctree(Octree* _octree);
+		VertexBuffer* getVertexBuffer();
+		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 };
 
 #endif

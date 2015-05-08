@@ -160,6 +160,11 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
         return entry->getAbs(offset_x,offset_y,offset_z, size/2);
 	// End of user code
 }
+void Node::bufferize(VertexBuffer , float p, float q, float r, float size)
+{
+	// Start of user code bufferize
+	// End of user code
+}
 
 
 

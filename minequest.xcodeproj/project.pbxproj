@@ -61,6 +61,7 @@
 		64C986641AFBDBE100A5B62E /* Octree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986601AFBDBE100A5B62E /* Octree.cpp */; };
 		64C986671AFBED1D00A5B62E /* noiseutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986651AFBED1D00A5B62E /* noiseutils.cpp */; };
 		64C9866A1AFBF1A700A5B62E /* CubeType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986681AFBF1A700A5B62E /* CubeType.cpp */; };
+		64C9866D1AFC10D800A5B62E /* ChunkProcessorTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9866B1AFC10D800A5B62E /* ChunkProcessorTask.cpp */; };
 		64E590C81A61AB1300F65FC8 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64E590C61A61AAFE00F65FC8 /* Info.plist */; };
 		64E85D531A4F6C6E0042EE5A /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */; };
 		64E85D551A4F701D0042EE5A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D541A4F701D0042EE5A /* OpenGL.framework */; };
@@ -439,6 +440,8 @@
 		64C986661AFBED1D00A5B62E /* noiseutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noiseutils.h; sourceTree = "<group>"; };
 		64C986681AFBF1A700A5B62E /* CubeType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeType.cpp; sourceTree = "<group>"; };
 		64C986691AFBF1A700A5B62E /* CubeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeType.h; sourceTree = "<group>"; };
+		64C9866B1AFC10D800A5B62E /* ChunkProcessorTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChunkProcessorTask.cpp; sourceTree = "<group>"; };
+		64C9866C1AFC10D800A5B62E /* ChunkProcessorTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkProcessorTask.h; sourceTree = "<group>"; };
 		64E590C61A61AAFE00F65FC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64E85D411A4F65C30042EE5A /* Voxelengine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Voxelengine; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
@@ -861,6 +864,8 @@
 		6440BB651AFAA88A006A0842 /* processor */ = {
 			isa = PBXGroup;
 			children = (
+				64C9866B1AFC10D800A5B62E /* ChunkProcessorTask.cpp */,
+				64C9866C1AFC10D800A5B62E /* ChunkProcessorTask.h */,
 				6440BB661AFAA88A006A0842 /* IterativeProcessor.cpp */,
 				6440BB671AFAA88A006A0842 /* IterativeProcessor.h */,
 				6440BB681AFAA88A006A0842 /* WorldProcessor.cpp */,
@@ -1086,6 +1091,7 @@
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
 				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,
 				64C986641AFBDBE100A5B62E /* Octree.cpp in Sources */,
+				64C9866D1AFC10D800A5B62E /* ChunkProcessorTask.cpp in Sources */,
 				6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */,
 				64C9865A1AFBD85700A5B62E /* Cube.cpp in Sources */,
 				6440BB6B1AFAA88A006A0842 /* WorldProcessor.cpp in Sources */,

@@ -1,5 +1,5 @@
-#ifndef __Octree__
-#define __Octree__
+#ifndef __ChunkProcessorTask__
+#define __ChunkProcessorTask__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -13,27 +13,30 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
-#include "VertexBuffer.h"
 // End of user code
 
-#include "Node.h"
+#include "Task.h"
 
+#include "Chunk.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class Octree : public Node
+class ChunkProcessorTask : public Task
 {
+	Chunk* chunk;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		Octree();
-		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r);
+		ChunkProcessorTask();
+		Chunk* getChunk();
+		void setChunk(Chunk* _chunk);
+		void run(Pool * pool);
 };
 
 #endif

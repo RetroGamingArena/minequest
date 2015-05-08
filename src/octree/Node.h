@@ -26,9 +26,9 @@ using namespace std;
 
 class Node : public OctreeEntry
 {
-	vector<OctreeEntry*> octreeEntries;
 
 	protected:
+	vector<OctreeEntry*> octreeEntries;
 
 	public:
 		// Start of user code public
@@ -42,6 +42,7 @@ class Node : public OctreeEntry
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);
+		void bufferize(VertexBuffer , float p, float q, float r, float size);
 };
 
 #endif
