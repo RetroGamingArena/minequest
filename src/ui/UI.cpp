@@ -41,7 +41,7 @@ UI::UI()
     glGenBuffers(1, &fontUVBufferID);*/
     
     
-    doubleBuffer = new DoubleBuffer();
+    //doubleBuffer = new DoubleBuffer();
     /*glGenBuffers(1, &bufferID);
     glBindBuffer(GL_ARRAY_BUFFER, bufferID);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*buffer->getData()->size(), &(*buffer->getData())[0], GL_STATIC_DRAW);
@@ -70,15 +70,15 @@ void UI::render()
     
     //glUniformMatrix4fv(matrixID, 1, GL_FALSE, &MVP[0][0]);
     
-    glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());
+    //glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());
     
     glEnableVertexAttribArray(0);
     
     glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0 );
     
-    vector<GLfloat> data = *doubleBuffer->getVertexBuffer()->getData();
+    //vector<GLfloat> data = *doubleBuffer->getVertexBuffer()->getData();
     
-    glDrawArrays(GL_TRIANGLES, 0, data.size());
+    //glDrawArrays(GL_TRIANGLES, 0, data.size());
     
     glDisableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -169,6 +169,13 @@ void UI::printText(const char * text, int x, int y, int size)
 	// End of user code
 }
 
+vector<Control*> UI::getControls()
+{
+	// Start of user code getControls
+	// End of user code
+	return controls;
+}
+
 Texture* UI::getFontTexture()
 {
 	// Start of user code getFontTexture
@@ -181,13 +188,6 @@ void UI::setFontTexture(Texture* _fontTexture)
 	fontTexture = _fontTexture;
 }
 					
-vector<Control*> UI::getControls()
-{
-	// Start of user code getControls
-	// End of user code
-	return controls;
-}
-
 DoubleBuffer* UI::getDoubleBuffer()
 {
 	// Start of user code getDoubleBuffer

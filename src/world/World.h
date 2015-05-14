@@ -43,7 +43,7 @@ class World : public Pool
 		int getChunkIndice();
 		void setChunkIndice(int _chunkIndice);
 		bool isCubeVisible(int x, int y, int z, int size);
-		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, int p, int q, int r, int width);
+		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width);
 		unsigned char getCube(int x, int y, int z);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);

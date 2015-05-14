@@ -33,7 +33,7 @@ class Task
 		// Start of user code public
 		// End of user code
 		Task();
-		~Task();
+		virtual ~Task(){};
 		virtual void run() = 0;
 };
 

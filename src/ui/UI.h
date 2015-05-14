@@ -16,8 +16,8 @@
 // End of user code
 
 
-#include "Texture.h"
 #include "Control.h"
+#include "Texture.h"
 #include "DoubleBuffer.h"
 #include "Shader.h"
 
@@ -30,8 +30,8 @@ class UI
 {
 
 	protected:
-	Texture* fontTexture;
 	vector<Control*> controls;
+	Texture* fontTexture;
 	DoubleBuffer* doubleBuffer;
 	Shader* shader;
 
@@ -42,9 +42,9 @@ class UI
 		~UI();
 		void render();
 		void printText(const char * text, int x, int y, int size);
+		vector<Control*> getControls();
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);
-		vector<Control*> getControls();
 		DoubleBuffer* getDoubleBuffer();
 		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 		Shader* getShader();

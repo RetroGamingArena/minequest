@@ -5,6 +5,7 @@
 #include "LoadingUI.h"
 #include "GameScene.h"
 #include "Engine.h"
+#include "TrackBallCamera.h"
 // End of user code
 
 LoadingScene::LoadingScene(std::thread* _thread, std::mutex* _mutex)
@@ -19,6 +20,7 @@ LoadingScene::LoadingScene()
 {
 	// Start of user code constructor
     thread = NULL;
+    camera = new TrackBallCamera();
     this->uI = new LoadingUI();
 	// End of user code
 }
@@ -46,6 +48,8 @@ void LoadingScene::render()
         Engine* engine = Engine::getInstance();
         
         engine->getWorldProcessor()->bufferize(gameScene, engine->getWorld());
+        
+        gameScene->getDoubleBuffer()->getVertexBuffer()->init();
         
         //gameScene->bindBuffer();
         engine->setScene(gameScene);

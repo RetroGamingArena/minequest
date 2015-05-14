@@ -18,10 +18,10 @@
 
 #include "Player.h"
 #include "Scene.h"
+#include "WorldProcessor.h"
+#include "Engine.h"
 #include "World.h"
 #include "Shader.h"
-#include "Engine.h"
-#include "WorldProcessor.h"
 
 using namespace std;
 
@@ -32,10 +32,10 @@ class Engine
 {
 	Player* player;
 	Scene* scene;
+	WorldProcessor* worldProcessor;
+	static Engine* instance;
 	World* world;
 	vector<Shader*> shaders;
-	static Engine* instance;
-	WorldProcessor* worldProcessor;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -64,12 +64,12 @@ class Engine
 		void setPlayer(Player* _player);
 		Scene* getScene();
 		void setScene(Scene* _scene);
+		WorldProcessor* getWorldProcessor();
+		void setWorldProcessor(WorldProcessor* _worldProcessor);
+		static Engine* getInstance();
 		World* getWorld();
 		void setWorld(World* _world);
 		vector<Shader*> getShaders();
-		static Engine* getInstance();
-		WorldProcessor* getWorldProcessor();
-		void setWorldProcessor(WorldProcessor* _worldProcessor);
 };
 
 #endif

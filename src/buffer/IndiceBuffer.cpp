@@ -17,9 +17,11 @@ IndiceBuffer::IndiceBuffer()
     data = new vector<unsigned int>();
     Buffer::init();
     //Buffer::Buffer();
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*(data->size()), &(*data)[0] , GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*(data->size()), &(*data)[0] , GL_STATIC_DRAW);
+    
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	// End of user code
 }
 
@@ -37,7 +39,7 @@ void IndiceBuffer::bind()
 	// Start of user code bind
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*(data->size()), &(*data)[0] , GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	// End of user code
 }
 

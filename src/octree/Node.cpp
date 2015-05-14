@@ -72,14 +72,13 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
                 }
                 if( types[0] > 0 && types[0] == types[1] && types[1] == types[2] && types[2] == types[3] && types[3] == types[4] && types[4] == types[5] && types[5] == types[6] && types[6] == types[7] )
                 {
-                    octreeEntries[i] = new Leaf(types[0]);
+                    //octreeEntries[i] = new Leaf(types[0]);
                     continue;
                 }
             }
+            
             else if(size==2)
             {
-                //for(ii = 0; ii < 8; ii++)
-                
                 types[0] = 0;
                 
                 for(ii = 0; ii < 8; ii++)
@@ -96,27 +95,19 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
                     if(types[ii] > 0)
                         octreeEntries[ii] = new Leaf(types[ii]);
                 continue;
-                //continue;
             }
-            
-            for(ii = 0; ii < size; ii++)
-            {
-                int j = ii / (size_2);
-                int k = ii % (size_2);
-                
-                float height = worldGenerator->getY(absSize+p+x*size_2+j, absSize+r+z*size_2+k)*Chunk::size*Chunk::subsize/2;
-                if (height < (q+size*(y+1)))
-                {
-                    octreeEntries[i] = new Node();
-                    octreeEntries[i]->generate(worldGenerator, p+x*size_2, q+y*size_2, r+z*size_2, size_2);
-                    if(octreeEntries[i]->isCompressible() && size > 4)
-                        compress(x,y,z, 1);
-                    break;
-                }
-            }
+
+            octreeEntries[i] = new Node();
+            octreeEntries[i]->generate(worldGenerator, p+x*size_2, q+y*size_2, r+z*size_2, size_2);
+            if(octreeEntries[i]->isCompressible() && size > 4)
+                compress(x,y,z, 1);
         }
     }
     delete[] types;
+    if(size == 1)
+    {
+        return;
+    }
 	// End of user code
 }
 bool Node::isCompressible()

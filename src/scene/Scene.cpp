@@ -13,11 +13,6 @@ Scene::Scene()
 	// End of user code
 }
 
-Scene::~Scene()
-{
-	// Start of user code destructor
-	// End of user code
-}
 
 // Start of user code methods
 // End of user code
@@ -27,18 +22,6 @@ Scene::~Scene()
 
 
 
-Camera* Scene::getCamera()
-{
-	// Start of user code getCamera
-	// End of user code
-	return camera;
-}
-
-void Scene::setCamera(Camera* _camera)
-{
-	camera = _camera;
-}
-					
 UI* Scene::getUI()
 {
 	// Start of user code getUI
@@ -49,5 +32,17 @@ UI* Scene::getUI()
 void Scene::setUI(UI* _uI)
 {
 	uI = _uI;
+}
+					
+Camera* Scene::getCamera()
+{
+	// Start of user code getCamera
+	// End of user code
+	return camera;
+}
+
+void Scene::setCamera(Camera* _camera)
+{
+	camera = _camera;
 }
 					

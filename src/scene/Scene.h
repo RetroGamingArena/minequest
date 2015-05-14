@@ -16,8 +16,8 @@
 // End of user code
 
 
-#include "Camera.h"
 #include "UI.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -28,22 +28,22 @@ class Scene
 {
 
 	protected:
-	Camera* camera;
 	UI* uI;
+	Camera* camera;
 
 	public:
 		// Start of user code public
 		// End of user code
 		Scene();
-		~Scene();
+		virtual ~Scene(){};
 		virtual void init() = 0;
 		virtual void render() = 0;
 		virtual void onMouseMotion(double xpos, double ypos) = 0;
 		virtual void onMouseScroll(double xoffset, double yoffset) = 0;
-		Camera* getCamera();
-		void setCamera(Camera* _camera);
 		UI* getUI();
 		void setUI(UI* _uI);
+		Camera* getCamera();
+		void setCamera(Camera* _camera);
 };
 
 #endif

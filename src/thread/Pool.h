@@ -40,7 +40,7 @@ class Pool
 		// End of user code
 		Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex);
 		Pool();
-		~Pool();
+		virtual ~Pool(){};
 		int getThreadCount();
 		void setThreadCount(int _threadCount);
 		bool getRunning();

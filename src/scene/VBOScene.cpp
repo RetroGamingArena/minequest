@@ -63,19 +63,12 @@ void VBOScene::render()
     
     //for(int i = 0; i < doubleBuffers.size(); i++)
     {
-        glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());// bufferIDs[i]);
+        glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());
         
         VBO* vBO = doubleBuffer->getVBO();
         vector<Attribute*> attributes = doubleBuffer->getVBO()->getAttributes();
         for(int i = 0; i < attributes.size(); i++)
             glEnableVertexAttribArray(i);
-        
-        /*glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glEnableVertexAttribArray(2);
-        glEnableVertexAttribArray(3);
-        glEnableVertexAttribArray(4);
-        glEnableVertexAttribArray(5);*/
         
         int size = 0;
         
@@ -84,44 +77,20 @@ void VBOScene::render()
             if( attributes[i]->getSize() == 3)
                 size=0;
             
-            glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, sizeof(GLfloat) * vBO->getSize(), (void*)(size) ); //0, NULL);
+            glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, sizeof(GLfloat) * vBO->getSize(), (void*)(sizeof(GLfloat) *size) ); //0, NULL);
             if(attributes[i]->getDivisor()>0)
                 glVertexAttribDivisor( i, attributes[i]->getDivisor());
             size += attributes[i]->getSize();
         }
-    
-        /*glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)0 );
-        glVertexAttribPointer( 1, 1, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)(sizeof(GLfloat) * 3));
-        
-        
-        glVertexAttribPointer( 2, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)(0) ); //0, NULL);
-        glVertexAttribDivisor( 2, 1);
-        glVertexAttribPointer( 3, 1, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)(sizeof(GLfloat) * (3))); //0, NULL);
-        glVertexAttribDivisor( 3, 1);
-        glVertexAttribPointer( 4, 1, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)(sizeof(GLfloat) * (4))); //0, NULL);
-        glVertexAttribDivisor( 4, 1);
-        glVertexAttribPointer( 5, 1, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void*)(sizeof(GLfloat) * (5))); //0, NULL);
-        glVertexAttribDivisor( 5, 1);*/
-        
-        //glDrawArrays(GL_POINTS, 0, buffer->getData()->size());
-        //glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, (void*)0);           // element array buffer offset
         
         glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());//bufferIDs[i]);
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, (data->size()-32)/6 );//(buffers[i]->getData()->size()-32)/6 );           // element array buffer offset
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, (data->size()-32)/6 );
         
         for(int i = 0; i < attributes.size(); i++)
             glDisableVertexAttribArray(i);
-        
-        /*glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
-        glDisableVertexAttribArray(3);
-        glDisableVertexAttribArray(4);
-        glDisableVertexAttribArray(5);*/
         
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }

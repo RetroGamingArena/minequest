@@ -29,7 +29,7 @@ World::World()
             chunks.push_back(chunk);
         }
     
-    threadCount = 5;
+    threadCount = 9;
     this->start();
     while(isRunning()){}
 	// End of user code
@@ -66,7 +66,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 0;	
+int World::size = 0;
 
 int World::getChunkIndice()
 {
@@ -111,7 +111,7 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     return false;
 	// End of user code
 }
-void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, int p, int q, int r, int width)
+void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width)
 {
 	// Start of user code bufferizeEntry
     float offset = Chunk::size*Chunk::subsize*size;
@@ -135,9 +135,7 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, int 
     data->push_back(r);
     
     data->push_back(type);
-    
     data->push_back(width);
-    
     data->push_back(ao);
     
     //sizeTemp += width*width*width;

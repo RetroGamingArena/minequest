@@ -32,7 +32,7 @@ TrackBallCamera::TrackBallCamera()
     
     hold = false;
     motionSensitivity = 0.3;
-    scrollSensitivity = 0.1;
+    scrollSensitivity = 1;
     
     oldX=0;
     oldY=0;

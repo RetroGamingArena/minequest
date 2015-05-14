@@ -35,7 +35,7 @@ class OctreeEntry
 	static int NODE;
 		OctreeEntry(int _NODE);
 		OctreeEntry();
-		~OctreeEntry();
+		virtual ~OctreeEntry(){};
 		virtual void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size) = 0;
 		virtual bool isCompressible() = 0;
 		virtual int getCode() = 0;

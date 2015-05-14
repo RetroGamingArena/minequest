@@ -84,7 +84,8 @@ int Engine::run()
     
     while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 )
     {
-        scene->getCamera()->look();
+        if(scene->getCamera() != NULL)
+            scene->getCamera()->look();
         scene->render();
         
         //FPS
@@ -225,6 +226,27 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
+WorldProcessor* Engine::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
+}
+					
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -244,24 +266,3 @@ vector<Shader*> Engine::getShaders()
 	return shaders;
 }
 
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
-WorldProcessor* Engine::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					

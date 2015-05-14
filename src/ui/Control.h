@@ -34,7 +34,7 @@ class Control
 		// End of user code
 		Control(int _x, int _y);
 		Control();
-		~Control();
+		virtual ~Control(){};
 		int getX();
 		void setX(int _x);
 		int getY();

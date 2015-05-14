@@ -24,11 +24,6 @@ Shader::Shader()
 	// End of user code
 }
 
-Shader::~Shader()
-{
-	// Start of user code destructor
-	// End of user code
-}
 
 // Start of user code methods
 Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path) : Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0)

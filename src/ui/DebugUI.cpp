@@ -2,6 +2,7 @@
 
 #include "DebugUI.h"
 // Start of user code includes
+#include "Label.h"
 // End of user code
 
 
@@ -10,6 +11,7 @@ DebugUI::DebugUI()
 // End of user code
 {
 	// Start of user code constructor
+    controls.push_back(new Label("Test", 20, 20));
 	// End of user code
 }
 

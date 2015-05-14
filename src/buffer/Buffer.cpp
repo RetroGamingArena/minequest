@@ -17,11 +17,6 @@ Buffer::Buffer()
 	// End of user code
 }
 
-Buffer::~Buffer()
-{
-	// Start of user code destructor
-	// End of user code
-}
 
 // Start of user code methods
 // End of user code
