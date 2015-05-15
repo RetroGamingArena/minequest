@@ -80,7 +80,7 @@ void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
         
         //bufferize(scene, this->entries[i], p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
         if(this->octreeEntries[i] != NULL)
-            this->octreeEntries[i]->bufferize(vertexBuffer, this->p*size+x*size/2.0, this->q*size+y*size/2.0, this->r*size+z*size/2.0, size/2.0);
+            this->octreeEntries[i]->bufferize(vertexBuffer, this->p*size+x*size/2.0, this->q*size+y*size/2.0, this->r*size+z*size/2.0, size/2);
     }
 	// End of user code
 }

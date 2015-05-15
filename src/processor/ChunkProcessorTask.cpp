@@ -26,6 +26,7 @@ void ChunkProcessorTask::run()
 {
 	// Start of user code run
     chunk->bufferize();//chunk->getVertexBuffer());
+    delete chunk->getOctree();
 	// End of user code
 }
 

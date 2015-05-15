@@ -49,7 +49,7 @@ Chunk::Chunk(float _p, float _q, float _r)
 
 
 
-int Chunk::size = 16;	
+int Chunk::size = 16;
 int Chunk::subsize = 16;	
 
 float Chunk::getP()

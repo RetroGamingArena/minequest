@@ -41,8 +41,6 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
 	// Start of user code generate
     unsigned char* types = new unsigned char[8];
     
-    int absSize = 0;
-    
     int size_2 = size >> 1;
     int size_4 = size_2 >> 1;
     
@@ -54,56 +52,37 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
         
         if(this->octreeEntries[i] == NULL)
         {
-            int ii;
-            
-            if(size==4)
+            if(size==2)
             {
                 types[0] = 0;
                 
-                for(ii = 0; ii < 8; ii++)
+                //for(ii = 0; ii < 8; ii++)
                 {
-                    int xx = (ii%4)&1;
-                    int yy = ii >> 2;
-                    int zz = (ii%4) >> 1;
+                    //int xx = (ii%4)&1;
+                    //int yy = ii >> 2;
+                    //int zz = (ii%4) >> 1;
                     
-                    //double height = worldGenerator->getY(p+x*size_2 + xx*size_4, r+z*size_2 + zz*size_4)*Chunk::size*Chunk::subsize/2;
-                    //if(height > q+y*size_2+yy)
-                    types[ii] = worldGenerator->getCubeType(p+x*size_2 + xx*size_4, q+y*size_2 + yy*size_4, r+z*size_2 + zz*size_4); //CubeType::getTypeFromHeight(q+y*size_2+yy);
-                }
-                if( types[0] > 0 && types[0] == types[1] && types[1] == types[2] && types[2] == types[3] && types[3] == types[4] && types[4] == types[5] && types[5] == types[6] && types[6] == types[7] )
-                {
-                    octreeEntries[i] = new Leaf(types[0]);
-                    continue;
-                }
-            }
-            
-            else if(size==2)
-            {
-                types[0] = 0;
+                    
+                    unsigned char type = worldGenerator->getCubeType(p+x*size_2, q+y*size_2, r+z*size_2);//CubeType::getTypeFromHeight(q+y*size_2+yy);
                 
-                for(ii = 0; ii < 8; ii++)
-                {
-                    int xx = (ii%4)&1;
-                    int yy = ii >> 2;
-                    int zz = (ii%4) >> 1;
-                    
-                    double height = worldGenerator->getY(p+x*size_2 + xx*size_4, r+z*size_2 + zz*size_4)*Chunk::size*Chunk::subsize/2;
-                    if(height > q+y*size_2+yy)
-                        types[ii] = worldGenerator->getCubeType(p+x*size_2 + xx*size_4, q+y*size_2 + yy*size_4, r+z*size_2 + zz*size_4);//CubeType::getTypeFromHeight(q+y*size_2+yy);
+                    if(type > 0)
+                        octreeEntries[i] = new Leaf(type);
                 }
-                for(int ii=0;ii<8;ii++)
-                    if(types[ii] > 0)
-                        octreeEntries[ii] = new Leaf(types[ii]);
                 continue;
             }
-
-            octreeEntries[i] = new Node();
-            octreeEntries[i]->generate(worldGenerator, p+x*size_2, q+y*size_2, r+z*size_2, size_2);
+            else
+            {
+                octreeEntries[i] = new Node();
+                octreeEntries[i]->generate(worldGenerator, p+x*size_2, q+y*size_2, r+z*size_2, size_2);
+            }
+            
             if(octreeEntries[i]->isCompressible() )//&& size > 4)
             {
                 //double height = worldGenerator->getY(p+x*size_2, r+z*size_2)*Chunk::size*Chunk::subsize/2;
-                compress(x,y,z, worldGenerator->getCubeType(p+x*size_2, q+y*size_2, r+z*size_2));//CubeType::getTypeFromHeight(height));
+                unsigned char type = worldGenerator->getCubeType(p+x*size_2, q+y*size_2, r+z*size_2);
+                compress(x,y,z, type);//CubeType::getTypeFromHeight(height));
             }
+            
         }
     }
     delete[] types;

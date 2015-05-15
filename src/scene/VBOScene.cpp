@@ -87,7 +87,7 @@ void VBOScene::render()
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, (data->size()-32)/6 );
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 32, GL_UNSIGNED_INT, (void*)0, 2*(data->size()-32)/6 );
         
         for(int i = 0; i < attributes.size(); i++)
             glDisableVertexAttribArray(i);

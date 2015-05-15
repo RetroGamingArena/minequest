@@ -991,10 +991,10 @@
 			isa = PBXGroup;
 			children = (
 				6440BA0D1AF1778D006A0842 /* fragmentShader.glsl */,
+				6440BA111AF1778D006A0842 /* vertexShader.glsl */,
 				6440BA0E1AF1778D006A0842 /* geometryShader.glsl */,
 				6440BA0F1AF1778D006A0842 /* uiFragmentShader.glsl */,
 				6440BA101AF1778D006A0842 /* uiVertexShader.glsl */,
-				6440BA111AF1778D006A0842 /* vertexShader.glsl */,
 			);
 			name = shaders;
 			sourceTree = "<group>";

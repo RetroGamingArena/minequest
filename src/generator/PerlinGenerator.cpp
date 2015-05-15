@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 
 #include "PerlinGenerator.h"
 // Start of user code includes
@@ -85,15 +86,11 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     int absBound = World::size*Chunk::size*Chunk::subsize;//(destSize/(Chunk::size*Chunk::subsize))/2;
     
     float height = heightMap.GetValue(absBound+x, absBound+z);
-    
-    if(height < -1)
-        height = -1;
-    if(height >= 1)
-        height = 0.99999;
+
     height=(height+1);
     
     height*=Chunk::size*Chunk::subsize/2;
-    
+
     if(height<y)
         return 0;
     
