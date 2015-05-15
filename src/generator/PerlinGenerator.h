@@ -38,6 +38,7 @@ class PerlinGenerator : public WorldGenerator
 		utils::NoiseMap getHeightMap();
 		void setHeightMap(utils::NoiseMap _heightMap);
 		float getY(float x, float z);
+		unsigned char getCubeType(int x, int y, int z);
 };
 
 #endif

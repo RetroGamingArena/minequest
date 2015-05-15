@@ -3,7 +3,7 @@
 #include "Node.h"
 // Start of user code includes
 #include "Chunk.h"
-#include "CubeType.h"
+//#include "CubeType.h"
 #include "Leaf.h"
 // End of user code
 
@@ -66,13 +66,13 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
                     int yy = ii >> 2;
                     int zz = (ii%4) >> 1;
                     
-                    double height = worldGenerator->getY(p+x*size_2 + xx*size_4, r+z*size_2 + zz*size_4)*Chunk::size*Chunk::subsize/2;
-                    if(height > q+y*size_2+yy)
-                        types[ii] = CubeType::getTypeFromHeight(q+y*size_2+yy);
+                    //double height = worldGenerator->getY(p+x*size_2 + xx*size_4, r+z*size_2 + zz*size_4)*Chunk::size*Chunk::subsize/2;
+                    //if(height > q+y*size_2+yy)
+                    types[ii] = worldGenerator->getCubeType(p+x*size_2 + xx*size_4, q+y*size_2 + yy*size_4, r+z*size_2 + zz*size_4); //CubeType::getTypeFromHeight(q+y*size_2+yy);
                 }
                 if( types[0] > 0 && types[0] == types[1] && types[1] == types[2] && types[2] == types[3] && types[3] == types[4] && types[4] == types[5] && types[5] == types[6] && types[6] == types[7] )
                 {
-                    //octreeEntries[i] = new Leaf(types[0]);
+                    octreeEntries[i] = new Leaf(types[0]);
                     continue;
                 }
             }
@@ -89,7 +89,7 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
                     
                     double height = worldGenerator->getY(p+x*size_2 + xx*size_4, r+z*size_2 + zz*size_4)*Chunk::size*Chunk::subsize/2;
                     if(height > q+y*size_2+yy)
-                        types[ii] = CubeType::getTypeFromHeight(q+y*size_2+yy);
+                        types[ii] = worldGenerator->getCubeType(p+x*size_2 + xx*size_4, q+y*size_2 + yy*size_4, r+z*size_2 + zz*size_4);//CubeType::getTypeFromHeight(q+y*size_2+yy);
                 }
                 for(int ii=0;ii<8;ii++)
                     if(types[ii] > 0)
@@ -99,8 +99,11 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
 
             octreeEntries[i] = new Node();
             octreeEntries[i]->generate(worldGenerator, p+x*size_2, q+y*size_2, r+z*size_2, size_2);
-            if(octreeEntries[i]->isCompressible() && size > 4)
-                compress(x,y,z, 1);
+            if(octreeEntries[i]->isCompressible() )//&& size > 4)
+            {
+                //double height = worldGenerator->getY(p+x*size_2, r+z*size_2)*Chunk::size*Chunk::subsize/2;
+                compress(x,y,z, worldGenerator->getCubeType(p+x*size_2, q+y*size_2, r+z*size_2));//CubeType::getTypeFromHeight(height));
+            }
         }
     }
     delete[] types;
@@ -192,20 +195,24 @@ void Node::compress(int x, int y, int z, unsigned char type)
 	// Start of user code compress
     OctreeEntry* octreeEntry = this->get(x,y,z);
 
-    type = octreeEntry->getAbs(x, y, z, 4);
+    int entryIndex = x + (y << 2) + (z << 1);
     
-    if(type==0)
+    Node * node = static_cast<Node*>(octreeEntries[entryIndex]);
+    Leaf * leaf = static_cast<Leaf*>(node->get(0, 0, 0));
+    
+    if(leaf == NULL)
     {
-        delete octreeEntry;
-        octreeEntries[x+y*4+z*2] = NULL;
+        octreeEntries[entryIndex] = NULL;
+         //delete octreeEntry;
     }
     else
     {
+        type = leaf->getType();
         Leaf* leaf = new Leaf();
         leaf->setType(type);
-        octreeEntries[x+y*4+z*2] = leaf;
-        delete octreeEntry;
+        octreeEntries[entryIndex] = leaf;
     }
+    delete octreeEntry;
 	// End of user code
 }
 OctreeEntry* Node::get(int x, int y, int z)

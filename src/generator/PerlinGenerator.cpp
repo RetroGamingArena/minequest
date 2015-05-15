@@ -53,13 +53,64 @@ PerlinGenerator::~PerlinGenerator()
 float PerlinGenerator::getY(float x, float z)
 {
 	// Start of user code getY
-    int absBound = World::size*Chunk::size*Chunk::subsize;//(destSize/(Chunk::size*Chunk::subsize))/2;
-    float height = heightMap.GetValue(x+absBound, z+absBound);
+    float height = heightMap.GetValue(x, z);
+    
     if(height < -1)
         height = -1;
     if(height >= 1)
         height = 0.99999;
-    return (height+1);
+    height=(height+1);
+	
+    unsigned char type;
+    if(height<16*Chunk::size*Chunk::subsize/32)
+        type = 2; //dirt
+    else if(height<18*Chunk::size*Chunk::subsize/32)
+        type = 3; //sand
+    else if(height<20*Chunk::size*Chunk::subsize/32)
+        type = 1; //grass
+    else if(height<25*Chunk::size*Chunk::subsize/32)
+        type = 4; //dirt
+    else if(height<28*Chunk::size*Chunk::subsize/32)
+        type = 5; //rock
+    else
+        type = 6; //snow
+    return type;
+    // End of user code
+}
+unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
+{
+	// Start of user code getCubeType
+    
+    
+    int absBound = World::size*Chunk::size*Chunk::subsize;//(destSize/(Chunk::size*Chunk::subsize))/2;
+    
+    float height = heightMap.GetValue(absBound+x, absBound+z);
+    
+    if(height < -1)
+        height = -1;
+    if(height >= 1)
+        height = 0.99999;
+    height=(height+1);
+    
+    height*=Chunk::size*Chunk::subsize/2;
+    
+    if(height<y)
+        return 0;
+    
+    unsigned char type;
+    if(y<16*Chunk::size*Chunk::subsize/32)
+        type = 2; //dirt
+    else if(y<18*Chunk::size*Chunk::subsize/32)
+        type = 3; //sand
+    else if(y<20*Chunk::size*Chunk::subsize/32)
+        type = 1; //grass
+    else if(y<25*Chunk::size*Chunk::subsize/32)
+        type = 4; //dirt
+    else if(y<28*Chunk::size*Chunk::subsize/32)
+        type = 5; //rock
+    else
+        type = 6; //snow
+    return type;
 	// End of user code
 }
 

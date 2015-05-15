@@ -33,6 +33,7 @@ class WorldGenerator
 		WorldGenerator();
 		virtual ~WorldGenerator(){};
 		virtual float getY(float x, float z) = 0;
+		virtual unsigned char getCubeType(int x, int y, int z) = 0;
 };
 
 #endif
