@@ -76,12 +76,7 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     ao[3] = 0;
     
     gameScene->getDoubleBuffer()->bufferizeSquare(x+p, y+q,      z+r, x+p+size, y+q,      z+r+size, type, ao);
-    
-    gameScene->getDoubleBuffer()->bufferizeIndice(0);
-    gameScene->getDoubleBuffer()->bufferizeIndice(1);
-    gameScene->getDoubleBuffer()->bufferizeIndice(2);
-    gameScene->getDoubleBuffer()->bufferizeIndice(3);
-    
+
     ao[0] = 1;
     ao[1] = 1;
     ao[2] = 1;
@@ -89,10 +84,12 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     
     gameScene->getDoubleBuffer()->bufferizeSquare(x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
     
-    gameScene->getDoubleBuffer()->bufferizeIndice(4);
-    gameScene->getDoubleBuffer()->bufferizeIndice(5);
-    gameScene->getDoubleBuffer()->bufferizeIndice(6);
-    gameScene->getDoubleBuffer()->bufferizeIndice(7);
+    gameScene->getDoubleBuffer()->bufferizeIndice(0);
+    gameScene->getDoubleBuffer()->bufferizeIndice(1);
+    gameScene->getDoubleBuffer()->bufferizeIndice(2);
+    gameScene->getDoubleBuffer()->bufferizeIndice(3);
+    
+    
     
     gameScene->getDoubleBuffer()->bufferizeIndice(0);
     gameScene->getDoubleBuffer()->bufferizeIndice(1);
@@ -115,6 +112,11 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     gameScene->getDoubleBuffer()->bufferizeIndice(0);
     gameScene->getDoubleBuffer()->bufferizeIndice(6);
     gameScene->getDoubleBuffer()->bufferizeIndice(4);
+    
+    gameScene->getDoubleBuffer()->bufferizeIndice(4);
+    gameScene->getDoubleBuffer()->bufferizeIndice(5);
+    gameScene->getDoubleBuffer()->bufferizeIndice(6);
+    gameScene->getDoubleBuffer()->bufferizeIndice(7);
     
     threadCount = 5;
     this->start();
