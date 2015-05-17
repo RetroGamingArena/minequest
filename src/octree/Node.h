@@ -22,6 +22,7 @@
 using namespace std;
 
 // Start of user code class import
+class OctreeEntry;
 // End of user code
 
 class Node : public OctreeEntry
@@ -39,7 +40,8 @@ class Node : public OctreeEntry
 		OctreeEntry* get(int x, int y, int z);
 		void split();
 		vector<OctreeEntry*> getOctreeEntries();
-		void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
+		void setOctreeEntriesAt(OctreeEntry* _octreeEntries, int indice);
+		//void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);

@@ -49,8 +49,8 @@ Chunk::Chunk(float _p, float _q, float _r)
 
 
 
-int Chunk::size = 8;
-int Chunk::subsize = 16;
+int Chunk::size = 16;
+int Chunk::subsize = 16;	
 
 float Chunk::getP()
 {
@@ -63,6 +63,7 @@ void Chunk::setP(float _p)
 {
 	p = _p;
 }
+
 float Chunk::getQ()
 {
 	// Start of user code getQ
@@ -74,6 +75,7 @@ void Chunk::setQ(float _q)
 {
 	q = _q;
 }
+
 float Chunk::getR()
 {
 	// Start of user code getR
@@ -86,6 +88,7 @@ void Chunk::setR(float _r)
 	r = _r;
 }
 
+
 void Chunk::generate(WorldGenerator * worldGenerator)
 {
 	// Start of user code generate
@@ -94,7 +97,7 @@ void Chunk::generate(WorldGenerator * worldGenerator)
     
     unsigned char type = 0;
     
-    octree->generate(worldGenerator, p*Chunk::size * Chunk::subsize, q, r*Chunk::size * Chunk::subsize, size*subsize);
+    //octree->generate(worldGenerator, p*Chunk::size * Chunk::subsize, q, r*Chunk::size * Chunk::subsize, size*subsize);
 	// End of user code
 }
 void Chunk::bufferize()

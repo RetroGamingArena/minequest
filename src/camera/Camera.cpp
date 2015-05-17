@@ -40,6 +40,7 @@ void Camera::setModel(glm::mat4 _model)
 {
 	model = _model;
 }
+
 glm::mat4 Camera::getView()
 {
 	// Start of user code getView
@@ -51,6 +52,7 @@ void Camera::setView(glm::mat4 _view)
 {
 	view = _view;
 }
+
 glm::mat4 Camera::getProjection()
 {
 	// Start of user code getProjection
@@ -62,6 +64,7 @@ void Camera::setProjection(glm::mat4 _projection)
 {
 	projection = _projection;
 }
+
 
 void Camera::look()
 {

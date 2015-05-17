@@ -153,6 +153,7 @@ void TrackBallCamera::setPosition(glm::vec3 _position)
 {
 	position = _position;
 }
+
 glm::vec3 TrackBallCamera::getCenter()
 {
 	// Start of user code getCenter
@@ -164,6 +165,7 @@ void TrackBallCamera::setCenter(glm::vec3 _center)
 {
 	center = _center;
 }
+
 glm::vec3 TrackBallCamera::getUp()
 {
 	// Start of user code getUp
@@ -175,6 +177,7 @@ void TrackBallCamera::setUp(glm::vec3 _up)
 {
 	up = _up;
 }
+
 float TrackBallCamera::getAngleY()
 {
 	// Start of user code getAngleY
@@ -186,6 +189,7 @@ void TrackBallCamera::setAngleY(float _angleY)
 {
 	angleY = _angleY;
 }
+
 float TrackBallCamera::getAngleZ()
 {
 	// Start of user code getAngleZ
@@ -197,6 +201,7 @@ void TrackBallCamera::setAngleZ(float _angleZ)
 {
 	angleZ = _angleZ;
 }
+
 float TrackBallCamera::getDistance()
 {
 	// Start of user code getDistance
@@ -208,6 +213,7 @@ void TrackBallCamera::setDistance(float _distance)
 {
 	distance = _distance;
 }
+
 float TrackBallCamera::getOldX()
 {
 	// Start of user code getOldX
@@ -219,6 +225,7 @@ void TrackBallCamera::setOldX(float _oldX)
 {
 	oldX = _oldX;
 }
+
 float TrackBallCamera::getOldY()
 {
 	// Start of user code getOldY
@@ -230,6 +237,7 @@ void TrackBallCamera::setOldY(float _oldY)
 {
 	oldY = _oldY;
 }
+
 bool TrackBallCamera::getHold()
 {
 	// Start of user code getHold
@@ -241,6 +249,7 @@ void TrackBallCamera::setHold(bool _hold)
 {
 	hold = _hold;
 }
+
 float TrackBallCamera::getMotionSensitivity()
 {
 	// Start of user code getMotionSensitivity
@@ -252,6 +261,7 @@ void TrackBallCamera::setMotionSensitivity(float _motionSensitivity)
 {
 	motionSensitivity = _motionSensitivity;
 }
+
 float TrackBallCamera::getScrollSensitivity()
 {
 	// Start of user code getScrollSensitivity
@@ -263,5 +273,6 @@ void TrackBallCamera::setScrollSensitivity(float _scrollSensitivity)
 {
 	scrollSensitivity = _scrollSensitivity;
 }
+
 
 

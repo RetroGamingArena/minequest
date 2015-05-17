@@ -11,7 +11,7 @@ VoxelVBO::VoxelVBO()
 {
 	// Start of user code constructor
     attributes.push_back(new Attribute(3,0,"Point"));
-    attributes.push_back(new Attribute(1,0,"???"));
+    attributes.push_back(new Attribute(1,0,"AO"));
     
     attributes.push_back(new Attribute(3,1,"Point"));
     attributes.push_back(new Attribute(1,1,"AO"));

@@ -25,7 +25,8 @@ using namespace std;
 
 class VBO
 {
-	unsigned int size;
+	unsigned int headerSize;
+	unsigned int instanceSize;
 
 	protected:
 	vector<Attribute*> attributes;
@@ -33,12 +34,15 @@ class VBO
 	public:
 		// Start of user code public
 		// End of user code
-		VBO(unsigned int _size);
+		VBO(unsigned int _headerSize, unsigned int _instanceSize);
 		VBO();
 		~VBO();
-		unsigned int getSize();
-		void setSize(unsigned int _size);
+		unsigned int getHeaderSize();
+		void setHeaderSize(unsigned int _headerSize);
+		unsigned int getInstanceSize();
+		void setInstanceSize(unsigned int _instanceSize);
 		vector<Attribute*> getAttributes();
+		void setAttributesAt(Attribute* _attributes, int indice);
 };
 
 #endif

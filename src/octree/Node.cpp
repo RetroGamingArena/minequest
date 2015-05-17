@@ -36,7 +36,7 @@ Node::~Node()
 // Start of user code methods
 // End of user code
 
-void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int size)
+/*void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int size)
 {
 	// Start of user code generate
     unsigned char* types = new unsigned char[8];
@@ -76,11 +76,10 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
                 octreeEntries[i]->generate(worldGenerator, p+x*size_2, q+y*size_2, r+z*size_2, size_2);
             }
             
-            if(octreeEntries[i]->isCompressible() )//&& size > 4)
+            if(octreeEntries[i]->isCompressible() )
             {
-                //double height = worldGenerator->getY(p+x*size_2, r+z*size_2)*Chunk::size*Chunk::subsize/2;
                 unsigned char type = worldGenerator->getCubeType(p+x*size_2, q+y*size_2, r+z*size_2);
-                compress(x,y,z, type);//CubeType::getTypeFromHeight(height));
+                compress(x,y,z, type);
             }
             
         }
@@ -91,7 +90,7 @@ void Node::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
         return;
     }
 	// End of user code
-}
+}*/
 bool Node::isCompressible()
 {
 	// Start of user code isCompressible
@@ -216,5 +215,10 @@ vector<OctreeEntry*> Node::getOctreeEntries()
 	// Start of user code getOctreeEntries
 	// End of user code
 	return octreeEntries;
+}
+
+void Node::setOctreeEntriesAt(OctreeEntry* _octreeEntries, int indice)
+{
+	octreeEntries[indice] = _octreeEntries;
 }
 

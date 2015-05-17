@@ -36,6 +36,7 @@ void Buffer::setId(GLuint _id)
 	id = _id;
 }
 
+
 void Buffer::init()
 {
 	// Start of user code init

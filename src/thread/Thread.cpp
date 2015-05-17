@@ -42,6 +42,7 @@ void Thread::setMutex(std::mutex* _mutex)
 	mutex = _mutex;
 }
 
+
 void Thread::start()
 {
 	// Start of user code start

@@ -57,6 +57,7 @@ void Texture::setTextureID(GLuint _textureID)
 {
 	textureID = _textureID;
 }
+
 unsigned int Texture::getGlTexture()
 {
 	// Start of user code getGlTexture
@@ -68,6 +69,7 @@ void Texture::setGlTexture(unsigned int _glTexture)
 {
 	glTexture = _glTexture;
 }
+
 char* Texture::getFileName()
 {
 	// Start of user code getFileName
@@ -79,6 +81,7 @@ void Texture::setFileName(char* _fileName)
 {
 	fileName = _fileName;
 }
+
 
 void Texture::flip_image_vertical(unsigned char* data, unsigned int width, unsigned int height)
 {

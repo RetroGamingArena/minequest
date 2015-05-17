@@ -55,6 +55,7 @@ class Pool
 		virtual bool hasNext() = 0;
 		bool isRunning();
 		vector<Thread*> getThreads();
+		void setThreadsAt(Thread* _threads, int indice);
 };
 
 #endif

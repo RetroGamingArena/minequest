@@ -30,7 +30,8 @@ ChunkTask::ChunkTask(Chunk* _chunk, WorldGenerator* _worldGenerator)
 void ChunkTask::run()
 {
 	// Start of user code run
-    chunk->generate(worldGenerator);
+    chunk->setOctree(worldGenerator->generate(chunk->getP(), chunk->getQ(), chunk->getR()));
+    //chunk->generate(worldGenerator);
 	// End of user code
 }
 

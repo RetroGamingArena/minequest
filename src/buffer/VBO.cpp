@@ -4,9 +4,10 @@
 // Start of user code includes
 // End of user code
 
-VBO::VBO(unsigned int _size)
+VBO::VBO(unsigned int _headerSize, unsigned int _instanceSize)
 {
-	size = _size;
+	headerSize = _headerSize;
+	instanceSize = _instanceSize;
 }
 
 VBO::VBO()
@@ -29,17 +30,30 @@ VBO::~VBO()
 
 
 
-unsigned int VBO::getSize()
+unsigned int VBO::getHeaderSize()
 {
-	// Start of user code getSize
+	// Start of user code getHeaderSize
 	// End of user code
-	return size;
+	return headerSize;
 }
 
-void VBO::setSize(unsigned int _size)
+void VBO::setHeaderSize(unsigned int _headerSize)
 {
-	size = _size;
+	headerSize = _headerSize;
 }
+
+unsigned int VBO::getInstanceSize()
+{
+	// Start of user code getInstanceSize
+	// End of user code
+	return instanceSize;
+}
+
+void VBO::setInstanceSize(unsigned int _instanceSize)
+{
+	instanceSize = _instanceSize;
+}
+
 
 
 vector<Attribute*> VBO::getAttributes()
@@ -47,5 +61,10 @@ vector<Attribute*> VBO::getAttributes()
 	// Start of user code getAttributes
 	// End of user code
 	return attributes;
+}
+
+void VBO::setAttributesAt(Attribute* _attributes, int indice)
+{
+	attributes[indice] = _attributes;
 }
 

@@ -13,6 +13,7 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "Octree.h"
 // End of user code
 
 
@@ -24,6 +25,7 @@ using namespace std;
 
 class WorldGenerator
 {
+		OctreeEntry* generateOctreeEntry(int p, int q, int r, int size);
 
 	protected:
 
@@ -34,6 +36,7 @@ class WorldGenerator
 		virtual ~WorldGenerator(){};
 		virtual float getY(float x, float z) = 0;
 		virtual unsigned char getCubeType(int x, int y, int z) = 0;
+		Octree* generate(int p, int q, int r);
 };
 
 #endif

@@ -169,18 +169,30 @@ void UI::printText(const char * text, int x, int y, int size)
 	// End of user code
 }
 
-DoubleBuffer* UI::getDoubleBuffer()
+Texture* UI::getFontTexture()
 {
-	// Start of user code getDoubleBuffer
+	// Start of user code getFontTexture
 	// End of user code
-	return doubleBuffer;
+	return fontTexture;
 }
 
-void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
+void UI::setFontTexture(Texture* _fontTexture)
 {
-	doubleBuffer = _doubleBuffer;
+	fontTexture = _fontTexture;
 }
 					
+vector<Control*> UI::getControls()
+{
+	// Start of user code getControls
+	// End of user code
+	return controls;
+}
+
+void UI::setControlsAt(Control* _controls, int indice)
+{
+	controls[indice] = _controls;
+}
+
 Shader* UI::getShader()
 {
 	// Start of user code getShader
@@ -193,22 +205,15 @@ void UI::setShader(Shader* _shader)
 	shader = _shader;
 }
 					
-vector<Control*> UI::getControls()
+DoubleBuffer* UI::getDoubleBuffer()
 {
-	// Start of user code getControls
+	// Start of user code getDoubleBuffer
 	// End of user code
-	return controls;
+	return doubleBuffer;
 }
 
-Texture* UI::getFontTexture()
+void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
 {
-	// Start of user code getFontTexture
-	// End of user code
-	return fontTexture;
-}
-
-void UI::setFontTexture(Texture* _fontTexture)
-{
-	fontTexture = _fontTexture;
+	doubleBuffer = _doubleBuffer;
 }
 					

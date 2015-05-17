@@ -46,6 +46,7 @@ class World : public Pool
 		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width);
 		unsigned char getCube(int x, int y, int z);
 		vector<Chunk*> getChunks();
+		void setChunksAt(Chunk* _chunks, int indice);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		Task* buildTask();

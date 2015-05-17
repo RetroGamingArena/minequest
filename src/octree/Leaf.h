@@ -37,7 +37,7 @@ class Leaf : public OctreeEntry
 		~Leaf();
 		unsigned char getType();
 		void setType(unsigned char _type);
-		void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
+		//void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);

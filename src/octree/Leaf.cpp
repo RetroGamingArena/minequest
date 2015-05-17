@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <iostream>
 
 #include "Leaf.h"
 // Start of user code includes
@@ -30,7 +29,7 @@ Leaf::~Leaf()
 // Start of user code methods
 // End of user code
 
-void Leaf::generate(WorldGenerator * worldGenerator, int p, int q, int r, int size)
+/*void Leaf::generate(WorldGenerator * worldGenerator, int p, int q, int r, int size)
 {
 	// Start of user code generate
     float height = worldGenerator->getY(p, r)*Chunk::size*Chunk::subsize/2;
@@ -61,7 +60,7 @@ void Leaf::generate(WorldGenerator * worldGenerator, int p, int q, int r, int si
         setType(type);
     }
 	// End of user code
-}
+}*/
 bool Leaf::isCompressible()
 {
 	// Start of user code isCompressible
@@ -87,8 +86,6 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     
     if(getType() > 0)
     {
-        cout << r << " " << endl;
-        
         if(world->isCubeVisible(p,q,r,size))
         {
             //if(size==1)
@@ -111,5 +108,6 @@ void Leaf::setType(unsigned char _type)
 {
 	type = _type;
 }
+
 
 

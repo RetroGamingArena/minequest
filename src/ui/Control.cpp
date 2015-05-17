@@ -36,6 +36,7 @@ void Control::setX(int _x)
 {
 	x = _x;
 }
+
 int Control::getY()
 {
 	// Start of user code getY
@@ -47,5 +48,6 @@ void Control::setY(int _y)
 {
 	y = _y;
 }
+
 
 

@@ -41,6 +41,7 @@ void Pool::setThreadCount(int _threadCount)
 {
 	threadCount = _threadCount;
 }
+
 bool Pool::getRunning()
 {
 	// Start of user code getRunning
@@ -52,6 +53,7 @@ void Pool::setRunning(bool _running)
 {
 	running = _running;
 }
+
 std::thread* Pool::getWork()
 {
 	// Start of user code getWork
@@ -63,6 +65,7 @@ void Pool::setWork(std::thread* _work)
 {
 	work = _work;
 }
+
 std::mutex* Pool::getMutex()
 {
 	// Start of user code getMutex
@@ -74,6 +77,7 @@ void Pool::setMutex(std::mutex* _mutex)
 {
 	mutex = _mutex;
 }
+
 
 void Pool::start()
 {
@@ -145,5 +149,10 @@ vector<Thread*> Pool::getThreads()
 	// Start of user code getThreads
 	// End of user code
 	return threads;
+}
+
+void Pool::setThreadsAt(Thread* _threads, int indice)
+{
+	threads[indice] = _threads;
 }
 

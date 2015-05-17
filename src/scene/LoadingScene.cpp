@@ -74,6 +74,7 @@ void LoadingScene::setThread(std::thread* _thread)
 {
 	thread = _thread;
 }
+
 std::mutex* LoadingScene::getMutex()
 {
 	// Start of user code getMutex
@@ -85,6 +86,7 @@ void LoadingScene::setMutex(std::mutex* _mutex)
 {
 	mutex = _mutex;
 }
+
 
 void LoadingScene::initWorld()
 {

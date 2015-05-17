@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <iostream>
 
 #include "PerlinGenerator.h"
 // Start of user code includes
@@ -91,6 +90,8 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     
     height*=Chunk::size*Chunk::subsize/2;
     
+    //return 4;
+    
     if(height<y)
         return 0;
     
@@ -124,5 +125,6 @@ void PerlinGenerator::setHeightMap(utils::NoiseMap _heightMap)
 {
 	heightMap = _heightMap;
 }
+
 
 

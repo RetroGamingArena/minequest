@@ -66,7 +66,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 0;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -79,6 +79,7 @@ void World::setChunkIndice(int _chunkIndice)
 {
 	chunkIndice = _chunkIndice;
 }
+
 
 bool World::isCubeVisible(int x, int y, int z, int size)
 {
@@ -171,7 +172,8 @@ unsigned char World::getCube(int x, int y, int z)
     
     if(chunk != NULL)
     {
-        return chunk->getOctree()->getAbs(sx, sy, sz, Octree::size);
+        Octree* octree = chunk->getOctree();
+        return octree->getAbs(sx, sy, sz, Octree::size);
     }
     
     return 0;
@@ -183,6 +185,11 @@ vector<Chunk*> World::getChunks()
 	// Start of user code getChunks
 	// End of user code
 	return chunks;
+}
+
+void World::setChunksAt(Chunk* _chunks, int indice)
+{
+	chunks[indice] = _chunks;
 }
 
 WorldGenerator* World::getWorldGenerator()

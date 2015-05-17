@@ -47,6 +47,7 @@ void Engine::setWindow(GLFWwindow* _window)
 {
 	window = _window;
 }
+
 int Engine::getWindowWidth()
 {
 	// Start of user code getWindowWidth
@@ -58,6 +59,7 @@ void Engine::setWindowWidth(int _windowWidth)
 {
 	windowWidth = _windowWidth;
 }
+
 int Engine::getWindowHeight()
 {
 	// Start of user code getWindowHeight
@@ -69,6 +71,7 @@ void Engine::setWindowHeight(int _windowHeight)
 {
 	windowHeight = _windowHeight;
 }
+
 
 int Engine::run()
 {
@@ -202,25 +205,6 @@ void Engine::init()
 	// End of user code
 }
 
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
-Scene* Engine::getScene()
-{
-	// Start of user code getScene
-	// End of user code
-	return scene;
-}
-
-void Engine::setScene(Scene* _scene)
-{
-	scene = _scene;
-}
-					
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -233,15 +217,6 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -254,6 +229,27 @@ void Engine::setWorld(World* _world)
 	world = _world;
 }
 					
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
+}
+					
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
 WorldProcessor* Engine::getWorldProcessor()
 {
 	// Start of user code getWorldProcessor
@@ -266,3 +262,15 @@ void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+void Engine::setShadersAt(Shader* _shaders, int indice)
+{
+	shaders[indice] = _shaders;
+}
+

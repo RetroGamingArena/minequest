@@ -46,6 +46,7 @@ vector<GLfloat>* VertexBuffer::getData()
 }
 
 
+
 void VertexBuffer::init()
 {
 	// Start of user code init

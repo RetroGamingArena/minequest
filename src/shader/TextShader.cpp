@@ -69,6 +69,7 @@ void TextShader::setTextureSamplerID(GLuint _textureSamplerID)
 {
 	textureSamplerID = _textureSamplerID;
 }
+
 GLuint TextShader::getVertexArrayID()
 {
 	// Start of user code getVertexArrayID
@@ -80,6 +81,7 @@ void TextShader::setVertexArrayID(GLuint _vertexArrayID)
 {
 	vertexArrayID = _vertexArrayID;
 }
+
 GLuint TextShader::getFontVertexBufferID()
 {
 	// Start of user code getFontVertexBufferID
@@ -91,6 +93,7 @@ void TextShader::setFontVertexBufferID(GLuint _fontVertexBufferID)
 {
 	fontVertexBufferID = _fontVertexBufferID;
 }
+
 GLuint TextShader::getFontUVBufferID()
 {
 	// Start of user code getFontUVBufferID
@@ -102,5 +105,6 @@ void TextShader::setFontUVBufferID(GLuint _fontUVBufferID)
 {
 	fontUVBufferID = _fontUVBufferID;
 }
+
 
 

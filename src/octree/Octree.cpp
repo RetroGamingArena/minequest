@@ -46,6 +46,7 @@ void Octree::setP(float _p)
 {
 	p = _p;
 }
+
 float Octree::getQ()
 {
 	// Start of user code getQ
@@ -57,6 +58,7 @@ void Octree::setQ(float _q)
 {
 	q = _q;
 }
+
 float Octree::getR()
 {
 	// Start of user code getR
@@ -68,6 +70,7 @@ void Octree::setR(float _r)
 {
 	r = _r;
 }
+
 
 void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 {

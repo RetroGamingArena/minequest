@@ -38,3 +38,8 @@ vector<Item*> GameScene::getItems()
 	return items;
 }
 
+void GameScene::setItemsAt(Item* _items, int indice)
+{
+	items[indice] = _items;
+}
+
