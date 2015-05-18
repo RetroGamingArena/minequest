@@ -25,6 +25,9 @@ using namespace std;
 
 class WorldGenerator
 {
+	static vector<int>* xs;
+	static vector<int>* ys;
+	static vector<int>* zs;
 		OctreeEntry* generateOctreeEntry(int p, int q, int r, int size);
 
 	protected:
@@ -32,8 +35,15 @@ class WorldGenerator
 	public:
 		// Start of user code public
 		// End of user code
+		WorldGenerator(vector<int>* _xs, vector<int>* _ys, vector<int>* _zs);
 		WorldGenerator();
 		virtual ~WorldGenerator(){};
+		static vector<int>* getXs();
+		static void setXs(int _xs);
+		static vector<int>* getYs();
+		static void setYs(int _ys);
+		static vector<int>* getZs();
+		static void setZs(int _zs);
 		virtual float getY(float x, float z) = 0;
 		virtual unsigned char getCubeType(int x, int y, int z) = 0;
 		Octree* generate(int p, int q, int r);

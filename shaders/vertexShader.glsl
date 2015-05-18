@@ -30,13 +30,12 @@ uniform vec3 cameraPosition;
 
 void main()
 {
-    //float vertexWidth = 1;
-    gl_Position = /*MVP*/ P * V * M * vec4(vertexPosition_modelspace*vertexWidth+offset,1);
-    fragmentAo = 0.3 + ( ambiant ) * 0.7;// + ao*0.1;
+    gl_Position = P * V * M * vec4(vertexPosition_modelspace*vertexWidth+offset,1);
+    fragmentAo = 0.3 + ( ambiant ) * 0.7;
 
     fragmentAo *= ( (3-ao)/6 + 0.5);
     
-    cubeColor = vec3(1.0,1.0,1.0);//noise1(1));
+    cubeColor = vec3(1.0,1.0,1.0);
     if(vertexColorIndex == 1)
         cubeColor = vec3(0.0,1.0,0.0);
     else if(vertexColorIndex == 2)
@@ -51,16 +50,7 @@ void main()
     fragmentColor.r = vertexPosition_modelspace.x*16;
     fragmentColor.g = vertexPosition_modelspace.y*16;
     fragmentColor.b = vertexPosition_modelspace.z*16;
-    
-    //_fragmentColor = fragmentColor;
-    //fragmentAo = ambiant;
-    //fragmentPosition = vertexPosition_modelspace;
-    //fragmentColor = vec3(1.0,1.0,mod(vertexPosition_modelspace.x,16)/16);
-    //_cameraPosition=cameraPosition;
-    //_cameraUnprojection=cameraUnprojection;
-    //fragmentPosition = gl_Position;
+
     vertexPosition = vec4(vertexPosition_modelspace,1);
-    //fragmentColor =
-    //fragmentAo =
     _vertexWidth = vertexWidth;
 }

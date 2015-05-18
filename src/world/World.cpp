@@ -180,18 +180,6 @@ unsigned char World::getCube(int x, int y, int z)
 	// End of user code
 }
 
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-
-void World::setChunksAt(Chunk* _chunks, int indice)
-{
-	chunks[indice] = _chunks;
-}
-
 WorldGenerator* World::getWorldGenerator()
 {
 	// Start of user code getWorldGenerator
@@ -204,3 +192,15 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
+
+void World::setChunksAt(Chunk* _chunks, int indice)
+{
+	chunks[indice] = _chunks;
+}
+

@@ -2,6 +2,7 @@
 
 #include "Octree.h"
 // Start of user code includes
+#include "WorldGenerator.h"
 // End of user code
 
 Octree::Octree(float _p, float _q, float _r, int _size, int _subSize)
@@ -77,9 +78,9 @@ void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 	// Start of user code bufferize
     for(int i = 0; i < 8; i++)
     {
-        int x = (i%4)%2;
-        int y = i/4;
-        int z = (i%4)/2;
+        int x = (*WorldGenerator::getXs())[i];//(i%4)%2;
+        int y = (*WorldGenerator::getYs())[i];//i/4;
+        int z = (*WorldGenerator::getZs())[i];//(i%4)/2;
         
         //bufferize(scene, this->entries[i], p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
         if(this->octreeEntries[i] != NULL)
