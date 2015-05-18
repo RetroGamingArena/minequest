@@ -33,6 +33,7 @@ PerlinGenerator::PerlinGenerator()
     module::Perlin module;
     utils::NoiseMapBuilderPlane heightMapBuilder;
     
+    module.SetSeed(rand() % 100);
     heightMapBuilder.SetSourceModule (module);
     heightMapBuilder.SetDestNoiseMap (heightMap);
     heightMapBuilder.SetDestSize (destSize, destSize);
