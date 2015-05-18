@@ -41,7 +41,6 @@ class Node : public OctreeEntry
 		void split();
 		vector<OctreeEntry*> getOctreeEntries();
 		void setOctreeEntriesAt(OctreeEntry* _octreeEntries, int indice);
-		//void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size);
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);

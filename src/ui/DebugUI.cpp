@@ -24,6 +24,12 @@ DebugUI::~DebugUI()
 // Start of user code methods
 // End of user code
 
+void DebugUI::render()
+{
+	// Start of user code render
+    UI::render();
+	// End of user code
+}
 
 
 

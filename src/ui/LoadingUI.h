@@ -33,6 +33,7 @@ class LoadingUI : public UI
 		// End of user code
 		LoadingUI();
 		~LoadingUI();
+		void render();
 };
 
 #endif

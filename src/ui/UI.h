@@ -39,8 +39,8 @@ class UI
 		// Start of user code public
 		// End of user code
 		UI();
-		~UI();
-		void render();
+		virtual ~UI(){};
+		virtual void render() = 0;
 		void printText(const char * text, int x, int y, int size);
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);

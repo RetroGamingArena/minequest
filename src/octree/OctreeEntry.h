@@ -37,7 +37,6 @@ class OctreeEntry
 		OctreeEntry(int _NODE);
 		OctreeEntry();
 		virtual ~OctreeEntry(){};
-		//virtual void generate(WorldGenerator * worldGenerator, int p, int q, int r, int size) = 0;
 		virtual bool isCompressible() = 0;
 		virtual int getCode() = 0;
 		virtual unsigned char getAbs(int x, int y, int z, int size) = 0;

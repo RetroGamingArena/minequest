@@ -24,6 +24,12 @@ LoadingUI::~LoadingUI()
 // Start of user code methods
 // End of user code
 
+void LoadingUI::render()
+{
+	// Start of user code render
+    UI::render();
+	// End of user code
+}
 
 
 

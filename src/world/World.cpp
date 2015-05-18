@@ -66,7 +66,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 1;
+int World::size = 1;	
 
 int World::getChunkIndice()
 {

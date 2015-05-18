@@ -33,6 +33,7 @@ class DebugUI : public UI
 		// End of user code
 		DebugUI();
 		~DebugUI();
+		void render();
 };
 
 #endif

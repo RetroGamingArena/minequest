@@ -49,23 +49,10 @@ UI::UI()
 	// End of user code
 }
 
-UI::~UI()
-{
-	// Start of user code destructor
-	// End of user code
-}
 
 // Start of user code methods
-// End of user code
-
-
-
-
-
 void UI::render()
 {
-	// Start of user code render
-    
     glUseProgram(shader->getProgramID());
     
     //glUniformMatrix4fv(matrixID, 1, GL_FALSE, &MVP[0][0]);
@@ -88,8 +75,13 @@ void UI::render()
         if(dynamic_cast<Label*>(controls[i]) != 0)
             this->printText(dynamic_cast<Label*>(controls[i])->getCaption(), controls[i]->getX(), controls[i]->getY(), 10);
     }
-	// End of user code
 }
+// End of user code
+
+
+
+
+
 void UI::printText(const char * text, int x, int y, int size)
 {
 	// Start of user code printText
