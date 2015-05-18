@@ -15,8 +15,8 @@
 // Start of user code includes
 // End of user code
 
-#include "Pool.h"
 #include "WorldProcessor.h"
+#include "Pool.h"
 
 
 using namespace std;
@@ -24,7 +24,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class IterativeProcessor : public Pool, public WorldProcessor
+class IterativeProcessor : public WorldProcessor, public Pool
 {
 
 	protected:
@@ -36,9 +36,9 @@ class IterativeProcessor : public Pool, public WorldProcessor
 		IterativeProcessor(int _chunkIndice);
 		IterativeProcessor();
 		~IterativeProcessor();
+		void bufferize(GameScene * gameScene, World * world);
 		Task* buildTask();
 		bool hasNext();
-		void bufferize(GameScene * gameScene, World * world);
 };
 
 #endif

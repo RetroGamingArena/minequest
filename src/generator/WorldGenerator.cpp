@@ -78,7 +78,6 @@ Octree* WorldGenerator::generate(int p, int q, int r)
         
         octree->setOctreeEntriesAt(generateOctreeEntry(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2), i);
     }
-    //delete octree;
     return octree;
 	// End of user code
 }
@@ -106,12 +105,10 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
         if(size==2)
         {
             octreeEntry = new Leaf(getCubeType(p+x, q+y, r+z));
-            //node->setOctreeEntriesAt(new Leaf(getCubeType(p+x, q+y, r+z)), i);
         }
         else
         {
             octreeEntry = generateOctreeEntry(p+x*size/2, q+y*size/2, r+z*size/2, size/2);
-            //node->setOctreeEntriesAt(generateOctreeEntry(p+x*size/2, q+y*size/2, r+z*size/2, size/2), i);
         }
         
         if(isCompressible)
@@ -143,26 +140,6 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
     }
     else
         return node;
-    //compression
-    /*Leaf** leaves = new Leaf*[8];
-    unsigned char type;
-    for(int ii = 7; ii >= 0; ii--)
-    {
-        leaves[ii] = dynamic_cast<Leaf*>(node->getOctreeEntries()[ii]);
-        if(leaves[ii] == NULL)
-            return node;
-        if(ii==7)
-            type = leaves[ii]->getType();
-        else
-            if(leaves[ii]->getType() != type)
-                return node;
-    }
-    delete node;
-    for(int ii = 7; ii >= 0; ii--)
-        leaves[ii] = NULL;
-    delete[] leaves;
-    return new Leaf(type);
-    return node;*/
-	// End of user code
+    // End of user code
 }
 
