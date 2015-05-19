@@ -66,8 +66,6 @@ void IterativeProcessor::bufferize(GameScene * gameScene, World * world)
     gameScene->getDoubleBuffer()->bufferizeIndice(2);
     gameScene->getDoubleBuffer()->bufferizeIndice(3);
     
-    
-    
     gameScene->getDoubleBuffer()->bufferizeIndice(0);
     gameScene->getDoubleBuffer()->bufferizeIndice(1);
     gameScene->getDoubleBuffer()->bufferizeIndice(4);

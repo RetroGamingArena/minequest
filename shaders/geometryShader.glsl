@@ -1,28 +1,39 @@
-#version 330
+#version 150
 
-layout (points) in;
-layout (points) out;
-layout (max_vertices = 1) out;
-
-struct vData
+layout(triangles) in;
+in VertexData
 {
-    vec3 normal;
-    vec4 color;
-};
+    vec3 offset;
+    vec3 fragmentColor;
+    vec3 cubeColor;
+    float vertexWidth;
+    float ao;
+} VertexIn[];
 
-in vData vertices[];
-out vData frag;
+/*out VertexData
+{
+    float fragmentColor;
+} VertexOut;*/
 
+layout (triangle_strip, max_vertices=3) out;
+out vec3 fragmentColor;
+out vec3 cubeColor;
+out float _vertexWidth;
+out float fragmentAo;
 
 void main()
 {
-    int i;
-    for(i = 0;i < gl_in.length();i++)
+    for(int i = 0; i < gl_in.length(); i++)
     {
-        frag.normal = vertices[i].normal;
-        frag.color = vertices[i].color;
+        // copy attributes
         gl_Position = gl_in[i].gl_Position;
+        
+        // done with the vertex
+        cubeColor = VertexIn[i].cubeColor;
+        fragmentColor = VertexIn[i].fragmentColor;
+        _vertexWidth = VertexIn[i].vertexWidth;
+        fragmentAo = VertexIn[i].ao;
+        
         EmitVertex();
     }
-    EndPrimitive();
 }

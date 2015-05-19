@@ -7,7 +7,7 @@
 
 WorldShader::WorldShader()
 // Start of user code super class
-: Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL)
+: Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL)//"shaders/geometryShader.glsl")
 // End of user code
 {
 	// Start of user code constructor

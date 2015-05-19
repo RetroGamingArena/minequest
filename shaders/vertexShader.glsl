@@ -28,6 +28,15 @@ uniform mat4x3 cameraUnprojection;
 
 uniform vec3 cameraPosition;
 
+out VertexData
+{
+    vec3 offset;
+    vec3 cubeColor;
+    vec3 fragmentColor;
+    float vertexWidth;
+    float ao;
+} VertexOut;
+
 void main()
 {
     gl_Position = P * V * M * vec4(vertexPosition_modelspace*vertexWidth+offset,1);
@@ -53,4 +62,8 @@ void main()
 
     vertexPosition = vec4(vertexPosition_modelspace,1);
     _vertexWidth = vertexWidth;
+    VertexOut.fragmentColor = fragmentColor;
+    VertexOut.cubeColor = cubeColor;
+    VertexOut.ao = fragmentAo;
+    VertexOut.vertexWidth = vertexWidth;
 }

@@ -56,8 +56,7 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     {
         if(world->isCubeVisible(p,q,r,size))
         {
-            //if(size==1)
-                world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
+            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
         }
     }
 	// End of user code
