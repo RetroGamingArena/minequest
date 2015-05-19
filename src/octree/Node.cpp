@@ -3,6 +3,8 @@
 #include "Node.h"
 // Start of user code includes
 #include "Chunk.h"
+#include "World.h"
+#include "Engine.h"
 //#include "CubeType.h"
 #include "Leaf.h"
 // End of user code
@@ -97,6 +99,9 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
 void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
 	// Start of user code bufferize
+     World* world = Engine::getInstance()->getWorld();
+    
+    Leaf** leaves = new Leaf*[8];
     for(int i = 0; i < 8; i++)
     {
         int x = (i%4)%2;
@@ -104,7 +109,26 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
         int z = (i%4)/2;
         
         //bufferize(scene, this->entries[i], p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
-        if(this->octreeEntries[i] != NULL)
+        if(size==2)
+        {
+            leaves[i] = dynamic_cast<Leaf*>(octreeEntries[i]);
+            if(i == 3)
+            {
+                if(leaves[0]->getType() == leaves[1]->getType() && leaves[1]->getType() == leaves[2]->getType() && leaves[2]->getType() == leaves[3]->getType())
+                {
+                    if(leaves[0]->getType())
+                    {
+                        world->bufferizeEntryOneHeight(vertexBuffer, leaves[0]->getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
+                        //this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
+                    }
+                }
+            }
+            else if (i>3)
+            {
+                this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
+            }
+        }
+        else if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
     }
 	// End of user code

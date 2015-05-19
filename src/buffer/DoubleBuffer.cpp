@@ -44,10 +44,16 @@ void DoubleBuffer::bufferizeVertex(float x, float y, float z, float type, float 
     getVertexBuffer()->getData()->push_back(x);
     getVertexBuffer()->getData()->push_back(y);
     getVertexBuffer()->getData()->push_back(z);
+    
+    getVertexBuffer()->getData()->push_back(1);
+    
+    getVertexBuffer()->getData()->push_back(1);
+    getVertexBuffer()->getData()->push_back(1);
+    getVertexBuffer()->getData()->push_back(1);
+    
     getVertexBuffer()->getData()->push_back(ao);
-    getVertexBuffer()->getData()->push_back(1);
-    getVertexBuffer()->getData()->push_back(1);
-	// End of user code
+    
+    // End of user code
 }
 void DoubleBuffer::bufferizeSquare(float x1, float y1, float z1, float x2, float y2, float z2, float type, float* ao)
 {

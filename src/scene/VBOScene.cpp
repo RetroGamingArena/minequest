@@ -74,10 +74,10 @@ void VBOScene::render()
         
         for(int i = 0; i < attributes.size(); i++)
         {
-            if( attributes[i]->getSize() == 3)
+            if( attributes[i]->getSize() == 3 && i == 2)
                 size=0;
             
-            glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 6 : 6) /*vBO->getSize()*/, (void*)(sizeof(GLfloat) * size) ); //0, NULL);
+            glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 8 : 8) /*vBO->getSize()*/, (void*)(sizeof(GLfloat) * size) ); //0, NULL);
             if(attributes[i]->getDivisor()>0)
                 glVertexAttribDivisor( i, attributes[i]->getDivisor());
             size += attributes[i]->getSize();
@@ -87,7 +87,7 @@ void VBOScene::render()
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 36, GL_UNSIGNED_INT, (void*)0, (data->size()-32)/6 );
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 36, GL_UNSIGNED_INT, (void*)0, (data->size()-64)/8 );
         
         for(int i = 0; i < attributes.size(); i++)
             glDisableVertexAttribArray(i);

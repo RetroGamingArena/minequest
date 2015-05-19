@@ -7,7 +7,7 @@ layout(location = 1) in float ambiant;
 
 layout(location = 2) in vec3 offset;
 layout(location = 3) in float vertexColorIndex;
-layout(location = 4) in float vertexWidth;
+layout(location = 4) in vec3 vertexWidth;
 layout(location = 5) in float ao;
 
 uniform mat4 MVP;
@@ -22,24 +22,26 @@ out vec3 fragmentColor;
 out vec3 cubeColor;
 
 out float fragmentAo;
-out float _vertexWidth;
+out vec3 _vertexWidth;
 
 uniform mat4x3 cameraUnprojection;
 
 uniform vec3 cameraPosition;
 
-out VertexData
+/*out VertexData
 {
     vec3 offset;
     vec3 cubeColor;
     vec3 fragmentColor;
     float vertexWidth;
     float ao;
-} VertexOut;
+} VertexOut;*/
 
 void main()
 {
-    gl_Position = P * V * M * vec4(vertexPosition_modelspace*vertexWidth+offset,1);
+    vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*vertexWidth.x, vertexPosition_modelspace.y*vertexWidth.y, vertexPosition_modelspace.z*vertexWidth.z);
+
+    gl_Position = P * V * M * vec4(vertexPosition_temp+offset,1);
     fragmentAo = 0.3 + ( ambiant ) * 0.7;
 
     fragmentAo *= ( (3-ao)/6 + 0.5);
@@ -60,10 +62,11 @@ void main()
     fragmentColor.g = vertexPosition_modelspace.y*16;
     fragmentColor.b = vertexPosition_modelspace.z*16;
 
-    vertexPosition = vec4(vertexPosition_modelspace,1);
+    vertexPosition = vec4(vertexPosition_temp,1);
     _vertexWidth = vertexWidth;
-    VertexOut.fragmentColor = fragmentColor;
+    
+    /*VertexOut.fragmentColor = fragmentColor;
     VertexOut.cubeColor = cubeColor;
     VertexOut.ao = fragmentAo;
-    VertexOut.vertexWidth = vertexWidth;
+    VertexOut.vertexWidth = vertexWidth;*/
 }

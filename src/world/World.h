@@ -35,6 +35,7 @@ class World : public Pool
 
 	public:
 		// Start of user code public
+        void bufferizeEntryOneHeight(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width);
 		// End of user code
 	static int size;
 		World(int _size, int _chunkIndice);
