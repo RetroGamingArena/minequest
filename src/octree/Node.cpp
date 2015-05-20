@@ -116,10 +116,21 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
             {
                 if(leaves[0]->getType() == leaves[1]->getType() && leaves[1]->getType() == leaves[2]->getType() && leaves[2]->getType() == leaves[3]->getType())
                 {
-                    if(leaves[0]->getType())
+                    if(leaves[0]->getType() > 0)
                     {
                         world->bufferizeEntryOneHeight(vertexBuffer, leaves[0]->getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
-                        //this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
+                    }
+                }
+                else
+                {
+                    for(int ii = 0; ii < 4; ii++)
+                    {
+                        int xx = (ii%4)%2;
+                        int yy = ii/4;
+                        int zz = (ii%4)/2;
+                        
+                        if(this->octreeEntries[ii] != NULL)
+                            this->octreeEntries[ii]->bufferize(vertexBuffer, p+xx*size/2.0, q+yy*size/2.0, r+zz*size/2.0, size/2.0);
                     }
                 }
             }

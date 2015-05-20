@@ -76,9 +76,8 @@ void World::bufferizeEntryOneHeight(VertexBuffer * vertexBuffer, unsigned char t
     //sizeTemp += width*width*width;
     
     return;
-    // End of user code
 }
-// End of user code
+    // End of user code
 
 Task* World::buildTask()
 {
@@ -102,7 +101,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 3;
+int World::size = 2;
 
 int World::getChunkIndice()
 {
@@ -177,7 +176,7 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
     data->push_back(width);
     data->push_back(width);
     
-    data->push_back(ao);
+    data->push_back(0.6);//ao);
     
     //sizeTemp += width*width*width;
     
@@ -220,18 +219,6 @@ unsigned char World::getCube(int x, int y, int z)
 	// End of user code
 }
 
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-
-void World::setChunksAt(Chunk* _chunks, int indice)
-{
-	chunks[indice] = _chunks;
-}
-
 WorldGenerator* World::getWorldGenerator()
 {
 	// Start of user code getWorldGenerator
@@ -244,3 +231,15 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
+
+void World::setChunksAt(Chunk* _chunks, int indice)
+{
+	chunks[indice] = _chunks;
+}
+

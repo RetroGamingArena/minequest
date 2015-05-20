@@ -6,9 +6,10 @@
 #include "Chunk.h"
 // End of user code
 
-PerlinGenerator::PerlinGenerator(utils::NoiseMap _heightMap)
+PerlinGenerator::PerlinGenerator(utils::NoiseMap _heightMap, int _waterHeight)
 {
 	heightMap = _heightMap;
+	waterHeight = _waterHeight;
 }
 
 PerlinGenerator::PerlinGenerator()
@@ -33,7 +34,7 @@ PerlinGenerator::PerlinGenerator()
     module::Perlin module;
     utils::NoiseMapBuilderPlane heightMapBuilder;
     
-    module.SetSeed(rand() % 100);
+    module.SetSeed(rand() % 10000);
     heightMapBuilder.SetSourceModule (module);
     heightMapBuilder.SetDestNoiseMap (heightMap);
     heightMapBuilder.SetDestSize (destSize, destSize);
@@ -91,11 +92,24 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     
     //return 4;
     
+    if(y<height && y >= waterHeight+40)
+        return 6;
+    if(y<height && y >= waterHeight+10)
+        return 5;
+    if(y<height && y >= waterHeight+2)
+        return 1;
+    if(y<height && y >= waterHeight+1)
+        return 3;
+    if(y>height && y <= waterHeight)
+        return 2;
     if(height<y)
         return 0;
     
-    unsigned char type;
-    if(y<16*Chunk::size*Chunk::subsize/32)
+    return 4;
+    
+    //unsigned char type;
+    
+    /*if(y<16*Chunk::size*Chunk::subsize/32)
         type = 2; //dirt
     else if(y<18*Chunk::size*Chunk::subsize/32)
         type = 3; //sand
@@ -106,12 +120,14 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     else if(y<28*Chunk::size*Chunk::subsize/32)
         type = 5; //rock
     else
-        type = 6; //snow
-    return type;
+        type = 6; //snow*/
+    
+    //return type;
 	// End of user code
 }
 
 
+int PerlinGenerator::waterHeight = 60;
 
 utils::NoiseMap PerlinGenerator::getHeightMap()
 {
@@ -124,6 +140,14 @@ void PerlinGenerator::setHeightMap(utils::NoiseMap _heightMap)
 {
 	heightMap = _heightMap;
 }
+
+int PerlinGenerator::getWaterHeight()
+{
+	// Start of user code getWaterHeight
+	// End of user code
+	return waterHeight;
+}
+
 
 
 

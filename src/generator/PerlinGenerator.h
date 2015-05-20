@@ -26,17 +26,20 @@ using namespace std;
 class PerlinGenerator : public WorldGenerator
 {
 	utils::NoiseMap heightMap;
+	static int waterHeight;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		PerlinGenerator(utils::NoiseMap _heightMap);
+		PerlinGenerator(utils::NoiseMap _heightMap, int _waterHeight);
 		PerlinGenerator();
 		~PerlinGenerator();
 		utils::NoiseMap getHeightMap();
 		void setHeightMap(utils::NoiseMap _heightMap);
+		static int getWaterHeight();
+		static void setWaterHeight(int _waterHeight);
 		float getY(float x, float z);
 		unsigned char getCubeType(int x, int y, int z);
 };

@@ -161,6 +161,18 @@ void UI::printText(const char * text, int x, int y, int size)
 	// End of user code
 }
 
+Shader* UI::getShader()
+{
+	// Start of user code getShader
+	// End of user code
+	return shader;
+}
+
+void UI::setShader(Shader* _shader)
+{
+	shader = _shader;
+}
+					
 vector<Control*> UI::getControls()
 {
 	// Start of user code getControls
@@ -195,17 +207,5 @@ DoubleBuffer* UI::getDoubleBuffer()
 void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
 {
 	doubleBuffer = _doubleBuffer;
-}
-					
-Shader* UI::getShader()
-{
-	// Start of user code getShader
-	// End of user code
-	return shader;
-}
-
-void UI::setShader(Shader* _shader)
-{
-	shader = _shader;
 }
 					
