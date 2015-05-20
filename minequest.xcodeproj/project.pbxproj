@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642FE33A1B0D0BD900BFB4FE /* Processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642FE3381B0D0BD900BFB4FE /* Processor.cpp */; };
 		6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BA0A1AF044C4006A0842 /* OctreeEntry.cpp */; };
 		6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAF91AF177A8006A0842 /* lodepng.cpp */; };
 		6440BAFF1AF17D71006A0842 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAFD1AF17D71006A0842 /* Engine.cpp */; };
@@ -116,6 +117,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		642FE3381B0D0BD900BFB4FE /* Processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Processor.cpp; sourceTree = "<group>"; };
+		642FE3391B0D0BD900BFB4FE /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
 		6440BA0A1AF044C4006A0842 /* OctreeEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OctreeEntry.cpp; path = src/octree/OctreeEntry.cpp; sourceTree = SOURCE_ROOT; };
 		6440BA0B1AF044C4006A0842 /* OctreeEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OctreeEntry.h; path = src/octree/OctreeEntry.h; sourceTree = SOURCE_ROOT; };
 		6440BA0D1AF1778D006A0842 /* fragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragmentShader.glsl; path = shaders/fragmentShader.glsl; sourceTree = "<group>"; };
@@ -864,6 +867,8 @@
 		6440BB651AFAA88A006A0842 /* processor */ = {
 			isa = PBXGroup;
 			children = (
+				642FE3381B0D0BD900BFB4FE /* Processor.cpp */,
+				642FE3391B0D0BD900BFB4FE /* Processor.h */,
 				64C9866B1AFC10D800A5B62E /* ChunkProcessorTask.cpp */,
 				64C9866C1AFC10D800A5B62E /* ChunkProcessorTask.h */,
 				6440BB661AFAA88A006A0842 /* IterativeProcessor.cpp */,
@@ -1082,6 +1087,7 @@
 				6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */,
 				6440BB4D1AF91866006A0842 /* Control.cpp in Sources */,
 				6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */,
+				642FE33A1B0D0BD900BFB4FE /* Processor.cpp in Sources */,
 				6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */,
 				64C986521AFACE9B00A5B62E /* Thread.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,

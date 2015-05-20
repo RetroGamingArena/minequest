@@ -37,6 +37,7 @@ class GameScene : public VoxelScene
 		// End of user code
 		GameScene();
 		~GameScene();
+		void reset();
 		vector<Item*> getItems();
 		void setItemsAt(Item* _items, int indice);
 };

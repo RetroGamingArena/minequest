@@ -13,6 +13,7 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "VertexBuffer.h"
 // End of user code
 
 
@@ -33,6 +34,7 @@ class Item
 		Item();
 		virtual ~Item(){};
 		void live(double dt);
+		virtual void draw(VertexBuffer * buffer) = 0;
 };
 
 #endif

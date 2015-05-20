@@ -127,7 +127,7 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 }
 
 
-int PerlinGenerator::waterHeight = 60;
+int PerlinGenerator::waterHeight = 10;	
 
 utils::NoiseMap PerlinGenerator::getHeightMap()
 {

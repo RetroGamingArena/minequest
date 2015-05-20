@@ -82,6 +82,18 @@ void DoubleBuffer::bufferizeSquare(float x1, float y1, float z1, float x2, float
 	// End of user code
 }
 
+VBO* DoubleBuffer::getVBO()
+{
+	// Start of user code getVBO
+	// End of user code
+	return vBO;
+}
+
+void DoubleBuffer::setVBO(VBO* _vBO)
+{
+	vBO = _vBO;
+}
+					
 VertexBuffer* DoubleBuffer::getVertexBuffer()
 {
 	// Start of user code getVertexBuffer
@@ -104,17 +116,5 @@ IndiceBuffer* DoubleBuffer::getIndiceBuffer()
 void DoubleBuffer::setIndiceBuffer(IndiceBuffer* _indiceBuffer)
 {
 	indiceBuffer = _indiceBuffer;
-}
-					
-VBO* DoubleBuffer::getVBO()
-{
-	// Start of user code getVBO
-	// End of user code
-	return vBO;
-}
-
-void DoubleBuffer::setVBO(VBO* _vBO)
-{
-	vBO = _vBO;
 }
 					

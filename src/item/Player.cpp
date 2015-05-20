@@ -26,6 +26,11 @@ Player::~Player()
 // Start of user code methods
 // End of user code
 
+void Player::draw(VertexBuffer * buffer)
+{
+	// Start of user code draw
+	// End of user code
+}
 
 
 

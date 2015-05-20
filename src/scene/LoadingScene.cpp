@@ -47,9 +47,25 @@ void LoadingScene::render()
         
         Engine* engine = Engine::getInstance();
         
-        engine->getWorldProcessor()->bufferize(gameScene, engine->getWorld());
+        gameScene->reset();
+        //gameScene->getDoubleBuffer()->getVertexBuffer()->init();
+        engine->getWorldProcessor()->process();//gameScene->getDoubleBuffer()->getVertexBuffer());////, engine->getWorld());
         
-        gameScene->getDoubleBuffer()->getVertexBuffer()->init();
+        vector<GLfloat>* gameSceneData = gameScene->getDoubleBuffer()->getVertexBuffer()->getData();
+        
+        for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size() ; i++)
+        {
+            Chunk* chunk = Engine::getInstance()->getWorld()->getChunks()[i];
+            
+            vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
+            
+            gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
+            chunkData->clear();
+            //delete chunk->getOctree();
+        }
+        
+        gameScene->getDoubleBuffer()->getVertexBuffer()->bind();
+        gameScene->getDoubleBuffer()->getIndiceBuffer()->bind();
         
         //gameScene->bindBuffer();
         engine->setScene(gameScene);
@@ -91,7 +107,10 @@ void LoadingScene::setMutex(std::mutex* _mutex)
 void LoadingScene::initWorld()
 {
 	// Start of user code initWorld
-    Engine::getInstance()->setWorld(new World());
+    Engine* engine = Engine::getInstance();
+    World* world = new World();
+    engine->getWorldProcessor()->setWorld(world);
+    Engine::getInstance()->setWorld(world);
     mutex->unlock();
 	// End of user code
 }

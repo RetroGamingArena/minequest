@@ -5,7 +5,7 @@
 #include "LoadingScene.h"
 #include "WorldShader.h"
 #include "TextShader.h"
-#include "IterativeProcessor.h"
+#include "WorldProcessor.h"
 #include "Label.h"
 #include "DebugUI.h"
 // End of user code
@@ -158,7 +158,7 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 void Engine::init()
 {
 	// Start of user code init
-    worldProcessor = new IterativeProcessor();
+    worldProcessor = new WorldProcessor();
     
     windowWidth = 1024;
     windowHeight = 768;
@@ -216,27 +216,6 @@ void Engine::init()
 	// End of user code
 }
 
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
-void Engine::setShadersAt(Shader* _shaders, int indice)
-{
-	shaders[indice] = _shaders;
-}
-
 WorldProcessor* Engine::getWorldProcessor()
 {
 	// Start of user code getWorldProcessor
@@ -249,18 +228,39 @@ void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
-Player* Engine::getPlayer()
+vector<Shader*> Engine::getShaders()
 {
-	// Start of user code getPlayer
+	// Start of user code getShaders
 	// End of user code
-	return player;
+	return shaders;
 }
 
-void Engine::setPlayer(Player* _player)
+void Engine::setShadersAt(Shader* _shaders, int indice)
 {
-	player = _player;
+	shaders[indice] = _shaders;
+}
+
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
 }
 					
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -273,15 +273,15 @@ void Engine::setWorld(World* _world)
 	world = _world;
 }
 					
-Scene* Engine::getScene()
+Player* Engine::getPlayer()
 {
-	// Start of user code getScene
+	// Start of user code getPlayer
 	// End of user code
-	return scene;
+	return player;
 }
 
-void Engine::setScene(Scene* _scene)
+void Engine::setPlayer(Player* _player)
 {
-	scene = _scene;
+	player = _player;
 }
 					

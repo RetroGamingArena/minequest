@@ -17,15 +17,18 @@
 #include "GameScene.h"
 // End of user code
 
+#include "IterativeProcessor.h"
 
+#include "World.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class WorldProcessor
+class WorldProcessor : public IterativeProcessor
 {
+	World* world;
 
 	protected:
 
@@ -33,8 +36,10 @@ class WorldProcessor
 		// Start of user code public
 		// End of user code
 		WorldProcessor();
-		virtual ~WorldProcessor(){};
-		virtual void bufferize(GameScene * gameScene, World * world) = 0;
+		~WorldProcessor();
+		void process();
+		World* getWorld();
+		void setWorld(World* _world);
 };
 
 #endif

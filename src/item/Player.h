@@ -37,6 +37,7 @@ class Player : public Item
 		~Player();
 		bool getFalling();
 		void setFalling(bool _falling);
+		void draw(VertexBuffer * buffer);
 };
 
 #endif
