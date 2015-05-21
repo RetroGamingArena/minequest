@@ -41,18 +41,6 @@ void ChunkProcessorTask::run()
 
 
 
-Processor* ChunkProcessorTask::getProcessor()
-{
-	// Start of user code getProcessor
-	// End of user code
-	return processor;
-}
-
-void ChunkProcessorTask::setProcessor(Processor* _processor)
-{
-	processor = _processor;
-}
-					
 Chunk* ChunkProcessorTask::getChunk()
 {
 	// Start of user code getChunk
@@ -63,5 +51,17 @@ Chunk* ChunkProcessorTask::getChunk()
 void ChunkProcessorTask::setChunk(Chunk* _chunk)
 {
 	chunk = _chunk;
+}
+					
+Processor* ChunkProcessorTask::getProcessor()
+{
+	// Start of user code getProcessor
+	// End of user code
+	return processor;
+}
+
+void ChunkProcessorTask::setProcessor(Processor* _processor)
+{
+	processor = _processor;
 }
 					

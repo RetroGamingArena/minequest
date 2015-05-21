@@ -68,7 +68,7 @@ class TrackBallCamera : public Camera
 		float getScrollSensitivity();
 		void setScrollSensitivity(float _scrollSensitivity);
 		void onMouseMotion(double xpos, double ypos);
-		void onKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods);
+		void onKeyboard(int key, int scancode, int action, int mods);
 		void onMouseButton(int button, int action);
 		void onMouseWheel(double xoffset, double yoffset);
 		glm::vec3 getRealPosition();

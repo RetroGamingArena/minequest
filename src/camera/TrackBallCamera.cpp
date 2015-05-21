@@ -79,7 +79,7 @@ void TrackBallCamera::onMouseMotion(double xpos, double ypos)
     oldY = ypos;
 	// End of user code
 }
-void TrackBallCamera::onKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
+void TrackBallCamera::onKeyboard(int key, int scancode, int action, int mods)
 {
 	// Start of user code onKeyboard
 	// End of user code

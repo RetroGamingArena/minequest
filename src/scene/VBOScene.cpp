@@ -14,7 +14,7 @@ VBOScene::VBOScene()
 // End of user code
 {
 	// Start of user code constructor
-    camera = new TrackBallCamera();
+    cameras.push_back(new TrackBallCamera());
     doubleBuffer = new DoubleBuffer();
     doubleBuffer->getVertexBuffer()->init();
     VBO* vBO = new VoxelVBO();
@@ -53,9 +53,9 @@ void VBOScene::render()
     //3D
     //glUniformMatrix4fv(matrixID, 1, GL_FALSE, &getCamera()->getMVP()[0][0]);
     
-    glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getCamera()->getModel()[0][0]);
-    glUniformMatrix4fv(shader->getVMatrixID(), 1, GL_FALSE, &getCamera()->getView()[0][0]);
-    glUniformMatrix4fv(shader->getPMatrixID(), 1, GL_FALSE, &getCamera()->getProjection()[0][0]);
+    glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getModel()[0][0]);
+    glUniformMatrix4fv(shader->getVMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getView()[0][0]);
+    glUniformMatrix4fv(shader->getPMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getProjection()[0][0]);
     //glUniformMatrix4fv(cameraUnprojectionID, 1, GL_FALSE, &getCamera()->getUnprojection()[0][0]);
     //glUniform3fv(cameraPositionVecID, 1, &getCamera()->getPosition()[0]);
     
@@ -102,13 +102,26 @@ void VBOScene::render()
 void VBOScene::onMouseMotion(double xpos, double ypos)
 {
 	// Start of user code onMouseMotion
-    camera->onMouseMotion(xpos, ypos);
+    getSelectedCamera()->onMouseMotion(xpos, ypos);
 	// End of user code
 }
 void VBOScene::onMouseScroll(double xoffset, double yoffset)
 {
 	// Start of user code onMouseScroll
-    camera->onMouseWheel(xoffset, yoffset);
+    getSelectedCamera()->onMouseWheel(xoffset, yoffset);
+	// End of user code
+}
+void VBOScene::onKey(int key, int scancode, int action, int mods)
+{
+	// Start of user code onKey
+    if(action == GLFW_RELEASE && key == GLFW_KEY_TAB)
+    {
+        selectedCameraIndex = (selectedCameraIndex+1) % cameras.size();
+    }
+    else
+    {
+        getSelectedCamera()->onKeyboard(key, scancode, action, mods);
+    }
 	// End of user code
 }
 

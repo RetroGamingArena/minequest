@@ -44,7 +44,7 @@ class Camera
 		void setProjection(glm::mat4 _projection);
 		void look();
 		virtual void onMouseMotion(double xpos, double ypos) = 0;
-		virtual void onKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods) = 0;
+		virtual void onKeyboard(int key, int scancode, int action, int mods) = 0;
 		virtual void onMouseButton(int button, int action) = 0;
 		virtual void onMouseWheel(double xoffset, double yoffset) = 0;
 		virtual glm::vec3 getRealPosition() = 0;

@@ -5,3 +5,14 @@ Start of user code init
 	// End of user code
 Start of user code render
 	// End of user code
+
+Thu May 21 21:00:52 CEST 2015
+================================================================================
+Start of user code getCamera
+	// End of user code
+
+Thu May 21 21:07:57 CEST 2015
+================================================================================
+Start of user code * getSelectedCamera
+    return cameras[selectedCameraIndex];
+	// End of user code

@@ -5,7 +5,6 @@
 #include "LoadingUI.h"
 #include "GameScene.h"
 #include "Engine.h"
-#include "TrackBallCamera.h"
 // End of user code
 
 LoadingScene::LoadingScene(std::thread* _thread, std::mutex* _mutex)
@@ -16,11 +15,11 @@ LoadingScene::LoadingScene(std::thread* _thread, std::mutex* _mutex)
 
 LoadingScene::LoadingScene()
 // Start of user code super class
+: VBOScene()
 // End of user code
 {
 	// Start of user code constructor
     thread = NULL;
-    camera = new TrackBallCamera();
     this->uI = new LoadingUI();
 	// End of user code
 }
@@ -62,6 +61,11 @@ void LoadingScene::render()
             gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
             chunkData->clear();
             //delete chunk->getOctree();
+        }
+
+        for(int i=0; i < gameScene->getItems().size() ; i++)
+        {
+            gameScene->getItems()[0]->draw(gameScene->getDoubleBuffer()->getVertexBuffer());
         }
         
         gameScene->getDoubleBuffer()->getVertexBuffer()->bind();

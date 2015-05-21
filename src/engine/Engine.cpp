@@ -93,8 +93,8 @@ int Engine::run()
     
     while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 )
     {
-        if(scene->getCamera() != NULL)
-            scene->getCamera()->look();
+        if(scene->getSelectedCamera() != NULL)
+            scene->getSelectedCamera()->look();
         scene->render();
         
         //FPS
@@ -133,7 +133,7 @@ void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int
 {
 	// Start of user code mouseButtonCallback
     Engine* engine = getInstance();
-    engine->getScene()->getCamera()->onMouseButton(button, action);
+    engine->getScene()->getSelectedCamera()->onMouseButton(button, action);
 	// End of user code
 }
 void Engine::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
@@ -153,7 +153,9 @@ void Engine::scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	// Start of user code keyCallBack
-	// End of user code
+    Engine* engine = getInstance();
+    engine->getScene()->onKey(key, scancode, action, mods);
+    // End of user code
 }
 void Engine::init()
 {
@@ -216,18 +218,6 @@ void Engine::init()
 	// End of user code
 }
 
-WorldProcessor* Engine::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					
 vector<Shader*> Engine::getShaders()
 {
 	// Start of user code getShaders
@@ -240,39 +230,6 @@ void Engine::setShadersAt(Shader* _shaders, int indice)
 	shaders[indice] = _shaders;
 }
 
-Scene* Engine::getScene()
-{
-	// Start of user code getScene
-	// End of user code
-	return scene;
-}
-
-void Engine::setScene(Scene* _scene)
-{
-	scene = _scene;
-}
-					
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
-World* Engine::getWorld()
-{
-	// Start of user code getWorld
-	// End of user code
-	return world;
-}
-
-void Engine::setWorld(World* _world)
-{
-	world = _world;
-}
-					
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -285,3 +242,48 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
+}
+					
+World* Engine::getWorld()
+{
+	// Start of user code getWorld
+	// End of user code
+	return world;
+}
+
+void Engine::setWorld(World* _world)
+{
+	world = _world;
+}
+					
+WorldProcessor* Engine::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
+}
+					
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+

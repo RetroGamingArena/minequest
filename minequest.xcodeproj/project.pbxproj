@@ -51,6 +51,7 @@
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
+		649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649DC5121B0E806300A6235E /* ItemCamera.cpp */; };
 		64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864A1AFACD4300A5B62E /* Pool.cpp */; };
 		64C986511AFACE9B00A5B62E /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864D1AFACE9B00A5B62E /* Task.cpp */; };
 		64C986521AFACE9B00A5B62E /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864F1AFACE9B00A5B62E /* Thread.cpp */; };
@@ -421,6 +422,8 @@
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
 		64687A411A6C2F2D00C0CAC3 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		649DC5121B0E806300A6235E /* ItemCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCamera.cpp; sourceTree = "<group>"; };
+		649DC5131B0E806300A6235E /* ItemCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCamera.h; sourceTree = "<group>"; };
 		64C9864A1AFACD4300A5B62E /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
 		64C9864B1AFACD4300A5B62E /* Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
 		64C9864D1AFACE9B00A5B62E /* Task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Task.cpp; sourceTree = "<group>"; };
@@ -777,6 +780,8 @@
 		6440BB0E1AF6A75B006A0842 /* camera */ = {
 			isa = PBXGroup;
 			children = (
+				649DC5121B0E806300A6235E /* ItemCamera.cpp */,
+				649DC5131B0E806300A6235E /* ItemCamera.h */,
 				6440BB0F1AF6A75B006A0842 /* Camera.cpp */,
 				6440BB101AF6A75B006A0842 /* Camera.h */,
 				6440BB111AF6A75B006A0842 /* TrackBallCamera.cpp */,
@@ -1093,6 +1098,7 @@
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
 				6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */,
 				6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */,
+				649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */,
 				6440BB531AF91E44006A0842 /* TextShader.cpp in Sources */,
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
 				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,

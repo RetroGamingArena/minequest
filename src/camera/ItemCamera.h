@@ -1,5 +1,5 @@
-#ifndef __VBOScene__
-#define __VBOScene__
+#ifndef __ItemCamera__
+#define __ItemCamera__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -15,33 +15,35 @@
 // Start of user code includes
 // End of user code
 
-#include "Scene.h"
+#include "Camera.h"
 
-#include "DoubleBuffer.h"
+#include "Item.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class VBOScene : public Scene
+class ItemCamera : public Camera
 {
+	Item* item;
 
 	protected:
-	DoubleBuffer* doubleBuffer;
 
 	public:
 		// Start of user code public
 		// End of user code
-		VBOScene();
-		~VBOScene();
-		DoubleBuffer* getDoubleBuffer();
-		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
-		void init();
-		void render();
+		ItemCamera();
+		~ItemCamera();
+		Item* getItem();
+		void setItem(Item* _item);
 		void onMouseMotion(double xpos, double ypos);
-		void onMouseScroll(double xoffset, double yoffset);
-		void onKey(int key, int scancode, int action, int mods);
+		void onKeyboard(int key, int scancode, int action, int mods);
+		void onMouseButton(int button, int action);
+		void onMouseWheel(double xoffset, double yoffset);
+		glm::vec3 getRealPosition();
+		glm::vec3 getRealCenter();
+		glm::vec3 getRealUp();
 };
 
 #endif

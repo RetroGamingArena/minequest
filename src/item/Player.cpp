@@ -14,7 +14,14 @@ Player::Player()
 // End of user code
 {
 	// Start of user code constructor
-	// End of user code
+    x=0;
+    y=16*4;
+    z=0;
+    
+    lx=0;
+	ly=0;
+    lz=0;
+    // End of user code
 }
 
 Player::~Player()
@@ -29,6 +36,29 @@ Player::~Player()
 void Player::draw(VertexBuffer * buffer)
 {
 	// Start of user code draw
+    buffer->getData()->push_back(x);
+    buffer->getData()->push_back(y);
+    buffer->getData()->push_back(z);
+    
+    buffer->getData()->push_back(2);
+    
+    buffer->getData()->push_back(16);
+    buffer->getData()->push_back(16);
+    buffer->getData()->push_back(16);
+    
+    buffer->getData()->push_back(0.5);
+    
+    buffer->getData()->push_back(x);
+    buffer->getData()->push_back(y+16);
+    buffer->getData()->push_back(z);
+    
+    buffer->getData()->push_back(2);
+    
+    buffer->getData()->push_back(16);
+    buffer->getData()->push_back(16);
+    buffer->getData()->push_back(16);
+    
+    buffer->getData()->push_back(0.5);
 	// End of user code
 }
 

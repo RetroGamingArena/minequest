@@ -27,14 +27,35 @@ class Item
 {
 
 	protected:
+	float x;
+	float y;
+	float z;
+	float lx;
+	float ly;
+	float lz;
 
 	public:
 		// Start of user code public
 		// End of user code
+		Item(float _x, float _y, float _z, float _lx, float _ly, float _lz);
 		Item();
 		virtual ~Item(){};
+		float getX();
+		void setX(float _x);
+		float getY();
+		void setY(float _y);
+		float getZ();
+		void setZ(float _z);
+		float getLx();
+		void setLx(float _lx);
+		float getLy();
+		void setLy(float _ly);
+		float getLz();
+		void setLz(float _lz);
 		void live(double dt);
 		virtual void draw(VertexBuffer * buffer) = 0;
+		glm::vec3 getPosition();
+		glm::vec3 getLook();
 };
 
 #endif

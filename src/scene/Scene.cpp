@@ -4,12 +4,17 @@
 // Start of user code includes
 // End of user code
 
+Scene::Scene(int _selectedCameraIndex)
+{
+	selectedCameraIndex = _selectedCameraIndex;
+}
 
 Scene::Scene()
 // Start of user code super class
 // End of user code
 {
 	// Start of user code constructor
+    selectedCameraIndex = 0;
 	// End of user code
 }
 
@@ -20,7 +25,37 @@ Scene::Scene()
 
 
 
+int Scene::getSelectedCameraIndex()
+{
+	// Start of user code getSelectedCameraIndex
+	// End of user code
+	return selectedCameraIndex;
+}
 
+void Scene::setSelectedCameraIndex(int _selectedCameraIndex)
+{
+	selectedCameraIndex = _selectedCameraIndex;
+}
+
+
+Camera* Scene::getSelectedCamera()
+{
+	// Start of user code getSelectedCamera
+    return cameras[selectedCameraIndex];
+	// End of user code
+}
+
+vector<Camera*> Scene::getCameras()
+{
+	// Start of user code getCameras
+	// End of user code
+	return cameras;
+}
+
+void Scene::setCamerasAt(Camera* _cameras, int indice)
+{
+	cameras[indice] = _cameras;
+}
 
 UI* Scene::getUI()
 {
@@ -32,17 +67,5 @@ UI* Scene::getUI()
 void Scene::setUI(UI* _uI)
 {
 	uI = _uI;
-}
-					
-Camera* Scene::getCamera()
-{
-	// Start of user code getCamera
-	// End of user code
-	return camera;
-}
-
-void Scene::setCamera(Camera* _camera)
-{
-	camera = _camera;
 }
 					

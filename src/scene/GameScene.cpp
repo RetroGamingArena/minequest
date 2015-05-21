@@ -3,6 +3,7 @@
 #include "GameScene.h"
 // Start of user code includes
 #include "Chunk.h"
+#include "ItemCamera.h"
 // End of user code
 
 
@@ -23,6 +24,9 @@ GameScene::~GameScene()
 // Start of user code methods
 GameScene::GameScene(Player* player)
 {
+    ItemCamera* itemCamera = new ItemCamera();
+    itemCamera->setItem(player);
+    cameras.push_back(itemCamera);
     items.push_back(player);
 }
 // End of user code
