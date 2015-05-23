@@ -1,5 +1,5 @@
-#ifndef __ChunkProcessorTask__
-#define __ChunkProcessorTask__
+#ifndef __Background__
+#define __Background__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -15,33 +15,31 @@
 // Start of user code includes
 // End of user code
 
-#include "Task.h"
 
-#include "Processor.h"
-#include "Chunk.h"
+#include "VertexBuffer.h"
+#include "BackgroundShader.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class ChunkProcessorTask : public Task
+class Background
 {
-	Processor* processor;
-	Chunk* chunk;
+	VertexBuffer* vertexBuffer;
+	BackgroundShader* backgroundShader;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		ChunkProcessorTask();
-		~ChunkProcessorTask();
-		Processor* getProcessor();
-		void setProcessor(Processor* _processor);
-		Chunk* getChunk();
-		void setChunk(Chunk* _chunk);
-		void run();
+		Background();
+		~Background();
+		void render();
+		VertexBuffer* getVertexBuffer();
+		BackgroundShader* getBackgroundShader();
+		void setBackgroundShader(BackgroundShader* _backgroundShader);
 };
 
 #endif

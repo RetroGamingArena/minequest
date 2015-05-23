@@ -48,9 +48,13 @@
 		6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB701AFABCE8006A0842 /* DebugUI.cpp */; };
 		6440BB781AFAC3AD006A0842 /* PerlinGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB741AFAC3AD006A0842 /* PerlinGenerator.cpp */; };
 		6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB761AFAC3AD006A0842 /* WorldGenerator.cpp */; };
+		6446D0B81B0FA61100D14B65 /* backgroundFragmentShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 647F978F1B0F9AEB00133A4C /* backgroundFragmentShader.glsl */; };
+		6446D0B91B0FA61100D14B65 /* backgroundVertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
+		647F97891B0F99A400133A4C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F97871B0F99A400133A4C /* Background.cpp */; };
+		647F978C1B0F99B300133A4C /* BackgroundShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F978A1B0F99B300133A4C /* BackgroundShader.cpp */; };
 		649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649DC5121B0E806300A6235E /* ItemCamera.cpp */; };
 		64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864A1AFACD4300A5B62E /* Pool.cpp */; };
 		64C986511AFACE9B00A5B62E /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864D1AFACE9B00A5B62E /* Task.cpp */; };
@@ -107,6 +111,8 @@
 			dstPath = ../Resources/shaders;
 			dstSubfolderSpec = 1;
 			files = (
+				6446D0B81B0FA61100D14B65 /* backgroundFragmentShader.glsl in CopyFiles */,
+				6446D0B91B0FA61100D14B65 /* backgroundVertexShader.glsl in CopyFiles */,
 				6440BB541AF95890006A0842 /* fragmentShader.glsl in CopyFiles */,
 				6440BB551AF95890006A0842 /* geometryShader.glsl in CopyFiles */,
 				6440BB561AF95890006A0842 /* uiFragmentShader.glsl in CopyFiles */,
@@ -422,6 +428,12 @@
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
 		64687A411A6C2F2D00C0CAC3 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		647F97871B0F99A400133A4C /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		647F97881B0F99A400133A4C /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		647F978A1B0F99B300133A4C /* BackgroundShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundShader.cpp; sourceTree = "<group>"; };
+		647F978B1B0F99B300133A4C /* BackgroundShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundShader.h; sourceTree = "<group>"; };
+		647F978F1B0F9AEB00133A4C /* backgroundFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundFragmentShader.glsl; path = shaders/backgroundFragmentShader.glsl; sourceTree = "<group>"; };
+		647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundVertexShader.glsl; path = shaders/backgroundVertexShader.glsl; sourceTree = "<group>"; };
 		649DC5121B0E806300A6235E /* ItemCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCamera.cpp; sourceTree = "<group>"; };
 		649DC5131B0E806300A6235E /* ItemCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCamera.h; sourceTree = "<group>"; };
 		64C9864A1AFACD4300A5B62E /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
@@ -794,6 +806,8 @@
 		6440BB1C1AF7B409006A0842 /* shader */ = {
 			isa = PBXGroup;
 			children = (
+				647F978A1B0F99B300133A4C /* BackgroundShader.cpp */,
+				647F978B1B0F99B300133A4C /* BackgroundShader.h */,
 				6440BB511AF91E44006A0842 /* TextShader.cpp */,
 				6440BB521AF91E44006A0842 /* TextShader.h */,
 				6440BB231AF7B849006A0842 /* ShaderLoader.cpp */,
@@ -926,6 +940,16 @@
 			path = ../textures;
 			sourceTree = "<group>";
 		};
+		647F97861B0F99A400133A4C /* background */ = {
+			isa = PBXGroup;
+			children = (
+				647F97871B0F99A400133A4C /* Background.cpp */,
+				647F97881B0F99A400133A4C /* Background.h */,
+			);
+			name = background;
+			path = src/background;
+			sourceTree = SOURCE_ROOT;
+		};
 		64C986491AFACD4300A5B62E /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,6 +992,7 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				647F97861B0F99A400133A4C /* background */,
 				64C986491AFACD4300A5B62E /* thread */,
 				6440BB731AFAC3AD006A0842 /* generator */,
 				6440BB6C1AFAAA08006A0842 /* world */,
@@ -1000,6 +1025,8 @@
 		64E85D721A5168070042EE5A /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				647F978F1B0F9AEB00133A4C /* backgroundFragmentShader.glsl */,
+				647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */,
 				6440BA0D1AF1778D006A0842 /* fragmentShader.glsl */,
 				6440BA111AF1778D006A0842 /* vertexShader.glsl */,
 				6440BA0E1AF1778D006A0842 /* geometryShader.glsl */,
@@ -1085,6 +1112,8 @@
 				6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
 				6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */,
+				647F978C1B0F99B300133A4C /* BackgroundShader.cpp in Sources */,
+				647F97891B0F99A400133A4C /* Background.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
 				64C986511AFACE9B00A5B62E /* Task.cpp in Sources */,
 				6440BB421AF8FB9E006A0842 /* VBO.cpp in Sources */,

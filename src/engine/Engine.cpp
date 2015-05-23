@@ -5,6 +5,7 @@
 #include "LoadingScene.h"
 #include "WorldShader.h"
 #include "TextShader.h"
+#include "BackgroundShader.h"
 #include "WorldProcessor.h"
 #include "Label.h"
 #include "DebugUI.h"
@@ -201,6 +202,7 @@ void Engine::init()
     
     shaders.push_back(new WorldShader());
     shaders.push_back(new TextShader());
+    shaders.push_back(new BackgroundShader());
     
     //VBOScene::programID = ShaderLoader::load( "shaders/vertexShader.glsl", "shaders/fragmentShader.glsl", NULL);//"shaders/geometryShader.glsl");
     //Scene::matrixID = glGetUniformLocation(VBOScene::programID, "MVP");
@@ -218,42 +220,6 @@ void Engine::init()
 	// End of user code
 }
 
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
-void Engine::setShadersAt(Shader* _shaders, int indice)
-{
-	shaders[indice] = _shaders;
-}
-
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
-Scene* Engine::getScene()
-{
-	// Start of user code getScene
-	// End of user code
-	return scene;
-}
-
-void Engine::setScene(Scene* _scene)
-{
-	scene = _scene;
-}
-					
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -276,6 +242,42 @@ WorldProcessor* Engine::getWorldProcessor()
 void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
 {
 	worldProcessor = _worldProcessor;
+}
+					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+void Engine::setShadersAt(Shader* _shaders, int indice)
+{
+	shaders[indice] = _shaders;
+}
+
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
+}
+					
+Player* Engine::getPlayer()
+{
+	// Start of user code getPlayer
+	// End of user code
+	return player;
+}
+
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
 }
 					
 Engine* Engine::getInstance()

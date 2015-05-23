@@ -99,4 +99,5 @@ void main()
     VertexOut.vertexWidth = vertexWidth;*/
     
     _vertexColorIndex = vertexColorIndex;
+    //gl_Position.z = -0.9;
 }

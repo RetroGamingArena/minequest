@@ -44,13 +44,18 @@ void VBOScene::render()
     Shader* shader = engine->getShaders()[0];
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glUseProgram(shader->getProgramID());
+    
     
     // Enable blending
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
+    if(background != NULL)
+        background->render();
+    
     //3D
+    
+    glUseProgram(shader->getProgramID());
     //glUniformMatrix4fv(matrixID, 1, GL_FALSE, &getCamera()->getMVP()[0][0]);
     
     glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getModel()[0][0]);
@@ -87,7 +92,7 @@ void VBOScene::render()
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 36, GL_UNSIGNED_INT, (void*)0, (data->size()-64)/8 );
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, 36, GL_UNSIGNED_INT, (void*)0, 8+(data->size()-64)/8 );
         
         for(int i = 0; i < attributes.size(); i++)
             glDisableVertexAttribArray(i);

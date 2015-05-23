@@ -47,8 +47,7 @@ void LoadingScene::render()
         Engine* engine = Engine::getInstance();
         
         gameScene->reset();
-        //gameScene->getDoubleBuffer()->getVertexBuffer()->init();
-        engine->getWorldProcessor()->process();//gameScene->getDoubleBuffer()->getVertexBuffer());////, engine->getWorld());
+        engine->getWorldProcessor()->process();
         
         vector<GLfloat>* gameSceneData = gameScene->getDoubleBuffer()->getVertexBuffer()->getData();
         
@@ -60,7 +59,6 @@ void LoadingScene::render()
             
             gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
             chunkData->clear();
-            //delete chunk->getOctree();
         }
 
         for(int i=0; i < gameScene->getItems().size() ; i++)
@@ -71,7 +69,6 @@ void LoadingScene::render()
         gameScene->getDoubleBuffer()->getVertexBuffer()->bind();
         gameScene->getDoubleBuffer()->getIndiceBuffer()->bind();
         
-        //gameScene->bindBuffer();
         engine->setScene(gameScene);
         engine->getPlayer()->setFalling(true);
         mutex->unlock();
