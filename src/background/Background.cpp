@@ -94,13 +94,6 @@ void Background::render()
 	// End of user code
 }
 
-VertexBuffer* Background::getVertexBuffer()
-{
-	// Start of user code getVertexBuffer
-	// End of user code
-	return vertexBuffer;
-}
-
 BackgroundShader* Background::getBackgroundShader()
 {
 	// Start of user code getBackgroundShader
@@ -113,3 +106,10 @@ void Background::setBackgroundShader(BackgroundShader* _backgroundShader)
 	backgroundShader = _backgroundShader;
 }
 					
+VertexBuffer* Background::getVertexBuffer()
+{
+	// Start of user code getVertexBuffer
+	// End of user code
+	return vertexBuffer;
+}
+

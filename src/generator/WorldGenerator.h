@@ -47,6 +47,7 @@ class WorldGenerator
 		virtual float getY(float x, float z) = 0;
 		virtual unsigned char getCubeType(int x, int y, int z) = 0;
 		Octree* generate(int p, int q, int r);
+		unsigned char getOcclusion(int x, int y, int z);
 };
 
 #endif

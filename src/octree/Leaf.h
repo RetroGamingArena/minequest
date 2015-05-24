@@ -26,17 +26,20 @@ using namespace std;
 class Leaf : public OctreeEntry
 {
 	unsigned char type;
+	unsigned char occlusion;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		Leaf(unsigned char _type);
+		Leaf(unsigned char _type, unsigned char _occlusion);
 		Leaf();
 		~Leaf();
 		unsigned char getType();
 		void setType(unsigned char _type);
+		unsigned char getOcclusion();
+		void setOcclusion(unsigned char _occlusion);
 		bool isCompressible();
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);

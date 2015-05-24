@@ -86,7 +86,8 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
 	// Start of user code generateOctreeEntry
     Node* node = new Node();
     unsigned char type = 0;
-    
+    unsigned char occlusion = 0;
+
     bool isCompressible = true;
     
     int x = 0;
@@ -104,7 +105,7 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
         
         if(size==2)
         {
-            octreeEntry = new Leaf(getCubeType(p+x, q+y, r+z));
+            octreeEntry = new Leaf(getCubeType(p+x, q+y, r+z), getOcclusion(p+x, q+y, r+z));
         }
         else
         {
@@ -123,8 +124,9 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
                 if(i == 0)
                 {
                     type = leaf->getType();
+                    occlusion = leaf->getOcclusion();
                 }
-                else if(leaf->getType() != type)
+                else if(leaf->getType() != type || leaf->getOcclusion() != occlusion)
                 {
                     isCompressible = false;
                 }
@@ -136,10 +138,23 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
     if(isCompressible)
     {
         delete node;
-        return new Leaf(type);
+        return new Leaf(type, occlusion);
     }
     else
         return node;
     // End of user code
+}
+unsigned char WorldGenerator::getOcclusion(int x, int y, int z)
+{
+	// Start of user code getOcclusion
+    float ao = 0;
+    if( getCubeType(x-1, y+1, z) > 0 )
+        ao += 1;
+    if( getCubeType(x, y+1, z-1) > 0 )
+        ao += 1;
+    if( getCubeType(x-1, y+1, z-1) > 0 )
+        ao += 1;
+    return ao;
+	// End of user code
 }
 

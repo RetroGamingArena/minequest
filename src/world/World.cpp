@@ -101,7 +101,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 0;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -147,12 +147,12 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     return false;
 	// End of user code
 }
-void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width)
+void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, unsigned char occlusion)
 {
 	// Start of user code bufferizeEntry
     float offset = Chunk::size*Chunk::subsize*size;
     
-    float ao = 0;
+    /*float ao = 0;
     
     if(width==1)
     {
@@ -162,7 +162,7 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
             ao += (this->getCube(p*Chunk::subsize, q*Chunk::subsize+1, r*Chunk::subsize-1) > 0);
         if( (offset*2 + p*Chunk::subsize-1) > offset && (offset*2 + r*Chunk::subsize-1) > offset )
             ao += (this->getCube(p*Chunk::subsize-1, q*Chunk::subsize+1, r*Chunk::subsize-1) > 0);
-    }
+    }*/
     
     vector<GLfloat>* data = vertexBuffer->getData();
     
@@ -176,7 +176,7 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
     data->push_back(width);
     data->push_back(width);
     
-    data->push_back(0.6);//ao);
+    data->push_back(occlusion);//0.6);//ao);
     
     //sizeTemp += width*width*width;
     

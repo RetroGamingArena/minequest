@@ -17,8 +17,8 @@
 
 
 #include "UI.h"
-#include "Background.h"
 #include "Camera.h"
+#include "Background.h"
 
 using namespace std;
 
@@ -31,8 +31,8 @@ class Scene
 	protected:
 	int selectedCameraIndex;
 	UI* uI;
-	Background* background;
 	vector<Camera*> cameras;
+	Background* background;
 
 	public:
 		// Start of user code public
@@ -50,9 +50,9 @@ class Scene
 		virtual void onKey(int key, int scancode, int action, int mods) = 0;
 		UI* getUI();
 		void setUI(UI* _uI);
-		Background* getBackground();
 		vector<Camera*> getCameras();
 		void setCamerasAt(Camera* _cameras, int indice);
+		Background* getBackground();
 };
 
 #endif

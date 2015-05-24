@@ -24,10 +24,11 @@ PerlinGenerator::PerlinGenerator()
     
     int destSize;
     
-    lowerXBound = 2.0;
-    upperXBound = 3.0;
-    lowerYBound = 1.0;
-    upperYBound = 2.5;
+    lowerXBound = 0.0;
+    upperXBound = 0.8*(World::size+1);
+    
+    lowerYBound = 0.0;
+    upperYBound = 0.8*(World::size+1);
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);//224 * 8;
     

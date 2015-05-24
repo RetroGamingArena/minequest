@@ -16,8 +16,8 @@
 // End of user code
 
 
-#include "VertexBuffer.h"
 #include "BackgroundShader.h"
+#include "VertexBuffer.h"
 
 using namespace std;
 
@@ -26,8 +26,8 @@ using namespace std;
 
 class Background
 {
-	VertexBuffer* vertexBuffer;
 	BackgroundShader* backgroundShader;
+	VertexBuffer* vertexBuffer;
 
 	protected:
 
@@ -37,9 +37,9 @@ class Background
 		Background();
 		~Background();
 		void render();
-		VertexBuffer* getVertexBuffer();
 		BackgroundShader* getBackgroundShader();
 		void setBackgroundShader(BackgroundShader* _backgroundShader);
+		VertexBuffer* getVertexBuffer();
 };
 
 #endif

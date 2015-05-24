@@ -17,8 +17,8 @@
 
 
 #include "VertexBuffer.h"
-#include "IndiceBuffer.h"
 #include "VBO.h"
+#include "IndiceBuffer.h"
 
 using namespace std;
 
@@ -28,8 +28,8 @@ using namespace std;
 class DoubleBuffer
 {
 	VertexBuffer* vertexBuffer;
-	IndiceBuffer* indiceBuffer;
 	VBO* vBO;
+	IndiceBuffer* indiceBuffer;
 
 	protected:
 
@@ -43,10 +43,10 @@ class DoubleBuffer
 		void bufferizeSquare(float x1, float y1, float z1, float x2, float y2, float z2, float type, float* ao);
 		VertexBuffer* getVertexBuffer();
 		void setVertexBuffer(VertexBuffer* _vertexBuffer);
-		IndiceBuffer* getIndiceBuffer();
-		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
 		VBO* getVBO();
 		void setVBO(VBO* _vBO);
+		IndiceBuffer* getIndiceBuffer();
+		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
 };
 
 #endif

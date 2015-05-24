@@ -7,9 +7,10 @@
 #include "World.h"
 // End of user code
 
-Leaf::Leaf(unsigned char _type)
+Leaf::Leaf(unsigned char _type, unsigned char _occlusion)
 {
 	type = _type;
+	occlusion = _occlusion;
 }
 
 Leaf::Leaf()
@@ -56,7 +57,7 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     {
         if(world->isCubeVisible(p,q,r,size))
         {
-            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
+            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, occlusion);
         }
     }
 	// End of user code
@@ -74,6 +75,18 @@ unsigned char Leaf::getType()
 void Leaf::setType(unsigned char _type)
 {
 	type = _type;
+}
+
+unsigned char Leaf::getOcclusion()
+{
+	// Start of user code getOcclusion
+	// End of user code
+	return occlusion;
+}
+
+void Leaf::setOcclusion(unsigned char _occlusion)
+{
+	occlusion = _occlusion;
 }
 
 
