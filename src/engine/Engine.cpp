@@ -11,11 +11,13 @@
 #include "DebugUI.h"
 // End of user code
 
-Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight)
+Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime)
 {
 	window = _window;
 	windowWidth = _windowWidth;
 	windowHeight = _windowHeight;
+	oldTime = _oldTime;
+	currentTime = _currentTime;
 }
 
 Engine::Engine()
@@ -75,6 +77,30 @@ void Engine::setWindowHeight(int _windowHeight)
 	windowHeight = _windowHeight;
 }
 
+float Engine::getOldTime()
+{
+	// Start of user code getOldTime
+	// End of user code
+	return oldTime;
+}
+
+void Engine::setOldTime(float _oldTime)
+{
+	oldTime = _oldTime;
+}
+
+float Engine::getCurrentTime()
+{
+	// Start of user code getCurrentTime
+	// End of user code
+	return currentTime;
+}
+
+void Engine::setCurrentTime(float _currentTime)
+{
+	currentTime = _currentTime;
+}
+
 
 int Engine::run()
 {
@@ -117,6 +143,8 @@ int Engine::run()
             nbFrames = 0;
             lastTime += 1.0;
         }
+        
+        refresh();
         
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -217,28 +245,23 @@ void Engine::init()
     scene = new LoadingScene();
     //scene = new VoxelScene(window);
     scene->init();
+    
+    oldTime = glfwGetTime();
+	currentTime = glfwGetTime();
+    // End of user code
+}
+float Engine::getDt()
+{
+	// Start of user code getDt
+    return currentTime - oldTime;
 	// End of user code
 }
-
-Engine* Engine::getInstance()
+void Engine::refresh()
 {
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
+	// Start of user code refresh
+    oldTime = currentTime;
+    currentTime = glfwGetTime();
 	// End of user code
-	return instance;
-}
-
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
-void Engine::setShadersAt(Shader* _shaders, int indice)
-{
-	shaders[indice] = _shaders;
 }
 
 WorldProcessor* Engine::getWorldProcessor()
@@ -253,16 +276,25 @@ void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
-World* Engine::getWorld()
+Engine* Engine::getInstance()
 {
-	// Start of user code getWorld
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
 	// End of user code
-	return world;
+	return instance;
 }
 
-void Engine::setWorld(World* _world)
+Scene* Engine::getScene()
 {
-	world = _world;
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
 }
 					
 Player* Engine::getPlayer()
@@ -277,15 +309,27 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
-Scene* Engine::getScene()
+vector<Shader*> Engine::getShaders()
 {
-	// Start of user code getScene
+	// Start of user code getShaders
 	// End of user code
-	return scene;
+	return shaders;
 }
 
-void Engine::setScene(Scene* _scene)
+void Engine::setShadersAt(Shader* _shaders, int indice)
 {
-	scene = _scene;
+	shaders[indice] = _shaders;
+}
+
+World* Engine::getWorld()
+{
+	// Start of user code getWorld
+	// End of user code
+	return world;
+}
+
+void Engine::setWorld(World* _world)
+{
+	world = _world;
 }
 					

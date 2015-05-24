@@ -33,11 +33,16 @@ class Item
 	float lx;
 	float ly;
 	float lz;
+	float dx;
+	float dy;
+	float dz;
+	float weight;
 
 	public:
 		// Start of user code public
 		// End of user code
-		Item(float _x, float _y, float _z, float _lx, float _ly, float _lz);
+	static float g;
+		Item(float _x, float _y, float _z, float _lx, float _ly, float _lz, float _dx, float _dy, float _dz, float _weight, float _g);
 		Item();
 		virtual ~Item(){};
 		float getX();
@@ -52,10 +57,19 @@ class Item
 		void setLy(float _ly);
 		float getLz();
 		void setLz(float _lz);
-		void live(double dt);
+		float getDx();
+		void setDx(float _dx);
+		float getDy();
+		void setDy(float _dy);
+		float getDz();
+		void setDz(float _dz);
+		float getWeight();
+		void setWeight(float _weight);
+		virtual bool live(double dt) = 0;
 		virtual void draw(VertexBuffer * buffer) = 0;
 		glm::vec3 getPosition();
 		glm::vec3 getLook();
+		bool tryMove();
 };
 
 #endif

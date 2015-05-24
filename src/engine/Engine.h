@@ -16,12 +16,12 @@
 // End of user code
 
 
-#include "Engine.h"
-#include "Shader.h"
 #include "WorldProcessor.h"
-#include "World.h"
-#include "Player.h"
+#include "Engine.h"
 #include "Scene.h"
+#include "Player.h"
+#include "Shader.h"
+#include "World.h"
 
 using namespace std;
 
@@ -30,22 +30,24 @@ using namespace std;
 
 class Engine
 {
-	static Engine* instance;
-	vector<Shader*> shaders;
 	WorldProcessor* worldProcessor;
-	World* world;
-	Player* player;
+	static Engine* instance;
 	Scene* scene;
+	Player* player;
+	vector<Shader*> shaders;
+	World* world;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
+	float oldTime;
+	float currentTime;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight);
+		Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime);
 		Engine();
 		~Engine();
 		GLFWwindow* getWindow();
@@ -54,23 +56,29 @@ class Engine
 		void setWindowWidth(int _windowWidth);
 		int getWindowHeight();
 		void setWindowHeight(int _windowHeight);
+		float getOldTime();
+		void setOldTime(float _oldTime);
+		float getCurrentTime();
+		void setCurrentTime(float _currentTime);
 		int run();
 		static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 		static void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 		static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 		static void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
 		void init();
-		static Engine* getInstance();
-		vector<Shader*> getShaders();
-		void setShadersAt(Shader* _shaders, int indice);
+		float getDt();
+		void refresh();
 		WorldProcessor* getWorldProcessor();
 		void setWorldProcessor(WorldProcessor* _worldProcessor);
-		World* getWorld();
-		void setWorld(World* _world);
-		Player* getPlayer();
-		void setPlayer(Player* _player);
+		static Engine* getInstance();
 		Scene* getScene();
 		void setScene(Scene* _scene);
+		Player* getPlayer();
+		void setPlayer(Player* _player);
+		vector<Shader*> getShaders();
+		void setShadersAt(Shader* _shaders, int indice);
+		World* getWorld();
+		void setWorld(World* _world);
 };
 
 #endif

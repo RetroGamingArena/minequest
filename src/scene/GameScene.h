@@ -28,6 +28,7 @@ using namespace std;
 class GameScene : public VoxelScene
 {
 	vector<Item*> items;
+	int chunksOffset;
 
 	protected:
 
@@ -35,9 +36,14 @@ class GameScene : public VoxelScene
 		// Start of user code public
         GameScene(Player* player);
 		// End of user code
+		GameScene(int _chunksOffset);
 		GameScene();
 		~GameScene();
+		int getChunksOffset();
+		void setChunksOffset(int _chunksOffset);
 		void reset();
+		void render();
+		void refreshItemsBuffer();
 		vector<Item*> getItems();
 		void setItemsAt(Item* _items, int indice);
 };

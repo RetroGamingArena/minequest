@@ -46,18 +46,13 @@ Camera* Scene::getSelectedCamera()
 	// End of user code
 }
 
-UI* Scene::getUI()
+Background* Scene::getBackground()
 {
-	// Start of user code getUI
+	// Start of user code getBackground
 	// End of user code
-	return uI;
+	return background;
 }
 
-void Scene::setUI(UI* _uI)
-{
-	uI = _uI;
-}
-					
 vector<Camera*> Scene::getCameras()
 {
 	// Start of user code getCameras
@@ -70,10 +65,15 @@ void Scene::setCamerasAt(Camera* _cameras, int indice)
 	cameras[indice] = _cameras;
 }
 
-Background* Scene::getBackground()
+UI* Scene::getUI()
 {
-	// Start of user code getBackground
+	// Start of user code getUI
 	// End of user code
-	return background;
+	return uI;
 }
 
+void Scene::setUI(UI* _uI)
+{
+	uI = _uI;
+}
+					

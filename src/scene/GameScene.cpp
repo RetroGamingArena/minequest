@@ -4,8 +4,13 @@
 // Start of user code includes
 #include "Chunk.h"
 #include "ItemCamera.h"
+#include "Engine.h"
 // End of user code
 
+GameScene::GameScene(int _chunksOffset)
+{
+	chunksOffset = _chunksOffset;
+}
 
 GameScene::GameScene()
 // Start of user code super class
@@ -33,6 +38,18 @@ GameScene::GameScene(Player* player)
 
 
 
+
+int GameScene::getChunksOffset()
+{
+	// Start of user code getChunksOffset
+	// End of user code
+	return chunksOffset;
+}
+
+void GameScene::setChunksOffset(int _chunksOffset)
+{
+	chunksOffset = _chunksOffset;
+}
 
 
 void GameScene::reset()
@@ -97,6 +114,31 @@ void GameScene::reset()
     doubleBuffer->bufferizeIndice(5);
     doubleBuffer->bufferizeIndice(6);
     doubleBuffer->bufferizeIndice(7);
+	// End of user code
+}
+void GameScene::render()
+{
+	// Start of user code render
+    bool refresh = false;
+    for(int i = 0; i < items.size(); i++)
+        if(items[i]->live(Engine::getInstance()->getDt()))
+            refresh = true;
+    if(refresh)
+        refreshItemsBuffer();
+    VoxelScene::render();
+	// End of user code
+}
+void GameScene::refreshItemsBuffer()
+{
+	// Start of user code refreshItemsBuffer
+    int offset = chunksOffset;
+    
+    vector<GLfloat>* datas =  doubleBuffer->getVertexBuffer()->getData();
+    
+    doubleBuffer->getVertexBuffer()->getData()->erase(datas->begin()+offset, datas->end());
+    for(int i=0; i < items.size() ; i++)
+        items[0]->draw(doubleBuffer->getVertexBuffer());
+    doubleBuffer->getVertexBuffer()->bind();
 	// End of user code
 }
 

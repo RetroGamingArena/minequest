@@ -102,15 +102,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Chunk::bufferizeCube(VBOScene*, int):Chunk.cpp">
-      </ContextState>
-      <ContextState
          contextName = "WorldGenerator::generateOctreeEntry(int, int, int, int):WorldGenerator.cpp">
          <PersistentStrings>
             <PersistentString
                value = "node-&gt;getOctreeEntries()[i]">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Chunk::bufferizeCube(VBOScene*, int):Chunk.cpp">
       </ContextState>
       <ContextState
          contextName = "IterativeProcessor::bufferize(GameScene*, World*):IterativeProcessor.cpp">
@@ -181,13 +181,13 @@
          contextName = "VBOScene::bindBuffer():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
+               value = "sizeof(g_vertex_buffer_data)">
+            </PersistentString>
+            <PersistentString
                value = "sizeof(GLfloat)*9">
             </PersistentString>
             <PersistentString
                value = "getVertexCount()">
-            </PersistentString>
-            <PersistentString
-               value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -272,10 +272,10 @@
          contextName = "Node::generate(WorldGenerator*, int, int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "this-&gt;entries[i]">
+               value = "q+y*size/2.0">
             </PersistentString>
             <PersistentString
-               value = "q+y*size/2.0">
+               value = "this-&gt;entries[i]">
             </PersistentString>
             <PersistentString
                value = "(q+size*(y+1)/2)">
@@ -332,6 +332,14 @@
          <PersistentStrings>
             <PersistentString
                value = "getPosition()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Item::tryMove():Item.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "dy">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

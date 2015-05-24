@@ -32,7 +32,6 @@ void WorldProcessor::process()
     threadCount = 5;
     this->start();
     while(isRunning()){}
-    
 	// End of user code
 }
 

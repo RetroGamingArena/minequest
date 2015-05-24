@@ -61,6 +61,9 @@ void LoadingScene::render()
             chunkData->clear();
         }
 
+        gameScene->setChunksOffset(gameSceneData->size());
+        
+        //
         for(int i=0; i < gameScene->getItems().size() ; i++)
         {
             gameScene->getItems()[0]->draw(gameScene->getDoubleBuffer()->getVertexBuffer());
@@ -71,6 +74,10 @@ void LoadingScene::render()
         
         engine->setScene(gameScene);
         engine->getPlayer()->setFalling(true);
+        
+        //double refresh
+        engine->refresh();
+
         mutex->unlock();
     }
 }

@@ -173,6 +173,18 @@ void UI::setFontTexture(Texture* _fontTexture)
 	fontTexture = _fontTexture;
 }
 					
+Shader* UI::getShader()
+{
+	// Start of user code getShader
+	// End of user code
+	return shader;
+}
+
+void UI::setShader(Shader* _shader)
+{
+	shader = _shader;
+}
+					
 DoubleBuffer* UI::getDoubleBuffer()
 {
 	// Start of user code getDoubleBuffer
@@ -197,15 +209,3 @@ void UI::setControlsAt(Control* _controls, int indice)
 	controls[indice] = _controls;
 }
 
-Shader* UI::getShader()
-{
-	// Start of user code getShader
-	// End of user code
-	return shader;
-}
-
-void UI::setShader(Shader* _shader)
-{
-	shader = _shader;
-}
-					
