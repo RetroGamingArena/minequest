@@ -185,18 +185,6 @@ void UI::setShader(Shader* _shader)
 	shader = _shader;
 }
 					
-DoubleBuffer* UI::getDoubleBuffer()
-{
-	// Start of user code getDoubleBuffer
-	// End of user code
-	return doubleBuffer;
-}
-
-void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
-{
-	doubleBuffer = _doubleBuffer;
-}
-					
 vector<Control*> UI::getControls()
 {
 	// Start of user code getControls
@@ -209,3 +197,15 @@ void UI::setControlsAt(Control* _controls, int indice)
 	controls[indice] = _controls;
 }
 
+DoubleBuffer* UI::getDoubleBuffer()
+{
+	// Start of user code getDoubleBuffer
+	// End of user code
+	return doubleBuffer;
+}
+
+void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
+{
+	doubleBuffer = _doubleBuffer;
+}
+					

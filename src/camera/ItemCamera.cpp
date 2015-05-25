@@ -2,6 +2,7 @@
 
 #include "ItemCamera.h"
 // Start of user code includes
+#include "Chunk.h"
 // End of user code
 
 
@@ -47,7 +48,10 @@ glm::vec3 ItemCamera::getRealPosition()
 {
 	// Start of user code getRealPosition
     glm::vec3 position = item->getPosition();
+    position.y /= Chunk::subsize;
     position.y+=2;
+    position.x=0.5;
+    position.z=-1;
     return position;
 	// End of user code
 }
@@ -55,7 +59,10 @@ glm::vec3 ItemCamera::getRealCenter()
 {
 	// Start of user code getRealCenter
     glm::vec3 look = item->getLook();
+    look.y /= Chunk::subsize;
     look.y+=2;
+    look.x=0.5;
+    look.z=50;
     return look;
 	// End of user code
 }

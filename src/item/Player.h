@@ -26,17 +26,20 @@ using namespace std;
 class Player : public Item
 {
 	bool falling;
+	float hRotation;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		Player(bool _falling);
+		Player(bool _falling, float _hRotation);
 		Player();
 		~Player();
 		bool getFalling();
 		void setFalling(bool _falling);
+		float getHRotation();
+		void setHRotation(float _hRotation);
 		bool live(double dt);
 		void draw(VertexBuffer * buffer);
 };

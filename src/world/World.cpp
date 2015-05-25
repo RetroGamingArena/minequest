@@ -101,7 +101,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 1;
+int World::size = 1;	
 
 int World::getChunkIndice()
 {
@@ -219,18 +219,6 @@ unsigned char World::getCube(int x, int y, int z)
 	// End of user code
 }
 
-WorldGenerator* World::getWorldGenerator()
-{
-	// Start of user code getWorldGenerator
-	// End of user code
-	return worldGenerator;
-}
-
-void World::setWorldGenerator(WorldGenerator* _worldGenerator)
-{
-	worldGenerator = _worldGenerator;
-}
-					
 vector<Chunk*> World::getChunks()
 {
 	// Start of user code getChunks
@@ -243,3 +231,15 @@ void World::setChunksAt(Chunk* _chunks, int indice)
 	chunks[indice] = _chunks;
 }
 
+WorldGenerator* World::getWorldGenerator()
+{
+	// Start of user code getWorldGenerator
+	// End of user code
+	return worldGenerator;
+}
+
+void World::setWorldGenerator(WorldGenerator* _worldGenerator)
+{
+	worldGenerator = _worldGenerator;
+}
+					

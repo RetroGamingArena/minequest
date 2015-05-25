@@ -5,9 +5,10 @@
 #include "Chunk.h"
 // End of user code
 
-Player::Player(bool _falling)
+Player::Player(bool _falling, float _hRotation)
 {
 	falling = _falling;
+	hRotation = _hRotation;
 }
 
 Player::Player()
@@ -20,8 +21,8 @@ Player::Player()
     z=0;
     
     lx=0;
-	ly=0;
-    lz=0;
+    ly=1*Chunk::subsize;
+    lz=1*Chunk::subsize;
     
     dx=0;
     dy=0;
@@ -89,6 +90,18 @@ bool Player::getFalling()
 void Player::setFalling(bool _falling)
 {
 	falling = _falling;
+}
+
+float Player::getHRotation()
+{
+	// Start of user code getHRotation
+	// End of user code
+	return hRotation;
+}
+
+void Player::setHRotation(float _hRotation)
+{
+	hRotation = _hRotation;
 }
 
 
