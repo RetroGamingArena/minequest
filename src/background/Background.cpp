@@ -52,6 +52,21 @@ Background::Background()
    // vertexBuffer->getData()->push_back(0);
     //vertexBuffer->getData()->push_back(1);
     
+    //glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+    
+    GLuint VertexArrayID;// = background->getVertexBuffer()->getId();
+    glGenVertexArrays(1, &VertexArrayID);
+    glBindVertexArray(VertexArrayID);
+    
+    vertexBuffer->init();
+    
+    /*GLuint id;
+    glGenBuffers(1, &id);
+    glBindBuffer(GL_ARRAY_BUFFER, id);*/
+    
+    vector<GLfloat>* data = vertexBuffer->getData();
+    glBufferData(GL_ARRAY_BUFFER, sizeof(unsigned int)*data->size(), &(*data)[0], GL_STATIC_DRAW);
+    //vertexBuffer->init();
 	// End of user code
 }
 
@@ -71,14 +86,14 @@ Background::~Background()
 void Background::render()
 {
 	// Start of user code render
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);// | GL_DEPTH_BUFFER_BIT);
     
     glUseProgram(backgroundShader->getProgramID());
     
-    vertexBuffer->init();
-    
     glEnableVertexAttribArray(0);
     //glEnableVertexAttribArray(1);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->getId());
     
     glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
     //glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, 0, (void*)2 );

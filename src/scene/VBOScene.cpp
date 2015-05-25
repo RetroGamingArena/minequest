@@ -45,13 +45,17 @@ void VBOScene::render()
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    
     // Enable blending
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    if(background != NULL)
-        background->render();
+
+    //if(background != NULL)
+    //    background->render();
+    
+    //glBindBuffer(GL_ARRAY_BUFFER, 0);
+    
+    //return;
     
     //3D
     

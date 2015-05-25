@@ -17,6 +17,7 @@ GameScene::GameScene()
 // End of user code
 {
 	// Start of user code constructor
+    background = new Background();
 	// End of user code
 }
 
