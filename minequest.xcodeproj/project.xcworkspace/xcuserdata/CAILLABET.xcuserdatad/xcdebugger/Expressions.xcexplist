@@ -181,13 +181,13 @@
          contextName = "VBOScene::bindBuffer():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "sizeof(g_vertex_buffer_data)">
+               value = "getVertexCount()">
             </PersistentString>
             <PersistentString
                value = "sizeof(GLfloat)*9">
             </PersistentString>
             <PersistentString
-               value = "getVertexCount()">
+               value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -272,10 +272,10 @@
          contextName = "Node::generate(WorldGenerator*, int, int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "q+y*size/2.0">
+               value = "this-&gt;entries[i]">
             </PersistentString>
             <PersistentString
-               value = "this-&gt;entries[i]">
+               value = "q+y*size/2.0">
             </PersistentString>
             <PersistentString
                value = "(q+size*(y+1)/2)">
@@ -295,7 +295,25 @@
          contextName = "VBOScene::render():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
+               value = "(sizeof(GLfloat) * size + attributes[i]-&gt;getDivisor()&gt;0 ? 48 : 0)">
+            </PersistentString>
+            <PersistentString
                value = "getCamera()">
+            </PersistentString>
+            <PersistentString
+               value = "sizeof(GLfloat) * size + sizeof(GLfloat)*(divisor&gt;0 ? 32 : 0)">
+            </PersistentString>
+            <PersistentString
+               value = "sizeof(GLfloat)*divisor&gt;0 ? 32 : 0">
+            </PersistentString>
+            <PersistentString
+               value = "sizeof(GLfloat) * size ">
+            </PersistentString>
+            <PersistentString
+               value = "attributes[i]-&gt;getDivisor()">
+            </PersistentString>
+            <PersistentString
+               value = "sizeof(GLfloat)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
