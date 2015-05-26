@@ -30,6 +30,11 @@ void LoadingUI::render()
     UI::render();
 	// End of user code
 }
+void LoadingUI::refresh()
+{
+	// Start of user code refresh
+	// End of user code
+}
 
 
 

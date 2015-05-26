@@ -11,13 +11,14 @@
 #include "DebugUI.h"
 // End of user code
 
-Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime)
+Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime, int _FPS)
 {
 	window = _window;
 	windowWidth = _windowWidth;
 	windowHeight = _windowHeight;
 	oldTime = _oldTime;
 	currentTime = _currentTime;
+	FPS = _FPS;
 }
 
 Engine::Engine()
@@ -101,6 +102,18 @@ void Engine::setCurrentTime(float _currentTime)
 	currentTime = _currentTime;
 }
 
+int Engine::getFPS()
+{
+	// Start of user code getFPS
+	// End of user code
+	return FPS;
+}
+
+void Engine::setFPS(int _FPS)
+{
+	FPS = _FPS;
+}
+
 
 int Engine::run()
 {
@@ -128,18 +141,20 @@ int Engine::run()
         nbFrames++;
         double currentTime = glfwGetTime();
         double dt = currentTime - lastTime;
-        double FPS;
+        //double FPS;
         //live(dt);
         if ( dt >= (1.0 / 60) )
         {
             FPS = nbFrames;
-            Label* label = (Label*)scene->getUI()->getControls()[0];
+            
+            /*Label* label = (Label*)scene->getUI()->getControls()[0];
             char caption [25];
             if(dynamic_cast<DebugUI*>(scene->getUI()) != 0)
             {
                 sprintf (caption, "Minequest - FPS:  %i t", nbFrames);
                 label->setCaption(caption);
-            }
+            }*/
+            
             nbFrames = 0;
             lastTime += 1.0;
         }
@@ -264,30 +279,18 @@ void Engine::refresh()
 	// End of user code
 }
 
-WorldProcessor* Engine::getWorldProcessor()
+World* Engine::getWorld()
 {
-	// Start of user code getWorldProcessor
+	// Start of user code getWorld
 	// End of user code
-	return worldProcessor;
+	return world;
 }
 
-void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
+void Engine::setWorld(World* _world)
 {
-	worldProcessor = _worldProcessor;
+	world = _world;
 }
 					
-vector<Shader*> Engine::getShaders()
-{
-	// Start of user code getShaders
-	// End of user code
-	return shaders;
-}
-
-void Engine::setShadersAt(Shader* _shaders, int indice)
-{
-	shaders[indice] = _shaders;
-}
-
 Scene* Engine::getScene()
 {
 	// Start of user code getScene
@@ -309,16 +312,16 @@ Engine* Engine::getInstance()
 	return instance;
 }
 
-World* Engine::getWorld()
+WorldProcessor* Engine::getWorldProcessor()
 {
-	// Start of user code getWorld
+	// Start of user code getWorldProcessor
 	// End of user code
-	return world;
+	return worldProcessor;
 }
 
-void Engine::setWorld(World* _world)
+void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
 {
-	world = _world;
+	worldProcessor = _worldProcessor;
 }
 					
 Player* Engine::getPlayer()
@@ -333,3 +336,15 @@ void Engine::setPlayer(Player* _player)
 	player = _player;
 }
 					
+vector<Shader*> Engine::getShaders()
+{
+	// Start of user code getShaders
+	// End of user code
+	return shaders;
+}
+
+void Engine::setShadersAt(Shader* _shaders, int indice)
+{
+	shaders[indice] = _shaders;
+}
+

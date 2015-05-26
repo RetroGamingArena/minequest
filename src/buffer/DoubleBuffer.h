@@ -16,9 +16,9 @@
 // End of user code
 
 
-#include "VertexBuffer.h"
-#include "IndiceBuffer.h"
 #include "VBO.h"
+#include "IndiceBuffer.h"
+#include "VertexBuffer.h"
 
 using namespace std;
 
@@ -27,9 +27,9 @@ using namespace std;
 
 class DoubleBuffer
 {
-	VertexBuffer* vertexBuffer;
-	IndiceBuffer* indiceBuffer;
 	VBO* vBO;
+	IndiceBuffer* indiceBuffer;
+	VertexBuffer* vertexBuffer;
 
 	protected:
 
@@ -41,12 +41,12 @@ class DoubleBuffer
 		void bufferizeIndice(float indice);
 		void bufferizeVertex(float x, float y, float z, float type, float ao);
 		void bufferizeSquare(float x1, float y1, float z1, float x2, float y2, float z2, float type, float* ao);
-		VertexBuffer* getVertexBuffer();
-		void setVertexBuffer(VertexBuffer* _vertexBuffer);
-		IndiceBuffer* getIndiceBuffer();
-		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
 		VBO* getVBO();
 		void setVBO(VBO* _vBO);
+		IndiceBuffer* getIndiceBuffer();
+		void setIndiceBuffer(IndiceBuffer* _indiceBuffer);
+		VertexBuffer* getVertexBuffer();
+		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 };
 
 #endif

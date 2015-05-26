@@ -34,6 +34,7 @@ class LoadingUI : public UI
 		LoadingUI();
 		~LoadingUI();
 		void render();
+		void refresh();
 };
 
 #endif

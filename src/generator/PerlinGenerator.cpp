@@ -30,7 +30,7 @@ PerlinGenerator::PerlinGenerator()
     lowerYBound = 0.0;
     upperYBound = 0.8*(World::size+1);
     
-    destSize = Chunk::size*Chunk::subsize*(World::size*2+1);//224 * 8;
+    destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
     module::Perlin module;
     utils::NoiseMapBuilderPlane heightMapBuilder;

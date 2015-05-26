@@ -39,6 +39,11 @@ void Label::render()
 	// Start of user code render
 	// End of user code
 }
+void Label::refresh()
+{
+	// Start of user code refresh
+	// End of user code
+}
 
 
 

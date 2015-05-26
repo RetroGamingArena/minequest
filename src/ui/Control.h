@@ -40,6 +40,7 @@ class Control
 		int getY();
 		void setY(int _y);
 		virtual void render() = 0;
+		virtual void refresh() = 0;
 };
 
 #endif

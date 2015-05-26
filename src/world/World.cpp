@@ -7,10 +7,11 @@
 #include "Chunk.h"
 // End of user code
 
-World::World(int _size, int _chunkIndice)
+World::World(int _size, int _chunkIndice, int _cubeCount)
 {
 	size = _size;
 	chunkIndice = _chunkIndice;
+	cubeCount = _cubeCount;
 }
 
 World::World()
@@ -66,7 +67,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 1;
+int World::size = 1;	
 
 int World::getChunkIndice()
 {
@@ -78,6 +79,18 @@ int World::getChunkIndice()
 void World::setChunkIndice(int _chunkIndice)
 {
 	chunkIndice = _chunkIndice;
+}
+
+int World::getCubeCount()
+{
+	// Start of user code getCubeCount
+	// End of user code
+	return cubeCount;
+}
+
+void World::setCubeCount(int _cubeCount)
+{
+	cubeCount = _cubeCount;
 }
 
 
@@ -143,8 +156,7 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
     
     data->push_back(occlusion);//0.6);//ao);
     
-    //sizeTemp += width*width*width;
-    
+    cubeCount += (width*width*width);
     return;
 	// End of user code
 }
@@ -199,6 +211,8 @@ void World::bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, 
     data->push_back(width);
     
     data->push_back(occlusion);
+    
+    cubeCount += (width*width*height);
 	// End of user code
 }
 

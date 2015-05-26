@@ -17,6 +17,8 @@
 
 #include "UI.h"
 
+#include "Label.h"
+#include "Label.h"
 
 using namespace std;
 
@@ -25,6 +27,8 @@ using namespace std;
 
 class DebugUI : public UI
 {
+	Label* fPSLabel;
+	Label* cubesCountLabel;
 
 	protected:
 
@@ -33,7 +37,12 @@ class DebugUI : public UI
 		// End of user code
 		DebugUI();
 		~DebugUI();
+		Label* getFPSLabel();
+		void setFPSLabel(Label* _fPSLabel);
+		Label* getCubesCountLabel();
+		void setCubesCountLabel(Label* _cubesCountLabel);
 		void render();
+		void refresh();
 };
 
 #endif

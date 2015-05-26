@@ -39,6 +39,7 @@ class Label : public Control
 		char* getCaption();
 		void setCaption(char* _caption);
 		void render();
+		void refresh();
 };
 
 #endif

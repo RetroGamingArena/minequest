@@ -53,6 +53,8 @@ UI::UI()
 // Start of user code methods
 void UI::render()
 {
+    refresh();
+    
     glUseProgram(shader->getProgramID());
     
     //glUniformMatrix4fv(matrixID, 1, GL_FALSE, &MVP[0][0]);
@@ -173,16 +175,16 @@ void UI::setShader(Shader* _shader)
 	shader = _shader;
 }
 					
-DoubleBuffer* UI::getDoubleBuffer()
+Texture* UI::getFontTexture()
 {
-	// Start of user code getDoubleBuffer
+	// Start of user code getFontTexture
 	// End of user code
-	return doubleBuffer;
+	return fontTexture;
 }
 
-void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
+void UI::setFontTexture(Texture* _fontTexture)
 {
-	doubleBuffer = _doubleBuffer;
+	fontTexture = _fontTexture;
 }
 					
 vector<Control*> UI::getControls()
@@ -197,15 +199,15 @@ void UI::setControlsAt(Control* _controls, int indice)
 	controls[indice] = _controls;
 }
 
-Texture* UI::getFontTexture()
+DoubleBuffer* UI::getDoubleBuffer()
 {
-	// Start of user code getFontTexture
+	// Start of user code getDoubleBuffer
 	// End of user code
-	return fontTexture;
+	return doubleBuffer;
 }
 
-void UI::setFontTexture(Texture* _fontTexture)
+void UI::setDoubleBuffer(DoubleBuffer* _doubleBuffer)
 {
-	fontTexture = _fontTexture;
+	doubleBuffer = _doubleBuffer;
 }
 					

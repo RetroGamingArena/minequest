@@ -16,12 +16,12 @@
 // End of user code
 
 
-#include "WorldProcessor.h"
-#include "Shader.h"
+#include "World.h"
 #include "Scene.h"
 #include "Engine.h"
-#include "World.h"
+#include "WorldProcessor.h"
 #include "Player.h"
+#include "Shader.h"
 
 using namespace std;
 
@@ -30,24 +30,25 @@ using namespace std;
 
 class Engine
 {
-	WorldProcessor* worldProcessor;
-	vector<Shader*> shaders;
+	World* world;
 	Scene* scene;
 	static Engine* instance;
-	World* world;
+	WorldProcessor* worldProcessor;
 	Player* player;
+	vector<Shader*> shaders;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
 	float oldTime;
 	float currentTime;
+	int FPS;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime);
+		Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime, int _FPS);
 		Engine();
 		~Engine();
 		GLFWwindow* getWindow();
@@ -60,6 +61,8 @@ class Engine
 		void setOldTime(float _oldTime);
 		float getCurrentTime();
 		void setCurrentTime(float _currentTime);
+		int getFPS();
+		void setFPS(int _FPS);
 		int run();
 		static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 		static void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
@@ -68,17 +71,17 @@ class Engine
 		void init();
 		float getDt();
 		void refresh();
-		WorldProcessor* getWorldProcessor();
-		void setWorldProcessor(WorldProcessor* _worldProcessor);
-		vector<Shader*> getShaders();
-		void setShadersAt(Shader* _shaders, int indice);
+		World* getWorld();
+		void setWorld(World* _world);
 		Scene* getScene();
 		void setScene(Scene* _scene);
 		static Engine* getInstance();
-		World* getWorld();
-		void setWorld(World* _world);
+		WorldProcessor* getWorldProcessor();
+		void setWorldProcessor(WorldProcessor* _worldProcessor);
 		Player* getPlayer();
 		void setPlayer(Player* _player);
+		vector<Shader*> getShaders();
+		void setShadersAt(Shader* _shaders, int indice);
 };
 
 #endif

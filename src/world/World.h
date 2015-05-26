@@ -30,6 +30,7 @@ class World : public Pool
 	vector<Chunk*> chunks;
 	WorldGenerator* worldGenerator;
 	int chunkIndice;
+	int cubeCount;
 
 	protected:
 
@@ -37,11 +38,13 @@ class World : public Pool
 		// Start of user code public
 		// End of user code
 	static int size;
-		World(int _size, int _chunkIndice);
+		World(int _size, int _chunkIndice, int _cubeCount);
 		World();
 		~World();
 		int getChunkIndice();
 		void setChunkIndice(int _chunkIndice);
+		int getCubeCount();
+		void setCubeCount(int _cubeCount);
 		bool isCubeVisible(int x, int y, int z, int size);
 		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, unsigned char occlusion);
 		unsigned char getCube(int x, int y, int z);
