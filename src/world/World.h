@@ -35,7 +35,6 @@ class World : public Pool
 
 	public:
 		// Start of user code public
-        void bufferizeEntryOneHeight(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width);
 		// End of user code
 	static int size;
 		World(int _size, int _chunkIndice);
@@ -46,6 +45,7 @@ class World : public Pool
 		bool isCubeVisible(int x, int y, int z, int size);
 		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, unsigned char occlusion);
 		unsigned char getCube(int x, int y, int z);
+		void bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, int height, unsigned char occlusion);
 		vector<Chunk*> getChunks();
 		void setChunksAt(Chunk* _chunks, int indice);
 		WorldGenerator* getWorldGenerator();

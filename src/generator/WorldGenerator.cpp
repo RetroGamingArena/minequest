@@ -86,6 +86,7 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
 	// Start of user code generateOctreeEntry
     Node* node = new Node();
     unsigned char type = 0;
+    Leaf* _leaf = NULL;
     unsigned char occlusion = 0;
 
     bool isCompressible = true;
@@ -105,7 +106,11 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
         
         if(size==2)
         {
-            octreeEntry = new Leaf(getCubeType(p+x, q+y, r+z), getOcclusion(p+x, q+y, r+z));
+            unsigned char type = getCubeType(p+x, q+y, r+z);
+            if(type == 0)
+                octreeEntry = NULL;
+            else
+                octreeEntry = new Leaf(getCubeType(p+x, q+y, r+z), getOcclusion(p+x, q+y, r+z));
         }
         else
         {
@@ -114,15 +119,28 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
         
         if(isCompressible)
         {
-            leaf = dynamic_cast<Leaf*>(octreeEntry);
-            if(leaf == NULL)
-            {
-                isCompressible = false;
-            }
-            else
+            if(octreeEntry == NULL)
             {
                 if(i == 0)
                 {
+                    _leaf = NULL;
+                }
+                if(i > 0)
+                {
+                    if(_leaf != NULL || octreeEntry != NULL)
+                        isCompressible = false;
+                }
+            }
+            else
+            {
+                leaf = dynamic_cast<Leaf*>(octreeEntry);
+                if(leaf == NULL)
+                {
+                    isCompressible = false;
+                }
+                else if(i == 0)
+                {
+                    _leaf = leaf;
                     type = leaf->getType();
                     occlusion = leaf->getOcclusion();
                 }
@@ -137,8 +155,16 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
     }
     if(isCompressible)
     {
-        delete node;
-        return new Leaf(type, occlusion);
+        if (_leaf == NULL)
+        {
+            delete node;
+            return NULL;
+        }
+        else
+        {
+            delete node;
+            return new Leaf(type, occlusion);
+        }
     }
     else
         return node;

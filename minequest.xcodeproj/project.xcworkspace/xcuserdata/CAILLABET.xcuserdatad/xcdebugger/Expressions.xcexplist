@@ -354,6 +354,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Node::bufferize(VertexBuffer*, float, float, float, float):Node.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "leaves[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Item::tryMove():Item.cpp">
          <PersistentStrings>
             <PersistentString

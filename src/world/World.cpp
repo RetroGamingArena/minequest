@@ -42,42 +42,7 @@ World::~World()
 }
 
 // Start of user code methods
-void World::bufferizeEntryOneHeight(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width)
-{
-    // Start of user code bufferizeEntry
-    float offset = Chunk::size*Chunk::subsize*size;
-    
-    float ao = 0;
-    
-    if(width==1)
-    {
-        if( (offset*2 + p*Chunk::subsize-1) > offset && (offset*2 + r*Chunk::subsize) > offset )
-            ao += (this->getCube(p*Chunk::subsize-1, q*Chunk::subsize+1, r*Chunk::subsize) > 0);
-        if( (offset*2 + p*Chunk::subsize) > offset   && (offset*2 + r*Chunk::subsize-1) > offset )
-            ao += (this->getCube(p*Chunk::subsize, q*Chunk::subsize+1, r*Chunk::subsize-1) > 0);
-        if( (offset*2 + p*Chunk::subsize-1) > offset && (offset*2 + r*Chunk::subsize-1) > offset )
-            ao += (this->getCube(p*Chunk::subsize-1, q*Chunk::subsize+1, r*Chunk::subsize-1) > 0);
-    }
-    
-    vector<GLfloat>* data = vertexBuffer->getData();
-    
-    data->push_back(p);
-    data->push_back(q);
-    data->push_back(r);
-    
-    data->push_back(type);
-    
-    data->push_back(width);
-    data->push_back(1);
-    data->push_back(width);
-    
-    data->push_back(ao);
-    
-    //sizeTemp += width*width*width;
-    
-    return;
-}
-    // End of user code
+// End of user code
 
 Task* World::buildTask()
 {
@@ -216,6 +181,24 @@ unsigned char World::getCube(int x, int y, int z)
     }
     
     return 0;
+	// End of user code
+}
+void World::bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, int height, unsigned char occlusion)
+{
+	// Start of user code bufferizeEntryRect
+    vector<GLfloat>* data = vertexBuffer->getData();
+    
+    data->push_back(p);
+    data->push_back(q);
+    data->push_back(r);
+    
+    data->push_back(type);
+    
+    data->push_back(width);
+    data->push_back(height);
+    data->push_back(width);
+    
+    data->push_back(occlusion);
 	// End of user code
 }
 

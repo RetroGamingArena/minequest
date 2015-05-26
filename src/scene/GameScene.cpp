@@ -142,6 +142,11 @@ void GameScene::refreshItemsBuffer()
     doubleBuffer->getVertexBuffer()->bind();
 	// End of user code
 }
+void GameScene::onKey(int key, int scancode, int action, int mods)
+{
+	// Start of user code onKey
+	// End of user code
+}
 
 vector<Item*> GameScene::getItems()
 {

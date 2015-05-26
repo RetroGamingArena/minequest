@@ -99,49 +99,36 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
 void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
 	// Start of user code bufferize
-     World* world = Engine::getInstance()->getWorld();
+    World* world = Engine::getInstance()->getWorld();
     
     Leaf** leaves = new Leaf*[8];
+    
+    for(int i = 0; i < 8; i++)
+        leaves[i] = dynamic_cast<Leaf*>(octreeEntries[i]);
+    
     for(int i = 0; i < 8; i++)
     {
+        if(i == 0)
+            if(leaves[0] != NULL && leaves[1] != NULL && leaves[2] != NULL && leaves[3] != NULL &&
+               leaves[0]->getType() == leaves[1]->getType() && leaves[1]->getType() == leaves[2]->getType() && leaves[2]->getType() == leaves[3]->getType() &&
+               leaves[0]->getOcclusion() == leaves[1]->getOcclusion() && leaves[1]->getOcclusion() == leaves[2]->getOcclusion() && leaves[2]->getOcclusion() == leaves[3]->getOcclusion())
+            {
+                if(leaves[0]->getType() > 0)
+                {
+                    world->bufferizeEntryRect(vertexBuffer, leaves[0]->getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size/2, leaves[0]->getOcclusion());
+                }
+                i = 4;
+            }
+        
         int x = (i%4)%2;
         int y = i/4;
         int z = (i%4)/2;
-        
-        //bufferize(scene, this->entries[i], p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
-        if(size==2)
-        {
-            leaves[i] = dynamic_cast<Leaf*>(octreeEntries[i]);
-            if(i == 3)
-            {
-                if(leaves[0]->getType() == leaves[1]->getType() && leaves[1]->getType() == leaves[2]->getType() && leaves[2]->getType() == leaves[3]->getType())
-                {
-                    if(leaves[0]->getType() > 0)
-                    {
-                        world->bufferizeEntryOneHeight(vertexBuffer, leaves[0]->getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size);
-                    }
-                }
-                else
-                {
-                    for(int ii = 0; ii < 4; ii++)
-                    {
-                        int xx = (ii%4)%2;
-                        int yy = ii/4;
-                        int zz = (ii%4)/2;
-                        
-                        if(this->octreeEntries[ii] != NULL)
-                            this->octreeEntries[ii]->bufferize(vertexBuffer, p+xx*size/2.0, q+yy*size/2.0, r+zz*size/2.0, size/2.0);
-                    }
-                }
-            }
-            else if (i>3)
-            {
-                this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
-            }
-        }
-        else if(this->octreeEntries[i] != NULL)
+            
+        if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
     }
+
+    delete[] leaves;
 	// End of user code
 }
 
@@ -185,6 +172,7 @@ OctreeEntry* Node::get(int x, int y, int z)
 void Node::split()
 {
 	// Start of user code split
+    this->octreeEntries.reserve(8);
     for(int i = 0; i < 8; i++)
         this->octreeEntries.push_back(NULL);
 	// End of user code

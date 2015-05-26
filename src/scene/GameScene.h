@@ -44,6 +44,7 @@ class GameScene : public VoxelScene
 		void reset();
 		void render();
 		void refreshItemsBuffer();
+		void onKey(int key, int scancode, int action, int mods);
 		vector<Item*> getItems();
 		void setItemsAt(Item* _items, int indice);
 };
