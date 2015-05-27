@@ -84,36 +84,22 @@ void GameScene::reset()
     
     doubleBuffer->bufferizeSquare(x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
     
-    doubleBuffer->bufferizeIndice(0);
-    doubleBuffer->bufferizeIndice(1);
-    doubleBuffer->bufferizeIndice(2);
-    doubleBuffer->bufferizeIndice(3);
-    
-    doubleBuffer->bufferizeIndice(0);
-    doubleBuffer->bufferizeIndice(1);
     doubleBuffer->bufferizeIndice(4);
-    doubleBuffer->bufferizeIndice(5);
+    doubleBuffer->bufferizeIndice(6);
+    doubleBuffer->bufferizeIndice(0);
+    doubleBuffer->bufferizeIndice(2);
     
-    
-    doubleBuffer->bufferizeIndice(1);
     doubleBuffer->bufferizeIndice(3);
-    doubleBuffer->bufferizeIndice(5);
+    doubleBuffer->bufferizeIndice(6);
     doubleBuffer->bufferizeIndice(7);
-    
-    
-    doubleBuffer->bufferizeIndice(3);
-    doubleBuffer->bufferizeIndice(2);
-    doubleBuffer->bufferizeIndice(7);
-    doubleBuffer->bufferizeIndice(6);
-    
-    doubleBuffer->bufferizeIndice(2);
-    doubleBuffer->bufferizeIndice(0);
-    doubleBuffer->bufferizeIndice(6);
     doubleBuffer->bufferizeIndice(4);
-    
-    doubleBuffer->bufferizeIndice(4);
+
     doubleBuffer->bufferizeIndice(5);
-    doubleBuffer->bufferizeIndice(6);
+    doubleBuffer->bufferizeIndice(0);
+    doubleBuffer->bufferizeIndice(1);
+    doubleBuffer->bufferizeIndice(3);
+    
+    doubleBuffer->bufferizeIndice(5);
     doubleBuffer->bufferizeIndice(7);
 	// End of user code
 }

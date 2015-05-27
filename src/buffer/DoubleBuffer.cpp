@@ -32,7 +32,7 @@ void DoubleBuffer::bufferizeIndice(float indice)
 {
 	// Start of user code bufferizeIndice
     int size = indiceBuffer->getData()->size()/36;
-    indiceBuffer->getData()->push_back(size*8+indice);
+    indiceBuffer->getData()->push_back(indice);//size*8+indice);
 	// End of user code
 }
 void DoubleBuffer::bufferizeVertex(float x, float y, float z, float type, float ao)
