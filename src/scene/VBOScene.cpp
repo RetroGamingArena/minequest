@@ -86,7 +86,7 @@ void VBOScene::render()
             if( i == 2 )
                 size=0;
             
-            float stride = sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 8 : 4);
+            float stride = sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 4 : 4);
             int divisor = attributes[i]->getDivisor();
             GLvoid* offset = (GLvoid*)(sizeof(GLfloat) * size + sizeof(GLfloat)*(divisor > 0 ? 32 : 0));
             
@@ -100,7 +100,7 @@ void VBOScene::render()
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLE_STRIP, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/8 );
+        glDrawElementsInstanced(GL_TRIANGLE_STRIP, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
         
         for(int i = 0; i < attributes.size(); i++)
             glDisableVertexAttribArray(i);

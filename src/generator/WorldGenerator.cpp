@@ -105,7 +105,7 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
         z = (*zs)[i];
         
         if(size==2)
-        {
+        {            
             unsigned char type = getCubeType(p+x, q+y, r+z);
             if(type == 0)
                 octreeEntry = NULL;

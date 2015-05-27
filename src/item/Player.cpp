@@ -3,6 +3,7 @@
 #include "Player.h"
 // Start of user code includes
 #include "Chunk.h"
+#include "Engine.h"
 // End of user code
 
 Player::Player(bool _falling, float _hRotation)
@@ -58,9 +59,7 @@ void Player::draw(VertexBuffer * buffer)
     
     buffer->getData()->push_back(4);
     
-    buffer->getData()->push_back(16);
-    buffer->getData()->push_back(16);
-    buffer->getData()->push_back(16);
+    buffer->getData()->push_back(0x3def);
     
     buffer->getData()->push_back(0.6);
     
@@ -70,9 +69,7 @@ void Player::draw(VertexBuffer * buffer)
     
     buffer->getData()->push_back(4);
     
-    buffer->getData()->push_back(16);
-    buffer->getData()->push_back(16);
-    buffer->getData()->push_back(16);
+    buffer->getData()->push_back(0x3def);
     
     buffer->getData()->push_back(0.6);
 	// End of user code

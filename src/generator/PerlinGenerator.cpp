@@ -35,7 +35,7 @@ PerlinGenerator::PerlinGenerator()
     module::Perlin module;
     utils::NoiseMapBuilderPlane heightMapBuilder;
     
-    module.SetSeed(rand() % 10000);
+    //module.SetSeed(rand() % 10000);
     heightMapBuilder.SetSourceModule (module);
     heightMapBuilder.SetDestNoiseMap (heightMap);
     heightMapBuilder.SetDestSize (destSize, destSize);
@@ -90,8 +90,6 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     height=(height+1);
     
     height*=Chunk::size*Chunk::subsize/2;
-    
-    //return 4;
     
     if(y<height && y >= waterHeight+40)
         return 6;

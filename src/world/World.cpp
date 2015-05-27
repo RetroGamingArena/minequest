@@ -67,7 +67,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 0;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -130,31 +130,13 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
 	// Start of user code bufferizeEntry
     float offset = Chunk::size*Chunk::subsize*size;
     
-    /*float ao = 0;
-    
-    if(width==1)
-    {
-        if( (offset*2 + p*Chunk::subsize-1) > offset && (offset*2 + r*Chunk::subsize) > offset )
-            ao += (this->getCube(p*Chunk::subsize-1, q*Chunk::subsize+1, r*Chunk::subsize) > 0);
-        if( (offset*2 + p*Chunk::subsize) > offset   && (offset*2 + r*Chunk::subsize-1) > offset )
-            ao += (this->getCube(p*Chunk::subsize, q*Chunk::subsize+1, r*Chunk::subsize-1) > 0);
-        if( (offset*2 + p*Chunk::subsize-1) > offset && (offset*2 + r*Chunk::subsize-1) > offset )
-            ao += (this->getCube(p*Chunk::subsize-1, q*Chunk::subsize+1, r*Chunk::subsize-1) > 0);
-    }*/
-    
     vector<GLfloat>* data = vertexBuffer->getData();
     
     data->push_back(p);
     data->push_back(q);
     data->push_back(r);
-    
-    data->push_back(type);
-   
-    data->push_back(width);
-    data->push_back(width);
-    data->push_back(width);
-    
-    data->push_back(occlusion);//0.6);//ao);
+
+    data->push_back( (type << 17) + (occlusion << 15) + ((width-1) << 10) + ((width-1) << 5) + (width-1));
     
     cubeCount += (width*width*width);
     return;
@@ -204,13 +186,13 @@ void World::bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, 
     data->push_back(q);
     data->push_back(r);
     
-    data->push_back(type);
+    //data->push_back(type);
     
-    data->push_back(width);
-    data->push_back(height);
-    data->push_back(width);
+    data->push_back( (type << 17) + (occlusion << 15) + ((width-1) << 10) + ((height-1) << 5) + (width-1));
+    //data->push_back(height);
+    //data->push_back(width);
     
-    data->push_back(occlusion);
+    //data->push_back(occlusion);
     
     cubeCount += (width*width*height);
 	// End of user code
