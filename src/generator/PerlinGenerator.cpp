@@ -32,14 +32,41 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
+    int seed = rand() % 10000;
+    
     module::Perlin module;
+    
+    module::Perlin terrainType;
+    terrainType.SetFrequency (0.7);
+    terrainType.SetPersistence (0.25);
+    
+    module::Billow baseFlatTerrain;
+    baseFlatTerrain.SetFrequency (2.0);
+    baseFlatTerrain.SetSeed(seed);
+    
+    module::ScaleBias flatTerrain;
+    flatTerrain.SetSourceModule (0, baseFlatTerrain);
+    
+    module::RidgedMulti mountainTerrain;
+    mountainTerrain.SetSeed(seed);
+    
+    module::Select finalTerrain;
+    finalTerrain.SetSourceModule (0, flatTerrain);
+    finalTerrain.SetSourceModule (1, mountainTerrain);
+    finalTerrain.SetControlModule (terrainType);
+    finalTerrain.SetBounds (0.0, 1000.0);
+    finalTerrain.SetEdgeFalloff (0.125);
+    
     utils::NoiseMapBuilderPlane heightMapBuilder;
     
-    //module.SetSeed(rand() % 10000);
-    heightMapBuilder.SetSourceModule (module);
+    module.SetSeed(seed);
+    heightMapBuilder.SetSourceModule (finalTerrain);
     heightMapBuilder.SetDestNoiseMap (heightMap);
     heightMapBuilder.SetDestSize (destSize, destSize);
+    
     heightMapBuilder.SetBounds (lowerXBound, upperXBound, lowerYBound, upperYBound);
+    //heightMapBuilder.SetBounds (6.0, 10.0, 1.0, 5.0);
+    
     heightMapBuilder.Build ();
 	// End of user code
 }
