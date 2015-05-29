@@ -1,0 +1,27 @@
+
+Thu May 28 20:37:17 CEST 2015
+================================================================================
+Start of user code getRealCenter
+    return center;
+	// End of user code
+Start of user code getPosition
+    position = glm::vec3 (
+                       cos(angleY) * sin(angleZ) * distance,
+                       sin(angleY) * distance,
+                       cos(angleY) * cos(angleZ) * distance
+                       );
+    
+	// End of user code
+Start of user code getAngleZ
+	// End of user code
+Start of user code getAngleY
+	// End of user code
+Start of user code getRealUp
+    return up;
+	// End of user code
+
+Thu May 28 22:19:19 CEST 2015
+================================================================================
+Start of user code getRealPosition
+    return getPosition();
+	// End of user code

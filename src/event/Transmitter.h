@@ -1,5 +1,5 @@
-#ifndef __ChunkProcessorTask__
-#define __ChunkProcessorTask__
+#ifndef __Transmitter__
+#define __Transmitter__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -15,33 +15,33 @@
 // Start of user code includes
 // End of user code
 
-#include "Task.h"
 
-#include "Chunk.h"
-#include "Processor.h"
+#include "Event.h"
+#include "Listener.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class ChunkProcessorTask : public Task
+class Transmitter
 {
-	Chunk* chunk;
-	Processor* processor;
 
 	protected:
+	vector<Event*> events;
+	vector<Listener*> listeners;
 
 	public:
 		// Start of user code public
 		// End of user code
-		ChunkProcessorTask();
-		~ChunkProcessorTask();
-		Chunk* getChunk();
-		void setChunk(Chunk* _chunk);
-		Processor* getProcessor();
-		void setProcessor(Processor* _processor);
-		void run();
+		Transmitter();
+		~Transmitter();
+		void fireEvent(Event * event);
+		void addListener(Listener * listener);
+		vector<Event*> getEvents();
+		void setEventsAt(Event* _events, int indice);
+		vector<Listener*> getListeners();
+		void setListenersAt(Listener* _listeners, int indice);
 };
 
 #endif

@@ -67,7 +67,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 1;
+int World::size = 1;	
 
 int World::getChunkIndice()
 {
@@ -198,18 +198,6 @@ void World::bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, 
 	// End of user code
 }
 
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-
-void World::setChunksAt(Chunk* _chunks, int indice)
-{
-	chunks[indice] = _chunks;
-}
-
 WorldGenerator* World::getWorldGenerator()
 {
 	// Start of user code getWorldGenerator
@@ -222,3 +210,15 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
+
+void World::setChunksAt(Chunk* _chunks, int indice)
+{
+	chunks[indice] = _chunks;
+}
+

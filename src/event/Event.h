@@ -1,5 +1,5 @@
-#ifndef __ChunkProcessorTask__
-#define __ChunkProcessorTask__
+#ifndef __Event__
+#define __Event__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -15,33 +15,32 @@
 // Start of user code includes
 // End of user code
 
-#include "Task.h"
 
-#include "Chunk.h"
-#include "Processor.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class ChunkProcessorTask : public Task
+class Event
 {
-	Chunk* chunk;
-	Processor* processor;
+	const char * ID;
+	void* source;
 
 	protected:
 
 	public:
 		// Start of user code public
+        Event(const char * _ID, void* _source);
 		// End of user code
-		ChunkProcessorTask();
-		~ChunkProcessorTask();
-		Chunk* getChunk();
-		void setChunk(Chunk* _chunk);
-		Processor* getProcessor();
-		void setProcessor(Processor* _processor);
-		void run();
+	static const char * ID_CHANGED;
+		Event(const char * _ID, void* _source, const char * _ID_CHANGED);
+		Event();
+		~Event();
+		const char * getID();
+		void setID(const char * _ID);
+		void* getSource();
+		void setSource(void* _source);
 };
 
 #endif

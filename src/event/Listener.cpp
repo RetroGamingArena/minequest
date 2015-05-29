@@ -13,11 +13,6 @@ Listener::Listener()
 	// End of user code
 }
 
-Listener::~Listener()
-{
-	// Start of user code destructor
-	// End of user code
-}
 
 // Start of user code methods
 // End of user code

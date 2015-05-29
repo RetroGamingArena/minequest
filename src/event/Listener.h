@@ -13,6 +13,7 @@
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
 // Start of user code includes
+#include "Event.h"
 // End of user code
 
 
@@ -31,7 +32,8 @@ class Listener
 		// Start of user code public
 		// End of user code
 		Listener();
-		~Listener();
+		virtual ~Listener(){};
+		virtual void handle(Event * event) = 0;
 };
 
 #endif

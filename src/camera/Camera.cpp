@@ -4,11 +4,13 @@
 // Start of user code includes
 // End of user code
 
-Camera::Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection)
+Camera::Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection, float _angleZ, float _angleY)
 {
 	model = _model;
 	view = _view;
 	projection = _projection;
+	angleZ = _angleZ;
+	angleY = _angleY;
 }
 
 Camera::Camera()
@@ -19,6 +21,8 @@ Camera::Camera()
     float FoV = 70.0f;
     projection = glm::perspective(FoV, 4.0f / 3.0f, 0.0009f, 200.0f);
     model = glm::mat4(1.0f);
+    
+    events.push_back(new Event(Event::ID_CHANGED, this));
 	// End of user code
 }
 
@@ -65,6 +69,30 @@ void Camera::setProjection(glm::mat4 _projection)
 	projection = _projection;
 }
 
+float Camera::getAngleZ()
+{
+	// Start of user code getAngleZ
+	// End of user code
+	return angleZ;
+}
+
+void Camera::setAngleZ(float _angleZ)
+{
+	angleZ = _angleZ;
+}
+
+float Camera::getAngleY()
+{
+	// Start of user code getAngleY
+	// End of user code
+	return angleY;
+}
+
+void Camera::setAngleY(float _angleY)
+{
+	angleY = _angleY;
+}
+
 
 void Camera::look()
 {
@@ -75,9 +103,9 @@ void Camera::look()
     //projection = glm::perspective(FoV, 4.0f / 3.0f, 0.0009f, 200.0f);
     // Camera matrix
     view       = glm::lookAt(
-                             getRealPosition(),           // Camera is here
-                             getRealCenter(), // and looks here : at the same position, plus "direction"
-                             getRealUp()                  // Head is up (set to 0,-1,0 to look upside-down)
+                             getPosition(),           // Camera is here
+                             getCenter(), // and looks here : at the same position, plus "direction"
+                             getUp()                  // Head is up (set to 0,-1,0 to look upside-down)
                              );
 	// End of user code
 }

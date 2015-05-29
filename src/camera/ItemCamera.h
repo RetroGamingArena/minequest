@@ -41,9 +41,9 @@ class ItemCamera : public Camera
 		void onKeyboard(int key, int scancode, int action, int mods);
 		void onMouseButton(int button, int action);
 		void onMouseWheel(double xoffset, double yoffset);
-		glm::vec3 getRealPosition();
-		glm::vec3 getRealCenter();
-		glm::vec3 getRealUp();
+		glm::vec3 getPosition();
+		glm::vec3 getCenter();
+		glm::vec3 getUp();
 };
 
 #endif

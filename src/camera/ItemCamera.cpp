@@ -44,9 +44,9 @@ void ItemCamera::onMouseWheel(double xoffset, double yoffset)
 	// Start of user code onMouseWheel
 	// End of user code
 }
-glm::vec3 ItemCamera::getRealPosition()
+glm::vec3 ItemCamera::getPosition()
 {
-	// Start of user code getRealPosition
+	// Start of user code getPosition
     glm::vec3 position = item->getPosition();
     position.y /= Chunk::subsize;
     position.y+=2;
@@ -55,9 +55,9 @@ glm::vec3 ItemCamera::getRealPosition()
     return position;
 	// End of user code
 }
-glm::vec3 ItemCamera::getRealCenter()
+glm::vec3 ItemCamera::getCenter()
 {
-	// Start of user code getRealCenter
+	// Start of user code getCenter
     glm::vec3 look = item->getLook();
     look.y /= Chunk::subsize;
     look.y+=2;
@@ -66,9 +66,9 @@ glm::vec3 ItemCamera::getRealCenter()
     return look;
 	// End of user code
 }
-glm::vec3 ItemCamera::getRealUp()
+glm::vec3 ItemCamera::getUp()
 {
-	// Start of user code getRealUp
+	// Start of user code getUp
     return glm::vec3(0,1,0);
 	// End of user code
 }

@@ -17,6 +17,7 @@
 // End of user code
 
 #include "VoxelScene.h"
+#include "Listener.h"
 
 #include "Item.h"
 
@@ -25,7 +26,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class GameScene : public VoxelScene
+class GameScene : public VoxelScene, public Listener
 {
 	vector<Item*> items;
 	int chunksOffset;
@@ -47,6 +48,7 @@ class GameScene : public VoxelScene
 		void onKey(int key, int scancode, int action, int mods);
 		vector<Item*> getItems();
 		void setItemsAt(Item* _items, int indice);
+		void handle(Event * event);
 };
 
 #endif

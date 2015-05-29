@@ -15,6 +15,7 @@
 // Start of user code includes
 // End of user code
 
+#include "Transmitter.h"
 
 
 using namespace std;
@@ -22,18 +23,20 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class Camera
+class Camera : public Transmitter
 {
 
 	protected:
 	glm::mat4 model;
 	glm::mat4 view;
 	glm::mat4 projection;
+	float angleZ;
+	float angleY;
 
 	public:
 		// Start of user code public
 		// End of user code
-		Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection);
+		Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection, float _angleZ, float _angleY);
 		Camera();
 		virtual ~Camera(){};
 		glm::mat4 getModel();
@@ -42,14 +45,18 @@ class Camera
 		void setView(glm::mat4 _view);
 		glm::mat4 getProjection();
 		void setProjection(glm::mat4 _projection);
+		float getAngleZ();
+		void setAngleZ(float _angleZ);
+		float getAngleY();
+		void setAngleY(float _angleY);
 		void look();
 		virtual void onMouseMotion(double xpos, double ypos) = 0;
 		virtual void onKeyboard(int key, int scancode, int action, int mods) = 0;
 		virtual void onMouseButton(int button, int action) = 0;
 		virtual void onMouseWheel(double xoffset, double yoffset) = 0;
-		virtual glm::vec3 getRealPosition() = 0;
-		virtual glm::vec3 getRealCenter() = 0;
-		virtual glm::vec3 getRealUp() = 0;
+		virtual glm::vec3 getPosition() = 0;
+		virtual glm::vec3 getCenter() = 0;
+		virtual glm::vec3 getUp() = 0;
 };
 
 #endif

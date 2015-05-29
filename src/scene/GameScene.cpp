@@ -34,9 +34,20 @@ GameScene::GameScene(Player* player)
     itemCamera->setItem(player);
     cameras.push_back(itemCamera);
     items.push_back(player);
+    
+    cameras[0]->addListener(this);
 }
 // End of user code
 
+void GameScene::handle(Event * event)
+{
+	// Start of user code handle
+    if(event->getID() == Event::ID_CHANGED && (Event*)event->getSource() != NULL)
+    {
+        dou
+    }
+    // End of user code
+}
 
 
 

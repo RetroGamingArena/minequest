@@ -50,6 +50,9 @@
 		6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BB761AFAC3AD006A0842 /* WorldGenerator.cpp */; };
 		6446D0B81B0FA61100D14B65 /* backgroundFragmentShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 647F978F1B0F9AEB00133A4C /* backgroundFragmentShader.glsl */; };
 		6446D0B91B0FA61100D14B65 /* backgroundVertexShader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */; };
+		6450304D1B17ACC9009DAC36 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645030481B17ACC9009DAC36 /* Listener.cpp */; };
+		6450304E1B17ACC9009DAC36 /* Transmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6450304A1B17ACC9009DAC36 /* Transmitter.cpp */; };
+		645030511B17B687009DAC36 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6450304F1B17B687009DAC36 /* Event.cpp */; };
 		6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6458F6171A56E5490006BF88 /* libnoise.dylib */; };
 		645D4A041AF000F700CA8592 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 645D4A021AF000F700CA8592 /* main.cpp */; };
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
@@ -424,6 +427,13 @@
 		6440BB751AFAC3AD006A0842 /* PerlinGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinGenerator.h; sourceTree = "<group>"; };
 		6440BB761AFAC3AD006A0842 /* WorldGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldGenerator.cpp; sourceTree = "<group>"; };
 		6440BB771AFAC3AD006A0842 /* WorldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldGenerator.h; sourceTree = "<group>"; };
+		645030481B17ACC9009DAC36 /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Listener.cpp; sourceTree = "<group>"; };
+		645030491B17ACC9009DAC36 /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listener.h; sourceTree = "<group>"; };
+		6450304A1B17ACC9009DAC36 /* Transmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transmitter.cpp; sourceTree = "<group>"; };
+		6450304B1B17ACC9009DAC36 /* Transmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transmitter.h; sourceTree = "<group>"; };
+		6450304F1B17B687009DAC36 /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
+		645030501B17B687009DAC36 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		645030521B17C92C009DAC36 /* CubeFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeFace.h; sourceTree = "<group>"; };
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
@@ -886,6 +896,7 @@
 		6440BB651AFAA88A006A0842 /* processor */ = {
 			isa = PBXGroup;
 			children = (
+				645030521B17C92C009DAC36 /* CubeFace.h */,
 				642FE3381B0D0BD900BFB4FE /* Processor.cpp */,
 				642FE3391B0D0BD900BFB4FE /* Processor.h */,
 				64C9866B1AFC10D800A5B62E /* ChunkProcessorTask.cpp */,
@@ -929,6 +940,20 @@
 			);
 			name = generator;
 			path = src/generator;
+			sourceTree = SOURCE_ROOT;
+		};
+		645030451B17ACC9009DAC36 /* event */ = {
+			isa = PBXGroup;
+			children = (
+				6450304F1B17B687009DAC36 /* Event.cpp */,
+				645030501B17B687009DAC36 /* Event.h */,
+				645030481B17ACC9009DAC36 /* Listener.cpp */,
+				645030491B17ACC9009DAC36 /* Listener.h */,
+				6450304A1B17ACC9009DAC36 /* Transmitter.cpp */,
+				6450304B1B17ACC9009DAC36 /* Transmitter.h */,
+			);
+			name = event;
+			path = src/event;
 			sourceTree = SOURCE_ROOT;
 		};
 		646172ED1A5B38B20008EBA0 /* textures */ = {
@@ -992,6 +1017,7 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				645030451B17ACC9009DAC36 /* event */,
 				647F97861B0F99A400133A4C /* background */,
 				64C986491AFACD4300A5B62E /* thread */,
 				6440BB731AFAC3AD006A0842 /* generator */,
@@ -1124,11 +1150,13 @@
 				642FE33A1B0D0BD900BFB4FE /* Processor.cpp in Sources */,
 				6440BB721AFABCE8006A0842 /* DebugUI.cpp in Sources */,
 				64C986521AFACE9B00A5B62E /* Thread.cpp in Sources */,
+				6450304E1B17ACC9009DAC36 /* Transmitter.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
 				6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */,
 				6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */,
 				649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */,
 				6440BB531AF91E44006A0842 /* TextShader.cpp in Sources */,
+				6450304D1B17ACC9009DAC36 /* Listener.cpp in Sources */,
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
 				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,
 				64C986641AFBDBE100A5B62E /* Octree.cpp in Sources */,
@@ -1151,6 +1179,7 @@
 				6440BB4F1AF91866006A0842 /* LoadingUI.cpp in Sources */,
 				64C986581AFBBFBB00A5B62E /* ChunkTask.cpp in Sources */,
 				64C986671AFBED1D00A5B62E /* noiseutils.cpp in Sources */,
+				645030511B17B687009DAC36 /* Event.cpp in Sources */,
 				6440BB211AF7B409006A0842 /* Shader.cpp in Sources */,
 				6440BB0C1AF6A304006A0842 /* GameScene.cpp in Sources */,
 				6440BB041AF508E9006A0842 /* Scene.cpp in Sources */,

@@ -1,0 +1,25 @@
+
+Thu May 28 20:37:17 CEST 2015
+================================================================================
+Start of user code getRealCenter
+    glm::vec3 look = item->getLook();
+    look.y /= Chunk::subsize;
+    look.y+=2;
+    look.x=0.5;
+    look.z=50;
+    return look;
+	// End of user code
+Start of user code getRealUp
+    return glm::vec3(0,1,0);
+	// End of user code
+
+Thu May 28 22:19:19 CEST 2015
+================================================================================
+Start of user code getRealPosition
+    glm::vec3 position = item->getPosition();
+    position.y /= Chunk::subsize;
+    position.y+=2;
+    position.x=0.5;
+    position.z=-1;
+    return position;
+	// End of user code

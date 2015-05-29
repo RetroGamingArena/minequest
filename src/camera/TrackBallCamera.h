@@ -25,11 +25,6 @@ using namespace std;
 
 class TrackBallCamera : public Camera
 {
-	glm::vec3 position;
-	glm::vec3 center;
-	glm::vec3 up;
-	float angleY;
-	float angleZ;
 	float distance;
 	float oldX;
 	float oldY;
@@ -42,19 +37,9 @@ class TrackBallCamera : public Camera
 	public:
 		// Start of user code public
 		// End of user code
-		TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up, float _angleY, float _angleZ, float _distance, float _oldX, float _oldY, bool _hold, float _motionSensitivity, float _scrollSensitivity);
+		TrackBallCamera(float _distance, float _oldX, float _oldY, bool _hold, float _motionSensitivity, float _scrollSensitivity);
 		TrackBallCamera();
 		~TrackBallCamera();
-		glm::vec3 getPosition();
-		void setPosition(glm::vec3 _position);
-		glm::vec3 getCenter();
-		void setCenter(glm::vec3 _center);
-		glm::vec3 getUp();
-		void setUp(glm::vec3 _up);
-		float getAngleY();
-		void setAngleY(float _angleY);
-		float getAngleZ();
-		void setAngleZ(float _angleZ);
 		float getDistance();
 		void setDistance(float _distance);
 		float getOldX();
@@ -71,9 +56,9 @@ class TrackBallCamera : public Camera
 		void onKeyboard(int key, int scancode, int action, int mods);
 		void onMouseButton(int button, int action);
 		void onMouseWheel(double xoffset, double yoffset);
-		glm::vec3 getRealPosition();
-		glm::vec3 getRealCenter();
-		glm::vec3 getRealUp();
+		glm::vec3 getPosition();
+		glm::vec3 getCenter();
+		glm::vec3 getUp();
 };
 
 #endif

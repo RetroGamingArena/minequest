@@ -4,13 +4,8 @@
 // Start of user code includes
 // End of user code
 
-TrackBallCamera::TrackBallCamera(glm::vec3 _position, glm::vec3 _center, glm::vec3 _up, float _angleY, float _angleZ, float _distance, float _oldX, float _oldY, bool _hold, float _motionSensitivity, float _scrollSensitivity)
+TrackBallCamera::TrackBallCamera(float _distance, float _oldX, float _oldY, bool _hold, float _motionSensitivity, float _scrollSensitivity)
 {
-	position = _position;
-	center = _center;
-	up = _up;
-	angleY = _angleY;
-	angleZ = _angleZ;
 	distance = _distance;
 	oldX = _oldX;
 	oldY = _oldY;
@@ -35,10 +30,7 @@ TrackBallCamera::TrackBallCamera()
     scrollSensitivity = 1;
     
     oldX=0;
-    oldY=0;
-    
-    center = glm::vec3(0,0,0);
-    up = glm::vec3(0,1,0);
+    oldY=0; 
     
     view       = glm::lookAt(
                              getPosition(),           // Camera is here
@@ -103,104 +95,43 @@ void TrackBallCamera::onMouseButton(int button, int action)
 void TrackBallCamera::onMouseWheel(double xoffset, double yoffset)
 {
 	// Start of user code onMouseWheel
-    if (yoffset < 0) //coup de molette vers le haut
+    if (yoffset < 0)
     {
-        distance -= scrollSensitivity; //on zoome, donc rapproche la caméra du centre
-        if (distance < 0.1) //distance minimale, à changer si besoin (avec un attribut par exemple)
+        distance -= scrollSensitivity;
+        if (distance < 0.1)
             distance = 0.1;
     }
-    else if (yoffset > 0) //coup de molette vers le bas
+    else if (yoffset > 0)
     {
-        distance += scrollSensitivity; //on dézoome donc éloigne la caméra
+        distance += scrollSensitivity;
     }
+    fireEvent(events[0]);
 	// End of user code
 }
-glm::vec3 TrackBallCamera::getRealPosition()
-{
-	// Start of user code getRealPosition
-    return getPosition();
-	// End of user code
-}
-glm::vec3 TrackBallCamera::getRealCenter()
-{
-	// Start of user code getRealCenter
-    return center;
-	// End of user code
-}
-glm::vec3 TrackBallCamera::getRealUp()
-{
-	// Start of user code getRealUp
-    return up;
-	// End of user code
-}
-
-
-
 glm::vec3 TrackBallCamera::getPosition()
 {
 	// Start of user code getPosition
-    position = glm::vec3 (
-                       cos(angleY) * sin(angleZ) * distance,
-                       sin(angleY) * distance,
-                       cos(angleY) * cos(angleZ) * distance
-                       );
-    
+    return glm::vec3 (
+               cos(angleY) * sin(angleZ) * distance,
+               sin(angleY) * distance,
+               cos(angleY) * cos(angleZ) * distance
+               );
 	// End of user code
-	return position;
 }
-
-void TrackBallCamera::setPosition(glm::vec3 _position)
-{
-	position = _position;
-}
-
 glm::vec3 TrackBallCamera::getCenter()
 {
 	// Start of user code getCenter
+    return glm::vec3(0, 0, 0);
 	// End of user code
-	return center;
 }
-
-void TrackBallCamera::setCenter(glm::vec3 _center)
-{
-	center = _center;
-}
-
 glm::vec3 TrackBallCamera::getUp()
 {
 	// Start of user code getUp
+    return glm::vec3(0, 1, 0);
 	// End of user code
-	return up;
 }
 
-void TrackBallCamera::setUp(glm::vec3 _up)
-{
-	up = _up;
-}
 
-float TrackBallCamera::getAngleY()
-{
-	// Start of user code getAngleY
-	// End of user code
-	return angleY;
-}
-
-void TrackBallCamera::setAngleY(float _angleY)
-{
-	angleY = _angleY;
-}
-
-float TrackBallCamera::getAngleZ()
-{
-	// Start of user code getAngleZ
-	// End of user code
-	return angleZ;
-}
-
-void TrackBallCamera::setAngleZ(float _angleZ)
-{
-	angleZ = _angleZ;
-}
 
 float TrackBallCamera::getDistance()
 {
