@@ -22,18 +22,31 @@ World::World()
     chunkIndice = 0;
     worldGenerator = new PerlinGenerator();
     
+    Chunk* center = NULL;
+    
     for(int p=-size; p<=size; p++)
         for(int r=-size; r<=size; r++)
         {
             Chunk* chunk = new Chunk(p,0,r);
             //chunk->generate(generator);
             chunks.push_back(chunk);
+            if(p==0 && r==0)
+            {
+                center = chunk;
+            }
         }
     
     threadCount = 9;
-    this->start();
-    while(isRunning()){}
-	// End of user code
+    
+    ChunkTask* chunkTask = new ChunkTask();
+    chunkTask->setChunk(center);
+    chunkTask->setWorldGenerator(worldGenerator);
+    chunkTask->run();
+    
+    //this->start();
+    //while(isRunning()){}
+	
+    // End of user code
 }
 
 World::~World()

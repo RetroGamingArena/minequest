@@ -69,7 +69,7 @@ GameScene::GameScene(Player* player)
     
     worldProcessor->setWorld(Engine::getInstance()->getWorld());
     
-    updateBuffer = true;
+    updateBuffer = false;
     updateChunks = true;
 
 }
@@ -179,7 +179,16 @@ void GameScene::render()
 	// Start of user code render
     if(updateChunks)
     {
-        
+        World* world = Engine::getInstance()->getWorld();
+        if(!world->isRunning() && !world->getStarted())
+        {
+            world->start();
+        }
+        else if(world->getStarted() && !world->isRunning())
+        {
+            updateChunks = false;
+            updateBuffer = true;
+        }
     }
     if(updateBuffer)
     {
@@ -194,11 +203,6 @@ void GameScene::render()
                 Chunk* chunk = Engine::getInstance()->getWorld()->getChunks()[i];
                 
                 vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
-                
-                if(chunkData->size() == 0)
-                {
-                    int a =2;
-                }
                 
                 gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
                 chunkData->clear();
