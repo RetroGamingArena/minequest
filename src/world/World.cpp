@@ -62,6 +62,7 @@ Task* World::buildTask()
 bool World::hasNext()
 {
 	// Start of user code hasNext
+    
     return chunkIndice < chunks.size();
 	// End of user code
 }
@@ -195,6 +196,22 @@ void World::bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, 
     //data->push_back(occlusion);
     
     cubeCount += (width*width*height);
+	// End of user code
+}
+Chunk* World::getChunk(int x, int y, int z)
+{
+	// Start of user code getChunk
+    int p = x/16.0;
+    int q = x/16.0;
+    int r = x/16.0;
+    
+    for(int i = 0; i < chunks.size(); i++)
+    {
+        Chunk* chunk = chunks[i];
+        if(chunk->getP() == p && chunk->getQ() == q && chunk->getR() == r)
+            return chunk;
+    }
+    return NULL;
 	// End of user code
 }
 

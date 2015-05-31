@@ -16,9 +16,10 @@
 #include "Player.h"
 // End of user code
 
-#include "VoxelScene.h"
 #include "Listener.h"
+#include "VoxelScene.h"
 
+#include "WorldProcessor.h"
 #include "Item.h"
 
 using namespace std;
@@ -26,10 +27,13 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class GameScene : public VoxelScene, public Listener
+class GameScene : public Listener, public VoxelScene
 {
+	WorldProcessor* worldProcessor;
 	vector<Item*> items;
 	int chunksOffset;
+	bool updateChunks;
+	bool updateBuffer;
 
 	protected:
 
@@ -37,15 +41,21 @@ class GameScene : public VoxelScene, public Listener
 		// Start of user code public
         GameScene(Player* player);
 		// End of user code
-		GameScene(int _chunksOffset);
+		GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer);
 		GameScene();
 		~GameScene();
 		int getChunksOffset();
 		void setChunksOffset(int _chunksOffset);
+		bool getUpdateChunks();
+		void setUpdateChunks(bool _updateChunks);
+		bool getUpdateBuffer();
+		void setUpdateBuffer(bool _updateBuffer);
 		void reset();
 		void render();
 		void refreshItemsBuffer();
 		void onKey(int key, int scancode, int action, int mods);
+		WorldProcessor* getWorldProcessor();
+		void setWorldProcessor(WorldProcessor* _worldProcessor);
 		vector<Item*> getItems();
 		void setItemsAt(Item* _items, int indice);
 		void handle(Event * event);

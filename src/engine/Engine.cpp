@@ -204,8 +204,6 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 void Engine::init()
 {
 	// Start of user code init
-    worldProcessor = new WorldProcessor();
-    
     windowWidth = 1024;
     windowHeight = 768;
     if (!glfwInit())
@@ -279,18 +277,6 @@ void Engine::refresh()
 	// End of user code
 }
 
-World* Engine::getWorld()
-{
-	// Start of user code getWorld
-	// End of user code
-	return world;
-}
-
-void Engine::setWorld(World* _world)
-{
-	world = _world;
-}
-					
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -315,27 +301,6 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
-WorldProcessor* Engine::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void Engine::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
 vector<Shader*> Engine::getShaders()
 {
 	// Start of user code getShaders
@@ -348,3 +313,24 @@ void Engine::setShadersAt(Shader* _shaders, int indice)
 	shaders[indice] = _shaders;
 }
 
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
+World* Engine::getWorld()
+{
+	// Start of user code getWorld
+	// End of user code
+	return world;
+}
+
+void Engine::setWorld(World* _world)
+{
+	world = _world;
+}
+					

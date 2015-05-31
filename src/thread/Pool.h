@@ -30,6 +30,7 @@ class Pool
 	vector<Thread*> threads;
 	bool running;
 	std::thread* work;
+	bool started;
 
 	protected:
 	int threadCount;
@@ -38,7 +39,7 @@ class Pool
 	public:
 		// Start of user code public
 		// End of user code
-		Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex);
+		Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex, bool _started);
 		Pool();
 		virtual ~Pool(){};
 		int getThreadCount();
@@ -49,6 +50,8 @@ class Pool
 		void setWork(std::thread* _work);
 		std::mutex* getMutex();
 		void setMutex(std::mutex* _mutex);
+		bool getStarted();
+		void setStarted(bool _started);
 		void start();
 		virtual Task* buildTask() = 0;
 		static void run(Pool * pool);

@@ -14,7 +14,6 @@
 
 // Start of user code includes
 #include "World.h"
-#include "GameScene.h"
 // End of user code
 
 #include "IterativeProcessor.h"

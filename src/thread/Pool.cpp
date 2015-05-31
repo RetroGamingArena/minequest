@@ -5,12 +5,13 @@
 #include "Task.h"
 // End of user code
 
-Pool::Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex)
+Pool::Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex, bool _started)
 {
 	threadCount = _threadCount;
 	running = _running;
 	work = _work;
 	mutex = _mutex;
+	started = _started;
 }
 
 Pool::Pool()
@@ -19,6 +20,7 @@ Pool::Pool()
 {
 	// Start of user code constructor
     running=false;
+    started = false;
     mutex=new std::mutex();
 	// End of user code
 }
@@ -78,6 +80,18 @@ void Pool::setMutex(std::mutex* _mutex)
 	mutex = _mutex;
 }
 
+bool Pool::getStarted()
+{
+	// Start of user code getStarted
+	// End of user code
+	return started;
+}
+
+void Pool::setStarted(bool _started)
+{
+	started = _started;
+}
+
 
 void Pool::start()
 {
@@ -115,12 +129,13 @@ void Pool::run(Pool * pool)
                 {
                     pool->threads[i]->setTask(task);
                     pool->threads[i]->start();
-                    task = pool->buildTask();
+                    //task = pool->buildTask();
                     break;
                 }
             }
         }
     }
+    pool->setStarted(true);
 	// End of user code
 }
 bool Pool::isRunning()

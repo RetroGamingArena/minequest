@@ -66,6 +66,7 @@ void Thread::run(Thread * thread)
 	// Start of user code run
     if( thread->task != NULL)
     {
+
         thread->task->run();
         thread->mutex->unlock();
     }

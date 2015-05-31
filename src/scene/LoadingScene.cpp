@@ -46,8 +46,9 @@ void LoadingScene::render()
         
         Engine* engine = Engine::getInstance();
         
-        gameScene->reset();
-        engine->getWorldProcessor()->process();
+        //gameScene->reset();
+        
+        /*engine->getWorldProcessor()->process();
         
         vector<GLfloat>* gameSceneData = gameScene->getDoubleBuffer()->getVertexBuffer()->getData();
         
@@ -67,7 +68,7 @@ void LoadingScene::render()
         for(int i=0; i < gameScene->getItems().size() ; i++)
         {
             gameScene->getItems()[0]->draw(gameScene->getDoubleBuffer()->getVertexBuffer());
-        }
+        }*/
         
         gameScene->getDoubleBuffer()->getVertexBuffer()->bind();
         gameScene->getDoubleBuffer()->getIndiceBuffer()->bind();
@@ -117,7 +118,7 @@ void LoadingScene::initWorld()
 	// Start of user code initWorld
     Engine* engine = Engine::getInstance();
     World* world = new World();
-    engine->getWorldProcessor()->setWorld(world);
+    //engine->getWorldProcessor()->setWorld(world);
     Engine::getInstance()->setWorld(world);
     mutex->unlock();
 	// End of user code

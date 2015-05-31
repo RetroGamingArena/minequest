@@ -32,6 +32,7 @@ class Chunk
 	float p;
 	float q;
 	float r;
+	bool buffered;
 
 	protected:
 
@@ -41,7 +42,7 @@ class Chunk
 		// End of user code
 	static int size;
 	static int subsize;
-		Chunk(float _p, float _q, float _r, int _size, int _subsize);
+		Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered);
 		Chunk();
 		~Chunk();
 		float getP();
@@ -50,6 +51,8 @@ class Chunk
 		void setQ(float _q);
 		float getR();
 		void setR(float _r);
+		bool getBuffered();
+		void setBuffered(bool _buffered);
 		void generate(WorldGenerator * worldGenerator);
 		void bufferize();
 		VertexBuffer* getVertexBuffer();

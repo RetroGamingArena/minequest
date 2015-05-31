@@ -5,13 +5,14 @@
 #include "Cube.h"
 // End of user code
 
-Chunk::Chunk(float _p, float _q, float _r, int _size, int _subsize)
+Chunk::Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered)
 {
 	p = _p;
 	q = _q;
 	r = _r;
 	size = _size;
 	subsize = _subsize;
+	buffered = _buffered;
 }
 
 Chunk::Chunk()
@@ -19,6 +20,7 @@ Chunk::Chunk()
 // End of user code
 {
 	// Start of user code constructor
+    buffered = false;
 	// End of user code
 }
 
@@ -44,6 +46,8 @@ Chunk::Chunk(float _p, float _q, float _r)
     octree->setP(p);
     octree->setQ(q);
     octree->setR(r);
+    
+    buffered = false;
 }
 // End of user code
 
@@ -86,6 +90,18 @@ float Chunk::getR()
 void Chunk::setR(float _r)
 {
 	r = _r;
+}
+
+bool Chunk::getBuffered()
+{
+	// Start of user code getBuffered
+	// End of user code
+	return buffered;
+}
+
+void Chunk::setBuffered(bool _buffered)
+{
+	buffered = _buffered;
 }
 
 
