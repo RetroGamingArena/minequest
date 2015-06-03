@@ -5,6 +5,9 @@
 #include "PerlinGenerator.h"
 #include "ChunkTask.h"
 #include "Chunk.h"
+#include "Camera.h"
+#include "Engine.h"
+#include "CubeFace.h"
 // End of user code
 
 World::World(int _size, int _chunkIndice, int _cubeCount)
@@ -119,20 +122,22 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     if( y==0 && x>-absSize && z>-absSize && (x+size-1)<(absSize+Chunk::size*Chunk::subsize-1) && (z+size-1)<(absSize+Chunk::size*Chunk::subsize-1) )
         return false;
     
+    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
+    
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
-            if(this->getCube(x-1, y+i,   z+j) == 0)
+            if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
                 return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)
+            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
                 return true;
-            if(this->getCube(x+i, y-1,   z+j) == 0)
+            if(this->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
                 return true;
-            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)
+            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
                 return true;
-            if(this->getCube(x+i, y+j,   z-1) == 0)
+            if(this->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
                 return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)
+            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
                 return true;
         }
     

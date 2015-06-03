@@ -32,7 +32,7 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = rand() % 10000;
+    int seed = 0;//rand() % 10000;
     
     module::Perlin module;
     
@@ -42,7 +42,7 @@ PerlinGenerator::PerlinGenerator()
     
     module::Billow baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
-    //baseFlatTerrain.SetSeed(seed);
+    baseFlatTerrain.SetSeed(seed);
     
     module::ScaleBias flatTerrain;
     flatTerrain.SetSourceModule (0, baseFlatTerrain);
