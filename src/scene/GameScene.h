@@ -16,21 +16,21 @@
 #include "Player.h"
 // End of user code
 
-#include "Listener.h"
 #include "VoxelScene.h"
+#include "Listener.h"
 
-#include "Item.h"
 #include "WorldProcessor.h"
+#include "Item.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class GameScene : public Listener, public VoxelScene
+class GameScene : public VoxelScene, public Listener
 {
-	vector<Item*> items;
 	WorldProcessor* worldProcessor;
+	vector<Item*> items;
 	int chunksOffset;
 	bool updateChunks;
 	bool updateBuffer;
@@ -54,10 +54,10 @@ class GameScene : public Listener, public VoxelScene
 		void render();
 		void refreshItemsBuffer();
 		void onKey(int key, int scancode, int action, int mods);
-		vector<Item*> getItems();
-		void setItemsAt(Item* _items, int indice);
 		WorldProcessor* getWorldProcessor();
 		void setWorldProcessor(WorldProcessor* _worldProcessor);
+		vector<Item*> getItems();
+		void setItemsAt(Item* _items, int indice);
 		void handle(Event * event);
 };
 

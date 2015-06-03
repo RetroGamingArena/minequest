@@ -58,6 +58,13 @@ void Scene::setCamerasAt(Camera* _cameras, int indice)
 	cameras[indice] = _cameras;
 }
 
+Background* Scene::getBackground()
+{
+	// Start of user code getBackground
+	// End of user code
+	return background;
+}
+
 UI* Scene::getUI()
 {
 	// Start of user code getUI
@@ -70,10 +77,3 @@ void Scene::setUI(UI* _uI)
 	uI = _uI;
 }
 					
-Background* Scene::getBackground()
-{
-	// Start of user code getBackground
-	// End of user code
-	return background;
-}
-

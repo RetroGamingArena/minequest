@@ -17,8 +17,8 @@
 // End of user code
 
 
-#include "Octree.h"
 #include "VertexBuffer.h"
+#include "Octree.h"
 
 using namespace std;
 
@@ -27,12 +27,13 @@ using namespace std;
 
 class Chunk
 {
-	Octree* octree;
 	VertexBuffer* vertexBuffer;
+	Octree* octree;
 	float p;
 	float q;
 	float r;
 	bool buffered;
+	bool generated;
 
 	protected:
 
@@ -42,7 +43,7 @@ class Chunk
 		// End of user code
 	static int size;
 	static int subsize;
-		Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered);
+		Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered, bool _generated);
 		Chunk();
 		~Chunk();
 		float getP();
@@ -53,12 +54,14 @@ class Chunk
 		void setR(float _r);
 		bool getBuffered();
 		void setBuffered(bool _buffered);
+		bool getGenerated();
+		void setGenerated(bool _generated);
 		void generate(WorldGenerator * worldGenerator);
 		void bufferize();
-		Octree* getOctree();
-		void setOctree(Octree* _octree);
 		VertexBuffer* getVertexBuffer();
 		void setVertexBuffer(VertexBuffer* _vertexBuffer);
+		Octree* getOctree();
+		void setOctree(Octree* _octree);
 };
 
 #endif

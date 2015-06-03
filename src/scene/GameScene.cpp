@@ -236,18 +236,6 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 	// End of user code
 }
 
-vector<Item*> GameScene::getItems()
-{
-	// Start of user code getItems
-	// End of user code
-	return items;
-}
-
-void GameScene::setItemsAt(Item* _items, int indice)
-{
-	items[indice] = _items;
-}
-
 WorldProcessor* GameScene::getWorldProcessor()
 {
 	// Start of user code getWorldProcessor
@@ -260,3 +248,15 @@ void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
+vector<Item*> GameScene::getItems()
+{
+	// Start of user code getItems
+	// End of user code
+	return items;
+}
+
+void GameScene::setItemsAt(Item* _items, int indice)
+{
+	items[indice] = _items;
+}
+

@@ -130,9 +130,11 @@ void Pool::run(Pool * pool)
                     pool->threads[i]->setTask(task);
                     pool->threads[i]->start();
                     //task = pool->buildTask();
+                    task = NULL;
                     break;
                 }
             }
+            
         }
     }
     pool->setStarted(true);

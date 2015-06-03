@@ -16,10 +16,10 @@
 // End of user code
 
 
-#include "Control.h"
-#include "DoubleBuffer.h"
 #include "Texture.h"
 #include "Shader.h"
+#include "DoubleBuffer.h"
+#include "Control.h"
 
 using namespace std;
 
@@ -30,10 +30,10 @@ class UI
 {
 
 	protected:
-	vector<Control*> controls;
-	DoubleBuffer* doubleBuffer;
 	Texture* fontTexture;
 	Shader* shader;
+	DoubleBuffer* doubleBuffer;
+	vector<Control*> controls;
 
 	public:
 		// Start of user code public
@@ -43,14 +43,14 @@ class UI
 		virtual void render() = 0;
 		void printText(const char * text, int x, int y, int size);
 		virtual void refresh() = 0;
-		vector<Control*> getControls();
-		void setControlsAt(Control* _controls, int indice);
-		DoubleBuffer* getDoubleBuffer();
-		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);
 		Shader* getShader();
 		void setShader(Shader* _shader);
+		DoubleBuffer* getDoubleBuffer();
+		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
+		vector<Control*> getControls();
+		void setControlsAt(Control* _controls, int indice);
 };
 
 #endif

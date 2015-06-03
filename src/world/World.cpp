@@ -39,11 +39,12 @@ World::World()
             }
         }
     
-    threadCount = 9;
+    threadCount = 4;
     
     ChunkTask* chunkTask = new ChunkTask();
     chunkTask->setChunk(center);
     chunkTask->setWorldGenerator(worldGenerator);
+    center->setGenerated(true);
     chunkTask->run();
     
     //this->start();
@@ -69,6 +70,7 @@ Task* World::buildTask()
         Chunk* chunk = chunks[chunkIndice];
         ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
         chunkIndice = chunkIndice+1;
+        chunk->setGenerated(true);
         mutex->unlock();
         return chunkTask;
     }
@@ -78,8 +80,15 @@ Task* World::buildTask()
 bool World::hasNext()
 {
 	// Start of user code hasNext
-    
-    return chunkIndice < chunks.size();
+    chunkIndice = -1;
+    World* world = Engine::getInstance()->getWorld();
+    for(int i = 0; i < world->getChunks().size(); i++)
+        if(!world->getChunks()[i]->getGenerated())
+        {
+            chunkIndice = i;
+            return true;
+        }
+    return false;
 	// End of user code
 }
 
@@ -233,18 +242,6 @@ Chunk* World::getChunk(int x, int y, int z)
 	// End of user code
 }
 
-WorldGenerator* World::getWorldGenerator()
-{
-	// Start of user code getWorldGenerator
-	// End of user code
-	return worldGenerator;
-}
-
-void World::setWorldGenerator(WorldGenerator* _worldGenerator)
-{
-	worldGenerator = _worldGenerator;
-}
-					
 vector<Chunk*> World::getChunks()
 {
 	// Start of user code getChunks
@@ -257,3 +254,15 @@ void World::setChunksAt(Chunk* _chunks, int indice)
 	chunks[indice] = _chunks;
 }
 
+WorldGenerator* World::getWorldGenerator()
+{
+	// Start of user code getWorldGenerator
+	// End of user code
+	return worldGenerator;
+}
+
+void World::setWorldGenerator(WorldGenerator* _worldGenerator)
+{
+	worldGenerator = _worldGenerator;
+}
+					

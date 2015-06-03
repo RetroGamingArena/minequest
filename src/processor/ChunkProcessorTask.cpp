@@ -33,7 +33,7 @@ void ChunkProcessorTask::run()
     vector<GLfloat>* temp = processor->bufferize(chunk->getOctree());
     
     chunk->getVertexBuffer()->getData()->insert(chunk->getVertexBuffer()->getData()->end(), temp->begin(), temp->end());
-    chunk->setBuffered(true);
+    //chunk->setBuffered(true);
     temp->clear();
     delete temp;
     std::cout << chunk->getP() << " " << chunk->getQ() << " " << chunk->getR() << std::endl;
