@@ -42,7 +42,7 @@ PerlinGenerator::PerlinGenerator()
     
     module::Billow baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
-    baseFlatTerrain.SetSeed(seed);
+    //baseFlatTerrain.SetSeed(seed);
     
     module::ScaleBias flatTerrain;
     flatTerrain.SetSourceModule (0, baseFlatTerrain);

@@ -34,6 +34,7 @@ class VoxelScene : public VBOScene
 		// End of user code
 		VoxelScene();
 		~VoxelScene();
+		void updateIndices();
 };
 
 #endif

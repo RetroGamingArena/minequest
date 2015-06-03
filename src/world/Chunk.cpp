@@ -123,18 +123,6 @@ void Chunk::bufferize()
 	// End of user code
 }
 
-VertexBuffer* Chunk::getVertexBuffer()
-{
-	// Start of user code getVertexBuffer
-	// End of user code
-	return vertexBuffer;
-}
-
-void Chunk::setVertexBuffer(VertexBuffer* _vertexBuffer)
-{
-	vertexBuffer = _vertexBuffer;
-}
-					
 Octree* Chunk::getOctree()
 {
 	// Start of user code getOctree
@@ -145,5 +133,17 @@ Octree* Chunk::getOctree()
 void Chunk::setOctree(Octree* _octree)
 {
 	octree = _octree;
+}
+					
+VertexBuffer* Chunk::getVertexBuffer()
+{
+	// Start of user code getVertexBuffer
+	// End of user code
+	return vertexBuffer;
+}
+
+void Chunk::setVertexBuffer(VertexBuffer* _vertexBuffer)
+{
+	vertexBuffer = _vertexBuffer;
 }
 					

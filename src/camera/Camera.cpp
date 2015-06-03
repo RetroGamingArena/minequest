@@ -2,6 +2,7 @@
 
 #include "Camera.h"
 // Start of user code includes
+#include "CubeFace.h"
 // End of user code
 
 Camera::Camera(glm::mat4 _model, glm::mat4 _view, glm::mat4 _projection, float _angleZ, float _angleY)
@@ -30,6 +31,11 @@ Camera::Camera()
 // Start of user code methods
 // End of user code
 
+void Camera::poly()
+{
+	// Start of user code poly
+	// End of user code
+}
 
 
 
@@ -107,6 +113,41 @@ void Camera::look()
                              getCenter(), // and looks here : at the same position, plus "direction"
                              getUp()                  // Head is up (set to 0,-1,0 to look upside-down)
                              );
+	// End of user code
+}
+unsigned char Camera::getMask()
+{
+	// Start of user code getMask
+    unsigned char res = 0;
+    
+    glm::vec3 delta = getPosition()-getCenter();
+    
+    if(delta.y >= 0)
+        res |= TOP;
+    else
+        res |= BOTTOM;
+    
+    if(delta.x >= 0 && delta.z <= 0)
+    {
+        res |= BACK;
+        res |= RIGHT;
+    }
+    else if(delta.x >= 0 && delta.z >= 0)
+    {
+        res |= RIGHT;
+        res |= FRONT;
+    }
+    else if(delta.x <= 0 && delta.z >= 0)
+    {
+        res |= FRONT;
+        res |= LEFT;
+    }
+    else if(delta.x <= 0 && delta.z <= 0)
+    {
+        res |= LEFT;
+        res |= BACK;
+    }
+    return res;
 	// End of user code
 }
 

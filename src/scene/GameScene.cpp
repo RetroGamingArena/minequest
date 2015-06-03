@@ -78,9 +78,11 @@ GameScene::GameScene(Player* player)
 void GameScene::handle(Event * event)
 {
 	// Start of user code handle
-    if(event->getID() == Event::ID_CHANGED && (Event*)event->getSource() != NULL)
+    if(event->getID() == Event::ID_CHANGED && event->getSource() != NULL)
     {
-        
+        Camera* camera = dynamic_cast<Camera*>((Transmitter*)event->getSource());
+        if(camera != NULL)
+            updateIndices();
     }
     // End of user code
 }
@@ -155,23 +157,8 @@ void GameScene::reset()
     
     doubleBuffer->bufferizeSquare(x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
     
-    doubleBuffer->bufferizeIndice(4);
-    doubleBuffer->bufferizeIndice(6);
-    doubleBuffer->bufferizeIndice(0);
-    doubleBuffer->bufferizeIndice(2);
-    
-    doubleBuffer->bufferizeIndice(3);
-    doubleBuffer->bufferizeIndice(6);
-    doubleBuffer->bufferizeIndice(7);
-    doubleBuffer->bufferizeIndice(4);
+    updateIndices();
 
-    doubleBuffer->bufferizeIndice(5);
-    doubleBuffer->bufferizeIndice(0);
-    doubleBuffer->bufferizeIndice(1);
-    doubleBuffer->bufferizeIndice(3);
-    
-    doubleBuffer->bufferizeIndice(5);
-    doubleBuffer->bufferizeIndice(7);
 	// End of user code
 }
 void GameScene::render()
@@ -249,18 +236,6 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 	// End of user code
 }
 
-WorldProcessor* GameScene::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					
 vector<Item*> GameScene::getItems()
 {
 	// Start of user code getItems
@@ -273,3 +248,15 @@ void GameScene::setItemsAt(Item* _items, int indice)
 	items[indice] = _items;
 }
 
+WorldProcessor* GameScene::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
+}
+					

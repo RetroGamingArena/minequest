@@ -17,10 +17,10 @@
 
 
 #include "Player.h"
-#include "Scene.h"
 #include "Shader.h"
-#include "Engine.h"
 #include "World.h"
+#include "Scene.h"
+#include "Engine.h"
 
 using namespace std;
 
@@ -30,10 +30,10 @@ using namespace std;
 class Engine
 {
 	Player* player;
-	Scene* scene;
 	vector<Shader*> shaders;
-	static Engine* instance;
 	World* world;
+	Scene* scene;
+	static Engine* instance;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -71,13 +71,13 @@ class Engine
 		void refresh();
 		Player* getPlayer();
 		void setPlayer(Player* _player);
-		Scene* getScene();
-		void setScene(Scene* _scene);
 		vector<Shader*> getShaders();
 		void setShadersAt(Shader* _shaders, int indice);
-		static Engine* getInstance();
 		World* getWorld();
 		void setWorld(World* _world);
+		Scene* getScene();
+		void setScene(Scene* _scene);
+		static Engine* getInstance();
 };
 
 #endif

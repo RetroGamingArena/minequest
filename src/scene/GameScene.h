@@ -19,8 +19,8 @@
 #include "Listener.h"
 #include "VoxelScene.h"
 
-#include "WorldProcessor.h"
 #include "Item.h"
+#include "WorldProcessor.h"
 
 using namespace std;
 
@@ -29,8 +29,8 @@ using namespace std;
 
 class GameScene : public Listener, public VoxelScene
 {
-	WorldProcessor* worldProcessor;
 	vector<Item*> items;
+	WorldProcessor* worldProcessor;
 	int chunksOffset;
 	bool updateChunks;
 	bool updateBuffer;
@@ -54,10 +54,10 @@ class GameScene : public Listener, public VoxelScene
 		void render();
 		void refreshItemsBuffer();
 		void onKey(int key, int scancode, int action, int mods);
-		WorldProcessor* getWorldProcessor();
-		void setWorldProcessor(WorldProcessor* _worldProcessor);
 		vector<Item*> getItems();
 		void setItemsAt(Item* _items, int indice);
+		WorldProcessor* getWorldProcessor();
+		void setWorldProcessor(WorldProcessor* _worldProcessor);
 		void handle(Event * event);
 };
 

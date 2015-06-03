@@ -65,6 +65,7 @@ void TrackBallCamera::onMouseMotion(double xpos, double ypos)
          _angleY = 90;
          else if (_angleY < -90)
          _angleY = -90;*/
+        fireEvent(events[0]);
     }
     
     oldX = xpos;

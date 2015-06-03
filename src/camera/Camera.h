@@ -57,6 +57,8 @@ class Camera : public Transmitter
 		virtual glm::vec3 getPosition() = 0;
 		virtual glm::vec3 getCenter() = 0;
 		virtual glm::vec3 getUp() = 0;
+		unsigned char getMask();
+		void poly();
 };
 
 #endif
