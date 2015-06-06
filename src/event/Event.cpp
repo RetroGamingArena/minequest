@@ -4,11 +4,12 @@
 // Start of user code includes
 // End of user code
 
-Event::Event(const char * _ID, void* _source, const char * _ID_CHANGED)
+Event::Event(const char * _ID, void* _source, const char * _ID_CHANGED, const char * _ID_FINISHED)
 {
 	ID = _ID;
 	source = _source;
 	ID_CHANGED = _ID_CHANGED;
+	ID_FINISHED = _ID_FINISHED;
 }
 
 Event::Event()
@@ -36,6 +37,7 @@ Event::Event(const char * _ID, void* _source)
 
 
 const char * Event::ID_CHANGED = "CHANGED";	
+const char * Event::ID_FINISHED = "FINISHED";	
 
 const char * Event::getID()
 {

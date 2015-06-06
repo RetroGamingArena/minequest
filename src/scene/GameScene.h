@@ -16,8 +16,8 @@
 #include "Player.h"
 // End of user code
 
-#include "VoxelScene.h"
 #include "Listener.h"
+#include "VoxelScene.h"
 
 #include "WorldProcessor.h"
 #include "Item.h"
@@ -27,13 +27,16 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class GameScene : public VoxelScene, public Listener
+class GameScene : public Listener, public VoxelScene
 {
 	WorldProcessor* worldProcessor;
 	vector<Item*> items;
 	int chunksOffset;
 	bool updateChunks;
 	bool updateBuffer;
+	int updateChunksCpt;
+	std::mutex* bufferAddMutex;
+	int updateBufferCpt;
 
 	protected:
 
@@ -41,7 +44,7 @@ class GameScene : public VoxelScene, public Listener
 		// Start of user code public
         GameScene(Player* player);
 		// End of user code
-		GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer);
+		GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, int _updateChunksCpt, std::mutex* _bufferAddMutex, int _updateBufferCpt);
 		GameScene();
 		~GameScene();
 		int getChunksOffset();
@@ -50,6 +53,12 @@ class GameScene : public VoxelScene, public Listener
 		void setUpdateChunks(bool _updateChunks);
 		bool getUpdateBuffer();
 		void setUpdateBuffer(bool _updateBuffer);
+		int getUpdateChunksCpt();
+		void setUpdateChunksCpt(int _updateChunksCpt);
+		std::mutex* getBufferAddMutex();
+		void setBufferAddMutex(std::mutex* _bufferAddMutex);
+		int getUpdateBufferCpt();
+		void setUpdateBufferCpt(int _updateBufferCpt);
 		void reset();
 		void render();
 		void refreshItemsBuffer();

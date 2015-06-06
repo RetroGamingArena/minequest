@@ -27,6 +27,11 @@ Thread::~Thread()
 // Start of user code methods
 // End of user code
 
+void Thread::poly()
+{
+	// Start of user code poly
+	// End of user code
+}
 
 
 
@@ -68,6 +73,7 @@ void Thread::run(Thread * thread)
     {
 
         thread->task->run();
+        thread->fireEvent(new Event(Event::ID_FINISHED, thread));
         thread->mutex->unlock();
     }
 	// End of user code

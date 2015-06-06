@@ -29,6 +29,17 @@ Pool::Pool()
 // Start of user code methods
 // End of user code
 
+void Pool::handle(Event * event)
+{
+	// Start of user code handle
+    fireEvent(event);
+	// End of user code
+}
+void Pool::poly()
+{
+	// Start of user code poly
+	// End of user code
+}
 
 
 
@@ -102,9 +113,12 @@ void Pool::start()
         if(task != NULL)
         {
             Thread* thread = new Thread();
+            thread->addListener(this);
             thread->setTask(task);
             threads.push_back(thread);
         }
+        else
+            break;
     }
     for(int i = 0; i < threads.size(); i++)
     {

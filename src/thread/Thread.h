@@ -15,6 +15,7 @@
 // Start of user code includes
 // End of user code
 
+#include "Transmitter.h"
 
 #include "Task.h"
 
@@ -24,7 +25,7 @@ using namespace std;
 class Task;
 // End of user code
 
-class Thread
+class Thread : public Transmitter
 {
 	Task* task;
 	std::mutex* mutex;
@@ -44,6 +45,7 @@ class Thread
 		static void run(Thread * thread);
 		Task* getTask();
 		void setTask(Task* _task);
+		void poly();
 };
 
 #endif

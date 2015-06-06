@@ -30,6 +30,55 @@ IterativeProcessor::~IterativeProcessor()
 // Start of user code methods
 // End of user code
 
+Task* IterativeProcessor::buildTask()
+{
+	// Start of user code buildTask
+    if( mutex->try_lock())
+        if( hasNext())
+        {
+            std::vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
+            Chunk* chunk = chunks[chunkIndice];
+            
+            World* world = Engine::getInstance()->getWorld();
+            for(int i = 0; i < world->getChunks().size(); i++)
+                if(!world->getChunks()[i]->getBuffered() && world->getChunks()[i]->getGenerated() && !world->getChunks()[i]->getBuffering())
+                {
+                    chunk = world->getChunks()[i];
+                    break;
+                }
+        
+            if(!chunk->getBuffered() && !chunk->getGenerating())
+            {
+                ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask();
+                chunkProcessorTask->setProcessor(this);
+                chunkProcessorTask->setChunk(chunk);
+                chunk->setBuffering(true);
+                mutex->unlock();
+                return chunkProcessorTask;
+            }
+            mutex->unlock();
+        }
+        else
+        {
+            mutex->unlock();
+        }
+    return NULL;
+	// End of user code
+}
+bool IterativeProcessor::hasNext()
+{
+	// Start of user code hasNext
+    chunkIndice = -1;
+    World* world = Engine::getInstance()->getWorld();
+    for(int i = 0; i < world->getChunks().size(); i++)
+        if(!world->getChunks()[i]->getBuffered() && world->getChunks()[i]->getGenerated() && !world->getChunks()[i]->getBuffering())
+        {
+            chunkIndice = i;
+            return true;
+        }
+    return false;
+    // End of user code
+}
 vector<GLfloat>* IterativeProcessor::bufferize(Octree * octree)
 {
 	// Start of user code bufferize
@@ -119,42 +168,6 @@ vector<GLfloat>* IterativeProcessor::bufferize(Octree * octree)
     //gameScene->getDoubleBuffer()->getIndiceBuffer()->bind();
     
     return NULL;
-	// End of user code
-}
-Task* IterativeProcessor::buildTask()
-{
-	// Start of user code buildTask
-    if( mutex->try_lock() && hasNext())
-    {
-        std::vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
-        Chunk* chunk = chunks[chunkIndice];
-        if(!chunk->getBuffered())
-        {
-            ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask();
-            chunkProcessorTask->setProcessor(this);
-            chunkProcessorTask->setChunk(chunk);
-            chunk->setBuffered(true);
-            mutex->unlock();
-            return chunkProcessorTask;
-        }
-        
-    }
-    return NULL;
-	// End of user code
-}
-bool IterativeProcessor::hasNext()
-{
-	// Start of user code hasNext
-    chunkIndice = -1;
-    World* world = Engine::getInstance()->getWorld();
-    for(int i = 0; i < world->getChunks().size(); i++)
-        if(!world->getChunks()[i]->getBuffered())
-        {
-            chunkIndice = i;
-            return true;
-        }
-    return false;
-    //return chunkIndice < world->getChunks().size();
 	// End of user code
 }
 

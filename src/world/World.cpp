@@ -70,7 +70,7 @@ Task* World::buildTask()
         Chunk* chunk = chunks[chunkIndice];
         ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
         chunkIndice = chunkIndice+1;
-        chunk->setGenerated(true);
+        chunk->setGenerating(true);
         mutex->unlock();
         return chunkTask;
     }
@@ -83,7 +83,7 @@ bool World::hasNext()
     chunkIndice = -1;
     World* world = Engine::getInstance()->getWorld();
     for(int i = 0; i < world->getChunks().size(); i++)
-        if(!world->getChunks()[i]->getGenerated())
+        if(!world->getChunks()[i]->getGenerated() && !world->getChunks()[i]->getGenerating())
         {
             chunkIndice = i;
             return true;
@@ -93,7 +93,7 @@ bool World::hasNext()
 }
 
 
-int World::size = 1;
+int World::size = 1;	
 
 int World::getChunkIndice()
 {

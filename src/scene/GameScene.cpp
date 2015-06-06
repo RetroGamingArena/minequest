@@ -3,16 +3,20 @@
 #include "GameScene.h"
 // Start of user code includes
 #include "Chunk.h"
+#include "ChunkTask.h"
 #include "ItemCamera.h"
 #include "Engine.h"
 #include "ChunkProcessorTask.h"
 // End of user code
 
-GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer)
+GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, int _updateChunksCpt, std::mutex* _bufferAddMutex, int _updateBufferCpt)
 {
 	chunksOffset = _chunksOffset;
 	updateChunks = _updateChunks;
 	updateBuffer = _updateBuffer;
+	updateChunksCpt = _updateChunksCpt;
+	bufferAddMutex = _bufferAddMutex;
+	updateBufferCpt = _updateBufferCpt;
 }
 
 GameScene::GameScene()
@@ -71,7 +75,12 @@ GameScene::GameScene(Player* player)
     
     updateBuffer = false;
     updateChunks = true;
-
+    
+    Engine::getInstance()->getWorld()->addListener(this);
+    worldProcessor->addListener(this);
+    
+    updateChunksCpt = 0;
+    updateBufferCpt = 0;
 }
 // End of user code
 
@@ -82,7 +91,32 @@ void GameScene::handle(Event * event)
     {
         Camera* camera = dynamic_cast<Camera*>((Transmitter*)event->getSource());
         if(camera != NULL)
+        {
             updateIndices();
+            return;
+        }
+    }
+    if(event->getID() == Event::ID_FINISHED && event->getSource() != NULL)
+    {
+        Thread* thread = dynamic_cast<Thread*>((Transmitter*)event->getSource());
+        if(thread != NULL)
+        {
+            Task* task = thread->getTask();
+            ChunkTask* chunkTask = dynamic_cast<ChunkTask*>(task);
+            if(chunkTask != NULL)
+            {
+                updateChunksCpt++;
+                updateBuffer = true;
+                return;
+            }
+            ChunkProcessorTask* chunkProcessorTask = dynamic_cast<ChunkProcessorTask*>(task);
+            if(chunkProcessorTask != NULL)
+            {
+                updateChunksCpt--;
+                updateBufferCpt++;
+                return;
+            }
+        }
     }
     // End of user code
 }
@@ -123,6 +157,42 @@ bool GameScene::getUpdateBuffer()
 void GameScene::setUpdateBuffer(bool _updateBuffer)
 {
 	updateBuffer = _updateBuffer;
+}
+
+int GameScene::getUpdateChunksCpt()
+{
+	// Start of user code getUpdateChunksCpt
+	// End of user code
+	return updateChunksCpt;
+}
+
+void GameScene::setUpdateChunksCpt(int _updateChunksCpt)
+{
+	updateChunksCpt = _updateChunksCpt;
+}
+
+std::mutex* GameScene::getBufferAddMutex()
+{
+	// Start of user code getBufferAddMutex
+	// End of user code
+	return bufferAddMutex;
+}
+
+void GameScene::setBufferAddMutex(std::mutex* _bufferAddMutex)
+{
+	bufferAddMutex = _bufferAddMutex;
+}
+
+int GameScene::getUpdateBufferCpt()
+{
+	// Start of user code getUpdateBufferCpt
+	// End of user code
+	return updateBufferCpt;
+}
+
+void GameScene::setUpdateBufferCpt(int _updateBufferCpt)
+{
+	updateBufferCpt = _updateBufferCpt;
 }
 
 
@@ -174,14 +244,14 @@ void GameScene::render()
         else if(world->getStarted() && !world->isRunning())
         {
             updateChunks = false;
-            updateBuffer = true;
+            //updateBuffer = true;
         }
     }
-    if(updateBuffer)
+    if(updateChunksCpt > 0)
     {
         if(!worldProcessor->isRunning() && !worldProcessor->getStarted())
             worldProcessor->start();
-        else if(worldProcessor->getStarted() && !worldProcessor->isRunning())
+        /*else if(worldProcessor->getStarted() && !worldProcessor->isRunning())
         {
             vector<GLfloat>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
             
@@ -204,8 +274,37 @@ void GameScene::render()
             }
             
             worldProcessor->setStarted(false);
+            updateChunksCpt--;
             updateBuffer = false;
+        }*/
+    }
+    if(updateBufferCpt > 0)
+    {
+        vector<GLfloat>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
+        
+        for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size(); i++)
+        {
+            Chunk* chunk = Engine::getInstance()->getWorld()->getChunks()[i];
+            
+            if(chunk->getBuffered() && chunk->getVertexBuffer()->getData()->size() > 0)
+            {
+                vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
+                gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
+                chunkData->clear();
+                updateBufferCpt--;
+            }
         }
+        
+        setChunksOffset(gameSceneData->size());
+        
+        //
+        for(int i=0; i < items.size() ; i++)
+        {
+            items[0]->draw(doubleBuffer->getVertexBuffer());
+        }
+        
+        worldProcessor->setStarted(false);
+        updateBuffer = false;
     }
     
     bool refresh = false;

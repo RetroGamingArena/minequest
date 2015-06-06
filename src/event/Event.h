@@ -34,7 +34,8 @@ class Event
         Event(const char * _ID, void* _source);
 		// End of user code
 	static const char * ID_CHANGED;
-		Event(const char * _ID, void* _source, const char * _ID_CHANGED);
+	static const char * ID_FINISHED;
+		Event(const char * _ID, void* _source, const char * _ID_CHANGED, const char * _ID_FINISHED);
 		Event();
 		~Event();
 		const char * getID();

@@ -277,6 +277,15 @@ void Engine::refresh()
 	// End of user code
 }
 
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
 vector<Shader*> Engine::getShaders()
 {
 	// Start of user code getShaders
@@ -301,15 +310,6 @@ void Engine::setScene(Scene* _scene)
 	scene = _scene;
 }
 					
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
 World* Engine::getWorld()
 {
 	// Start of user code getWorld

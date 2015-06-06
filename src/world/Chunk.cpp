@@ -5,7 +5,7 @@
 #include "Cube.h"
 // End of user code
 
-Chunk::Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered, bool _generated)
+Chunk::Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered, bool _generated, bool _generating, bool _buffering)
 {
 	p = _p;
 	q = _q;
@@ -14,6 +14,8 @@ Chunk::Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffer
 	subsize = _subsize;
 	buffered = _buffered;
 	generated = _generated;
+	generating = _generating;
+	buffering = _buffering;
 }
 
 Chunk::Chunk()
@@ -49,6 +51,9 @@ Chunk::Chunk(float _p, float _q, float _r)
     
     buffered = false;
     generated = false;
+    
+    buffering = false;
+    generating = false;
 }
 // End of user code
 
@@ -117,6 +122,30 @@ void Chunk::setGenerated(bool _generated)
 	generated = _generated;
 }
 
+bool Chunk::getGenerating()
+{
+	// Start of user code getGenerating
+	// End of user code
+	return generating;
+}
+
+void Chunk::setGenerating(bool _generating)
+{
+	generating = _generating;
+}
+
+bool Chunk::getBuffering()
+{
+	// Start of user code getBuffering
+	// End of user code
+	return buffering;
+}
+
+void Chunk::setBuffering(bool _buffering)
+{
+	buffering = _buffering;
+}
+
 
 void Chunk::generate(WorldGenerator * worldGenerator)
 {
@@ -136,18 +165,6 @@ void Chunk::bufferize()
 	// End of user code
 }
 
-VertexBuffer* Chunk::getVertexBuffer()
-{
-	// Start of user code getVertexBuffer
-	// End of user code
-	return vertexBuffer;
-}
-
-void Chunk::setVertexBuffer(VertexBuffer* _vertexBuffer)
-{
-	vertexBuffer = _vertexBuffer;
-}
-					
 Octree* Chunk::getOctree()
 {
 	// Start of user code getOctree
@@ -158,5 +175,17 @@ Octree* Chunk::getOctree()
 void Chunk::setOctree(Octree* _octree)
 {
 	octree = _octree;
+}
+					
+VertexBuffer* Chunk::getVertexBuffer()
+{
+	// Start of user code getVertexBuffer
+	// End of user code
+	return vertexBuffer;
+}
+
+void Chunk::setVertexBuffer(VertexBuffer* _vertexBuffer)
+{
+	vertexBuffer = _vertexBuffer;
 }
 					
