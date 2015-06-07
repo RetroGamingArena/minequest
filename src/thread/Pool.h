@@ -57,7 +57,6 @@ class Pool : public Listener, public Transmitter
 		void start();
 		virtual Task* buildTask() = 0;
 		static void run(Pool * pool);
-		virtual bool hasNext() = 0;
 		bool isRunning();
 		vector<Thread*> getThreads();
 		void setThreadsAt(Thread* _threads, int indice);

@@ -20,7 +20,7 @@ VBOScene::VBOScene()
     VBO* vBO = new VoxelVBO();
     vBO->setInstanceSize(6);
     doubleBuffer->setVBO(vBO);
-	// End of user code
+    // End of user code
 }
 
 VBOScene::~VBOScene()
@@ -100,7 +100,11 @@ void VBOScene::render()
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
-        glDrawElementsInstanced(GL_TRIANGLES, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
+        //if(data->size() != oldSize)
+        {
+            glDrawElementsInstanced(GL_TRIANGLES, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
+          //  oldSize = data->size();
+        }
         
         for(int i = 0; i < attributes.size(); i++)
             glDisableVertexAttribArray(i);

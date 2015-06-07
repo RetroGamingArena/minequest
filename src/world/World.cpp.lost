@@ -27,3 +27,17 @@ Fri May 08 15:31:52 CEST 2015
 ================================================================================
 Start of user code isRunning
 	// End of user code
+
+Sun Jun 07 13:10:29 CEST 2015
+================================================================================
+Start of user code hasNext
+    chunkIndice = -1;
+    World* world = Engine::getInstance()->getWorld();
+    for(int i = 0; i < world->getChunks().size(); i++)
+        if(!world->getChunks()[i]->getGenerated() && !world->getChunks()[i]->getGenerating())
+        {
+            chunkIndice = i;
+            return true;
+        }
+    return false;
+	// End of user code

@@ -65,30 +65,24 @@ World::~World()
 Task* World::buildTask()
 {
 	// Start of user code buildTask
-    if( mutex->try_lock() && hasNext())
+    World* world = Engine::getInstance()->getWorld();
+    if( mutex->try_lock() )
     {
-        Chunk* chunk = chunks[chunkIndice];
-        ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
-        chunkIndice = chunkIndice+1;
-        chunk->setGenerating(true);
+        for(int i = 0; i < world->getChunks().size(); i++)
+        {
+            Chunk* chunk = chunks[i];
+            if(!chunk->getGenerated() && !chunk->getGenerating())
+            {
+                ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
+                chunkIndice = chunkIndice+1;
+                chunk->setGenerating(true);
+                mutex->unlock();
+                return chunkTask;
+            }
+        }
         mutex->unlock();
-        return chunkTask;
     }
     return NULL;
-	// End of user code
-}
-bool World::hasNext()
-{
-	// Start of user code hasNext
-    chunkIndice = -1;
-    World* world = Engine::getInstance()->getWorld();
-    for(int i = 0; i < world->getChunks().size(); i++)
-        if(!world->getChunks()[i]->getGenerated() && !world->getChunks()[i]->getGenerating())
-        {
-            chunkIndice = i;
-            return true;
-        }
-    return false;
 	// End of user code
 }
 
@@ -242,18 +236,6 @@ Chunk* World::getChunk(int x, int y, int z)
 	// End of user code
 }
 
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-
-void World::setChunksAt(Chunk* _chunks, int indice)
-{
-	chunks[indice] = _chunks;
-}
-
 WorldGenerator* World::getWorldGenerator()
 {
 	// Start of user code getWorldGenerator
@@ -266,3 +248,15 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
+
+void World::setChunksAt(Chunk* _chunks, int indice)
+{
+	chunks[indice] = _chunks;
+}
+

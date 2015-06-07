@@ -109,48 +109,50 @@ void Pool::start()
 	// Start of user code start
     for(int i = 0; i < threadCount; i++)
     {
-        Task* task = buildTask();
+        /*Task* task = buildTask();
         if(task != NULL)
-        {
+        {*/
             Thread* thread = new Thread();
             thread->addListener(this);
-            thread->setTask(task);
+          //  thread->setTask(task);
             threads.push_back(thread);
-        }
+        /*}
         else
-            break;
+            break;*/
     }
-    for(int i = 0; i < threads.size(); i++)
+    /*for(int i = 0; i < threads.size(); i++)
     {
         Thread* thread = threads[i];
         if(thread != NULL)
             thread->start();
-    }
+    }*/
     work = new thread(Pool::run, this);
 	// End of user code
 }
 void Pool::run(Pool * pool)
 {
 	// Start of user code run
-    while (pool->hasNext())
+    
+    Task* task = pool->buildTask();
+    while(task != NULL )
     {
-        Task* task = pool->buildTask();
-        while(task != NULL )
+        for(int i = 0; i < pool->threadCount; i++)
         {
-            for(int i = 0; i < pool->threadCount; i++)
+            if( !pool->threads[i]->isBusy() )
             {
-                if( !pool->threads[i]->isBusy() )
-                {
-                    pool->threads[i]->setTask(task);
-                    pool->threads[i]->start();
-                    //task = pool->buildTask();
-                    task = NULL;
-                    break;
-                }
+                pool->threads[i]->setTask(task);
+                pool->threads[i]->start();
+                task = pool->buildTask();
+                break;
             }
-            
+            else
+            {
+                int a = 2;
+            }
         }
+        
     }
+    
     pool->setStarted(true);
 	// End of user code
 }

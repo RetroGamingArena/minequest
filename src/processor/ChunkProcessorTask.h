@@ -17,8 +17,8 @@
 
 #include "Task.h"
 
-#include "Processor.h"
 #include "Chunk.h"
+#include "Processor.h"
 
 using namespace std;
 
@@ -27,8 +27,8 @@ using namespace std;
 
 class ChunkProcessorTask : public Task
 {
-	Processor* processor;
 	Chunk* chunk;
+	Processor* processor;
 
 	protected:
 
@@ -37,10 +37,10 @@ class ChunkProcessorTask : public Task
 		// End of user code
 		ChunkProcessorTask();
 		~ChunkProcessorTask();
-		Processor* getProcessor();
-		void setProcessor(Processor* _processor);
 		Chunk* getChunk();
 		void setChunk(Chunk* _chunk);
+		Processor* getProcessor();
+		void setProcessor(Processor* _processor);
 		void run();
 };
 
