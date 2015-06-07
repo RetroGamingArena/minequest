@@ -51,18 +51,6 @@ void DebugUI::refresh()
 
 
 
-Label* DebugUI::getFPSLabel()
-{
-	// Start of user code getFPSLabel
-	// End of user code
-	return fPSLabel;
-}
-
-void DebugUI::setFPSLabel(Label* _fPSLabel)
-{
-	fPSLabel = _fPSLabel;
-}
-					
 Label* DebugUI::getCubesCountLabel()
 {
 	// Start of user code getCubesCountLabel
@@ -73,5 +61,17 @@ Label* DebugUI::getCubesCountLabel()
 void DebugUI::setCubesCountLabel(Label* _cubesCountLabel)
 {
 	cubesCountLabel = _cubesCountLabel;
+}
+					
+Label* DebugUI::getFPSLabel()
+{
+	// Start of user code getFPSLabel
+	// End of user code
+	return fPSLabel;
+}
+
+void DebugUI::setFPSLabel(Label* _fPSLabel)
+{
+	fPSLabel = _fPSLabel;
 }
 					

@@ -9,7 +9,7 @@
 #include "ChunkProcessorTask.h"
 // End of user code
 
-GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, int _updateChunksCpt, std::mutex* _bufferAddMutex, int _updateBufferCpt)
+GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, int _updateChunksCpt, std::mutex* _bufferAddMutex, int _updateBufferCpt, unsigned char _oldMask, std::mutex* _cameraLock)
 {
 	chunksOffset = _chunksOffset;
 	updateChunks = _updateChunks;
@@ -17,6 +17,8 @@ GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, 
 	updateChunksCpt = _updateChunksCpt;
 	bufferAddMutex = _bufferAddMutex;
 	updateBufferCpt = _updateBufferCpt;
+	oldMask = _oldMask;
+	cameraLock = _cameraLock;
 }
 
 GameScene::GameScene()
@@ -81,6 +83,9 @@ GameScene::GameScene(Player* player)
     
     updateChunksCpt = 0;
     updateBufferCpt = 0;
+    
+    oldMask = getSelectedCamera()->getMask();
+    cameraLock = new mutex();
 }
 // End of user code
 
@@ -92,7 +97,23 @@ void GameScene::handle(Event * event)
         Camera* camera = dynamic_cast<Camera*>((Transmitter*)event->getSource());
         if(camera != NULL)
         {
-            updateIndices();
+            cameraLock->lock();
+            unsigned char mask = camera->getMask();
+            if(mask != oldMask)
+            {
+                oldMask = mask;
+                updateIndices();
+                /*World* world = Engine::getInstance()->getWorld();
+                
+                doubleBuffer->getVertexBuffer()->getData()->erase(doubleBuffer->getVertexBuffer()->getData()->begin()+36, doubleBuffer->getVertexBuffer()->getData()->end());
+                doubleBuffer->getVertexBuffer()->bind();
+                
+                for(int i =0; i < world->size; i++)
+                    world->getChunks()[i]->setBuffered(false);
+                updateChunksCpt = world->getChunks().size();*/
+                
+            }
+            cameraLock->unlock();
             return;
         }
     }
@@ -195,6 +216,30 @@ void GameScene::setUpdateBufferCpt(int _updateBufferCpt)
 	updateBufferCpt = _updateBufferCpt;
 }
 
+unsigned char GameScene::getOldMask()
+{
+	// Start of user code getOldMask
+	// End of user code
+	return oldMask;
+}
+
+void GameScene::setOldMask(unsigned char _oldMask)
+{
+	oldMask = _oldMask;
+}
+
+std::mutex* GameScene::getCameraLock()
+{
+	// Start of user code getCameraLock
+	// End of user code
+	return cameraLock;
+}
+
+void GameScene::setCameraLock(std::mutex* _cameraLock)
+{
+	cameraLock = _cameraLock;
+}
+
 
 void GameScene::reset()
 {
@@ -237,46 +282,15 @@ void GameScene::render()
     if(updateChunks)
     {
         World* world = Engine::getInstance()->getWorld();
-        if(!world->isRunning() && !world->getStarted())
+        if(!world->isRunning())
         {
             world->start();
-        }
-        else if(world->getStarted() && !world->isRunning())
-        {
-            updateChunks = false;
-            //updateBuffer = true;
         }
     }
     if(updateChunksCpt > 0)
     {
-        if(!worldProcessor->isRunning() && !worldProcessor->getStarted())
+        if(!worldProcessor->isRunning())
             worldProcessor->start();
-        /*else if(worldProcessor->getStarted() && !worldProcessor->isRunning())
-        {
-            vector<GLfloat>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
-            
-            for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size() ; i++)
-            {
-                Chunk* chunk = Engine::getInstance()->getWorld()->getChunks()[i];
-                
-                vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
-                
-                gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-                chunkData->clear();
-            }
-            
-            setChunksOffset(gameSceneData->size());
-            
-            //
-            for(int i=0; i < items.size() ; i++)
-            {
-                items[0]->draw(doubleBuffer->getVertexBuffer());
-            }
-            
-            worldProcessor->setStarted(false);
-            updateChunksCpt--;
-            updateBuffer = false;
-        }*/
     }
     if(updateBufferCpt > 0)
     {

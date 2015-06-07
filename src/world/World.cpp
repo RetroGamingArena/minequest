@@ -130,17 +130,17 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
-            if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
+            if(this->getCube(x-1, y+i,   z+j) == 0)// && (mask & LEFT))
                 return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)// && (mask & RIGHT))
                 return true;
-            if(this->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
+            if(this->getCube(x+i, y-1,   z+j) == 0)// && (mask & BOTTOM))
                 return true;
-            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
+            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)// && (mask & TOP))
                 return true;
-            if(this->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
+            if(this->getCube(x+i, y+j,   z-1) == 0)// && (mask & BACK))
                 return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)// && (mask & FRONT))
                 return true;
         }
     
@@ -236,18 +236,6 @@ Chunk* World::getChunk(int x, int y, int z)
 	// End of user code
 }
 
-WorldGenerator* World::getWorldGenerator()
-{
-	// Start of user code getWorldGenerator
-	// End of user code
-	return worldGenerator;
-}
-
-void World::setWorldGenerator(WorldGenerator* _worldGenerator)
-{
-	worldGenerator = _worldGenerator;
-}
-					
 vector<Chunk*> World::getChunks()
 {
 	// Start of user code getChunks
@@ -260,3 +248,15 @@ void World::setChunksAt(Chunk* _chunks, int indice)
 	chunks[indice] = _chunks;
 }
 
+WorldGenerator* World::getWorldGenerator()
+{
+	// Start of user code getWorldGenerator
+	// End of user code
+	return worldGenerator;
+}
+
+void World::setWorldGenerator(WorldGenerator* _worldGenerator)
+{
+	worldGenerator = _worldGenerator;
+}
+					
