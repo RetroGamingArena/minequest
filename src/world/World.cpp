@@ -46,6 +46,7 @@ World::World()
     chunkTask->setWorldGenerator(worldGenerator);
     center->setGenerated(true);
     chunkTask->run();
+    cubeCount = 0;
     
     //this->start();
     //while(isRunning()){}
@@ -87,7 +88,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;	
+int World::size = 2;
 
 int World::getChunkIndice()
 {

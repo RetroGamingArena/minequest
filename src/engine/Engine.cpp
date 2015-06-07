@@ -129,7 +129,7 @@ int Engine::run()
     
     //TODO : field
     int nbFrames = 0;
-    double lastTime;
+    double lastTime = 0;
     
     while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 )
     {
@@ -141,22 +141,13 @@ int Engine::run()
         nbFrames++;
         double currentTime = glfwGetTime();
         double dt = currentTime - lastTime;
-        //double FPS;
-        //live(dt);
-        if ( dt >= (1.0 / 60) )
+        
+        if ( dt >= 1.0 )
         {
             FPS = nbFrames;
             
-            /*Label* label = (Label*)scene->getUI()->getControls()[0];
-            char caption [25];
-            if(dynamic_cast<DebugUI*>(scene->getUI()) != 0)
-            {
-                sprintf (caption, "Minequest - FPS:  %i t", nbFrames);
-                label->setCaption(caption);
-            }*/
-            
             nbFrames = 0;
-            lastTime += 1.0;
+            lastTime = currentTime;
         }
         
         refresh();
@@ -204,8 +195,8 @@ void Engine::keyCallBack(GLFWwindow* window, int key, int scancode, int action, 
 void Engine::init()
 {
 	// Start of user code init
-    windowWidth = 1024;
-    windowHeight = 768;
+    windowWidth = 1920;
+    windowHeight = 1080;
     if (!glfwInit())
         exit(EXIT_FAILURE);
     glfwWindowHint(GLFW_SAMPLES, 4);

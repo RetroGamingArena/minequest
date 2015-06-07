@@ -13,7 +13,7 @@ DebugUI::DebugUI()
 {
 	// Start of user code constructor
            fPSLabel = new Label("Test", 20, 20);
-    cubesCountLabel = new Label("Test", 20, 40);
+    cubesCountLabel = new Label("Test", 20, 70);
     controls.push_back(fPSLabel);
 	controls.push_back(cubesCountLabel);
     // End of user code

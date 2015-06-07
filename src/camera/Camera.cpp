@@ -20,7 +20,7 @@ Camera::Camera()
 {
 	// Start of user code constructor
     float FoV = 70.0f;
-    projection = glm::perspective(FoV, 4.0f / 3.0f, 0.0009f, 200.0f);
+    projection = glm::perspective(FoV, 192.0f / 108.0f, 0.0009f, 200.0f);
     model = glm::mat4(1.0f);
     
     events.push_back(new Event(Event::ID_CHANGED, this));

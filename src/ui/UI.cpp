@@ -14,38 +14,7 @@ UI::UI()
 {
 	// Start of user code constructor
     shader = Engine::getInstance()->getShaders()[1];
-    
-    //TextShader* textShader = dynamic_cast<TextShader*>(shader);
-    /*buffer = new GlobalBuffer();
-    
-    view = glm::mat4(1.0f);
-    projection = glm::ortho(0, 1024, 768, 0);
-    model = glm::mat4(1.0f);
-    MVP = projection * view * model;*/
-    
-    //textUniformID = glGetUniformLocation( programID, "myTextureSampler" );
-    
     fontTexture = new Texture(GL_TEXTURE1, "textures/font.png");
-    
-    /*glGenTextures(1, &fontID);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, fontID);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    load_png_texture("textures/font.png");*/
-    
-    /*glGenVertexArrays(1, &vertexArrayID);
-    glBindVertexArray(vertexArrayID);
-    
-    glGenBuffers(1, &fontVertexBufferID);
-    glGenBuffers(1, &fontUVBufferID);*/
-    
-    
-    //doubleBuffer = new DoubleBuffer();
-    /*glGenBuffers(1, &bufferID);
-    glBindBuffer(GL_ARRAY_BUFFER, bufferID);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*buffer->getData()->size(), &(*buffer->getData())[0], GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);*/
 	// End of user code
 }
 
@@ -75,7 +44,7 @@ void UI::render()
     for(int i = 0; i < controls.size(); i++)
     {
         if(dynamic_cast<Label*>(controls[i]) != 0)
-            this->printText(dynamic_cast<Label*>(controls[i])->getCaption(), controls[i]->getX(), controls[i]->getY(), 10);
+            this->printText(dynamic_cast<Label*>(controls[i])->getCaption(), controls[i]->getX(), controls[i]->getY(), 50);
     }
 }
 // End of user code

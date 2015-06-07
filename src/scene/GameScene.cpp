@@ -317,6 +317,8 @@ void GameScene::render()
             items[0]->draw(doubleBuffer->getVertexBuffer());
         }
         
+        doubleBuffer->getVertexBuffer()->bind();
+        
         worldProcessor->setStarted(false);
         updateBuffer = false;
     }
