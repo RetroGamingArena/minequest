@@ -352,6 +352,7 @@ void GameScene::refreshItemsBuffer()
 void GameScene::onKey(int key, int scancode, int action, int mods)
 {
 	// Start of user code onKey
+    VoxelScene::onKey(key, scancode, action, mods);
 	// End of user code
 }
 

@@ -27,6 +27,7 @@ ItemCamera::~ItemCamera()
 void ItemCamera::onMouseMotion(double xpos, double ypos)
 {
 	// Start of user code onMouseMotion
+    
 	// End of user code
 }
 void ItemCamera::onKeyboard(int key, int scancode, int action, int mods)
