@@ -28,6 +28,8 @@ class Buffer
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	GLuint id;
 
 	public:

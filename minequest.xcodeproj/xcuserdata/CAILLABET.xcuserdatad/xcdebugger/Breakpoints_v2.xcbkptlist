@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "ItemCamera::getCenter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70">
+            startingLineNumber = "80"
+            endingLineNumber = "80">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "ItemCamera::setItem(Item* _item)"
             landmarkType = "5">
          </BreakpointContent>
@@ -552,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81">
+            startingLineNumber = "91"
+            endingLineNumber = "91">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -566,12 +566,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
+            timestampString = "455571817.924348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "Background::render()"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "Background::getFirstColor()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -598,12 +598,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
+            timestampString = "455571817.924348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "Background::render()"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "Background::getFirstColor()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -614,12 +614,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
+            timestampString = "455571817.924348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "Background::render()"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "Background::getFirstColor()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -964,11 +964,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "ItemCamera::getCenter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1200,7 +1200,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
+            timestampString = "455571817.924348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "Background::Background()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/background/Background.cpp"
+            timestampString = "455571817.924348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -1216,43 +1232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
+            timestampString = "455571817.924348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "Background::Background()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "Background::Background()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "Background::Background()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4237,11 +4221,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/background/Background.cpp"
-            timestampString = "455534805.516312"
+            timestampString = "455571817.924348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "Background::Background()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4253,11 +4237,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "ItemCamera::getPosition()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4269,11 +4253,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "ItemCamera::getItem()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4333,11 +4317,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "455567740.779431"
+            timestampString = "455575034.606328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "ItemCamera::getPosition()"
             landmarkType = "5">
          </BreakpointContent>

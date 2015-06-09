@@ -28,6 +28,8 @@ class CubeType
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 
 	public:
 		// Start of user code public

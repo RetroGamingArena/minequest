@@ -33,6 +33,8 @@ class TextShader : public Shader
 	GLuint fontUVBufferID;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 
 	public:
 		// Start of user code public

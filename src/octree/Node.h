@@ -30,6 +30,8 @@ class Node : public OctreeEntry
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	vector<OctreeEntry*> octreeEntries;
 
 	public:

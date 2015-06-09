@@ -16,8 +16,8 @@
 #include "Player.h"
 // End of user code
 
-#include "VoxelScene.h"
 #include "Listener.h"
+#include "VoxelScene.h"
 
 #include "Item.h"
 #include "WorldProcessor.h"
@@ -27,7 +27,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class GameScene : public VoxelScene, public Listener
+class GameScene : public Listener, public VoxelScene
 {
 	// Start of user code private
 	// End of user code
@@ -43,6 +43,8 @@ class GameScene : public VoxelScene, public Listener
 	std::mutex* cameraLock;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 
 	public:
 		// Start of user code public

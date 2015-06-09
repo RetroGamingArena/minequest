@@ -51,12 +51,22 @@ void ItemCamera::onMouseWheel(double xoffset, double yoffset)
 glm::vec3 ItemCamera::getPosition()
 {
 	// Start of user code getPosition
+    position = item->getPosition();
+    position.y /= Chunk::subsize;
+    position.y+=2;
+    position.x=0.5;
+    position.z=-1;
     return InputCamera::getPosition();
 	// End of user code
 }
 glm::vec3 ItemCamera::getCenter()
 {
 	// Start of user code getCenter
+    center = item->getLook();
+    center.y /= Chunk::subsize;
+    center.y+=2;
+    center.x=0.5;
+    center.z=50;
     return InputCamera::getCenter();
 	// End of user code
 }

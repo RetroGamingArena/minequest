@@ -29,6 +29,8 @@ class Camera : public Transmitter
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	glm::mat4 model;
 	glm::mat4 view;
 	glm::mat4 projection;

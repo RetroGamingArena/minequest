@@ -31,6 +31,8 @@ class LoadingScene : public VBOScene
 	static std::mutex* mutex;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 
 	public:
 		// Start of user code public

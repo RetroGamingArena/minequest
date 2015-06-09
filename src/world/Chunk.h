@@ -17,8 +17,8 @@
 // End of user code
 
 
-#include "VertexBuffer.h"
 #include "Octree.h"
+#include "VertexBuffer.h"
 
 using namespace std;
 
@@ -29,8 +29,8 @@ class Chunk
 {
 	// Start of user code private
 	// End of user code
-	VertexBuffer* vertexBuffer;
 	Octree* octree;
+	VertexBuffer* vertexBuffer;
 	float p;
 	float q;
 	float r;
@@ -40,6 +40,8 @@ class Chunk
 	bool buffering;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 
 	public:
 		// Start of user code public
@@ -66,10 +68,10 @@ class Chunk
 		void setBuffering(bool _buffering);
 		void generate(WorldGenerator * worldGenerator);
 		void bufferize();
-		VertexBuffer* getVertexBuffer();
-		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 		Octree* getOctree();
 		void setOctree(Octree* _octree);
+		VertexBuffer* getVertexBuffer();
+		void setVertexBuffer(VertexBuffer* _vertexBuffer);
 };
 
 #endif

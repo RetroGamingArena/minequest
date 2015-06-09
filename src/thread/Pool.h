@@ -37,6 +37,8 @@ class Pool : public Transmitter, public Listener
 	bool started;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	int threadCount;
 	std::mutex* mutex;
 

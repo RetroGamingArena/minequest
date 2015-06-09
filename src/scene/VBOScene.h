@@ -30,6 +30,8 @@ class VBOScene : public Scene
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	DoubleBuffer* doubleBuffer;
 
 	public:

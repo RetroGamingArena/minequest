@@ -32,6 +32,8 @@ class UI
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	DoubleBuffer* doubleBuffer;
 	Texture* fontTexture;
 	vector<Control*> controls;

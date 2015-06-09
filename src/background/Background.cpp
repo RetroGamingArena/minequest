@@ -5,6 +5,11 @@
 #include "Engine.h"
 // End of user code
 
+Background::Background(glm::vec3 _firstColor, glm::vec3 _lastColor)
+{
+	firstColor = _firstColor;
+	lastColor = _lastColor;
+}
 
 Background::Background()
 // Start of user code super class
@@ -14,55 +19,58 @@ Background::Background()
     Engine* engine = Engine::getInstance();
     backgroundShader = dynamic_cast<BackgroundShader*>(engine->getShaders()[2]);
     
+    firstColor = glm::vec3(0.3, 0.5, 1);
+    lastColor  = glm::vec3(0, 0, 1);
+    
     vertexBuffer = new VertexBuffer();
     
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(0);
     
-    vertexBuffer->getData()->push_back(0.4);
-    vertexBuffer->getData()->push_back(0.4);
-    vertexBuffer->getData()->push_back(1.0);
+    vertexBuffer->getData()->push_back(lastColor.r);
+    vertexBuffer->getData()->push_back(lastColor.g);
+    vertexBuffer->getData()->push_back(lastColor.b);
 
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(0);
     
-    vertexBuffer->getData()->push_back(0.5);
-    vertexBuffer->getData()->push_back(0.5);
-    vertexBuffer->getData()->push_back(1.0);
+    vertexBuffer->getData()->push_back(firstColor.r);
+    vertexBuffer->getData()->push_back(firstColor.g);
+    vertexBuffer->getData()->push_back(firstColor.b);
 
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(0);
     
-    vertexBuffer->getData()->push_back(0.5);
-    vertexBuffer->getData()->push_back(0.5);
-    vertexBuffer->getData()->push_back(1.0);
+    vertexBuffer->getData()->push_back(firstColor.r);
+    vertexBuffer->getData()->push_back(firstColor.g);
+    vertexBuffer->getData()->push_back(firstColor.b);
 
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(0);
     
-    vertexBuffer->getData()->push_back(0.4);
-    vertexBuffer->getData()->push_back(0.4);
-    vertexBuffer->getData()->push_back(1.0);
+    vertexBuffer->getData()->push_back(lastColor.r);
+    vertexBuffer->getData()->push_back(lastColor.g);
+    vertexBuffer->getData()->push_back(lastColor.b);
 
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(0);
     
-    vertexBuffer->getData()->push_back(0.5);
-    vertexBuffer->getData()->push_back(0.5);
-    vertexBuffer->getData()->push_back(1.0);
+    vertexBuffer->getData()->push_back(firstColor.r);
+    vertexBuffer->getData()->push_back(firstColor.g);
+    vertexBuffer->getData()->push_back(firstColor.b);
 
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(0);
     
-    vertexBuffer->getData()->push_back(0.4);
-    vertexBuffer->getData()->push_back(0.4);
-    vertexBuffer->getData()->push_back(1.0);
+    vertexBuffer->getData()->push_back(lastColor.r);
+    vertexBuffer->getData()->push_back(lastColor.g);
+    vertexBuffer->getData()->push_back(lastColor.b);
     
     GLuint VertexArrayID;
     glGenVertexArrays(1, &VertexArrayID);
@@ -91,6 +99,30 @@ Background::~Background()
 
 
 
+
+glm::vec3 Background::getFirstColor()
+{
+	// Start of user code getFirstColor
+	// End of user code
+	return firstColor;
+}
+
+void Background::setFirstColor(glm::vec3 _firstColor)
+{
+	firstColor = _firstColor;
+}
+
+glm::vec3 Background::getLastColor()
+{
+	// Start of user code getLastColor
+	// End of user code
+	return lastColor;
+}
+
+void Background::setLastColor(glm::vec3 _lastColor)
+{
+	lastColor = _lastColor;
+}
 
 
 void Background::render()

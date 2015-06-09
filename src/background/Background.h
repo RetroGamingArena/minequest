@@ -30,14 +30,23 @@ class Background
 	// End of user code
 	BackgroundShader* backgroundShader;
 	VertexBuffer* vertexBuffer;
+	glm::vec3 firstColor;
+	glm::vec3 lastColor;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 
 	public:
 		// Start of user code public
 		// End of user code
+		Background(glm::vec3 _firstColor, glm::vec3 _lastColor);
 		Background();
 		~Background();
+		glm::vec3 getFirstColor();
+		void setFirstColor(glm::vec3 _firstColor);
+		glm::vec3 getLastColor();
+		void setLastColor(glm::vec3 _lastColor);
 		void render();
 		BackgroundShader* getBackgroundShader();
 		void setBackgroundShader(BackgroundShader* _backgroundShader);

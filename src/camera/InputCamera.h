@@ -26,11 +26,13 @@ using namespace std;
 class InputCamera : public Camera
 {
 	// Start of user code private
-    glm::vec3 position;
-    glm::vec3 center;
 	// End of user code
 
 	protected:
+	// Start of user code protected
+    glm::vec3 position;
+    glm::vec3 center;
+	// End of user code
 	float oldY;
 	float oldX;
 

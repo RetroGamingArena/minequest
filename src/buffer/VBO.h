@@ -31,6 +31,8 @@ class VBO
 	unsigned int instanceSize;
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	vector<Attribute*> attributes;
 
 	public:

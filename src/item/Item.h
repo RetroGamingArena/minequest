@@ -29,6 +29,8 @@ class Item
 	// End of user code
 
 	protected:
+	// Start of user code protected
+	// End of user code
 	float x;
 	float y;
 	float z;
