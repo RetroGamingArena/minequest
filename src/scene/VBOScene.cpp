@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "VoxelVBO.h"
 #include "TrackBallCamera.h"
+#include <iostream>
 // End of user code
 
 
@@ -88,7 +89,7 @@ void VBOScene::render()
             
             float stride = sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 4 : 4);
             int divisor = attributes[i]->getDivisor();
-            GLvoid* offset = (GLvoid*)(sizeof(GLfloat) * size + sizeof(GLfloat)*(divisor > 0 ? 32 : 0));
+            GLvoid* offset = (GLvoid*)(sizeof(GLfloat) * size + sizeof(GLfloat)*(divisor > 0 ? 72 : 0));//32 : 0));
             
             glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, stride, offset);
             if(attributes[i]->getDivisor()>0)
@@ -96,13 +97,19 @@ void VBOScene::render()
             size += attributes[i]->getSize();
         }
         
-        glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());//bufferIDs[i]);
+        //glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());//bufferIDs[i]);
         
         vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
         
         //if(data->size() != oldSize)
         {
-            glDrawElementsInstanced(GL_TRIANGLES, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
+            
+            double currentTime = glfwGetTime();
+            glDrawArraysInstanced(GL_TRIANGLES, 0, 18, (data->size()-72)/4);
+            double newTime = glfwGetTime();
+            std::cout << (newTime - currentTime) << std::endl;
+            
+            //glDrawArraysInstanced(glDrawArraysInstanced, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
           //  oldSize = data->size();
         }
         

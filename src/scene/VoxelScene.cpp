@@ -75,32 +75,141 @@ void VoxelScene::updateIndices()
     doubleBuffer->getIndiceBuffer()->getData()->clear();
     
     //V
-    doubleBuffer->bufferizeIndice(indices[0]);
+    /*doubleBuffer->bufferizeIndice(indices[0]);
     doubleBuffer->bufferizeIndice(indices[1]);
     doubleBuffer->bufferizeIndice(indices[2]);
     
     doubleBuffer->bufferizeIndice(indices[0]);
     doubleBuffer->bufferizeIndice(indices[2]);
-    doubleBuffer->bufferizeIndice(indices[3]);
+    doubleBuffer->bufferizeIndice(indices[3]);*/
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3]);
+    
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+3]);
+    
+    //2
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3]);
+    
+    //2
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+3]);
+    
+    //3
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+3]);
     
     //L
     
-    doubleBuffer->bufferizeIndice(indices2[1]);
-    doubleBuffer->bufferizeIndice(indices[1]);
-    doubleBuffer->bufferizeIndice(indices[0]);
+    /*doubleBuffer->bufferizeIndice(indices2[1]);
+     doubleBuffer->bufferizeIndice(indices[1]);
+     doubleBuffer->bufferizeIndice(indices[0]);
+     
+     doubleBuffer->bufferizeIndice(indices2[0]);
+     doubleBuffer->bufferizeIndice(indices2[1]);
+     doubleBuffer->bufferizeIndice(indices[0]);*/
     
-    doubleBuffer->bufferizeIndice(indices2[0]);
-    doubleBuffer->bufferizeIndice(indices2[1]);
-    doubleBuffer->bufferizeIndice(indices[0]);
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+3]);
+    
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+3]);
+    
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3]);
+
     
     //R
-    doubleBuffer->bufferizeIndice(indices[0]);
+    /*doubleBuffer->bufferizeIndice(indices[0]);
     doubleBuffer->bufferizeIndice(indices[3]);
     doubleBuffer->bufferizeIndice(indices2[3]);
     
     doubleBuffer->bufferizeIndice(indices[0]);
     doubleBuffer->bufferizeIndice(indices2[3]);
-    doubleBuffer->bufferizeIndice(indices2[0]);
+    doubleBuffer->bufferizeIndice(indices2[0]);*/
+    
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3]);
+    
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3]);
+    
+    //1
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+3]);
+    
+    //0
+    doubleBuffer->bufferizeVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+1],
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+2], 0,
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+3]);
     
     doubleBuffer->getIndiceBuffer()->bind();
 	// End of user code

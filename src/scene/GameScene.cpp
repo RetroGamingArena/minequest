@@ -62,6 +62,8 @@ GameScene::GameScene(Player* player)
     
     vector<GLfloat>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
     
+    //updateIndices();
+    
     vector<GLfloat>* chunkData = first->getVertexBuffer()->getData();
         
     gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
@@ -102,7 +104,7 @@ void GameScene::handle(Event * event)
             if(mask != oldMask)
             {
                 oldMask = mask;
-                updateIndices();
+                //updateIndices();
                 /*World* world = Engine::getInstance()->getWorld();
                 
                 doubleBuffer->getVertexBuffer()->getData()->erase(doubleBuffer->getVertexBuffer()->getData()->begin()+36, doubleBuffer->getVertexBuffer()->getData()->end());
@@ -312,10 +314,10 @@ void GameScene::render()
         setChunksOffset(gameSceneData->size());
         
         //
-        for(int i=0; i < items.size() ; i++)
+        /*for(int i=0; i < items.size() ; i++)
         {
             items[0]->draw(doubleBuffer->getVertexBuffer());
-        }
+        }*/
         
         doubleBuffer->getVertexBuffer()->bind();
         

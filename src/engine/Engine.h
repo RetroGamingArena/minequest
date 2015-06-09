@@ -16,11 +16,11 @@
 // End of user code
 
 
-#include "Player.h"
-#include "Scene.h"
-#include "Engine.h"
-#include "Shader.h"
 #include "World.h"
+#include "Shader.h"
+#include "Scene.h"
+#include "Player.h"
+#include "Engine.h"
 
 using namespace std;
 
@@ -29,11 +29,11 @@ using namespace std;
 
 class Engine
 {
-	Player* player;
-	Scene* scene;
-	static Engine* instance;
-	vector<Shader*> shaders;
 	World* world;
+	vector<Shader*> shaders;
+	Scene* scene;
+	Player* player;
+	static Engine* instance;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -69,15 +69,15 @@ class Engine
 		void init();
 		float getDt();
 		void refresh();
-		Player* getPlayer();
-		void setPlayer(Player* _player);
-		Scene* getScene();
-		void setScene(Scene* _scene);
-		static Engine* getInstance();
-		vector<Shader*> getShaders();
-		void setShadersAt(Shader* _shaders, int indice);
 		World* getWorld();
 		void setWorld(World* _world);
+		vector<Shader*> getShaders();
+		void setShadersAt(Shader* _shaders, int indice);
+		Scene* getScene();
+		void setScene(Scene* _scene);
+		Player* getPlayer();
+		void setPlayer(Player* _player);
+		static Engine* getInstance();
 };
 
 #endif

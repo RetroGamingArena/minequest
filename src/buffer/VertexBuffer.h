@@ -26,17 +26,20 @@ using namespace std;
 class VertexBuffer : public Buffer
 {
 	vector<GLfloat>* data;
+	vector<GLfloat>* base;
 
 	protected:
 
 	public:
 		// Start of user code public
 		// End of user code
-		VertexBuffer(vector<GLfloat>* _data);
+		VertexBuffer(vector<GLfloat>* _data, vector<GLfloat>* _base);
 		VertexBuffer();
 		~VertexBuffer();
 		vector<GLfloat>* getData();
 		void setData(GLfloat _data);
+		vector<GLfloat>* getBase();
+		void setBase(GLfloat _base);
 		void init();
 		void bind();
 };

@@ -88,7 +88,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 2;
+int World::size = 1;
 
 int World::getChunkIndice()
 {

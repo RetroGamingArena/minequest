@@ -4,9 +4,10 @@
 // Start of user code includes
 // End of user code
 
-VertexBuffer::VertexBuffer(vector<GLfloat>* _data)
+VertexBuffer::VertexBuffer(vector<GLfloat>* _data, vector<GLfloat>* _base)
 {
 	data = _data;
+	base = _base;
 }
 
 VertexBuffer::VertexBuffer()
@@ -15,6 +16,7 @@ VertexBuffer::VertexBuffer()
 {
 	// Start of user code constructor
     data = new vector<GLfloat>();
+    base = new vector<GLfloat>();
 	// End of user code
 }
 
@@ -31,7 +33,7 @@ void VertexBuffer::bind()
 {
 	// Start of user code bind
     glBindBuffer(GL_ARRAY_BUFFER, id);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * data->size(), &(*data)[0], GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * data->size(), &(*data)[0], GL_STREAM_DRAW);
     //glBindBuffer(GL_ARRAY_BUFFER, 0);
 	// End of user code
 }
@@ -46,13 +48,21 @@ vector<GLfloat>* VertexBuffer::getData()
 }
 
 
+vector<GLfloat>* VertexBuffer::getBase()
+{
+	// Start of user code getBase
+	// End of user code
+	return base;
+}
+
+
 
 void VertexBuffer::init()
 {
 	// Start of user code init
     Buffer::init();
     glBindBuffer(GL_ARRAY_BUFFER, id);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(unsigned int)*data->size(), &(*data)[0], GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(unsigned int)*data->size(), &(*data)[0], GL_STREAM_DRAW);
     //glBindBuffer(GL_ARRAY_BUFFER, 0);
 	// End of user code
 }
