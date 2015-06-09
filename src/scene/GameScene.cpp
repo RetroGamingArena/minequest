@@ -88,6 +88,8 @@ GameScene::GameScene(Player* player)
     
     oldMask = getSelectedCamera()->getMask();
     cameraLock = new mutex();
+    
+    background = new Background();
 }
 // End of user code
 

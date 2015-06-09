@@ -21,6 +21,7 @@ LoadingScene::LoadingScene()
 	// Start of user code constructor
     thread = NULL;
     this->uI = new LoadingUI();
+    background = NULL;
 	// End of user code
 }
 
@@ -46,29 +47,6 @@ void LoadingScene::render()
         
         Engine* engine = Engine::getInstance();
         
-        //gameScene->reset();
-        
-        /*engine->getWorldProcessor()->process();
-        
-        vector<GLfloat>* gameSceneData = gameScene->getDoubleBuffer()->getVertexBuffer()->getData();
-        
-        for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size() ; i++)
-        {
-            Chunk* chunk = Engine::getInstance()->getWorld()->getChunks()[i];
-            
-            vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
-            
-            gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-            chunkData->clear();
-        }
-
-        gameScene->setChunksOffset(gameSceneData->size());
-        
-        //
-        for(int i=0; i < gameScene->getItems().size() ; i++)
-        {
-            gameScene->getItems()[0]->draw(gameScene->getDoubleBuffer()->getVertexBuffer());
-        }*/
         
         gameScene->getDoubleBuffer()->getVertexBuffer()->bind();
         gameScene->getDoubleBuffer()->getIndiceBuffer()->bind();
@@ -76,7 +54,6 @@ void LoadingScene::render()
         engine->setScene(gameScene);
         engine->getPlayer()->setFalling(true);
         
-        //double refresh
         engine->refresh();
 
         mutex->unlock();

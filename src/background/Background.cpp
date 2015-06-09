@@ -19,42 +19,52 @@ Background::Background()
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(1);
+    
+    vertexBuffer->getData()->push_back(0.4);
+    vertexBuffer->getData()->push_back(0.4);
+    vertexBuffer->getData()->push_back(1.0);
 
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(1);
     
+    vertexBuffer->getData()->push_back(0.5);
+    vertexBuffer->getData()->push_back(0.5);
+    vertexBuffer->getData()->push_back(1.0);
+
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(1);
     
+    vertexBuffer->getData()->push_back(0.5);
+    vertexBuffer->getData()->push_back(0.5);
+    vertexBuffer->getData()->push_back(1.0);
+
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(0);
-   // vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(1);
     
+    vertexBuffer->getData()->push_back(0.4);
+    vertexBuffer->getData()->push_back(0.4);
+    vertexBuffer->getData()->push_back(1.0);
+
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(-1);
     vertexBuffer->getData()->push_back(0);
-   // vertexBuffer->getData()->push_back(0);
-   // vertexBuffer->getData()->push_back(1);
     
+    vertexBuffer->getData()->push_back(0.5);
+    vertexBuffer->getData()->push_back(0.5);
+    vertexBuffer->getData()->push_back(1.0);
+
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(1);
     vertexBuffer->getData()->push_back(0);
-   // vertexBuffer->getData()->push_back(0);
-    //vertexBuffer->getData()->push_back(1);
     
-    //glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+    vertexBuffer->getData()->push_back(0.4);
+    vertexBuffer->getData()->push_back(0.4);
+    vertexBuffer->getData()->push_back(1.0);
     
-    GLuint VertexArrayID;// = background->getVertexBuffer()->getId();
+    GLuint VertexArrayID;
     glGenVertexArrays(1, &VertexArrayID);
     glBindVertexArray(VertexArrayID);
     
@@ -86,24 +96,26 @@ Background::~Background()
 void Background::render()
 {
 	// Start of user code render
-    glClear(GL_COLOR_BUFFER_BIT);// | GL_DEPTH_BUFFER_BIT);
+    //glClearColor(1.0, 0.0, 0.0, 1.0);
+    
+    //glClear(GL_COLOR_BUFFER_BIT);// | GL_DEPTH_BUFFER_BIT);
     
     glUseProgram(backgroundShader->getProgramID());
     
     glEnableVertexAttribArray(0);
-    //glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(1);
     
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->getId());
     
-    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0 );
-    //glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, 0, (void*)2 );
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, sizeof(GL_FLOAT)*6, (void*)0 );
+    glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, sizeof(GL_FLOAT)*6, (void*)12 );
 
     glDrawArrays(GL_TRIANGLES, 0, 6);//vertexBuffer->getData()->size()/5 );
     
     glDisableVertexAttribArray(0);
-    //glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(1);
     
-    //glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     
     
 	// End of user code

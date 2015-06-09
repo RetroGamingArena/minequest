@@ -35,7 +35,8 @@ void main()
     vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth, vertexPosition_modelspace.y*yWidth, vertexPosition_modelspace.z*zWidth );
 
     gl_Position = P * V * M * vec4(vertexPosition_temp+offset,1);
-    
+    gl_Position.z = -0.3;
+
     fragmentAo = 0.3 + ( ambiant ) * 0.7;
     fragmentAo *= ( (3-ao)/6 + 0.5);
     
