@@ -24,6 +24,8 @@ using namespace std;
 
 class Attribute
 {
+	// Start of user code private
+	// End of user code
 	int size;
 	int divisor;
 	const char * name;

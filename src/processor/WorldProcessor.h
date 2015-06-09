@@ -27,6 +27,8 @@ using namespace std;
 
 class WorldProcessor : public IterativeProcessor
 {
+	// Start of user code private
+	// End of user code
 	World* world;
 
 	protected:

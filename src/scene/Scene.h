@@ -16,8 +16,8 @@
 // End of user code
 
 
-#include "Camera.h"
 #include "Background.h"
+#include "InputCamera.h"
 #include "UI.h"
 
 using namespace std;
@@ -27,11 +27,13 @@ using namespace std;
 
 class Scene
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	int selectedCameraIndex;
-	vector<Camera*> cameras;
 	Background* background;
+	vector<InputCamera*> cameras;
 	UI* uI;
 
 	public:
@@ -46,11 +48,11 @@ class Scene
 		virtual void render() = 0;
 		virtual void onMouseMotion(double xpos, double ypos) = 0;
 		virtual void onMouseScroll(double xoffset, double yoffset) = 0;
-		Camera* getSelectedCamera();
+		InputCamera* getSelectedCamera();
 		virtual void onKey(int key, int scancode, int action, int mods) = 0;
-		vector<Camera*> getCameras();
-		void setCamerasAt(Camera* _cameras, int indice);
 		Background* getBackground();
+		vector<InputCamera*> getCameras();
+		void setCamerasAt(InputCamera* _cameras, int indice);
 		UI* getUI();
 		void setUI(UI* _uI);
 };

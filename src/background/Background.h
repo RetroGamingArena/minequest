@@ -26,6 +26,8 @@ using namespace std;
 
 class Background
 {
+	// Start of user code private
+	// End of user code
 	BackgroundShader* backgroundShader;
 	VertexBuffer* vertexBuffer;
 

@@ -24,6 +24,8 @@ using namespace std;
 
 class Control
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	int x;

@@ -25,6 +25,8 @@ using namespace std;
 
 class LoadingScene : public VBOScene
 {
+	// Start of user code private
+	// End of user code
 	std::thread* thread;
 	static std::mutex* mutex;
 

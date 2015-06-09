@@ -29,6 +29,8 @@ using namespace std;
 
 class ChunkTask : public Task
 {
+	// Start of user code private
+	// End of user code
 	WorldGenerator* worldGenerator;
 	Chunk* chunk;
 

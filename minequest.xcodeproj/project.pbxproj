@@ -58,6 +58,7 @@
 		64687A421A6C2F3600C0CAC3 /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64687A411A6C2F2D00C0CAC3 /* icon.icns */; };
 		647F97891B0F99A400133A4C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F97871B0F99A400133A4C /* Background.cpp */; };
 		647F978C1B0F99B300133A4C /* BackgroundShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F978A1B0F99B300133A4C /* BackgroundShader.cpp */; };
+		6483FF3F1B27199800821BD8 /* InputCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6483FF3D1B27199800821BD8 /* InputCamera.cpp */; };
 		649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649DC5121B0E806300A6235E /* ItemCamera.cpp */; };
 		64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864A1AFACD4300A5B62E /* Pool.cpp */; };
 		64C986511AFACE9B00A5B62E /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864D1AFACE9B00A5B62E /* Task.cpp */; };
@@ -444,6 +445,8 @@
 		647F978B1B0F99B300133A4C /* BackgroundShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundShader.h; sourceTree = "<group>"; };
 		647F978F1B0F9AEB00133A4C /* backgroundFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundFragmentShader.glsl; path = shaders/backgroundFragmentShader.glsl; sourceTree = "<group>"; };
 		647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundVertexShader.glsl; path = shaders/backgroundVertexShader.glsl; sourceTree = "<group>"; };
+		6483FF3D1B27199800821BD8 /* InputCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputCamera.cpp; sourceTree = "<group>"; };
+		6483FF3E1B27199800821BD8 /* InputCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCamera.h; sourceTree = "<group>"; };
 		649DC5121B0E806300A6235E /* ItemCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCamera.cpp; sourceTree = "<group>"; };
 		649DC5131B0E806300A6235E /* ItemCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCamera.h; sourceTree = "<group>"; };
 		64C9864A1AFACD4300A5B62E /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
@@ -802,6 +805,8 @@
 		6440BB0E1AF6A75B006A0842 /* camera */ = {
 			isa = PBXGroup;
 			children = (
+				6483FF3D1B27199800821BD8 /* InputCamera.cpp */,
+				6483FF3E1B27199800821BD8 /* InputCamera.h */,
 				649DC5121B0E806300A6235E /* ItemCamera.cpp */,
 				649DC5131B0E806300A6235E /* ItemCamera.h */,
 				6440BB0F1AF6A75B006A0842 /* Camera.cpp */,
@@ -1152,6 +1157,7 @@
 				64C986521AFACE9B00A5B62E /* Thread.cpp in Sources */,
 				6450304E1B17ACC9009DAC36 /* Transmitter.cpp in Sources */,
 				6440BB251AF7B849006A0842 /* ShaderLoader.cpp in Sources */,
+				6483FF3F1B27199800821BD8 /* InputCamera.cpp in Sources */,
 				6440BB791AFAC3AD006A0842 /* WorldGenerator.cpp in Sources */,
 				6440BB411AF8FB9E006A0842 /* Attribute.cpp in Sources */,
 				649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */,

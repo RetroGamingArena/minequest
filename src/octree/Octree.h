@@ -26,6 +26,8 @@ using namespace std;
 
 class Octree : public Node
 {
+	// Start of user code private
+	// End of user code
 	float p;
 	float q;
 	float r;

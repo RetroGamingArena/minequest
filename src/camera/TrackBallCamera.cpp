@@ -4,11 +4,9 @@
 // Start of user code includes
 // End of user code
 
-TrackBallCamera::TrackBallCamera(float _distance, float _oldX, float _oldY, bool _hold, float _motionSensitivity, float _scrollSensitivity)
+TrackBallCamera::TrackBallCamera(float _distance, bool _hold, float _motionSensitivity, float _scrollSensitivity)
 {
 	distance = _distance;
-	oldX = _oldX;
-	oldY = _oldY;
 	hold = _hold;
 	motionSensitivity = _motionSensitivity;
 	scrollSensitivity = _scrollSensitivity;
@@ -72,11 +70,6 @@ void TrackBallCamera::onMouseMotion(double xpos, double ypos)
     oldY = ypos;
 	// End of user code
 }
-void TrackBallCamera::onKeyboard(int key, int scancode, int action, int mods)
-{
-	// Start of user code onKeyboard
-	// End of user code
-}
 void TrackBallCamera::onMouseButton(int button, int action)
 {
 	// Start of user code onMouseButton
@@ -91,6 +84,11 @@ void TrackBallCamera::onMouseButton(int button, int action)
             hold = true;
         }
     }
+	// End of user code
+}
+void TrackBallCamera::onKeyboard(int key, int scancode, int action, int mods)
+{
+	// Start of user code onKeyboard
 	// End of user code
 }
 void TrackBallCamera::onMouseWheel(double xoffset, double yoffset)
@@ -109,28 +107,6 @@ void TrackBallCamera::onMouseWheel(double xoffset, double yoffset)
     fireEvent(events[0]);
 	// End of user code
 }
-glm::vec3 TrackBallCamera::getPosition()
-{
-	// Start of user code getPosition
-    return glm::vec3 (
-               cos(angleY) * sin(angleZ) * distance,
-               sin(angleY) * distance,
-               cos(angleY) * cos(angleZ) * distance
-               );
-	// End of user code
-}
-glm::vec3 TrackBallCamera::getCenter()
-{
-	// Start of user code getCenter
-    return glm::vec3(0, 0, 0);
-	// End of user code
-}
-glm::vec3 TrackBallCamera::getUp()
-{
-	// Start of user code getUp
-    return glm::vec3(0, 1, 0);
-	// End of user code
-}
 
 
 
@@ -144,30 +120,6 @@ float TrackBallCamera::getDistance()
 void TrackBallCamera::setDistance(float _distance)
 {
 	distance = _distance;
-}
-
-float TrackBallCamera::getOldX()
-{
-	// Start of user code getOldX
-	// End of user code
-	return oldX;
-}
-
-void TrackBallCamera::setOldX(float _oldX)
-{
-	oldX = _oldX;
-}
-
-float TrackBallCamera::getOldY()
-{
-	// Start of user code getOldY
-	// End of user code
-	return oldY;
-}
-
-void TrackBallCamera::setOldY(float _oldY)
-{
-	oldY = _oldY;
 }
 
 bool TrackBallCamera::getHold()
@@ -207,4 +159,20 @@ void TrackBallCamera::setScrollSensitivity(float _scrollSensitivity)
 }
 
 
+glm::vec3 TrackBallCamera::getCenter()
+{
+	// Start of user code getCenter
+    return glm::vec3(0, 0, 0);
+	// End of user code
+}
+glm::vec3 TrackBallCamera::getPosition()
+{
+	// Start of user code getPosition
+    return glm::vec3 (
+                      cos(angleY) * sin(angleZ) * distance,
+                      sin(angleY) * distance,
+                      cos(angleY) * cos(angleZ) * distance
+                      );
+	// End of user code
+}
 

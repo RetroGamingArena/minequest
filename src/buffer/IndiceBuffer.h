@@ -25,6 +25,8 @@ using namespace std;
 
 class IndiceBuffer : public Buffer
 {
+	// Start of user code private
+	// End of user code
 	vector<unsigned int>* data;
 
 	protected:

@@ -27,6 +27,8 @@ class Task;
 
 class Thread : public Transmitter
 {
+	// Start of user code private
+	// End of user code
 	Task* task;
 	std::mutex* mutex;
 

@@ -26,6 +26,8 @@ using namespace std;
 
 class VBOScene : public Scene
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	DoubleBuffer* doubleBuffer;

@@ -25,6 +25,8 @@ using namespace std;
 
 class BackgroundShader : public Shader
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

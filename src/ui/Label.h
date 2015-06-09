@@ -25,6 +25,8 @@ using namespace std;
 
 class Label : public Control
 {
+	// Start of user code private
+	// End of user code
 	char* caption;
 
 	protected:

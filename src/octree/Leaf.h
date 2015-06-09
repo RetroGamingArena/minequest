@@ -25,6 +25,8 @@ using namespace std;
 
 class Leaf : public OctreeEntry
 {
+	// Start of user code private
+	// End of user code
 	unsigned char type;
 	unsigned char occlusion;
 

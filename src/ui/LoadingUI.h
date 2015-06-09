@@ -25,6 +25,8 @@ using namespace std;
 
 class LoadingUI : public UI
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

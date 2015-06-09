@@ -24,6 +24,8 @@ using namespace std;
 
 class Texture
 {
+	// Start of user code private
+	// End of user code
 	GLuint textureID;
 	unsigned int glTexture;
 	char* fileName;

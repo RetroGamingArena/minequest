@@ -24,6 +24,8 @@ using namespace std;
 
 class Buffer
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	GLuint id;

@@ -17,8 +17,8 @@
 
 #include "Pool.h"
 
-#include "Chunk.h"
 #include "WorldGenerator.h"
+#include "Chunk.h"
 
 using namespace std;
 
@@ -27,8 +27,10 @@ using namespace std;
 
 class World : public Pool
 {
-	vector<Chunk*> chunks;
+	// Start of user code private
+	// End of user code
 	WorldGenerator* worldGenerator;
+	vector<Chunk*> chunks;
 	int chunkIndice;
 	int cubeCount;
 
@@ -50,10 +52,10 @@ class World : public Pool
 		unsigned char getCube(int x, int y, int z);
 		void bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, int height, unsigned char occlusion);
 		Chunk* getChunk(int x, int y, int z);
-		vector<Chunk*> getChunks();
-		void setChunksAt(Chunk* _chunks, int indice);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
+		vector<Chunk*> getChunks();
+		void setChunksAt(Chunk* _chunks, int indice);
 		Task* buildTask();
 };
 

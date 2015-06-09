@@ -27,6 +27,8 @@ using namespace std;
 
 class Chunk
 {
+	// Start of user code private
+	// End of user code
 	VertexBuffer* vertexBuffer;
 	Octree* octree;
 	float p;

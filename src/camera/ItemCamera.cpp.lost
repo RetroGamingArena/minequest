@@ -23,3 +23,34 @@ Start of user code getRealPosition
     position.z=-1;
     return position;
 	// End of user code
+
+Tue Jun 09 14:53:54 CEST 2015
+================================================================================
+Start of user code onKeyboard
+	// End of user code
+Start of user code getCenter
+    glm::vec3 look = item->getLook();
+    look.y /= Chunk::subsize;
+    look.y+=2;
+    look.x=0.5;
+    look.z=50;
+    return look;
+	// End of user code
+Start of user code getUp
+    return glm::vec3(0,1,0);
+	// End of user code
+Start of user code getPosition
+    glm::vec3 position = item->getPosition();
+    position.y /= Chunk::subsize;
+    position.y+=2;
+    position.x=0.5;
+    position.z=-1;
+    return position;
+	// End of user code
+Start of user code onMouseButton
+	// End of user code
+Start of user code onMouseWheel
+	// End of user code
+Start of user code onMouseMotion
+    angleZ += 
+	// End of user code

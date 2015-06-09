@@ -25,6 +25,8 @@ using namespace std;
 
 class TextShader : public Shader
 {
+	// Start of user code private
+	// End of user code
 	GLuint textureSamplerID;
 	GLuint vertexArrayID;
 	GLuint fontVertexBufferID;

@@ -24,6 +24,8 @@ using namespace std;
 
 class Event
 {
+	// Start of user code private
+	// End of user code
 	const char * ID;
 	void* source;
 

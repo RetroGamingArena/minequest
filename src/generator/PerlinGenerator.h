@@ -25,6 +25,8 @@ using namespace std;
 
 class PerlinGenerator : public WorldGenerator
 {
+	// Start of user code private
+	// End of user code
 	utils::NoiseMap heightMap;
 	static int waterHeight;
 

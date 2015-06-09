@@ -22,11 +22,12 @@
 using namespace std;
 
 // Start of user code class import
-class OctreeEntry;
 // End of user code
 
 class Node : public OctreeEntry
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	vector<OctreeEntry*> octreeEntries;

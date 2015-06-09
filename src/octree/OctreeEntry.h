@@ -22,11 +22,12 @@
 using namespace std;
 
 // Start of user code class import
-class Node;
 // End of user code
 
 class OctreeEntry
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

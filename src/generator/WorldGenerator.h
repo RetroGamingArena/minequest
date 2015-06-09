@@ -25,6 +25,8 @@ using namespace std;
 
 class WorldGenerator
 {
+	// Start of user code private
+	// End of user code
 	static vector<int>* xs;
 	static vector<int>* ys;
 	static vector<int>* zs;

@@ -29,6 +29,8 @@ class Thread;
 
 class Pool : public Transmitter, public Listener
 {
+	// Start of user code private
+	// End of user code
 	vector<Thread*> threads;
 	bool running;
 	std::thread* work;

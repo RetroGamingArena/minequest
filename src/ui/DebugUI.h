@@ -27,8 +27,10 @@ using namespace std;
 
 class DebugUI : public UI
 {
-	Label* fPSLabel;
+	// Start of user code private
+	// End of user code
 	Label* cubesCountLabel;
+	Label* fPSLabel;
 
 	protected:
 
@@ -37,10 +39,10 @@ class DebugUI : public UI
 		// End of user code
 		DebugUI();
 		~DebugUI();
-		Label* getFPSLabel();
-		void setFPSLabel(Label* _fPSLabel);
 		Label* getCubesCountLabel();
 		void setCubesCountLabel(Label* _cubesCountLabel);
+		Label* getFPSLabel();
+		void setFPSLabel(Label* _fPSLabel);
 		void render();
 		void refresh();
 };

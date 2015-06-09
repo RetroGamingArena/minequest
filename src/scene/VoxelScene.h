@@ -25,6 +25,8 @@ using namespace std;
 
 class VoxelScene : public VBOScene
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

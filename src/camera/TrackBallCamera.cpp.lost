@@ -25,3 +25,70 @@ Thu May 28 22:19:19 CEST 2015
 Start of user code getRealPosition
     return getPosition();
 	// End of user code
+
+Tue Jun 09 14:53:54 CEST 2015
+================================================================================
+Start of user code onKeyboard
+	// End of user code
+Start of user code getCenter
+    return glm::vec3(0, 0, 0);
+	// End of user code
+Start of user code getUp
+    return glm::vec3(0, 1, 0);
+	// End of user code
+Start of user code getPosition
+    return glm::vec3 (
+               cos(angleY) * sin(angleZ) * distance,
+               sin(angleY) * distance,
+               cos(angleY) * cos(angleZ) * distance
+               );
+	// End of user code
+Start of user code onMouseButton
+    if (button == GLFW_MOUSE_BUTTON_LEFT)
+    {
+        if ((hold)&&(action == GLFW_RELEASE))
+        {
+            hold = false;
+        }
+        else if ((!hold)&&(action == GLFW_PRESS))
+        {
+            hold = true;
+        }
+    }
+	// End of user code
+Start of user code onMouseWheel
+    if (yoffset < 0)
+    {
+        distance -= scrollSensitivity;
+        if (distance < 0.1)
+            distance = 0.1;
+    }
+    else if (yoffset > 0)
+    {
+        distance += scrollSensitivity;
+    }
+    fireEvent(events[0]);
+	// End of user code
+Start of user code getOldY
+	// End of user code
+Start of user code getOldX
+	// End of user code
+Start of user code onMouseMotion
+    double dx = xpos-oldX;
+    double dy = ypos-oldY;
+    
+    if (hold) //si nous maintenons le bouton gauche enfonc?
+    {
+        angleZ += dx*motionSensitivity; //mouvement sur X de la souris -> changement de la rotation horizontale
+        angleY += dy*motionSensitivity; //mouvement sur Y de la souris -> changement de la rotation verticale
+        //pour ?viter certains probl?mes, on limite la rotation verticale ? des angles entre -90? et 90?
+        /*if (_angleY > 90)
+         _angleY = 90;
+         else if (_angleY < -90)
+         _angleY = -90;*/
+        fireEvent(events[0]);
+    }
+    
+    oldX = xpos;
+    oldY = ypos;
+	// End of user code

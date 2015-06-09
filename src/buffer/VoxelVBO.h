@@ -25,6 +25,8 @@ using namespace std;
 
 class VoxelVBO : public VBO
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

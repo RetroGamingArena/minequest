@@ -25,6 +25,8 @@ using namespace std;
 
 class Player : public Item
 {
+	// Start of user code private
+	// End of user code
 	bool falling;
 	float hRotation;
 

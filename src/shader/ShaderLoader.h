@@ -24,6 +24,8 @@ using namespace std;
 
 class ShaderLoader
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

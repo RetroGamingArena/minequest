@@ -21,11 +21,12 @@
 using namespace std;
 
 // Start of user code class import
-class Pool;
 // End of user code
 
 class Task
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

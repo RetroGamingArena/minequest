@@ -24,6 +24,8 @@ using namespace std;
 
 class CubeType
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 

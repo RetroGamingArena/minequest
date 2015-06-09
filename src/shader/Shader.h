@@ -24,6 +24,8 @@ using namespace std;
 
 class Shader
 {
+	// Start of user code private
+	// End of user code
 	const char * vertex_file_path;
 	const char * fragment_file_path;
 	const char * geometry_file_path;

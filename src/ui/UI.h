@@ -28,6 +28,8 @@ using namespace std;
 
 class UI
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	DoubleBuffer* doubleBuffer;

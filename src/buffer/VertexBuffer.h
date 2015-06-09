@@ -25,6 +25,8 @@ using namespace std;
 
 class VertexBuffer : public Buffer
 {
+	// Start of user code private
+	// End of user code
 	vector<GLfloat>* data;
 	vector<GLfloat>* base;
 

@@ -25,6 +25,8 @@ using namespace std;
 
 class Camera : public Transmitter
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
 	glm::mat4 model;
@@ -50,10 +52,6 @@ class Camera : public Transmitter
 		float getAngleY();
 		void setAngleY(float _angleY);
 		void look();
-		virtual void onMouseMotion(double xpos, double ypos) = 0;
-		virtual void onKeyboard(int key, int scancode, int action, int mods) = 0;
-		virtual void onMouseButton(int button, int action) = 0;
-		virtual void onMouseWheel(double xoffset, double yoffset) = 0;
 		virtual glm::vec3 getPosition() = 0;
 		virtual glm::vec3 getCenter() = 0;
 		virtual glm::vec3 getUp() = 0;

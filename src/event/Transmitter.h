@@ -16,8 +16,8 @@
 // End of user code
 
 
-#include "Listener.h"
 #include "Event.h"
+#include "Listener.h"
 
 using namespace std;
 
@@ -26,10 +26,12 @@ using namespace std;
 
 class Transmitter
 {
+	// Start of user code private
+	// End of user code
 
 	protected:
-	vector<Listener*> listeners;
 	vector<Event*> events;
+	vector<Listener*> listeners;
 
 	public:
 		// Start of user code public
@@ -39,10 +41,10 @@ class Transmitter
 		void fireEvent(Event * event);
 		void addListener(Listener * listener);
 		virtual void poly() = 0;
-		vector<Listener*> getListeners();
-		void setListenersAt(Listener* _listeners, int indice);
 		vector<Event*> getEvents();
 		void setEventsAt(Event* _events, int indice);
+		vector<Listener*> getListeners();
+		void setListenersAt(Listener* _listeners, int indice);
 };
 
 #endif

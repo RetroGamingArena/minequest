@@ -25,6 +25,8 @@ using namespace std;
 
 class VBO
 {
+	// Start of user code private
+	// End of user code
 	unsigned int headerSize;
 	unsigned int instanceSize;
 
