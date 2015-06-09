@@ -80,17 +80,26 @@ void DoubleBuffer::bufferizeBaseVertex(float x, float y, float z, float ao)
     vertexBuffer->getBase()->push_back(ao);
 	// End of user code
 }
-
-IndiceBuffer* DoubleBuffer::getIndiceBuffer()
+void DoubleBuffer::setVertex(float x, float y, float z, float type, float ao, int position)
 {
-	// Start of user code getIndiceBuffer
+	// Start of user code setVertex
+    (*vertexBuffer->getData())[position*4+0] = x;
+    (*vertexBuffer->getData())[position*4+1] = y;
+    (*vertexBuffer->getData())[position*4+2] = z;
+    (*vertexBuffer->getData())[position*4+3] = ao;
 	// End of user code
-	return indiceBuffer;
 }
 
-void DoubleBuffer::setIndiceBuffer(IndiceBuffer* _indiceBuffer)
+VBO* DoubleBuffer::getVBO()
 {
-	indiceBuffer = _indiceBuffer;
+	// Start of user code getVBO
+	// End of user code
+	return vBO;
+}
+
+void DoubleBuffer::setVBO(VBO* _vBO)
+{
+	vBO = _vBO;
 }
 					
 VertexBuffer* DoubleBuffer::getVertexBuffer()
@@ -105,15 +114,15 @@ void DoubleBuffer::setVertexBuffer(VertexBuffer* _vertexBuffer)
 	vertexBuffer = _vertexBuffer;
 }
 					
-VBO* DoubleBuffer::getVBO()
+IndiceBuffer* DoubleBuffer::getIndiceBuffer()
 {
-	// Start of user code getVBO
+	// Start of user code getIndiceBuffer
 	// End of user code
-	return vBO;
+	return indiceBuffer;
 }
 
-void DoubleBuffer::setVBO(VBO* _vBO)
+void DoubleBuffer::setIndiceBuffer(IndiceBuffer* _indiceBuffer)
 {
-	vBO = _vBO;
+	indiceBuffer = _indiceBuffer;
 }
 					

@@ -49,7 +49,8 @@ GameScene::GameScene(Player* player)
     cameras.push_back(itemCamera);
     items.push_back(player);
     
-    cameras[0]->addListener(this);
+    for(int i = 0; i  <cameras.size(); i++)
+        cameras[i]->addListener(this);
     
     Chunk* first = Engine::getInstance()->getWorld()->getChunk(player->getX(), player->getY(), player->getZ());
     ChunkProcessorTask* task = new ChunkProcessorTask();
@@ -106,7 +107,7 @@ void GameScene::handle(Event * event)
             if(mask != oldMask)
             {
                 oldMask = mask;
-                //updateIndices();
+                updateIndices();
                 /*World* world = Engine::getInstance()->getWorld();
                 
                 doubleBuffer->getVertexBuffer()->getData()->erase(doubleBuffer->getVertexBuffer()->getData()->begin()+36, doubleBuffer->getVertexBuffer()->getData()->end());
@@ -276,6 +277,7 @@ void GameScene::reset()
     
     doubleBuffer->bufferizeSquare(x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
     
+    doubleBuffer->getVertexBuffer()->getData()->resize(72);
     updateIndices();
 
 	// End of user code

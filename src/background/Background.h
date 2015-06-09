@@ -16,8 +16,8 @@
 // End of user code
 
 
-#include "BackgroundShader.h"
 #include "VertexBuffer.h"
+#include "BackgroundShader.h"
 
 using namespace std;
 
@@ -28,8 +28,8 @@ class Background
 {
 	// Start of user code private
 	// End of user code
-	BackgroundShader* backgroundShader;
 	VertexBuffer* vertexBuffer;
+	BackgroundShader* backgroundShader;
 	glm::vec3 firstColor;
 	glm::vec3 lastColor;
 
@@ -48,9 +48,9 @@ class Background
 		glm::vec3 getLastColor();
 		void setLastColor(glm::vec3 _lastColor);
 		void render();
+		VertexBuffer* getVertexBuffer();
 		BackgroundShader* getBackgroundShader();
 		void setBackgroundShader(BackgroundShader* _backgroundShader);
-		VertexBuffer* getVertexBuffer();
 };
 
 #endif

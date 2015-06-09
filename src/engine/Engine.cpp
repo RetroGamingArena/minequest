@@ -268,6 +268,15 @@ void Engine::refresh()
 	// End of user code
 }
 
+Engine* Engine::getInstance()
+{
+	// Start of user code getInstance
+    if(instance == NULL)
+        instance = new Engine();
+	// End of user code
+	return instance;
+}
+
 World* Engine::getWorld()
 {
 	// Start of user code getWorld
@@ -292,27 +301,6 @@ void Engine::setShadersAt(Shader* _shaders, int indice)
 	shaders[indice] = _shaders;
 }
 
-Engine* Engine::getInstance()
-{
-	// Start of user code getInstance
-    if(instance == NULL)
-        instance = new Engine();
-	// End of user code
-	return instance;
-}
-
-Scene* Engine::getScene()
-{
-	// Start of user code getScene
-	// End of user code
-	return scene;
-}
-
-void Engine::setScene(Scene* _scene)
-{
-	scene = _scene;
-}
-					
 Player* Engine::getPlayer()
 {
 	// Start of user code getPlayer
@@ -323,5 +311,17 @@ Player* Engine::getPlayer()
 void Engine::setPlayer(Player* _player)
 {
 	player = _player;
+}
+					
+Scene* Engine::getScene()
+{
+	// Start of user code getScene
+	// End of user code
+	return scene;
+}
+
+void Engine::setScene(Scene* _scene)
+{
+	scene = _scene;
 }
 					

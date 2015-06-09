@@ -141,6 +141,7 @@ void VBOScene::onKey(int key, int scancode, int action, int mods)
     if(action == GLFW_RELEASE && key == GLFW_KEY_TAB)
     {
         selectedCameraIndex = (selectedCameraIndex+1) % cameras.size();
+        getSelectedCamera()->fireEvent(new Event(Event::ID_CHANGED, getSelectedCamera()));
     }
     else
     {

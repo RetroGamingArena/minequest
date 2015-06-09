@@ -15,8 +15,8 @@
 // Start of user code includes
 // End of user code
 
-#include "Processor.h"
 #include "Pool.h"
+#include "Processor.h"
 
 
 using namespace std;
@@ -24,7 +24,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class IterativeProcessor : public Processor, public Pool
+class IterativeProcessor : public Pool, public Processor
 {
 	// Start of user code private
 	// End of user code
@@ -40,8 +40,8 @@ class IterativeProcessor : public Processor, public Pool
 		IterativeProcessor(int _chunkIndice);
 		IterativeProcessor();
 		~IterativeProcessor();
-		vector<GLfloat>* bufferize(Octree * octree);
 		Task* buildTask();
+		vector<GLfloat>* bufferize(Octree * octree);
 };
 
 #endif

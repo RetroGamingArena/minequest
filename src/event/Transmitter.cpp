@@ -37,18 +37,6 @@ void Transmitter::addListener(Listener * listener)
 	// End of user code
 }
 
-vector<Listener*> Transmitter::getListeners()
-{
-	// Start of user code getListeners
-	// End of user code
-	return listeners;
-}
-
-void Transmitter::setListenersAt(Listener* _listeners, int indice)
-{
-	listeners[indice] = _listeners;
-}
-
 vector<Event*> Transmitter::getEvents()
 {
 	// Start of user code getEvents
@@ -59,5 +47,17 @@ vector<Event*> Transmitter::getEvents()
 void Transmitter::setEventsAt(Event* _events, int indice)
 {
 	events[indice] = _events;
+}
+
+vector<Listener*> Transmitter::getListeners()
+{
+	// Start of user code getListeners
+	// End of user code
+	return listeners;
+}
+
+void Transmitter::setListenersAt(Listener* _listeners, int indice)
+{
+	listeners[indice] = _listeners;
 }
 
