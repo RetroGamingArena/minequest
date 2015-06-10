@@ -22,6 +22,8 @@ out float fragmentAo;
 out vec3 _vertexWidth;
 out float _vertexColorIndex;
 
+out vec4 viewSpace;
+
 void main()
 {
     int iWidth = int(vertexWidth);
@@ -34,7 +36,11 @@ void main()
     
     vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth, vertexPosition_modelspace.y*yWidth, vertexPosition_modelspace.z*zWidth );
 
-    gl_Position = P * V * M * vec4(vertexPosition_temp+offset,1);
+    viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
+    gl_Position = P * viewSpace;
+    
+   
+    
     gl_Position.z = -0.3;
 
     fragmentAo = 0.3 + ( ambiant ) * 0.7;

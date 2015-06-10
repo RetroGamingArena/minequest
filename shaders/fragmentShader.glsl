@@ -6,9 +6,13 @@ in vec3 _vertexWidth;
 
 in float _vertexColorIndex;
 
+in vec4 viewSpace;
+
 out vec4 color;
 
 uniform sampler2D myTextureSampler;
+
+const vec3 fogColor = vec3(0.5, 0.5,0.5);
 
 void main()
 {
@@ -16,6 +20,10 @@ void main()
     ao = min(1.0, ao);
     
     color  = fragmentColor;
+    
+    float dist = length(viewSpace);
+    
+    float fogFactor = (80 - dist*2)/(80 - 20);
     
     color.a = .1;
     {
@@ -33,5 +41,11 @@ void main()
     }
 
     color.a = 1;
+    
+    fogFactor = clamp( fogFactor, 0.0, 1.0 );
+    
+    vec3 lightColor = vec3(color.rgb);
+    vec3 finalColor = mix(fogColor, lightColor, fogFactor);
+    color = vec4(finalColor, 1);
 
 }
