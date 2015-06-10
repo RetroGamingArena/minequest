@@ -12,15 +12,18 @@
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code defines
+// End of user code
+
 // Start of user code includes
 // End of user code
 
 
+#include "Scene.h"
+#include "Shader.h"
 #include "Engine.h"
 #include "World.h"
-#include "Shader.h"
 #include "Player.h"
-#include "Scene.h"
 
 using namespace std;
 
@@ -31,11 +34,11 @@ class Engine
 {
 	// Start of user code private
 	// End of user code
+	Scene* scene;
+	vector<Shader*> shaders;
 	static Engine* instance;
 	World* world;
-	vector<Shader*> shaders;
 	Player* player;
-	Scene* scene;
 	GLFWwindow* window;
 	int windowWidth;
 	int windowHeight;
@@ -73,15 +76,15 @@ class Engine
 		void init();
 		float getDt();
 		void refresh();
+		Scene* getScene();
+		void setScene(Scene* _scene);
+		vector<Shader*> getShaders();
+		void setShadersAt(Shader* _shaders, int indice);
 		static Engine* getInstance();
 		World* getWorld();
 		void setWorld(World* _world);
-		vector<Shader*> getShaders();
-		void setShadersAt(Shader* _shaders, int indice);
 		Player* getPlayer();
 		void setPlayer(Player* _player);
-		Scene* getScene();
-		void setScene(Scene* _scene);
 };
 
 #endif

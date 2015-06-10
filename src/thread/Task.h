@@ -12,6 +12,9 @@
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code defines
+// End of user code
+
 // Start of user code includes
 #include "Pool.h"
 // End of user code

@@ -53,25 +53,18 @@ bool Player::live(double dt)
 void Player::draw(VertexBuffer * buffer)
 {
 	// Start of user code draw
+    
     buffer->getData()->push_back(x/Chunk::subsize);
     buffer->getData()->push_back(y/Chunk::subsize);
     buffer->getData()->push_back(z/Chunk::subsize);
     
-    buffer->getData()->push_back(4);
-    
-    buffer->getData()->push_back(0x3def);
-    
-    buffer->getData()->push_back(0.6);
+    buffer->getData()->push_back( (4 << 17) + (1 << 15) + ((16-1) << 10) + ((16-1) << 5) + (16-1));
     
     buffer->getData()->push_back(x/Chunk::subsize);
     buffer->getData()->push_back(y/Chunk::subsize+1);
     buffer->getData()->push_back(z/Chunk::subsize);
     
-    buffer->getData()->push_back(4);
-    
-    buffer->getData()->push_back(0x3def);
-    
-    buffer->getData()->push_back(0.6);
+    buffer->getData()->push_back( (4 << 17) + (1 << 15) + ((16-1) << 10) + ((16-1) << 5) + (16-1));
 	// End of user code
 }
 

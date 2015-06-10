@@ -12,6 +12,10 @@
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code defines
+#define PI 3.14159265
+// End of user code
+
 // Start of user code includes
 // End of user code
 

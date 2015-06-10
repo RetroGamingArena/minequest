@@ -12,12 +12,15 @@
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code defines
+// End of user code
+
 // Start of user code includes
 // End of user code
 
 
-#include "Shader.h"
 #include "Control.h"
+#include "Shader.h"
 #include "Texture.h"
 #include "DoubleBuffer.h"
 
@@ -34,8 +37,8 @@ class UI
 	protected:
 	// Start of user code protected
 	// End of user code
-	Shader* shader;
 	vector<Control*> controls;
+	Shader* shader;
 	Texture* fontTexture;
 	DoubleBuffer* doubleBuffer;
 
@@ -47,10 +50,10 @@ class UI
 		virtual void render() = 0;
 		void printText(const char * text, int x, int y, int size);
 		virtual void refresh() = 0;
-		Shader* getShader();
-		void setShader(Shader* _shader);
 		vector<Control*> getControls();
 		void setControlsAt(Control* _controls, int indice);
+		Shader* getShader();
+		void setShader(Shader* _shader);
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);
 		DoubleBuffer* getDoubleBuffer();

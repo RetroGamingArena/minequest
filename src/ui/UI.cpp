@@ -132,18 +132,6 @@ void UI::printText(const char * text, int x, int y, int size)
 	// End of user code
 }
 
-Shader* UI::getShader()
-{
-	// Start of user code getShader
-	// End of user code
-	return shader;
-}
-
-void UI::setShader(Shader* _shader)
-{
-	shader = _shader;
-}
-					
 vector<Control*> UI::getControls()
 {
 	// Start of user code getControls
@@ -156,6 +144,18 @@ void UI::setControlsAt(Control* _controls, int indice)
 	controls[indice] = _controls;
 }
 
+Shader* UI::getShader()
+{
+	// Start of user code getShader
+	// End of user code
+	return shader;
+}
+
+void UI::setShader(Shader* _shader)
+{
+	shader = _shader;
+}
+					
 Texture* UI::getFontTexture()
 {
 	// Start of user code getFontTexture

@@ -15,6 +15,8 @@ InputCamera::InputCamera()
 // End of user code
 {
 	// Start of user code constructor
+    oldX = -1;
+    oldY = -1;
 	// End of user code
 }
 

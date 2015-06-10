@@ -12,12 +12,15 @@
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
 
+// Start of user code defines
+// End of user code
+
 // Start of user code includes
 #include "Player.h"
 // End of user code
 
-#include "Listener.h"
 #include "VoxelScene.h"
+#include "Listener.h"
 
 #include "Item.h"
 #include "WorldProcessor.h"
@@ -27,7 +30,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class GameScene : public Listener, public VoxelScene
+class GameScene : public VoxelScene, public Listener
 {
 	// Start of user code private
 	// End of user code
