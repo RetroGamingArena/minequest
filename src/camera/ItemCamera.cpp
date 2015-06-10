@@ -11,7 +11,7 @@ ItemCamera::ItemCamera()
 // End of user code
 {
 	// Start of user code constructor
-    
+    angleZ = 3*PI/2;
 	// End of user code
 }
 
@@ -61,21 +61,21 @@ glm::vec3 ItemCamera::getPosition()
 {
 	// Start of user code getPosition
     position = item->getPosition();
-    position.y /= Chunk::subsize;
+    position /= Chunk::subsize;
     position.y+=2;
-    position.x += cos(angleZ)*1;
-    position.z += sin(angleZ)*1;
+    position.x += 0.5 + cos(angleZ)*2;
+    position.z += 0.5 + sin(angleZ)*2;
     return InputCamera::getPosition();
 	// End of user code
 }
 glm::vec3 ItemCamera::getCenter()
 {
 	// Start of user code getCenter
-    center = item->getLook();
-    center.y /= Chunk::subsize;
+    center = item->getPosition();//item->getLook();
+    center /= Chunk::subsize;
     center.y+=2;
-    position.x += cos(angleZ+PI)*50;
-    position.z += sin(angleZ+PI)*50;
+    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI);
+    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI);
     return InputCamera::getCenter();
 	// End of user code
 }
