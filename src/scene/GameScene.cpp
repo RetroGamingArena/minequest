@@ -108,16 +108,8 @@ void GameScene::handle(Event * event)
             {
                 oldMask = mask;
                 updateIndices();
-                /*World* world = Engine::getInstance()->getWorld();
-                
-                doubleBuffer->getVertexBuffer()->getData()->erase(doubleBuffer->getVertexBuffer()->getData()->begin()+36, doubleBuffer->getVertexBuffer()->getData()->end());
-                doubleBuffer->getVertexBuffer()->bind();
-                
-                for(int i =0; i < world->size; i++)
-                    world->getChunks()[i]->setBuffered(false);
-                updateChunksCpt = world->getChunks().size();*/
-                
             }
+            updateCamera = true;
             cameraLock->unlock();
             return;
         }
@@ -291,6 +283,7 @@ void GameScene::render()
         if(!world->isRunning())
         {
             world->start();
+            updateChunks = false;
         }
     }
     if(updateChunksCpt > 0)

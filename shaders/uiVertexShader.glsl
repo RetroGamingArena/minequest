@@ -16,5 +16,7 @@ void main()
     vertexPosition_homoneneousspace /= vec2(1920, 1080);
     gl_Position =  vec4(vertexPosition_homoneneousspace,0,1);
     
+    gl_Position.z = -1;
+    
     UV = vertexUV;
 }

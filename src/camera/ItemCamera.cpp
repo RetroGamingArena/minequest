@@ -33,6 +33,7 @@ void ItemCamera::onMouseMotion(double xpos, double ypos)
         double dy = ypos-oldY;
 
         angleZ += dx;
+        angleY += dy/10;
     }
     oldX = xpos;
 	oldY = ypos;
@@ -62,7 +63,7 @@ glm::vec3 ItemCamera::getPosition()
 	// Start of user code getPosition
     position = item->getPosition();
     position /= Chunk::subsize;
-    position.y+=2;
+    position.y += 2;
     position.x += 0.5 + cos(angleZ)*2;
     position.z += 0.5 + sin(angleZ)*2;
     return InputCamera::getPosition();
@@ -73,9 +74,9 @@ glm::vec3 ItemCamera::getCenter()
 	// Start of user code getCenter
     center = item->getPosition();//item->getLook();
     center /= Chunk::subsize;
-    center.y+=2;
-    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI);
-    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI);
+    center.y += 2 + sin(angleY);
+    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI)*cos(angleY);
+    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI)*cos(angleY);
     return InputCamera::getCenter();
 	// End of user code
 }

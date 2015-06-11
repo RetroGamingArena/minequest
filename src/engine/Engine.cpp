@@ -9,6 +9,7 @@
 #include "WorldProcessor.h"
 #include "Label.h"
 #include "DebugUI.h"
+#include <iostream>
 // End of user code
 
 Engine::Engine(GLFWwindow* _window, int _windowWidth, int _windowHeight, float _oldTime, float _currentTime, int _FPS)
@@ -133,13 +134,15 @@ int Engine::run()
     
     while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 )
     {
+        double currentTime = glfwGetTime();
+        
+        
         if(scene->getSelectedCamera() != NULL)
             scene->getSelectedCamera()->look();
         scene->render();
         
         //FPS
         nbFrames++;
-        double currentTime = glfwGetTime();
         double dt = currentTime - lastTime;
         
         if ( dt >= 1.0 )
@@ -151,6 +154,9 @@ int Engine::run()
         }
         
         refresh();
+        
+        double newTime = glfwGetTime();
+        std::cout << (newTime - currentTime) << std::endl;
         
         glfwSwapBuffers(window);
         glfwPollEvents();

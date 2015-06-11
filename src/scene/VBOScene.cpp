@@ -21,6 +21,7 @@ VBOScene::VBOScene()
     VBO* vBO = new VoxelVBO();
     vBO->setInstanceSize(6);
     doubleBuffer->setVBO(vBO);
+    updateCamera = true;
     // End of user code
 }
 
@@ -61,16 +62,15 @@ void VBOScene::render()
     //3D
     
     glUseProgram(shader->getProgramID());
-    //glUniformMatrix4fv(matrixID, 1, GL_FALSE, &getCamera()->getMVP()[0][0]);
     
-    glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getModel()[0][0]);
-    glUniformMatrix4fv(shader->getVMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getView()[0][0]);
-    glUniformMatrix4fv(shader->getPMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getProjection()[0][0]);
-    //glUniformMatrix4fv(cameraUnprojectionID, 1, GL_FALSE, &getCamera()->getUnprojection()[0][0]);
-    //glUniform3fv(cameraPositionVecID, 1, &getCamera()->getPosition()[0]);
-    
-    //glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
-    
+    //if(updateCamera)
+    {
+        glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getModel()[0][0]);
+        glUniformMatrix4fv(shader->getVMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getView()[0][0]);
+        glUniformMatrix4fv(shader->getPMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getProjection()[0][0]);
+        updateCamera = false;
+    }
+
     //for(int i = 0; i < doubleBuffers.size(); i++)
     {
         glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());
@@ -103,12 +103,8 @@ void VBOScene::render()
         
         //if(data->size() != oldSize)
         {
-            
-            double currentTime = glfwGetTime();
             glDrawArraysInstanced(GL_TRIANGLES, 0, 18, (data->size()-72)/4);
-            double newTime = glfwGetTime();
-            std::cout << (newTime - currentTime) << std::endl;
-            
+
             //glDrawArraysInstanced(glDrawArraysInstanced, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
           //  oldSize = data->size();
         }
