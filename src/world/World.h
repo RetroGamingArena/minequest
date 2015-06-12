@@ -20,8 +20,8 @@
 
 #include "Pool.h"
 
-#include "WorldGenerator.h"
 #include "Chunk.h"
+#include "WorldGenerator.h"
 
 using namespace std;
 
@@ -32,10 +32,12 @@ class World : public Pool
 {
 	// Start of user code private
 	// End of user code
-	WorldGenerator* worldGenerator;
 	vector<Chunk*> chunks;
+	WorldGenerator* worldGenerator;
 	int chunkIndice;
 	int cubeCount;
+	int instanceCount;
+	int occludedCount;
 
 	protected:
 	// Start of user code protected
@@ -45,22 +47,26 @@ class World : public Pool
 		// Start of user code public
 		// End of user code
 	static int size;
-		World(int _size, int _chunkIndice, int _cubeCount);
+		World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, int _occludedCount);
 		World();
 		~World();
 		int getChunkIndice();
 		void setChunkIndice(int _chunkIndice);
 		int getCubeCount();
 		void setCubeCount(int _cubeCount);
+		int getInstanceCount();
+		void setInstanceCount(int _instanceCount);
+		int getOccludedCount();
+		void setOccludedCount(int _occludedCount);
 		bool isCubeVisible(int x, int y, int z, int size);
 		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, unsigned char occlusion);
 		unsigned char getCube(int x, int y, int z);
 		void bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, int height, unsigned char occlusion);
 		Chunk* getChunk(int x, int y, int z);
-		WorldGenerator* getWorldGenerator();
-		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		vector<Chunk*> getChunks();
 		void setChunksAt(Chunk* _chunks, int indice);
+		WorldGenerator* getWorldGenerator();
+		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		Task* buildTask();
 };
 

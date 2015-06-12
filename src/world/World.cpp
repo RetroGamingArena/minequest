@@ -10,11 +10,13 @@
 #include "CubeFace.h"
 // End of user code
 
-World::World(int _size, int _chunkIndice, int _cubeCount)
+World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, int _occludedCount)
 {
 	size = _size;
 	chunkIndice = _chunkIndice;
 	cubeCount = _cubeCount;
+	instanceCount = _instanceCount;
+	occludedCount = _occludedCount;
 }
 
 World::World()
@@ -47,7 +49,8 @@ World::World()
     center->setGenerated(true);
     chunkTask->run();
     cubeCount = 0;
-    
+    instanceCount = 0;
+    occludedCount = 0;
     //this->start();
     //while(isRunning()){}
 	
@@ -114,6 +117,30 @@ void World::setCubeCount(int _cubeCount)
 	cubeCount = _cubeCount;
 }
 
+int World::getInstanceCount()
+{
+	// Start of user code getInstanceCount
+	// End of user code
+	return instanceCount;
+}
+
+void World::setInstanceCount(int _instanceCount)
+{
+	instanceCount = _instanceCount;
+}
+
+int World::getOccludedCount()
+{
+	// Start of user code getOccludedCount
+	// End of user code
+	return occludedCount;
+}
+
+void World::setOccludedCount(int _occludedCount)
+{
+	occludedCount = _occludedCount;
+}
+
 
 bool World::isCubeVisible(int x, int y, int z, int size)
 {
@@ -131,17 +158,17 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
-            if(this->getCube(x-1, y+i,   z+j) == 0)// && (mask & LEFT))
+            if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
                 return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)// && (mask & RIGHT))
+            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
                 return true;
-            if(this->getCube(x+i, y-1,   z+j) == 0)// && (mask & BOTTOM))
+            if(this->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
                 return true;
-            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)// && (mask & TOP))
+            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
                 return true;
-            if(this->getCube(x+i, y+j,   z-1) == 0)// && (mask & BACK))
+            if(this->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
                 return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)// && (mask & FRONT))
+            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
                 return true;
         }
     
@@ -160,8 +187,6 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
     data->push_back(r);
 
     data->push_back( (type << 17) + (occlusion << 15) + ((width-1) << 10) + ((width-1) << 5) + (width-1));
-    
-    cubeCount += (width*width*width);
     return;
 	// End of user code
 }
@@ -237,18 +262,6 @@ Chunk* World::getChunk(int x, int y, int z)
 	// End of user code
 }
 
-WorldGenerator* World::getWorldGenerator()
-{
-	// Start of user code getWorldGenerator
-	// End of user code
-	return worldGenerator;
-}
-
-void World::setWorldGenerator(WorldGenerator* _worldGenerator)
-{
-	worldGenerator = _worldGenerator;
-}
-					
 vector<Chunk*> World::getChunks()
 {
 	// Start of user code getChunks
@@ -261,3 +274,15 @@ void World::setChunksAt(Chunk* _chunks, int indice)
 	chunks[indice] = _chunks;
 }
 
+WorldGenerator* World::getWorldGenerator()
+{
+	// Start of user code getWorldGenerator
+	// End of user code
+	return worldGenerator;
+}
+
+void World::setWorldGenerator(WorldGenerator* _worldGenerator)
+{
+	worldGenerator = _worldGenerator;
+}
+					

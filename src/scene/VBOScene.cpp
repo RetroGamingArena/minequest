@@ -7,6 +7,7 @@
 #include "VoxelVBO.h"
 #include "TrackBallCamera.h"
 #include <iostream>
+#include <cmath>
 // End of user code
 
 
@@ -103,7 +104,9 @@ void VBOScene::render()
         
         //if(data->size() != oldSize)
         {
-            glDrawArraysInstanced(GL_TRIANGLES, 0, 18, (data->size()-72)/4);
+            int instanceCountFull = (data->size()-72)/4;
+            int instanceCount = min( instanceCountFull, 100);
+            glDrawArraysInstanced(GL_TRIANGLES, 0, 18, instanceCountFull);
 
             //glDrawArraysInstanced(glDrawArraysInstanced, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
           //  oldSize = data->size();

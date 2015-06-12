@@ -18,8 +18,8 @@
 // Start of user code includes
 // End of user code
 
-#include "Transmitter.h"
 #include "Listener.h"
+#include "Transmitter.h"
 
 #include "Thread.h"
 
@@ -30,7 +30,7 @@ class Task;
 class Thread;
 // End of user code
 
-class Pool : public Transmitter, public Listener
+class Pool : public Listener, public Transmitter
 {
 	// Start of user code private
 	// End of user code
@@ -67,8 +67,8 @@ class Pool : public Transmitter, public Listener
 		bool isRunning();
 		vector<Thread*> getThreads();
 		void setThreadsAt(Thread* _threads, int indice);
-		void poly();
 		void handle(Event * event);
+		void poly();
 };
 
 #endif

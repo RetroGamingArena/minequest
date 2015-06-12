@@ -14,8 +14,12 @@ DebugUI::DebugUI()
 	// Start of user code constructor
            fPSLabel = new Label("Test", 20, 20);
     cubesCountLabel = new Label("Test", 20, 70);
+    instanceCountLabel = new Label("Test", 20, 120);
+    occludedCountLabel = new Label("Test", 20, 170);
     controls.push_back(fPSLabel);
 	controls.push_back(cubesCountLabel);
+    controls.push_back(instanceCountLabel);
+    controls.push_back(occludedCountLabel);
     // End of user code
 }
 
@@ -42,15 +46,35 @@ void DebugUI::refresh()
     fPSLabel->setCaption(caption);
     
     char* caption2 = new char[25];
-    sprintf (caption2, "Cubs count:  %i t", Engine::getInstance()->getWorld()->getCubeCount());
+    sprintf (caption2, "Cubes count:  %i t", Engine::getInstance()->getWorld()->getCubeCount());
     cubesCountLabel->setCaption(caption2);
-	// End of user code
+	
+    char* caption3 = new char[25];
+    sprintf (caption3, "Instances count:  %i t", Engine::getInstance()->getWorld()->getInstanceCount());
+    instanceCountLabel->setCaption(caption3);
+    
+    char* caption4 = new char[25];
+    sprintf (caption4, "Occluded count:  %i t", Engine::getInstance()->getWorld()->getOccludedCount());
+    occludedCountLabel->setCaption(caption4);
+    // End of user code
 }
 
 
 
 
 
+Label* DebugUI::getCubesCountLabel()
+{
+	// Start of user code getCubesCountLabel
+	// End of user code
+	return cubesCountLabel;
+}
+
+void DebugUI::setCubesCountLabel(Label* _cubesCountLabel)
+{
+	cubesCountLabel = _cubesCountLabel;
+}
+					
 Label* DebugUI::getFPSLabel()
 {
 	// Start of user code getFPSLabel
@@ -63,15 +87,27 @@ void DebugUI::setFPSLabel(Label* _fPSLabel)
 	fPSLabel = _fPSLabel;
 }
 					
-Label* DebugUI::getCubesCountLabel()
+Label* DebugUI::getOccludedCountLabel()
 {
-	// Start of user code getCubesCountLabel
+	// Start of user code getOccludedCountLabel
 	// End of user code
-	return cubesCountLabel;
+	return occludedCountLabel;
 }
 
-void DebugUI::setCubesCountLabel(Label* _cubesCountLabel)
+void DebugUI::setOccludedCountLabel(Label* _occludedCountLabel)
 {
-	cubesCountLabel = _cubesCountLabel;
+	occludedCountLabel = _occludedCountLabel;
+}
+					
+Label* DebugUI::getInstanceCountLabel()
+{
+	// Start of user code getInstanceCountLabel
+	// End of user code
+	return instanceCountLabel;
+}
+
+void DebugUI::setInstanceCountLabel(Label* _instanceCountLabel)
+{
+	instanceCountLabel = _instanceCountLabel;
 }
 					
