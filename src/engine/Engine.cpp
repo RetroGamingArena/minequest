@@ -211,6 +211,8 @@ void Engine::init()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     GLFWmonitor *monitor = NULL;
+    GLFWmonitor* primary = glfwGetPrimaryMonitor();
+    
     window = glfwCreateWindow(windowWidth, windowHeight, "Minequest", monitor, NULL);
     
     glfwMakeContextCurrent(window);
@@ -230,6 +232,9 @@ void Engine::init()
     }
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    
+    //ARB_instanced_arrays
+    
     glEnable(GL_DEPTH_TEST);
     glCreateShader(GL_GEOMETRY_SHADER);
     glDepthFunc(GL_LESS);

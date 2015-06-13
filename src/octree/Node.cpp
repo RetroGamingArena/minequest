@@ -116,6 +116,9 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
                 if(leaves[0]->getType() > 0)
                 {
                     world->bufferizeEntryRect(vertexBuffer, leaves[0]->getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size/2, leaves[0]->getOcclusion());
+                    world->setCubeCount(world->getCubeCount()+size*size*(size/2));
+                    world->setInstanceCount(world->getInstanceCount()+1);
+                    world->setOccludedCount(world->getOccludedCount()+1);
                 }
                 i = 4;
             }

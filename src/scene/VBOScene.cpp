@@ -105,9 +105,9 @@ void VBOScene::render()
         //if(data->size() != oldSize)
         {
             int instanceCountFull = (data->size()-72)/4;
-            int instanceCount = min( instanceCountFull, 100);
+            int instanceCount = min( instanceCountFull, 140000 );
             glDrawArraysInstanced(GL_TRIANGLES, 0, 18, instanceCountFull);
-
+            //glDrawArraysInstanced(GL_TRIANGLES, 0, 18, instanceCount);
             //glDrawArraysInstanced(glDrawArraysInstanced, doubleBuffer->getIndiceBuffer()->getData()->size(), GL_UNSIGNED_INT, (void*)0, (data->size()-32)/4 );
           //  oldSize = data->size();
         }
