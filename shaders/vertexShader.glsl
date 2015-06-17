@@ -72,9 +72,9 @@ void main()
         cubeColor = vec3(0.5,0.5,0.5);
     
     {
-        fragmentColor.r = vertexPosition_modelspace.x*16;
-        fragmentColor.g = vertexPosition_modelspace.y*16;
-        fragmentColor.b = vertexPosition_modelspace.z*16;
+        fragmentColor.r = vertexPosition_modelspace.x;//*16;
+        fragmentColor.g = vertexPosition_modelspace.y;//*16;
+        fragmentColor.b = vertexPosition_modelspace.z;//*16;
         fragmentColor.a = 1;
     }
     

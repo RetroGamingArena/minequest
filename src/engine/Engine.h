@@ -19,10 +19,10 @@
 // End of user code
 
 
-#include "Engine.h"
 #include "Scene.h"
-#include "Player.h"
+#include "Engine.h"
 #include "World.h"
+#include "Player.h"
 #include "Shader.h"
 
 using namespace std;
@@ -34,10 +34,10 @@ class Engine
 {
 	// Start of user code private
 	// End of user code
-	static Engine* instance;
 	Scene* scene;
-	Player* player;
+	static Engine* instance;
 	World* world;
+	Player* player;
 	vector<Shader*> shaders;
 	GLFWwindow* window;
 	int windowWidth;
@@ -76,13 +76,13 @@ class Engine
 		void init();
 		float getDt();
 		void refresh();
-		static Engine* getInstance();
 		Scene* getScene();
 		void setScene(Scene* _scene);
-		Player* getPlayer();
-		void setPlayer(Player* _player);
+		static Engine* getInstance();
 		World* getWorld();
 		void setWorld(World* _world);
+		Player* getPlayer();
+		void setPlayer(Player* _player);
 		vector<Shader*> getShaders();
 		void setShadersAt(Shader* _shaders, int indice);
 };

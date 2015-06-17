@@ -19,8 +19,8 @@
 #include "Player.h"
 // End of user code
 
-#include "Listener.h"
 #include "VoxelScene.h"
+#include "Listener.h"
 
 #include "Item.h"
 #include "WorldProcessor.h"
@@ -30,7 +30,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class GameScene : public Listener, public VoxelScene
+class GameScene : public VoxelScene, public Listener
 {
 	// Start of user code private
 	// End of user code
