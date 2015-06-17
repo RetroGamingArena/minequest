@@ -20,8 +20,8 @@
 
 
 #include "Engine.h"
-#include "Player.h"
 #include "Scene.h"
+#include "Player.h"
 #include "World.h"
 #include "Shader.h"
 
@@ -35,8 +35,8 @@ class Engine
 	// Start of user code private
 	// End of user code
 	static Engine* instance;
-	Player* player;
 	Scene* scene;
+	Player* player;
 	World* world;
 	vector<Shader*> shaders;
 	GLFWwindow* window;
@@ -77,10 +77,10 @@ class Engine
 		float getDt();
 		void refresh();
 		static Engine* getInstance();
-		Player* getPlayer();
-		void setPlayer(Player* _player);
 		Scene* getScene();
 		void setScene(Scene* _scene);
+		Player* getPlayer();
+		void setPlayer(Player* _player);
 		World* getWorld();
 		void setWorld(World* _world);
 		vector<Shader*> getShaders();

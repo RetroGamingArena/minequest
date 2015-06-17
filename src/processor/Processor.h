@@ -40,7 +40,7 @@ class Processor
 		// End of user code
 		Processor();
 		virtual ~Processor(){};
-		virtual vector<GLfloat>* bufferize(Octree * octree) = 0;
+		virtual vector<GLuint>* bufferize(Octree * octree) = 0;
 };
 
 #endif

@@ -88,11 +88,11 @@ void VBOScene::render()
             if( i == 2 )
                 size=0;
             
-            float stride = sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 4 : 4);
+            float stride = sizeof(GLfloat) * ( (attributes[i]->getDivisor()>0) ? 2 : 4);
             int divisor = attributes[i]->getDivisor();
-            GLvoid* offset = (GLvoid*)(sizeof(GLfloat) * size + sizeof(GLfloat)*(divisor > 0 ? 72 : 0));//32 : 0));
+            GLvoid* offset = (GLvoid*)(sizeof(GLuint) * size + sizeof(GLuint)*(divisor > 0 ? 72 : 0));//32 : 0));
             
-            glVertexAttribPointer( i, attributes[i]->getSize(), GL_FLOAT, GL_FALSE, stride, offset);
+            glVertexAttribIPointer( i, attributes[i]->getSize(), GL_UNSIGNED_INT, stride, offset);
             if(attributes[i]->getDivisor()>0)
                 glVertexAttribDivisor( i, attributes[i]->getDivisor());
             size += attributes[i]->getSize();
@@ -100,11 +100,11 @@ void VBOScene::render()
         
         //glBindBuffer(GL_ARRAY_BUFFER, doubleBuffer->getVertexBuffer()->getId());//bufferIDs[i]);
         
-        vector<GLfloat>* data = doubleBuffer->getVertexBuffer()->getData();
+        vector<GLuint>* data = doubleBuffer->getVertexBuffer()->getData();
         
         //if(data->size() != oldSize)
         {
-            int instanceCountFull = (data->size()-72)/4;
+            int instanceCountFull = (data->size()-72)/2;
             int instanceCount = min( instanceCountFull, 140000 );
             glDrawArraysInstanced(GL_TRIANGLES, 0, 18, instanceCountFull);
             //glDrawArraysInstanced(GL_TRIANGLES, 0, 18, instanceCount);

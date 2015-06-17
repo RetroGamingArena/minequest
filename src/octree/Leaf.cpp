@@ -57,7 +57,7 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     {
         if(world->isCubeVisible(p,q,r,size))
         {
-            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, occlusion);
+            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
             world->setOccludedCount(world->getOccludedCount()+1);
         }
         else

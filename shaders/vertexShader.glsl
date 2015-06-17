@@ -1,11 +1,11 @@
 #version 410 core
 
-layout(location = 0) in vec3 vertexPosition_modelspace;
-layout(location = 1) in float ambiant;
+layout(location = 0) in uvec3 vertexPosition_modelspace;
+layout(location = 1) in uint ambiant;
 
-layout(location = 2) in vec3 offset;
+layout(location = 2) in uint _offset;
 //layout(location = 3) in float vertexColorIndex;
-layout(location = 3) in float vertexWidth;
+layout(location = 3) in uint vertexWidth;
 //layout(location = 5) in float ao;
 
 uniform mat4 MVP;
@@ -26,23 +26,34 @@ out vec4 viewSpace;
 
 void main()
 {
-    int iWidth = int(vertexWidth);
-    int xWidth = (iWidth & 0x1f)+1;
-    int yWidth = ((iWidth & 0x3e0) >> 5)+1;
-    int zWidth = ((iWidth & 0x7c00) >> 10)+1;
+    uint iWidth = uint(vertexWidth);
+    uint xWidth = (iWidth & uint(0x3f))+1;
+    uint yWidth = ((iWidth & uint(0xfc0)) >> 6)+1;
+    uint zWidth = ((iWidth & uint(0x3f000)) >> 12)+1;
     
-    float ao = ((iWidth & 0x18000) >> 15);
-    int vertexColorIndex = ((iWidth & 0xfffe0000) >> 17);
+    float ao = ((iWidth & uint(0x18000)) >> 18);
+    int vertexColorIndex = int((iWidth & uint(0xfffe0000)) >> 20);
     
-    vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth, vertexPosition_modelspace.y*yWidth, vertexPosition_modelspace.z*zWidth );
-
+    vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth/16.0, vertexPosition_modelspace.y*yWidth/16.0, vertexPosition_modelspace.z*zWidth/16.0 );
+    
+    int iOffset = int(_offset);
+    vec3 offset;
+    
+    float x = ((iOffset      & 0x380) >> 7)*8 +  ((iOffset      & 0x70) >> 4) +  float(((iOffset) & 0xf)/16.0);
+    float y = (((iOffset>>10) & 0x380) >> 7)*8 + (((iOffset>>10) & 0x70) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
+    float z = (((iOffset>>20) & 0x380) >> 7)*8 + (((iOffset>>20) & 0x70) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
+    
+    offset.x = x;
+    offset.y = y;
+    offset.z = z;
+    
     viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
     gl_Position = P * viewSpace;
     
-   
+    
     
     gl_Position.z = -0.3;
-
+    
     fragmentAo = 0.3 + ( ambiant ) * 0.7;
     fragmentAo *= ( (3-ao)/6 + 0.5);
     
@@ -59,7 +70,7 @@ void main()
         cubeColor = vec3(0.3,0.3,0.0);
     else if(vertexColorIndex == 5)
         cubeColor = vec3(0.5,0.5,0.5);
-
+    
     {
         fragmentColor.r = vertexPosition_modelspace.x*16;
         fragmentColor.g = vertexPosition_modelspace.y*16;

@@ -156,7 +156,6 @@ int Engine::run()
         refresh();
         
         double newTime = glfwGetTime();
-        std::cout << (newTime - currentTime) << std::endl;
         
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -288,18 +287,6 @@ Engine* Engine::getInstance()
 	return instance;
 }
 
-Player* Engine::getPlayer()
-{
-	// Start of user code getPlayer
-	// End of user code
-	return player;
-}
-
-void Engine::setPlayer(Player* _player)
-{
-	player = _player;
-}
-					
 Scene* Engine::getScene()
 {
 	// Start of user code getScene
@@ -310,6 +297,18 @@ Scene* Engine::getScene()
 void Engine::setScene(Scene* _scene)
 {
 	scene = _scene;
+}
+					
+Player* Engine::getPlayer()
+{
+	// Start of user code getPlayer
+	// End of user code
+	return player;
+}
+
+void Engine::setPlayer(Player* _player)
+{
+	player = _player;
 }
 					
 World* Engine::getWorld()

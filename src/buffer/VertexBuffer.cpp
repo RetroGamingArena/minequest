@@ -4,7 +4,7 @@
 // Start of user code includes
 // End of user code
 
-VertexBuffer::VertexBuffer(vector<GLfloat>* _data, vector<GLfloat>* _base)
+VertexBuffer::VertexBuffer(vector<GLuint>* _data, vector<GLfloat>* _base)
 {
 	data = _data;
 	base = _base;
@@ -15,7 +15,7 @@ VertexBuffer::VertexBuffer()
 // End of user code
 {
 	// Start of user code constructor
-    data = new vector<GLfloat>();
+    data = new vector<GLuint>();
     base = new vector<GLfloat>();
 	// End of user code
 }
@@ -40,7 +40,7 @@ void VertexBuffer::bind()
 
 
 
-vector<GLfloat>* VertexBuffer::getData()
+vector<GLuint>* VertexBuffer::getData()
 {
 	// Start of user code getData
 	// End of user code

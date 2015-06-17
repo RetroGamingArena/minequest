@@ -41,3 +41,23 @@ Start of user code hasNext
         }
     return false;
 	// End of user code
+
+Tue Jun 16 19:53:36 CEST 2015
+================================================================================
+Start of user code bufferizeEntryRect
+    vector<GLfloat>* data = vertexBuffer->getData();
+    
+    data->push_back(p);
+    data->push_back(q);
+    data->push_back(r);
+    
+    //data->push_back(type);
+    
+    data->push_back( (type << 17) + (occlusion << 15) + ((width-1) << 10) + ((height-1) << 5) + (width-1));
+    //data->push_back(height);
+    //data->push_back(width);
+    
+    //data->push_back(occlusion);
+    
+    cubeCount += (width*width*height);
+	// End of user code

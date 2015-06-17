@@ -30,7 +30,7 @@ class VertexBuffer : public Buffer
 {
 	// Start of user code private
 	// End of user code
-	vector<GLfloat>* data;
+	vector<GLuint>* data;
 	vector<GLfloat>* base;
 
 	protected:
@@ -40,11 +40,11 @@ class VertexBuffer : public Buffer
 	public:
 		// Start of user code public
 		// End of user code
-		VertexBuffer(vector<GLfloat>* _data, vector<GLfloat>* _base);
+		VertexBuffer(vector<GLuint>* _data, vector<GLfloat>* _base);
 		VertexBuffer();
 		~VertexBuffer();
-		vector<GLfloat>* getData();
-		void setData(GLfloat _data);
+		vector<GLuint>* getData();
+		void setData(GLuint _data);
 		vector<GLfloat>* getBase();
 		void setBase(GLfloat _base);
 		void init();

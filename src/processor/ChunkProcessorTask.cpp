@@ -30,7 +30,7 @@ void ChunkProcessorTask::run()
     chunk->getVertexBuffer()->getData()->clear();
     
     //gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-    vector<GLfloat>* temp = processor->bufferize(chunk->getOctree());
+    vector<GLuint>* temp = processor->bufferize(chunk->getOctree());
     
     chunk->getVertexBuffer()->getData()->insert(chunk->getVertexBuffer()->getData()->end(), temp->begin(), temp->end());
     //·(true);
@@ -46,18 +46,6 @@ void ChunkProcessorTask::run()
 
 
 
-Processor* ChunkProcessorTask::getProcessor()
-{
-	// Start of user code getProcessor
-	// End of user code
-	return processor;
-}
-
-void ChunkProcessorTask::setProcessor(Processor* _processor)
-{
-	processor = _processor;
-}
-					
 Chunk* ChunkProcessorTask::getChunk()
 {
 	// Start of user code getChunk
@@ -68,5 +56,17 @@ Chunk* ChunkProcessorTask::getChunk()
 void ChunkProcessorTask::setChunk(Chunk* _chunk)
 {
 	chunk = _chunk;
+}
+					
+Processor* ChunkProcessorTask::getProcessor()
+{
+	// Start of user code getProcessor
+	// End of user code
+	return processor;
+}
+
+void ChunkProcessorTask::setProcessor(Processor* _processor)
+{
+	processor = _processor;
 }
 					

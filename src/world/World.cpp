@@ -29,8 +29,8 @@ World::World()
     
     Chunk* center = NULL;
     
-    for(int p=-size; p<=size; p++)
-        for(int r=-size; r<=size; r++)
+    for(int p=0; p<=size*2; p++)
+        for(int r=0; r<=size*2; r++)
         {
             Chunk* chunk = new Chunk(p,0,r);
             //chunk->generate(generator);
@@ -145,12 +145,14 @@ void World::setOccludedCount(int _occludedCount)
 bool World::isCubeVisible(int x, int y, int z, int size)
 {
 	// Start of user code isCubeVisible
-    int absSize = Chunk::size*Chunk::subsize*World::size;
+    //int absSize = Chunk::size*Chunk::subsize*World::size;
     
-    if( x==-absSize || z==-absSize || (x+size-1)==(absSize+Chunk::size*Chunk::subsize-1) || (y+size-1)==(Chunk::size*Chunk::subsize-1) || (z+size-1)==(absSize+Chunk::size*Chunk::subsize-1) )
+    //kjgfjgjf//TODO : corriger les if
+    
+    if( x==0 || z==0 || (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) || (y+size-1)==(Chunk::size*Chunk::subsize-1) || (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) )
         return true;
     
-    if( y==0 && x>-absSize && z>-absSize && (x+size-1)<(absSize+Chunk::size*Chunk::subsize-1) && (z+size-1)<(absSize+Chunk::size*Chunk::subsize-1) )
+    if( y==0 && x>0 && z>0 && (x+size-1)<(Chunk::size*Chunk::subsize-1) && (z+size-1)<(Chunk::size*Chunk::subsize-1) )
         return false;
     
     unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
@@ -175,18 +177,44 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     return false;
 	// End of user code
 }
-void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, unsigned char occlusion)
+void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)
 {
 	// Start of user code bufferizeEntry
     float offset = Chunk::size*Chunk::subsize*size;
     
-    vector<GLfloat>* data = vertexBuffer->getData();
+    int pInt = (int)p;
+    double pDecimal = p-pInt;
     
-    data->push_back(p);
+    int qInt = (int)q;
+    double qDecimal = q-qInt;
+    
+    int rInt = (int)r;
+    double rDecimal = r-rInt;
+    
+    vector<GLuint>* data = vertexBuffer->getData();
+    
+    unsigned int _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%8) << 4) + ((pInt/8) << 7) +
+                    (((int)(qDecimal / 0.0625) + (int)((qInt%8) << 4) + ((qInt/8) << 7)) << 10) +
+                    ( (( (int)(rDecimal / 0.0625) + (int)((rInt%8) << 4) + ((rInt/8) << 7) )) << 20) );
+    
+    data->push_back(_offset);
+    
+    unsigned int iOffset = _offset;
+    
+    float offsetx =  ((iOffset      & 0x380) >> 7) +  ((iOffset      & 0x70) >> 4) +  (iOffset      & 0xf)/16.0;
+    float offsety = (((iOffset>>10) & 0x380) >> 7) + (((iOffset>>10) & 0x70) >> 4) + ((iOffset>>10) & 0xf)/16.0;
+    float offsetz = (((iOffset>>20) & 0x380) >> 7) + (((iOffset>>20) & 0x70) >> 4) + ((iOffset>>20) & 0xf)/16.0;
+    
+    if( offsetx >8)//offsetx != p || offsety != q || offsetz != r || (*data)[data->size()-1] != _offset)
+        int a = 2;
+    
+    /*data->push_back(p);
     data->push_back(q);
-    data->push_back(r);
+    data->push_back(r);*/
 
-    data->push_back( (type << 17) + (occlusion << 15) + ((width-1) << 10) + ((width-1) << 5) + (width-1));
+    unsigned int size = (type << 20) + (occlusion << 18) + ((widthP-1) << 12) + ((widthQ-1) << 6) + (widthR-1);
+    
+    data->push_back(size);
     return;
 	// End of user code
 }
@@ -196,11 +224,11 @@ unsigned char World::getCube(int x, int y, int z)
     if(y > Chunk::size*Chunk::subsize)
         return 0;
     
-    int abs_x = x+size*Chunk::size*Chunk::subsize;
+    int abs_x = x;//+size*Chunk::size*Chunk::subsize;
     
-    int abs_y = y+size*Chunk::size*Chunk::subsize;
+    int abs_y = y;//+size*Chunk::size*Chunk::subsize;
     
-    int abs_z = z+size*Chunk::size*Chunk::subsize;
+    int abs_z = z;//+size*Chunk::size*Chunk::subsize;
     
     int p = abs_x / (Chunk::size*Chunk::subsize);
     int q = abs_y / (Chunk::size*Chunk::subsize);
@@ -223,26 +251,6 @@ unsigned char World::getCube(int x, int y, int z)
     }
     
     return 0;
-	// End of user code
-}
-void World::bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, int height, unsigned char occlusion)
-{
-	// Start of user code bufferizeEntryRect
-    vector<GLfloat>* data = vertexBuffer->getData();
-    
-    data->push_back(p);
-    data->push_back(q);
-    data->push_back(r);
-    
-    //data->push_back(type);
-    
-    data->push_back( (type << 17) + (occlusion << 15) + ((width-1) << 10) + ((height-1) << 5) + (width-1));
-    //data->push_back(height);
-    //data->push_back(width);
-    
-    //data->push_back(occlusion);
-    
-    cubeCount += (width*width*height);
 	// End of user code
 }
 Chunk* World::getChunk(int x, int y, int z)

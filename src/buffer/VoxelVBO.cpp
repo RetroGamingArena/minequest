@@ -13,7 +13,7 @@ VoxelVBO::VoxelVBO()
     attributes.push_back(new Attribute(3,0,"Point"));
     attributes.push_back(new Attribute(1,0,"AO"));
     
-    attributes.push_back(new Attribute(3,1,"Point"));
+    attributes.push_back(new Attribute(1,1,"Point"));
     //attributes.push_back(new Attribute(1,1,"Type"));
     attributes.push_back(new Attribute(1,1,"Size"));
     //attributes.push_back(new Attribute(1,1,"AO"));

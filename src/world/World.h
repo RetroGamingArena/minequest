@@ -59,9 +59,8 @@ class World : public Pool
 		int getOccludedCount();
 		void setOccludedCount(int _occludedCount);
 		bool isCubeVisible(int x, int y, int z, int size);
-		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, unsigned char occlusion);
+		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion);
 		unsigned char getCube(int x, int y, int z);
-		void bufferizeEntryRect(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int width, int height, unsigned char occlusion);
 		Chunk* getChunk(int x, int y, int z);
 		vector<Chunk*> getChunks();
 		void setChunksAt(Chunk* _chunks, int indice);

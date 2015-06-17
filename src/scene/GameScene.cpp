@@ -61,11 +61,11 @@ GameScene::GameScene(Player* player)
     
     reset();
     
-    vector<GLfloat>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
+    vector<GLuint>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
     
     //updateIndices();
     
-    vector<GLfloat>* chunkData = first->getVertexBuffer()->getData();
+    vector<GLuint>* chunkData = first->getVertexBuffer()->getData();
         
     gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
     chunkData->clear();
@@ -73,8 +73,8 @@ GameScene::GameScene(Player* player)
     
     setChunksOffset(gameSceneData->size());
     
-    for(int i=0; i < items.size() ; i++)
-        getItems()[0]->draw(getDoubleBuffer()->getVertexBuffer());
+    //for(int i=0; i < items.size() ; i++)
+    //    getItems()[0]->draw(getDoubleBuffer()->getVertexBuffer());
     
     worldProcessor->setWorld(Engine::getInstance()->getWorld());
     
@@ -293,7 +293,7 @@ void GameScene::render()
     }
     if(updateBufferCpt > 0)
     {
-        vector<GLfloat>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
+        vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         
         for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size(); i++)
         {
@@ -301,7 +301,7 @@ void GameScene::render()
             
             if(chunk->getBuffered() && chunk->getVertexBuffer()->getData()->size() > 0)
             {
-                vector<GLfloat>* chunkData = chunk->getVertexBuffer()->getData();
+                vector<GLuint>* chunkData = chunk->getVertexBuffer()->getData();
                 gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
                 chunkData->clear();
                 updateBufferCpt--;
@@ -336,11 +336,11 @@ void GameScene::refreshItemsBuffer()
 	// Start of user code refreshItemsBuffer
     int offset = chunksOffset;
     
-    vector<GLfloat>* datas =  doubleBuffer->getVertexBuffer()->getData();
+    vector<GLuint>* datas =  doubleBuffer->getVertexBuffer()->getData();
     
     doubleBuffer->getVertexBuffer()->getData()->erase(datas->begin()+offset, datas->end());
-    for(int i=0; i < items.size() ; i++)
-        items[0]->draw(doubleBuffer->getVertexBuffer());
+    //for(int i=0; i < items.size() ; i++)
+    //    items[0]->draw(doubleBuffer->getVertexBuffer());
     doubleBuffer->getVertexBuffer()->bind();
 	// End of user code
 }

@@ -110,9 +110,7 @@ float PerlinGenerator::getY(float x, float z)
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 {
 	// Start of user code getCubeType
-    int absBound = World::size*Chunk::size*Chunk::subsize;//(destSize/(Chunk::size*Chunk::subsize))/2;
-    
-    float height = heightMap.GetValue(absBound+x, absBound+z);
+    float height = heightMap.GetValue(x, z);
 
     height=(height+1);
     

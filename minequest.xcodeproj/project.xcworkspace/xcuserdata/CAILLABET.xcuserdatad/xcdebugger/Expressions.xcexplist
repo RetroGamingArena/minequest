@@ -14,6 +14,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "World::bufferizeEntry(VertexBuffer*, unsigned char, float, float, float, int, int, int, unsigned char):World.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "(int)((pInt%8) &lt;&lt; 4)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "OctreeEntry&lt;unsigned char&gt;::getAbs(int, int, int, int):OctreeEntry.cpp">
          <PersistentStrings>
             <PersistentString
@@ -53,13 +61,7 @@
          contextName = "World::getCube(int, int, int):World.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "Octree::size">
-            </PersistentString>
-            <PersistentString
-               value = "chunk-&gt;getOctree()-&gt;entries">
-            </PersistentString>
-            <PersistentString
-               value = "(p)*( (size)*2+1) + r ">
+               value = "(p)*( (size)*2+1) + r">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -111,6 +113,20 @@
       </ContextState>
       <ContextState
          contextName = "Chunk::bufferizeCube(VBOScene*, int):Chunk.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "World::isCubeVisible(int, int, int, int):World.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "((size*2+1)*Chunk::size*Chunk::subsize-1)">
+            </PersistentString>
+            <PersistentString
+               value = "(x+size-1)">
+            </PersistentString>
+            <PersistentString
+               value = "Chunk::size*Chunk::subsize-1">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "IterativeProcessor::bufferize(GameScene*, World*):IterativeProcessor.cpp">
@@ -194,13 +210,13 @@
          contextName = "VBOScene::bindBuffer():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "sizeof(g_vertex_buffer_data)">
+               value = "getVertexCount()">
             </PersistentString>
             <PersistentString
                value = "sizeof(GLfloat)*9">
             </PersistentString>
             <PersistentString
-               value = "getVertexCount()">
+               value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -242,6 +258,9 @@
                value = "y/(double)Chunk::subsize">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Octree::bufferize(VertexBuffer*, float, float, float):Octree.cpp">
       </ContextState>
       <ContextState
          contextName = "TrackBallCamera::getRealPosition():TrackBallCamera.cpp">
@@ -296,10 +315,10 @@
          contextName = "Node::generate(WorldGenerator*, int, int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "q+y*size/2.0">
+               value = "this-&gt;entries[i]">
             </PersistentString>
             <PersistentString
-               value = "this-&gt;entries[i]">
+               value = "q+y*size/2.0">
             </PersistentString>
             <PersistentString
                value = "(q+size*(y+1)/2)">
