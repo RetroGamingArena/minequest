@@ -8,6 +8,7 @@
 #include "Camera.h"
 #include "Engine.h"
 #include "CubeFace.h"
+#include <iostream>
 // End of user code
 
 World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, int _occludedCount)
@@ -149,30 +150,71 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     
     //kjgfjgjf//TODO : corriger les if
     
-    if( x==0 || z==0 || (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) || (y+size-1)==(Chunk::size*Chunk::subsize-1) || (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) )
-        return true;
-    
     if( y==0 && x>0 && z>0 && (x+size-1)<(Chunk::size*Chunk::subsize-1) && (z+size-1)<(Chunk::size*Chunk::subsize-1) )
         return false;
     
     unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
     
+    unsigned char visibility = 0;
+    
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
             if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
-                return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
-                return true;
+                visibility |= LEFT;//return true;
+            if( (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) )
+                visibility |= RIGHT;//return true;
+            else if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+                visibility |= RIGHT;//return true;
             if(this->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
-                return true;
+                visibility |= BOTTOM;//return true;
             if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
-                return true;
+                visibility |= TOP;//return true;
             if(this->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
-                return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
-                return true;
+                visibility |= BACK;//return true;
+            if( (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) )
+                visibility |= FRONT;
+            else if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+                visibility |= FRONT;//return true;
         }
+    
+    //if((visibility & TOP))
+    //    return true;
+
+    if( x==0 )
+    {
+        std::cout << (int)visibility << std::endl;
+        if( !(visibility & RIGHT) && !(visibility & FRONT) && !(visibility & BACK) )
+            return false;
+    }
+    
+    if( (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1))
+    {
+        std::cout << (int)visibility << std::endl;
+        if( !(visibility & LEFT) && !(visibility & FRONT) && !(visibility & BACK) )
+            return false;
+    }
+    
+    if( (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1))
+    {
+        std::cout << (int)visibility << std::endl;
+        if( !(visibility & LEFT) && !(visibility & RIGHT) && !(visibility & BACK) )
+            return false;
+    }
+    
+    if( z==0 )
+    {
+        std::cout << (int)visibility << std::endl;
+        if( !(visibility & LEFT) && !(visibility & RIGHT) && !(visibility & FRONT) )
+            return false;
+    }
+    
+    if( x==0 || z==0 || (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) || (y+size-1)==(Chunk::size*Chunk::subsize-1) || (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1) )
+        return true;
+    
+    if(visibility > 0)
+        return true;
+    
     
     return false;
 	// End of user code
