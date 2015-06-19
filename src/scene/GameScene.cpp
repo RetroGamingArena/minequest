@@ -43,7 +43,7 @@ GameScene::GameScene(Player* player)
     //GameScene();
     background = new Background();
     worldProcessor = new WorldProcessor();
-    worldProcessor->setThreadCount(9);
+    //worldProcessor->setThreadCount(9);
     ItemCamera* itemCamera = new ItemCamera();
     itemCamera->setItem(player);
     cameras.push_back(itemCamera);
@@ -68,7 +68,7 @@ GameScene::GameScene(Player* player)
     vector<GLuint>* chunkData = first->getVertexBuffer()->getData();
         
     gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-    chunkData->clear();
+    //chunkData->clear();
     
     
     setChunksOffset(gameSceneData->size());
@@ -108,6 +108,8 @@ void GameScene::handle(Event * event)
             {
                 oldMask = mask;
                 updateIndices();
+                if(updateChunksCpt==0)
+                    updateChunksCpt+=8;
             }
             updateCamera = true;
             cameraLock->unlock();
@@ -277,9 +279,10 @@ void GameScene::reset()
 void GameScene::render()
 {
 	// Start of user code render
+    World* world = Engine::getInstance()->getWorld();
     if(updateChunks)
     {
-        World* world = Engine::getInstance()->getWorld();
+        
         if(!world->isRunning())
         {
             world->start();
@@ -291,9 +294,11 @@ void GameScene::render()
         if(!worldProcessor->isRunning())
             worldProcessor->start();
     }
-    if(updateBufferCpt > 0)
+    //if(updateBufferCpt > 0)
     {
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
+        
+        gameSceneData->erase(gameSceneData->begin()+72, gameSceneData->end());
         
         for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size(); i++)
         {
@@ -303,7 +308,7 @@ void GameScene::render()
             {
                 vector<GLuint>* chunkData = chunk->getVertexBuffer()->getData();
                 gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-                chunkData->clear();
+                //chunkData->clear();
                 updateBufferCpt--;
             }
         }
@@ -311,10 +316,10 @@ void GameScene::render()
         setChunksOffset(gameSceneData->size());
         
         //
-        /*for(int i=0; i < items.size() ; i++)
+        for(int i=0; i < items.size() ; i++)
         {
             items[0]->draw(doubleBuffer->getVertexBuffer());
-        }*/
+        }
         
         doubleBuffer->getVertexBuffer()->bind();
         

@@ -12,7 +12,7 @@ IterativeProcessor::IterativeProcessor(int _chunkIndice)
 	chunkIndice = _chunkIndice;
 }
 
-IterativeProcessor::IterativeProcessor()
+IterativeProcessor::IterativeProcessor() : Pool(9)
 // Start of user code super class
 // End of user code
 {

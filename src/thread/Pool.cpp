@@ -22,11 +22,32 @@ Pool::Pool()
     running=false;
     started = false;
     mutex=new std::mutex();
+    
+    for(int i = 0; i < threadCount; i++)
+    {
+        Thread* thread = new Thread();
+        thread->addListener(this);
+        threads.push_back(thread);
+    }
 	// End of user code
 }
 
 
 // Start of user code methods
+Pool::Pool(int _threadCount)
+{
+    threadCount = _threadCount;
+    running=false;
+    started = false;
+    mutex=new std::mutex();
+    
+    for(int i = 0; i < threadCount; i++)
+    {
+        Thread* thread = new Thread();
+        thread->addListener(this);
+        threads.push_back(thread);
+    }
+}
 // End of user code
 
 void Pool::poly()
@@ -107,12 +128,12 @@ void Pool::setStarted(bool _started)
 void Pool::start()
 {
 	// Start of user code start
-    for(int i = 0; i < threadCount; i++)
+    /*for(int i = 0; i < threadCount; i++)
     {
         Thread* thread = new Thread();
         thread->addListener(this);
         threads.push_back(thread);
-    }
+    }*/
     work = new thread(Pool::run, this);
 	// End of user code
 }

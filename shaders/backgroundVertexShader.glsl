@@ -13,5 +13,5 @@ void main()
     gl_Position.z = 0.5;
     gl_Position.w = 1;
     
-    _color = vec3(vertexColor.rgb);
+    _color = vec3(vertexColor.r/256.0, vertexColor.g/256.0, vertexColor.b/256.0);
 }

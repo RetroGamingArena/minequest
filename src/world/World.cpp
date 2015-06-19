@@ -20,7 +20,7 @@ World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, in
 	occludedCount = _occludedCount;
 }
 
-World::World()
+World::World() : Pool(4)
 // Start of user code super class
 // End of user code
 {
@@ -42,7 +42,7 @@ World::World()
             }
         }
     
-    threadCount = 4;
+    //threadCount = 4;
     
     ChunkTask* chunkTask = new ChunkTask();
     chunkTask->setChunk(center);
@@ -92,7 +92,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;	
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -298,9 +298,9 @@ unsigned char World::getCube(int x, int y, int z)
 Chunk* World::getChunk(int x, int y, int z)
 {
 	// Start of user code getChunk
-    int p = x/16.0;
-    int q = x/16.0;
-    int r = x/16.0;
+    int p = x/(16.0*8.0);
+    int q = x/(16.0*8.0);
+    int r = x/(16.0*8.0);
     
     for(int i = 0; i < chunks.size(); i++)
     {

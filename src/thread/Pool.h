@@ -47,6 +47,7 @@ class Pool : public Transmitter, public Listener
 
 	public:
 		// Start of user code public
+        Pool(int _threadCount);
 		// End of user code
 		Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex, bool _started);
 		Pool();

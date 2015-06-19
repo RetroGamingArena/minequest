@@ -19,8 +19,8 @@ Background::Background()
     Engine* engine = Engine::getInstance();
     backgroundShader = dynamic_cast<BackgroundShader*>(engine->getShaders()[2]);
     
-    firstColor = glm::vec3(1,0,0);//0.3, 0.5, 1);
-    lastColor  = glm::vec3(0, 0, 1);
+    firstColor = glm::vec3(0, 0, 255);
+    lastColor  = glm::vec3(90, 150, 255);
     
     vertexBuffer = new VertexBuffer();
     vector<GLuint>* data = new vector<GLuint>(); //vertexBuffer->getData();
