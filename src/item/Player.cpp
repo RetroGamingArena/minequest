@@ -54,17 +54,41 @@ void Player::draw(VertexBuffer * buffer)
 {
 	// Start of user code draw
     
-    buffer->getData()->push_back(x/Chunk::subsize);
-    buffer->getData()->push_back(y/Chunk::subsize);
-    buffer->getData()->push_back(z/Chunk::subsize);
     
-    buffer->getData()->push_back( (4 << 17) + (1 << 15) + ((16-1) << 10) + ((16-1) << 5) + (16-1));
+    int pInt = (int)(x/Chunk::subsize);
+    double pDecimal = (x/Chunk::subsize)-pInt;
     
-    buffer->getData()->push_back(x/Chunk::subsize);
-    buffer->getData()->push_back(y/Chunk::subsize+1);
-    buffer->getData()->push_back(z/Chunk::subsize);
+    int qInt = (int)(y/Chunk::subsize);
+    double qDecimal = (y/Chunk::subsize)-qInt;
     
-    buffer->getData()->push_back( (4 << 17) + (1 << 15) + ((16-1) << 10) + ((16-1) << 5) + (16-1));
+    int rInt = (int)(z/Chunk::subsize);
+    double rDecimal = (z/Chunk::subsize)-rInt;
+    
+    
+    unsigned int _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%8) << 4) + ((pInt/8) << 7) +
+                             (((int)(qDecimal / 0.0625) + (int)((qInt%8) << 4) + ((qInt/8) << 7)) << 10) +
+                             ( (( (int)(rDecimal / 0.0625) + (int)((rInt%8) << 4) + ((rInt/8) << 7) )) << 20) );
+    
+    buffer->getData()->push_back(_offset);
+    
+    buffer->getData()->push_back( (4 << 20) + (1 << 18) + ((16-1) << 12) + ((16-1) << 6) + (16-1));
+    
+    pInt = (int)(x/Chunk::subsize);
+    pDecimal = (x/Chunk::subsize)-pInt;
+    
+    qInt = (int)(1+y/Chunk::subsize);
+    qDecimal = (1+y/Chunk::subsize)-qInt;
+    
+    rInt = (int)(z/Chunk::subsize);
+    rDecimal = (z/Chunk::subsize)-rInt;
+    
+    _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%8) << 4) + ((pInt/8) << 7) +
+                             (((int)(qDecimal / 0.0625) + (int)((qInt%8) << 4) + ((qInt/8) << 7)) << 10) +
+                             ( (( (int)(rDecimal / 0.0625) + (int)((rInt%8) << 4) + ((rInt/8) << 7) )) << 20) );
+    
+    buffer->getData()->push_back(_offset);
+    
+    buffer->getData()->push_back( (4 << 20) + (1 << 18) + ((16-1) << 12) + ((16-1) << 6) + (16-1));
 	// End of user code
 }
 

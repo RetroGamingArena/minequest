@@ -2,6 +2,8 @@
 
 #include "TrackBallCamera.h"
 // Start of user code includes
+#include "Chunk.h"
+#include "World.h"
 // End of user code
 
 TrackBallCamera::TrackBallCamera(float _distance, bool _hold, float _motionSensitivity, float _scrollSensitivity)
@@ -162,7 +164,7 @@ void TrackBallCamera::setScrollSensitivity(float _scrollSensitivity)
 glm::vec3 TrackBallCamera::getCenter()
 {
 	// Start of user code getCenter
-    return glm::vec3(0, 0, 0);
+    return glm::vec3(World::size*Chunk::size+4, 0, World::size*Chunk::size+4);
 	// End of user code
 }
 glm::vec3 TrackBallCamera::getPosition()

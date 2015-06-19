@@ -109,7 +109,14 @@ void GameScene::handle(Event * event)
                 oldMask = mask;
                 updateIndices();
                 if(updateChunksCpt==0)
-                    updateChunksCpt+=8;
+                {
+                    vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
+                    
+                    for(int i = 0; i < chunks.size(); i++)
+                        chunks[i]->setBuffered(false);
+                    
+                    updateChunksCpt+=chunks.size();
+                }
             }
             updateCamera = true;
             cameraLock->unlock();
