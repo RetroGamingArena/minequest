@@ -108,7 +108,7 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     
     for(int i = 0; i < 8; i++)
     {
-        if(i == 0)
+        /*if(i == 0)
             if(leaves[0] != NULL && leaves[1] != NULL && leaves[2] != NULL && leaves[3] != NULL &&
                leaves[0]->getType() == leaves[1]->getType() && leaves[1]->getType() == leaves[2]->getType() && leaves[2]->getType() == leaves[3]->getType() &&
                leaves[0]->getOcclusion() == leaves[1]->getOcclusion() && leaves[1]->getOcclusion() == leaves[2]->getOcclusion() && leaves[2]->getOcclusion() == leaves[3]->getOcclusion())
@@ -121,7 +121,7 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
                     world->setOccludedCount(world->getOccludedCount()+1);
                 }
                 i = 4;
-            }
+            }*/
         
         int x = (i%4)%2;
         int y = i/4;
@@ -132,6 +132,31 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     }
 
     delete[] leaves;
+	// End of user code
+}
+OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)
+{
+	// Start of user code getLeafAbs
+    if(this->octreeEntries.size() == 0)
+        this->split();
+    
+    int subsize = size >> 1;
+    
+    int i = !!(x & subsize);
+    int j = !!(y & subsize);
+    int k = !!(z & subsize);
+    
+    int _log = log2(subsize);
+    
+    int offset_x = x - (i << _log);
+    int offset_y = y - (j << _log);
+    int offset_z = z - (k << _log);
+    
+    OctreeEntry* entry = this->get(i,j,k);
+    if(entry == NULL)
+        return 0;
+    else
+        return entry->getLeafAbs(offset_x,offset_y,offset_z, size/2);
 	// End of user code
 }
 

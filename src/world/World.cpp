@@ -8,7 +8,7 @@
 #include "Camera.h"
 #include "Engine.h"
 #include "CubeFace.h"
-#include <iostream>
+#include <algorithm>
 // End of user code
 
 World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, int _occludedCount)
@@ -20,8 +20,9 @@ World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, in
 	occludedCount = _occludedCount;
 }
 
-World::World() : Pool(4)
+World::World()
 // Start of user code super class
+: Pool(4)
 // End of user code
 {
 	// Start of user code constructor
@@ -92,7 +93,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;
+int World::size = 0;
 
 int World::getChunkIndice()
 {
@@ -150,14 +151,22 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     
     //kjgfjgjf//TODO : corriger les if
     
+    //OctreeEntry* test = getLeaf(94, 5, 0);
+    
+    //ground occlusion
     if( y==0 && x>0 && z>0 && (x+size-1)<(Chunk::size*Chunk::subsize-1) && (z+size-1)<(Chunk::size*Chunk::subsize-1) )
         return false;
     
-    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
+    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
+    unsigned char mask = camera->getMask();
     
     unsigned char visibility = 0;
     
-    for(int i = size-1; i >= 0; i--)
+    //30520
+    //geometry occlusion
+    if(!isCubeFree(x, y, z, size))
+        return false;
+    /*for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
             if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
@@ -176,35 +185,151 @@ bool World::isCubeVisible(int x, int y, int z, int size)
                 visibility |= FRONT;
             else if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
                 visibility |= FRONT;//return true;
-        }
+        }*/
     
     //if((visibility & TOP))
     //    return true;
 
+    //raycast occlusion
+    //2D Cube
+    glm::mat4 model = camera->getModel();
+    glm::mat4 view = camera->getView();
+    glm::mat4 projection = camera->getProjection();
+    
+    glm::vec4 viewportdata = glm::vec4(0.0f, 0.0f, 1920.0f, 1080.0f);
+    
+    glm::vec3 pos = glm::vec3(x/(float)Chunk::subsize,y/(float)Chunk::subsize,z/(float)Chunk::subsize);
+    //glm::vec3 posTest = glm::vec3(0,0,0);
+    
+    glm::vec3 project = glm::project(pos, view*model, projection, viewportdata);
+    //glm::vec3 projectTest = glm::project(posTest, view*model, projection, viewportdata);
+    
+    float minx = project.x;
+    float maxx = project.x;
+    float miny = project.y;
+    float maxy = project.y;
+    
+    pos = glm::vec3((x+size)/(float)Chunk::subsize,y/(float)Chunk::subsize,z/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+
+    pos = glm::vec3(x/(float)Chunk::subsize,y/(float)Chunk::subsize,(z+size)/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+    
+    pos = glm::vec3((x+size)/(float)Chunk::subsize,y/(float)Chunk::subsize,(z+size)/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+    
+    pos = glm::vec3(x/(float)Chunk::subsize,(y+size)/(float)Chunk::subsize,z/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+    
+    pos = glm::vec3((x+size)/(float)Chunk::subsize,(y+size)/(float)Chunk::subsize,z/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+    
+    pos = glm::vec3(x/(float)Chunk::subsize,(y+size)/(float)Chunk::subsize,(z+size)/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+    
+    pos = glm::vec3((x+size)/(float)Chunk::subsize,(y+size)/(float)Chunk::subsize,(z+size)/(float)Chunk::subsize);
+    project = glm::project(pos, view*model, projection, viewportdata);
+    
+    minx = std::min(minx,project.x);
+    maxx = std::max(maxx,project.x);
+    miny = std::min(miny,project.y);
+    maxy = std::max(maxy,project.y);
+
+    /*OctreeEntry* base = this->getLeaf(x, y, z);
+    
+    for(int _x = minx; _x<maxx; _x++)
+        for(int _y = miny; _y<maxy; _y++)
+        {
+            pos = glm::vec3(_x,_y,0);
+
+            glm::vec3 unProject = glm::unProject(pos, view*model, projection, viewportdata);
+            
+            glm::vec3 pos1 = glm::vec3(0,0,0);
+            glm::vec3 pos2 = glm::vec3(1920,0,0);
+            glm::vec3 pos3 = glm::vec3(0,1080,0);
+            glm::vec3 pos4 = glm::vec3(1920,1080,0);
+            
+            glm::vec3 unProject1 = glm::unProject(pos1, view*model, projection, viewportdata);
+            glm::vec3 unProject2 = glm::unProject(pos2, view*model, projection, viewportdata);
+            glm::vec3 unProject3 = glm::unProject(pos3, view*model, projection, viewportdata);
+            glm::vec3 unProject4 = glm::unProject(pos4, view*model, projection, viewportdata);
+
+            glm::vec3 position = camera->getPosition();
+            Ray* ray = new Ray(position, glm::vec3((x+size/2.0)/(float)Chunk::subsize,(y+size/2.0)/(float)Chunk::subsize,(z+size/2.0)/(float)Chunk::subsize));//unProject);
+            
+            for(int i = 0; i<100; i++)
+            {
+                glm::vec3 d = ray->move(i);
+
+                OctreeEntry* entry = this->getLeaf(d.x*Chunk::subsize, d.y*Chunk::subsize, d.z*Chunk::subsize);
+                if(entry != NULL)
+                {
+                    //return true;
+                    if(entry == base)
+                        return true;
+                    else
+                        break;
+                }
+            }
+        }*/
+    
+    //return true;
+
+    if(isCubeOccluded(x, y, z, size))
+       return false;
+    
+    return true;
+    
     if( x==0 )
     {
-        std::cout << (int)visibility << std::endl;
         if( !(visibility & RIGHT) && !(visibility & FRONT) && !(visibility & BACK) )
             return false;
     }
     
     if( (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1))
     {
-        std::cout << (int)visibility << std::endl;
         if( !(visibility & LEFT) && !(visibility & FRONT) && !(visibility & BACK) )
             return false;
     }
     
     if( (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1))
     {
-        std::cout << (int)visibility << std::endl;
         if( !(visibility & LEFT) && !(visibility & RIGHT) && !(visibility & BACK) )
             return false;
     }
     
     if( z==0 )
     {
-        std::cout << (int)visibility << std::endl;
         if( !(visibility & LEFT) && !(visibility & RIGHT) && !(visibility & FRONT) )
             return false;
     }
@@ -222,8 +347,6 @@ bool World::isCubeVisible(int x, int y, int z, int size)
 void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)
 {
 	// Start of user code bufferizeEntry
-    float offset = Chunk::size*Chunk::subsize*size;
-    
     int pInt = (int)p;
     double pDecimal = p-pInt;
     
@@ -241,19 +364,6 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
     
     data->push_back(_offset);
     
-    unsigned int iOffset = _offset;
-    
-    float offsetx =  ((iOffset      & 0x380) >> 7) +  ((iOffset      & 0x70) >> 4) +  (iOffset      & 0xf)/16.0;
-    float offsety = (((iOffset>>10) & 0x380) >> 7) + (((iOffset>>10) & 0x70) >> 4) + ((iOffset>>10) & 0xf)/16.0;
-    float offsetz = (((iOffset>>20) & 0x380) >> 7) + (((iOffset>>20) & 0x70) >> 4) + ((iOffset>>20) & 0xf)/16.0;
-    
-    if( offsetx >8)//offsetx != p || offsety != q || offsetz != r || (*data)[data->size()-1] != _offset)
-        int a = 2;
-    
-    /*data->push_back(p);
-    data->push_back(q);
-    data->push_back(r);*/
-
     unsigned int size = (type << 20) + (occlusion << 18) + ((widthP-1) << 12) + ((widthQ-1) << 6) + (widthR-1);
     
     data->push_back(size);
@@ -308,6 +418,145 @@ Chunk* World::getChunk(int x, int y, int z)
         if(chunk->getP() == p && chunk->getQ() == q && chunk->getR() == r)
             return chunk;
     }
+    return NULL;
+	// End of user code
+}
+bool World::isCubeFree(int x, int y, int z, int size)
+{
+	// Start of user code isCubeFree
+    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
+    
+    if((x+size-1)+1 >= Chunk::size*Chunk::subsize*World::size && (mask & RIGHT))
+        return true;
+    
+    for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
+                return true;
+            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+                return true;
+            if(this->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
+                return true;
+            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
+                return true;
+            if(this->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
+                return true;
+            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+                return true;
+        }
+    return false;
+	// End of user code
+}
+OctreeEntry* World::getLeaf(int x, int y, int z)
+{
+	// Start of user code getLeaf
+    if(y > Chunk::size*Chunk::subsize || y < 0)
+        return NULL;
+    
+    if( x < 0 || z < 0 || x >= Chunk::size*Chunk::subsize*(size*2+1) || z >= Chunk::size*Chunk::subsize*(size*2+1))
+        return NULL;
+    
+    int abs_x = x;//+size*Chunk::size*Chunk::subsize;
+    
+    int abs_y = y;//+size*Chunk::size*Chunk::subsize;
+    
+    int abs_z = z;//+size*Chunk::size*Chunk::subsize;
+    
+    int p = abs_x / (Chunk::size*Chunk::subsize);
+    int q = abs_y / (Chunk::size*Chunk::subsize);
+    int r = abs_z / (Chunk::size*Chunk::subsize);
+    
+    Chunk* chunk;
+    if(size == 0)
+        chunk = chunks[0];
+    else
+        chunk = chunks[ (p)*( (size)*2+1) + r ];
+    
+    int sx = abs_x % (Chunk::size*Chunk::subsize);
+    int sy = abs_y % (Chunk::size*Chunk::subsize);
+    int sz = abs_z % (Chunk::size*Chunk::subsize);
+    
+    if(chunk != NULL)
+    {
+        Octree* octree = chunk->getOctree();
+        OctreeEntry* entry = octree->getLeafAbs(x, y, z, Octree::size);
+        return entry;
+    }
+    
+    return NULL;
+	// End of user code
+}
+bool World::isCubeOccluded(int x, int y, int z, int size)
+{
+	// Start of user code isCubeOccluded
+    OctreeEntry* base = this->getLeaf(x, y, z);
+    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
+    glm::vec3 position = Engine::getInstance()->getScene()->getSelectedCamera()->getPosition();
+    
+    Ray* ray = NULL;
+    
+    for(int i = 0; i < size; i++)
+        for(int j = 0; j < size; j++)
+        {
+            if(/*this->getCube(x-1, y+i,   z+j) == 0 &&*/ (mask & LEFT))
+            {
+                ray = new Ray(position, glm::vec3(x/(float)Chunk::subsize,(y+i)/(float)Chunk::subsize,(z+j)/(float)Chunk::subsize));
+                if(collide(ray, x, y+i, z+j) == base)
+                    return false;
+            }
+            if(/*this->getCube((x+size-1)+1, y+i,   z+j) == 0 &&*/ (mask & RIGHT))
+            {
+                ray = new Ray(position, glm::vec3((x+size-1)/(float)Chunk::subsize,(y+i)/(float)Chunk::subsize,(z+j)/(float)Chunk::subsize));
+                if(collide(ray, (x+size-1), y+i, z+j) == base)
+                    return false;
+            }
+            if(/*this->getCube(x+i, y-1,   z+j) == 0 &&*/ (mask & BOTTOM))
+            {
+                ray = new Ray(position, glm::vec3((x+i)/(float)Chunk::subsize,y/(float)Chunk::subsize,(z+j)/(float)Chunk::subsize));
+                if(collide(ray, x+i, y, z+j) == base)
+                    return false;
+            }
+            if(/*this->getCube(x+i, (y+size-1)+1,   z+j) == 0 &&*/ (mask & TOP))
+            {
+                ray = new Ray(position, glm::vec3((x+i)/(float)Chunk::subsize,(y+size-1)/(float)Chunk::subsize,(z+j)/(float)Chunk::subsize));
+                if(collide(ray, x+i, y+size-1, z+j) == base)
+                    return false;
+            }
+            if(/*this->getCube(x+i, y+j,   z-1) == 0 &&*/ (mask & BACK))
+            {
+                ray = new Ray(position, glm::vec3((x+i)/(float)Chunk::subsize,(y+i)/(float)Chunk::subsize,z/(float)Chunk::subsize));
+                if(collide(ray, x+i, y+j, z) == base)
+                    return false;
+            }
+            if(/*this->getCube(x+i, y+j,   (z+size-1)+1) == 0 &&*/ (mask & FRONT))
+            {
+                ray = new Ray(position, glm::vec3((x+i)/(float)Chunk::subsize,(y+j)/(float)Chunk::subsize,(z+size-1)/(float)Chunk::subsize));
+                if(collide(ray, x+i, y+i, z+size-1) == base)
+                    return false;
+            }
+        }
+    
+    delete ray;
+    
+    return true;
+	// End of user code
+}
+OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
+{
+	// Start of user code collide
+    glm::vec3 d;
+    for(int i = 0; i<100; i++)
+    {
+        d = ray->move(i);
+        
+        OctreeEntry* entry = this->getLeaf(d.x*Chunk::subsize, d.y*Chunk::subsize, d.z*Chunk::subsize);
+        if(entry != NULL)
+        {
+            return entry;
+        }
+    }
+    d = ray->move(46);
     return NULL;
 	// End of user code
 }

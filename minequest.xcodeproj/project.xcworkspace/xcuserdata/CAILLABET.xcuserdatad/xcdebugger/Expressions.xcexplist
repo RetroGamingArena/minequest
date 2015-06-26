@@ -88,6 +88,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "World::isCubeVisible(int, int, int, int):World.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "Chunk::size*Chunk::subsize-1">
+            </PersistentString>
+            <PersistentString
+               value = "(x+size-1)">
+            </PersistentString>
+            <PersistentString
+               value = "camera">
+            </PersistentString>
+            <PersistentString
+               value = "((size*2+1)*Chunk::size*Chunk::subsize-1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "glm::detail::tvec3&lt;float&gt; glm::unProject&lt;float, float&gt;(glm::detail::tvec3&lt;float&gt; const&amp;, glm::detail::tmat4x4&lt;float&gt; const&amp;, glm::detail::tmat4x4&lt;float&gt; const&amp;, glm::detail::tvec4&lt;float&gt; const&amp;):matrix_transform.inl">
          <PersistentStrings>
             <PersistentString
@@ -115,20 +132,6 @@
          contextName = "Chunk::bufferizeCube(VBOScene*, int):Chunk.cpp">
       </ContextState>
       <ContextState
-         contextName = "World::isCubeVisible(int, int, int, int):World.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "((size*2+1)*Chunk::size*Chunk::subsize-1)">
-            </PersistentString>
-            <PersistentString
-               value = "(x+size-1)">
-            </PersistentString>
-            <PersistentString
-               value = "Chunk::size*Chunk::subsize-1">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "IterativeProcessor::bufferize(GameScene*, World*):IterativeProcessor.cpp">
          <PersistentStrings>
             <PersistentString
@@ -137,12 +140,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Node::getAbs(int, int, int, int):Node.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "this-&gt;get(ii,jj,kk) == 4">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "ChunkTask::run():ChunkTask.cpp">
       </ContextState>
       <ContextState
          contextName = "Engine::keyCallBack(GLFWwindow*, int, int, int, int):engine.cpp">
@@ -152,6 +150,14 @@
             </PersistentString>
             <PersistentString
                value = "cos(angleY*PI/180.0)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Node::getAbs(int, int, int, int):Node.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "this-&gt;get(ii,jj,kk) == 4">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -210,13 +216,13 @@
          contextName = "VBOScene::bindBuffer():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "getVertexCount()">
+               value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
             <PersistentString
                value = "sizeof(GLfloat)*9">
             </PersistentString>
             <PersistentString
-               value = "sizeof(g_vertex_buffer_data)">
+               value = "getVertexCount()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -256,6 +262,14 @@
             </PersistentString>
             <PersistentString
                value = "y/(double)Chunk::subsize">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "World::isCubeFree(int, int, int, int):World.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "(x+8-1)+1">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -315,10 +329,10 @@
          contextName = "Node::generate(WorldGenerator*, int, int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "this-&gt;entries[i]">
+               value = "q+y*size/2.0">
             </PersistentString>
             <PersistentString
-               value = "q+y*size/2.0">
+               value = "this-&gt;entries[i]">
             </PersistentString>
             <PersistentString
                value = "(q+size*(y+1)/2)">
@@ -357,6 +371,14 @@
             </PersistentString>
             <PersistentString
                value = "sizeof(GLfloat)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "World::getLeaf(int, int, int):World.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "Chunk::size*Chunk::subsize*(size*2+1)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

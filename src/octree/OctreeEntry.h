@@ -47,6 +47,7 @@ class OctreeEntry
 		virtual int getCode() = 0;
 		virtual unsigned char getAbs(int x, int y, int z, int size) = 0;
 		virtual void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size) = 0;
+		virtual OctreeEntry* getLeafAbs(int x, int y, int z, int size) = 0;
 };
 
 #endif

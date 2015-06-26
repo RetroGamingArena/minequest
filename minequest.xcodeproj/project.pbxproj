@@ -59,6 +59,7 @@
 		647F97891B0F99A400133A4C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F97871B0F99A400133A4C /* Background.cpp */; };
 		647F978C1B0F99B300133A4C /* BackgroundShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F978A1B0F99B300133A4C /* BackgroundShader.cpp */; };
 		6483FF3F1B27199800821BD8 /* InputCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6483FF3D1B27199800821BD8 /* InputCamera.cpp */; };
+		649D601E1B34E72000810DBA /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649D601C1B34E72000810DBA /* Ray.cpp */; };
 		649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649DC5121B0E806300A6235E /* ItemCamera.cpp */; };
 		64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864A1AFACD4300A5B62E /* Pool.cpp */; };
 		64C986511AFACE9B00A5B62E /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864D1AFACE9B00A5B62E /* Task.cpp */; };
@@ -447,6 +448,8 @@
 		647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundVertexShader.glsl; path = shaders/backgroundVertexShader.glsl; sourceTree = "<group>"; };
 		6483FF3D1B27199800821BD8 /* InputCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputCamera.cpp; sourceTree = "<group>"; };
 		6483FF3E1B27199800821BD8 /* InputCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCamera.h; sourceTree = "<group>"; };
+		649D601C1B34E72000810DBA /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
+		649D601D1B34E72000810DBA /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
 		649DC5121B0E806300A6235E /* ItemCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCamera.cpp; sourceTree = "<group>"; };
 		649DC5131B0E806300A6235E /* ItemCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCamera.h; sourceTree = "<group>"; };
 		64C9864A1AFACD4300A5B62E /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
@@ -980,6 +983,16 @@
 			path = src/background;
 			sourceTree = SOURCE_ROOT;
 		};
+		649D601B1B34E72000810DBA /* collision */ = {
+			isa = PBXGroup;
+			children = (
+				649D601C1B34E72000810DBA /* Ray.cpp */,
+				649D601D1B34E72000810DBA /* Ray.h */,
+			);
+			name = collision;
+			path = src/collision;
+			sourceTree = SOURCE_ROOT;
+		};
 		64C986491AFACD4300A5B62E /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1022,6 +1035,7 @@
 		64E85D4B1A4F65FF0042EE5A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				649D601B1B34E72000810DBA /* collision */,
 				645030451B17ACC9009DAC36 /* event */,
 				647F97861B0F99A400133A4C /* background */,
 				64C986491AFACD4300A5B62E /* thread */,
@@ -1140,6 +1154,7 @@
 				6440BB781AFAC3AD006A0842 /* PerlinGenerator.cpp in Sources */,
 				6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */,
 				64C986621AFBDBE100A5B62E /* Leaf.cpp in Sources */,
+				649D601E1B34E72000810DBA /* Ray.cpp in Sources */,
 				6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,
 				6440BB431AF8FB9E006A0842 /* VoxelVBO.cpp in Sources */,

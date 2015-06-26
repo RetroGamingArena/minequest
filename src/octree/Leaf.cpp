@@ -66,6 +66,12 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     }
 	// End of user code
 }
+OctreeEntry* Leaf::getLeafAbs(int x, int y, int z, int size)
+{
+	// Start of user code getLeafAbs
+    return this;
+	// End of user code
+}
 
 
 

@@ -1,5 +1,5 @@
-#ifndef __ChunkProcessorTask__
-#define __ChunkProcessorTask__
+#ifndef __Ray__
+#define __Ray__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -18,22 +18,19 @@
 // Start of user code includes
 // End of user code
 
-#include "Task.h"
 
-#include "Chunk.h"
-#include "Processor.h"
 
 using namespace std;
 
 // Start of user code class import
 // End of user code
 
-class ChunkProcessorTask : public Task
+class Ray
 {
 	// Start of user code private
 	// End of user code
-	Chunk* chunk;
-	Processor* processor;
+	glm::vec3 start;
+	glm::vec3 direction;
 
 	protected:
 	// Start of user code protected
@@ -42,13 +39,15 @@ class ChunkProcessorTask : public Task
 	public:
 		// Start of user code public
 		// End of user code
-		ChunkProcessorTask();
-		~ChunkProcessorTask();
-		Chunk* getChunk();
-		void setChunk(Chunk* _chunk);
-		Processor* getProcessor();
-		void setProcessor(Processor* _processor);
-		void run();
+		Ray(glm::vec3 _start, glm::vec3 _direction);
+		Ray();
+		~Ray();
+		glm::vec3 getStart();
+		void setStart(glm::vec3 _start);
+		glm::vec3 getDirection();
+		void setDirection(glm::vec3 _direction);
+		glm::vec3 move(int i);
+		glm::vec3 getNormalizedPoint();
 };
 
 #endif

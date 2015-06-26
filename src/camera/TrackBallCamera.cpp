@@ -170,11 +170,12 @@ glm::vec3 TrackBallCamera::getCenter()
 glm::vec3 TrackBallCamera::getPosition()
 {
 	// Start of user code getPosition
-    return glm::vec3 (
+    glm::vec3 res(
                       cos(angleY) * sin(angleZ) * distance,
                       sin(angleY) * distance,
                       cos(angleY) * cos(angleZ) * distance
                       );
+    return res;
 	// End of user code
 }
 

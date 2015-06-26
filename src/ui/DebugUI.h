@@ -35,9 +35,9 @@ class DebugUI : public UI
 	// Start of user code private
 	// End of user code
 	Label* cubesCountLabel;
-	Label* instanceCountLabel;
 	Label* fPSLabel;
 	Label* occludedCountLabel;
+	Label* instanceCountLabel;
 
 	protected:
 	// Start of user code protected
@@ -50,12 +50,12 @@ class DebugUI : public UI
 		~DebugUI();
 		Label* getCubesCountLabel();
 		void setCubesCountLabel(Label* _cubesCountLabel);
-		Label* getInstanceCountLabel();
-		void setInstanceCountLabel(Label* _instanceCountLabel);
 		Label* getFPSLabel();
 		void setFPSLabel(Label* _fPSLabel);
 		Label* getOccludedCountLabel();
 		void setOccludedCountLabel(Label* _occludedCountLabel);
+		Label* getInstanceCountLabel();
+		void setInstanceCountLabel(Label* _instanceCountLabel);
 		void render();
 		void refresh();
 };
