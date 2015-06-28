@@ -93,7 +93,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 0;
+int World::size = 1 ;
 
 int World::getChunkIndice()
 {
@@ -305,8 +305,8 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     
     //return true;
 
-    if(isCubeOccluded(x, y, z, size))
-       return false;
+    //if(isCubeOccluded(x, y, z, size))
+    //   return false;
     
     return true;
     
@@ -546,7 +546,10 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
 {
 	// Start of user code collide
     glm::vec3 d;
-    for(int i = 0; i<100; i++)
+    
+    double start = ray->enterCube(0, 0, 0, Chunk::size*(size*2+1), Chunk::size, Chunk::size*(size*2+1));
+    
+    for(double i = start; i<100; i+=1./16.)
     {
         d = ray->move(i);
         
@@ -555,6 +558,7 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
         {
             return entry;
         }
+        //i+=
     }
     d = ray->move(46);
     return NULL;

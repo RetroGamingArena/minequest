@@ -56,7 +56,10 @@ GameScene::GameScene(Player* player)
     ChunkProcessorTask* task = new ChunkProcessorTask();
     task->setProcessor(worldProcessor);
     task->setChunk(first);
+    
+    double currentTime = glfwGetTime();
     task->run();
+    currentTime = glfwGetTime() - currentTime;
     //first->setBuffered(true);
     
     reset();
@@ -363,18 +366,6 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 	// End of user code
 }
 
-WorldProcessor* GameScene::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					
 vector<Item*> GameScene::getItems()
 {
 	// Start of user code getItems
@@ -387,3 +378,15 @@ void GameScene::setItemsAt(Item* _items, int indice)
 	items[indice] = _items;
 }
 
+WorldProcessor* GameScene::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
+}
+					

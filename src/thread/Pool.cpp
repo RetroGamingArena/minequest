@@ -50,15 +50,15 @@ Pool::Pool(int _threadCount)
 }
 // End of user code
 
+void Pool::poly()
+{
+	// Start of user code poly
+	// End of user code
+}
 void Pool::handle(Event * event)
 {
 	// Start of user code handle
     fireEvent(event);
-	// End of user code
-}
-void Pool::poly()
-{
-	// Start of user code poly
 	// End of user code
 }
 

@@ -46,8 +46,9 @@ class Ray
 		void setStart(glm::vec3 _start);
 		glm::vec3 getDirection();
 		void setDirection(glm::vec3 _direction);
-		glm::vec3 move(int i);
+		glm::vec3 move(double i);
 		glm::vec3 getNormalizedPoint();
+		double enterCube(double x1, double y1, double z1, double x2, double y2, double z2);
 };
 
 #endif
