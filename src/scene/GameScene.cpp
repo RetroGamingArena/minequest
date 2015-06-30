@@ -7,6 +7,7 @@
 #include "ItemCamera.h"
 #include "Engine.h"
 #include "ChunkProcessorTask.h"
+#include <iostream>
 // End of user code
 
 GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, int _updateChunksCpt, std::mutex* _bufferAddMutex, int _updateBufferCpt, unsigned char _oldMask, std::mutex* _cameraLock)
@@ -61,7 +62,7 @@ GameScene::GameScene(Player* player)
     task->run();
     currentTime = glfwGetTime() - currentTime;
     //first->setBuffered(true);
-    
+    std::cout << currentTime << std::endl;
     reset();
     
     vector<GLuint>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
@@ -366,18 +367,6 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 	// End of user code
 }
 
-vector<Item*> GameScene::getItems()
-{
-	// Start of user code getItems
-	// End of user code
-	return items;
-}
-
-void GameScene::setItemsAt(Item* _items, int indice)
-{
-	items[indice] = _items;
-}
-
 WorldProcessor* GameScene::getWorldProcessor()
 {
 	// Start of user code getWorldProcessor
@@ -390,3 +379,15 @@ void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
+vector<Item*> GameScene::getItems()
+{
+	// Start of user code getItems
+	// End of user code
+	return items;
+}
+
+void GameScene::setItemsAt(Item* _items, int indice)
+{
+	items[indice] = _items;
+}
+

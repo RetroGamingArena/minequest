@@ -7,6 +7,7 @@
 #include "Engine.h"
 //#include "CubeType.h"
 #include "Leaf.h"
+#include "Empty.h"
 // End of user code
 
 
@@ -99,39 +100,15 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
 void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
 	// Start of user code bufferize
-    World* world = Engine::getInstance()->getWorld();
-    
-    Leaf** leaves = new Leaf*[8];
-    
-    for(int i = 0; i < 8; i++)
-        leaves[i] = dynamic_cast<Leaf*>(octreeEntries[i]);
-    
     for(int i = 0; i < 8; i++)
     {
-        /*if(i == 0)
-            if(leaves[0] != NULL && leaves[1] != NULL && leaves[2] != NULL && leaves[3] != NULL &&
-               leaves[0]->getType() == leaves[1]->getType() && leaves[1]->getType() == leaves[2]->getType() && leaves[2]->getType() == leaves[3]->getType() &&
-               leaves[0]->getOcclusion() == leaves[1]->getOcclusion() && leaves[1]->getOcclusion() == leaves[2]->getOcclusion() && leaves[2]->getOcclusion() == leaves[3]->getOcclusion())
-            {
-                if(leaves[0]->getType() > 0)
-                {
-                    world->bufferizeEntry(vertexBuffer, leaves[0]->getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size/2, size, leaves[0]->getOcclusion());
-                    world->setCubeCount(world->getCubeCount()+size*size*(size/2));
-                    world->setInstanceCount(world->getInstanceCount()+1);
-                    world->setOccludedCount(world->getOccludedCount()+1);
-                }
-                i = 4;
-            }*/
-        
-        int x = (i%4)%2;
-        int y = i/4;
-        int z = (i%4)/2;
+        int x = (*WorldGenerator::getXs())[i];
+        int y = (*WorldGenerator::getYs())[i];
+        int z = (*WorldGenerator::getZs())[i];
             
         if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
     }
-
-    delete[] leaves;
 	// End of user code
 }
 OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)
@@ -154,10 +131,21 @@ OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)
     
     OctreeEntry* entry = this->get(i,j,k);
     if(entry == NULL)
-        return 0;
+        return new Empty(i << _log,j << _log,k << _log, size/2);
     else
-        return entry->getLeafAbs(offset_x,offset_y,offset_z, size/2);
-	// End of user code
+    {
+        OctreeEntry* _entry = entry->getLeafAbs(offset_x,offset_y,offset_z, size/2);
+        Empty* empty = dynamic_cast<Empty*>(_entry);
+        if( empty != NULL )
+        {
+            empty->setX(empty->getX()+(i << _log));
+            empty->setY(empty->getY()+(j << _log));
+            empty->setZ(empty->getZ()+(k << _log));
+            return empty;
+        }
+        return entry;
+    }
+    // End of user code
 }
 
 

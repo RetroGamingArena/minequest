@@ -78,11 +78,10 @@ void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 	// Start of user code bufferize
     for(int i = 0; i < 8; i++)
     {
-        int x = (*WorldGenerator::getXs())[i];//(i%4)%2;
-        int y = (*WorldGenerator::getYs())[i];//i/4;
-        int z = (*WorldGenerator::getZs())[i];//(i%4)/2;
+        int x = (*WorldGenerator::getXs())[i];
+        int y = (*WorldGenerator::getYs())[i];
+        int z = (*WorldGenerator::getZs())[i];
         
-        //bufferize(scene, this->entries[i], p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
         if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, this->p*size+x*size/2.0, this->q*size+y*size/2.0, this->r*size+z*size/2.0, size/2);
     }

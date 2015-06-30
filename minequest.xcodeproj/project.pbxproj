@@ -59,6 +59,7 @@
 		647F97891B0F99A400133A4C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F97871B0F99A400133A4C /* Background.cpp */; };
 		647F978C1B0F99B300133A4C /* BackgroundShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F978A1B0F99B300133A4C /* BackgroundShader.cpp */; };
 		6483FF3F1B27199800821BD8 /* InputCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6483FF3D1B27199800821BD8 /* InputCamera.cpp */; };
+		649722B11B3FFC9600E356B6 /* Empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649722AF1B3FFC9600E356B6 /* Empty.cpp */; };
 		649D601E1B34E72000810DBA /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649D601C1B34E72000810DBA /* Ray.cpp */; };
 		649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649DC5121B0E806300A6235E /* ItemCamera.cpp */; };
 		64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9864A1AFACD4300A5B62E /* Pool.cpp */; };
@@ -448,6 +449,8 @@
 		647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundVertexShader.glsl; path = shaders/backgroundVertexShader.glsl; sourceTree = "<group>"; };
 		6483FF3D1B27199800821BD8 /* InputCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputCamera.cpp; sourceTree = "<group>"; };
 		6483FF3E1B27199800821BD8 /* InputCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCamera.h; sourceTree = "<group>"; };
+		649722AF1B3FFC9600E356B6 /* Empty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Empty.cpp; path = src/octree/Empty.cpp; sourceTree = SOURCE_ROOT; };
+		649722B01B3FFC9600E356B6 /* Empty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Empty.h; path = src/octree/Empty.h; sourceTree = SOURCE_ROOT; };
 		649D601C1B34E72000810DBA /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
 		649D601D1B34E72000810DBA /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
 		649DC5121B0E806300A6235E /* ItemCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCamera.cpp; sourceTree = "<group>"; };
@@ -501,6 +504,8 @@
 		642FC3C81A5DAC6100DC8A94 /* octree */ = {
 			isa = PBXGroup;
 			children = (
+				649722AF1B3FFC9600E356B6 /* Empty.cpp */,
+				649722B01B3FFC9600E356B6 /* Empty.h */,
 				64C9865C1AFBDBE100A5B62E /* Leaf.cpp */,
 				64C9865D1AFBDBE100A5B62E /* Leaf.h */,
 				64C9865E1AFBDBE100A5B62E /* Node.cpp */,
@@ -1162,6 +1167,7 @@
 				647F97891B0F99A400133A4C /* Background.cpp in Sources */,
 				6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */,
 				64C986511AFACE9B00A5B62E /* Task.cpp in Sources */,
+				649722B11B3FFC9600E356B6 /* Empty.cpp in Sources */,
 				6440BB421AF8FB9E006A0842 /* VBO.cpp in Sources */,
 				64C9866A1AFBF1A700A5B62E /* CubeType.cpp in Sources */,
 				6440BB391AF820AB006A0842 /* IndiceBuffer.cpp in Sources */,

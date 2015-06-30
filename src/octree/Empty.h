@@ -1,5 +1,5 @@
-#ifndef __IterativeProcessor__
-#define __IterativeProcessor__
+#ifndef __Empty__
+#define __Empty__
 
 #include <glew.h>
 #include <GLFW/glfw3.h>
@@ -18,8 +18,7 @@
 // Start of user code includes
 // End of user code
 
-#include "Pool.h"
-#include "Processor.h"
+#include "OctreeEntry.h"
 
 
 using namespace std;
@@ -27,10 +26,14 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class IterativeProcessor : public Pool, public Processor
+class Empty : public OctreeEntry
 {
 	// Start of user code private
 	// End of user code
+	float x;
+	float y;
+	float z;
+	int size;
 
 	protected:
 	// Start of user code protected
@@ -39,12 +42,22 @@ class IterativeProcessor : public Pool, public Processor
 	public:
 		// Start of user code public
 		// End of user code
-	int chunkIndice;
-		IterativeProcessor(int _chunkIndice);
-		IterativeProcessor();
-		~IterativeProcessor();
-		Task* buildTask();
-		vector<GLuint>* bufferize(Octree * octree);
+		Empty(float _x, float _y, float _z, int _size);
+		Empty();
+		~Empty();
+		float getX();
+		void setX(float _x);
+		float getY();
+		void setY(float _y);
+		float getZ();
+		void setZ(float _z);
+		int getSize();
+		void setSize(int _size);
+		bool isCompressible();
+		int getCode();
+		unsigned char getAbs(int x, int y, int z, int size);
+		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
+		OctreeEntry* getLeafAbs(int x, int y, int z, int size);
 };
 
 #endif

@@ -101,9 +101,8 @@ double Ray::enterCube(double x1, double y1, double z1, double x2, double y2, dou
         iLeft = i;
        
     double iRight = 0;
-    i = (x2*0.99 - start.x )/d.x;
+    i = (x2*0.999 - start.x )/d.x;
     
-    double xTest = start.x + d.x * i;
     y = start.y + d.y * i;
     z = start.z + d.z * i;
     if( y<y1 || y>=y2 || z<z1 || z>=z2 )
@@ -112,9 +111,12 @@ double Ray::enterCube(double x1, double y1, double z1, double x2, double y2, dou
         iRight = i;
 
     double iTop = 0;
-    i = (y2*0.99 - start.y )/d.y;
-    x = start.y + d.y * i;
+    i = (y2*0.999 - start.y )/d.y;
+    x = start.x + d.x * i;
     z = start.z + d.z * i;
+    
+    double xTest = start.x + d.x * i;
+    
     if( x<x1 || x>=x2 || z<z1 || z>=z2 )
         iTop = 100;
     else
@@ -130,7 +132,7 @@ double Ray::enterCube(double x1, double y1, double z1, double x2, double y2, dou
         iBottom = i;
 
     double iFront = 0;
-    i = (z2*0.99 - start.z )/d.z;
+    i = (z2*0.999 - start.z )/d.z;
     x = start.x + d.x * i;
     y = start.y + d.y * i;
     if( x<x1 || x>=x2 || y<y1 || y>=y2 )
@@ -153,6 +155,89 @@ double Ray::enterCube(double x1, double y1, double z1, double x2, double y2, dou
     res = min(res, iBottom);
     res = min(res, iFront);
     res = min(res, iBack);
+    
+    if(res <0)
+        res = 0;
+    
+    return res;
+	// End of user code
+}
+double Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+	// Start of user code exitCube
+    glm::vec3 d = getNormalizedPoint();
+    double i = 0;
+    double x = 0;
+    double y = 0;
+    double z = 0;
+    
+    double iLeft = 0;
+    i = (x1 - start.x )/d.x;
+    y = start.y + d.y * i;
+    z = start.z + d.z * i;
+    
+    double iTest = (x1 - start.x )/d.x;
+    double yTest = start.y + d.y * iTest;
+    
+    if( y<y1 || y>=y2 || z<z1 || z>=z2 )
+        iLeft = 0;
+    else
+        iLeft = i+0.0001;
+    
+    double iRight = 0;
+    i = (x2*0.99999 - start.x )/d.x;
+    
+    double xTest = start.x + d.x * i;
+    y = start.y + d.y * i;
+    z = start.z + d.z * i;
+    if( y<y1 || y>=y2 || z<z1 || z>=z2 )
+        iRight = 0;
+    else
+        iRight = i;
+    
+    double iTop = 0;
+    i = (y2*0.99999 - start.y )/d.y;
+    x = start.y + d.y * i;
+    z = start.z + d.z * i;
+    if( x<x1 || x>=x2 || z<z1 || z>=z2 )
+        iTop = 0;
+    else
+        iTop = i;
+    
+    double iBottom = 0;
+    i = (y1 - start.y )/d.y;
+    x = start.x + d.x * i;
+    double testY = start.y + d.y * i;
+    z = start.z + d.z * i;
+    if( x<x1 || x>=x2 || z<z1 || z>=z2 )
+        iBottom = 0;
+    else
+        iBottom = i+0.0001;
+    
+    double iFront = 0;
+    i = (z2*0.99999 - start.z )/d.z;
+    x = start.x + d.x * i;
+    y = start.y + d.y * i;
+    if( x<x1 || x>=x2 || y<y1 || y>=y2 )
+        iFront = 0;
+    else
+        iFront = i;
+    
+    double iBack = 0;
+    i = (z1  - start.z )/d.z;
+    x = start.x + d.x * i;
+    y = start.y + d.y * i;
+    if( x<x1 || x>=x2 || y<y1 || y>=y2 )
+        iBack = 0;
+    else
+        iBack = i+0.0001;
+    
+    double res = iLeft;
+    res = max(res, iRight);
+    res = max(res, iTop);
+    res = max(res, iBottom);
+    res = max(res, iFront);
+    res = max(res, iBack);
     
     if(res <0)
         res = 0;
