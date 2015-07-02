@@ -62,6 +62,7 @@ GameScene::GameScene(Player* player)
     task->run();
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;*/
+    updateChunksCpt = 0;
     updateChunksCpt++;
     reset();
     
@@ -88,7 +89,7 @@ GameScene::GameScene(Player* player)
     Engine::getInstance()->getWorld()->addListener(this);
     worldProcessor->addListener(this);
     
-    updateChunksCpt = 0;
+    
     updateBufferCpt = 0;
     
     oldMask = getSelectedCamera()->getMask();
