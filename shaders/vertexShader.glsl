@@ -31,7 +31,7 @@ void main()
     uint yWidth = ((iWidth & uint(0xfc0)) >> 6)+1;
     uint zWidth = ((iWidth & uint(0x3f000)) >> 12)+1;
     
-    float ao = ((iWidth & uint(0x18000)) >> 18);
+    float ao = ((iWidth & uint(0xC0000)) >> 18);
     int vertexColorIndex = int((iWidth & uint(0xfffe0000)) >> 20);
     
     vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth/16.0, vertexPosition_modelspace.y*yWidth/16.0, vertexPosition_modelspace.z*zWidth/16.0 );

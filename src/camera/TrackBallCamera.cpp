@@ -23,7 +23,7 @@ TrackBallCamera::TrackBallCamera()
     
     angleY = 3.14/8;
     angleZ = 3.14/4;
-    distance = 70;
+    distance = 42.7;
     
     hold = false;
     motionSensitivity = 0.3;

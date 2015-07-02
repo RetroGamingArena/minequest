@@ -53,7 +53,7 @@ GameScene::GameScene(Player* player)
     for(int i = 0; i  <cameras.size(); i++)
         cameras[i]->addListener(this);
     
-    Chunk* first = Engine::getInstance()->getWorld()->getChunk(player->getX(), player->getY(), player->getZ());
+    /*Chunk* first = Engine::getInstance()->getWorld()->getChunk(player->getX(), player->getY(), player->getZ());
     ChunkProcessorTask* task = new ChunkProcessorTask();
     task->setProcessor(worldProcessor);
     task->setChunk(first);
@@ -61,17 +61,17 @@ GameScene::GameScene(Player* player)
     double currentTime = glfwGetTime();
     task->run();
     currentTime = glfwGetTime() - currentTime;
-    //first->setBuffered(true);
-    std::cout << currentTime << std::endl;
+    std::cout << currentTime << std::endl;*/
+    updateChunksCpt++;
     reset();
     
     vector<GLuint>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
     
     //updateIndices();
     
-    vector<GLuint>* chunkData = first->getVertexBuffer()->getData();
+    //vector<GLuint>* chunkData = first->getVertexBuffer()->getData();
         
-    gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
+    //gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
     //chunkData->clear();
     
     
@@ -300,12 +300,12 @@ void GameScene::render()
             updateChunks = false;
         }
     }
-    if(updateChunksCpt > 0)
+    if(updateChunksCpt == world->getChunks().size()-1)
     {
         if(!worldProcessor->isRunning())
             worldProcessor->start();
     }
-    //if(updateBufferCpt > 0)
+    if(updateBufferCpt == world->getChunks().size())
     {
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         

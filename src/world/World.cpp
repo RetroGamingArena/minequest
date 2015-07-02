@@ -89,7 +89,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 2;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -154,10 +154,6 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     //geometry occlusion
     if(!isCubeFree(x, y, z, size))
         return false;
-
-    //raycast occlusion
-    if(isCubeOccluded(x, y, z, size))
-       return false;
     
     //edge occlusion
     if( x==0 )
@@ -184,7 +180,11 @@ bool World::isCubeVisible(int x, int y, int z, int size)
             return false;
     }
     
-    return true;
+    //raycast occlusion
+    if(!isCubeOccluded(x, y, z, size))
+        return true;
+    
+    return false;
 	// End of user code
 }
 void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)
