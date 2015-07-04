@@ -395,10 +395,10 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
     
     double start = ray->enterCube(0, 0, 0, Chunk::size*(size*2+1), Chunk::size, Chunk::size*(size*2+1));
     
-    if( x==1 && y==10 && z==523)
+    if( x==129 && y==10 && z==0 )
     {
-        double _start = ray->enterCube(0, 0, 0, Chunk::size*(size*2+1), Chunk::size, Chunk::size*(size*2+1));
-        _start++;
+        int a = 2;
+        a++;
     }
     
     for(double i = start; i<100; )
@@ -426,14 +426,47 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
         }
         else
         {
-            int p = d.x / Chunk::size;
-            int q = d.y / Chunk::size;
-            int r = d.z / Chunk::size;
+            double div = Chunk::size;//(1./Chunk::subsize);
             
-            double end = ray->exitCube(p*Chunk::size+empty->getX()/(float)Chunk::subsize, q*Chunk::size+empty->getY()/(float)Chunk::subsize, r*Chunk::size+empty->getZ()/(float)Chunk::subsize, p*Chunk::size+(empty->getX()+empty->getSize())/(float)Chunk::subsize, q*Chunk::size+(empty->getY()+empty->getSize())/(float)Chunk::subsize, r*Chunk::size+(empty->getZ()+empty->getSize())/(float)Chunk::subsize);
+            int p = d.x / div;
+            int q = d.y / div;
+            int r = d.z / div;
+            
+            double x1 = p*div + empty->getX()/(float)Chunk::subsize;
+            double y1 = q*div + empty->getY()/(float)Chunk::subsize;
+            double z1 = r*div + empty->getZ()/(float)Chunk::subsize;
+            double x2 = p*div + (empty->getX()+empty->getSize())/(float)Chunk::subsize;
+            double y2 = q*div + (empty->getY()+empty->getSize())/(float)Chunk::subsize;
+            double z2 = r*div + (empty->getZ()+empty->getSize())/(float)Chunk::subsize;
+
+            double end = ray->exitCube(x1, y1, z1, x2, y2, z2);
+            OctreeEntry* __entry = NULL;
+            
+            glm::vec3 _d1 = ray->move(end);
+            glm::vec3 _d2 = ray->move(i);
+            
+            OctreeEntry* _entry1 = this->getLeaf(_d1.x*Chunk::subsize, _d1.y*Chunk::subsize, _d1.z*Chunk::subsize);
+            OctreeEntry* _entry2 = this->getLeaf(_d2.x*Chunk::subsize, _d2.y*Chunk::subsize, _d2.z*Chunk::subsize);
+
+            Empty* empty1 = dynamic_cast<Empty*>(_entry1);
+            Empty* empty2 = dynamic_cast<Empty*>(_entry2);
+            
+            if(empty1 != NULL && empty2 != NULL)
+                if( empty1->getX() == empty2->getX() && empty1->getY() == empty2->getY() && empty1->getZ() == empty2->getZ() && empty1->getSize() == empty2->getSize() )
+                {
+                    return NULL;
+                    double end = ray->exitCube(p*Chunk::size+empty->getX()/(float)Chunk::subsize, q*Chunk::size+empty->getY()/(float)Chunk::subsize, r*Chunk::size+empty->getZ()/(float)Chunk::subsize, p*Chunk::size+(empty->getX()+empty->getSize())/(float)Chunk::subsize, q*Chunk::size+(empty->getY()+empty->getSize())/(float)Chunk::subsize, r*Chunk::size+(empty->getZ()+empty->getSize())/(float)Chunk::subsize);
+                    
+                    OctreeEntry* __entry1 = this->getLeaf(_d1.x*Chunk::subsize, _d1.y*Chunk::subsize, _d1.z*Chunk::subsize);
+                    OctreeEntry* __entry2 = this->getLeaf(_d2.x*Chunk::subsize, _d2.y*Chunk::subsize, _d2.z*Chunk::subsize);
+                }
+            
             if(end<=i)
             {
+                return NULL;
                 double _end = ray->exitCube(p*Chunk::size+empty->getX()/(float)Chunk::subsize, q*Chunk::size+empty->getY()/(float)Chunk::subsize, r*Chunk::size+empty->getZ()/(float)Chunk::subsize, p*Chunk::size+(empty->getX()+empty->getSize())/(float)Chunk::subsize, q*Chunk::size+(empty->getY()+empty->getSize())/(float)Chunk::subsize, r*Chunk::size+(empty->getZ()+empty->getSize())/(float)Chunk::subsize);
+                glm::vec3 _d = ray->move(end);
+                __entry = this->getLeaf(_d.x*Chunk::subsize, _d.y*Chunk::subsize, _d.z*Chunk::subsize);
             }
             i=end;
             delete empty;

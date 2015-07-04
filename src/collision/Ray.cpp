@@ -193,7 +193,7 @@ double Ray::exitCube(double x1, double y1, double z1, double x2, double y2, doub
     if( y<y1 || y>=y2 || z<z1 || z>=z2 )
         iRight = 0;
     else
-        iRight = i;
+        iRight = (x2 - start.x )/d.x;//i;
     
     double iTop = 0;
     i = (y2*0.99999 - start.y )/d.y;
@@ -202,7 +202,7 @@ double Ray::exitCube(double x1, double y1, double z1, double x2, double y2, doub
     if( x<x1 || x>=x2 || z<z1 || z>=z2 )
         iTop = 0;
     else
-        iTop = i;
+        iTop = (y2 - start.y )/d.y;//i;
     
     double iBottom = 0;
     i = (y1 - start.y )/d.y;
@@ -221,7 +221,7 @@ double Ray::exitCube(double x1, double y1, double z1, double x2, double y2, doub
     if( x<x1 || x>=x2 || y<y1 || y>=y2 )
         iFront = 0;
     else
-        iFront = i;
+        iFront = (z2 - start.z )/d.z;//i;
     
     double iBack = 0;
     i = (z1  - start.z )/d.z;

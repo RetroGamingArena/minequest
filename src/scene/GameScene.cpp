@@ -301,7 +301,7 @@ void GameScene::render()
             updateChunks = false;
         }
     }
-    if(updateChunksCpt == world->getChunks().size()-1)
+    if(updateChunksCpt >= world->getChunks().size()-1)
     {
         if(!worldProcessor->isRunning())
             worldProcessor->start();

@@ -21,8 +21,12 @@ TrackBallCamera::TrackBallCamera()
 	// Start of user code constructor
     //Camera::Camera();
     
+    angleY = 1.29359376; //3.14/8;
+    angleZ = 0.392500013; //3.14/4;
+    
     angleY = 3.14/8;
     angleZ = 3.14/4;
+    
     distance = 42.7;
     
     hold = false;
