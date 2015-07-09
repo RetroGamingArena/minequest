@@ -109,7 +109,7 @@ void GameScene::handle(Event * event)
         {
             cameraLock->lock();
             unsigned char mask = camera->getMask();
-            if(mask != oldMask)
+            //if(mask != oldMask)
             {
                 oldMask = mask;
                 updateIndices();

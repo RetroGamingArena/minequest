@@ -55,7 +55,7 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     
     if(getType() > 0)
     {
-        if(!world->isCubeInFrustum(p*size,q*size,r*size,(p+1)*size,(q+1)*size,(r+1)*size))
+        if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
             return;
         
         if(world->isCubeVisible(p,q,r,size))
