@@ -12,6 +12,7 @@ ItemCamera::ItemCamera()
 {
 	// Start of user code constructor
     angleZ = 3*PI/2;
+    //angleY = PI;
 	// End of user code
 }
 
@@ -30,10 +31,14 @@ void ItemCamera::onMouseMotion(double xpos, double ypos)
     if(oldX >= 0 && oldY >= 0)
     {
         double dx = (xpos-oldX)/100;
-        double dy = ypos-oldY;
+        double dy = (ypos-oldY)/100;
 
         angleZ += dx;
-        angleY += dy/10;
+        angleY -= dy;
+        if(dy<0)
+            angleY = max(-PI/2.0,(double)angleY);
+        else
+            angleY = min(PI/2.0,(double)angleY);
     }
     oldX = xpos;
 	oldY = ypos;

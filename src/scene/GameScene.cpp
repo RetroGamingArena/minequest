@@ -115,6 +115,12 @@ void GameScene::handle(Event * event)
                 updateIndices();
                 if(updateChunksCpt==0)
                 {
+                    World* world = Engine::getInstance()->getWorld();
+                    
+                    world->setCubeCount(0);
+                    world->setInstanceCount(0);
+                    world->setOccludedCount(0);
+                    
                     vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
                     
                     for(int i = 0; i < chunks.size(); i++)

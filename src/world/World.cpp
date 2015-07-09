@@ -23,7 +23,7 @@ World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, in
 
 World::World()
 // Start of user code super class
-: Pool(4)
+: Pool(8)
 // End of user code
 {
 	// Start of user code constructor

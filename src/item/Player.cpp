@@ -17,9 +17,9 @@ Player::Player()
 // End of user code
 {
 	// Start of user code constructor
-    x=(World::size+4)*Chunk::subsize;
+    x=(World::size)*Chunk::subsize*Chunk::size+64;
     y=8*Chunk::subsize;
-    z=(World::size+4)*Chunk::subsize;
+    z=(World::size)*Chunk::subsize*Chunk::size+64;
     
     lx=0;
     ly=1*Chunk::subsize;

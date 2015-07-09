@@ -14,7 +14,7 @@ IterativeProcessor::IterativeProcessor(int _chunkIndice)
 
 IterativeProcessor::IterativeProcessor()
 // Start of user code super class
-: Pool(4)
+: Pool(8)
 // End of user code
 {
 	// Start of user code constructor
