@@ -5077,11 +5077,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5109,11 +5109,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457426252.682822"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5141,11 +5141,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457426252.682822"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5205,11 +5205,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457426252.682822"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5237,11 +5237,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457426252.682822"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5333,11 +5333,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/collision/Ray.cpp"
-            timestampString = "457307958.858701"
+            timestampString = "458080863.811462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5349,11 +5349,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5365,11 +5365,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5381,11 +5381,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5557,11 +5557,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "435"
+            endingLineNumber = "435"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5573,11 +5573,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5589,11 +5589,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5637,11 +5637,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/collision/Ray.cpp"
-            timestampString = "457307958.858701"
+            timestampString = "458037964.222607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5669,11 +5669,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/collision/Ray.cpp"
-            timestampString = "457307958.858701"
+            timestampString = "458080863.811462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5685,11 +5685,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5701,11 +5701,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457426252.682822"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5717,11 +5717,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457426252.682822"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5765,11 +5765,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457654623.704549"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5781,11 +5781,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5941,11 +5941,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457654623.704549"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5957,11 +5957,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5973,11 +5973,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5989,11 +5989,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6005,11 +6005,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457571756.461555"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6213,11 +6213,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457654623.704549"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6229,11 +6229,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457661245.171678"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6245,11 +6245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457661245.171678"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6293,11 +6293,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457654623.704549"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6309,11 +6309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457654261.596185"
+            timestampString = "458090246.233147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6325,11 +6325,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457654623.704549"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6405,11 +6405,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457661319.38236"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6421,12 +6421,668 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/World.cpp"
-            timestampString = "457661334.19315"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "506"
+            endingLineNumber = "506"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "467"
             endingLineNumber = "467"
             landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "457697376.706322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458080863.811462"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458080863.811462"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458059805.190133"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458080863.811462"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090596.534246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
+            landmarkName = "World::collide(Ray * ray, int x, int y, int z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458082276.574538"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458082280.764958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458082282.652108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458085363.981259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/collision/Ray.cpp"
+            timestampString = "458082584.63286"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "Ray::exitCube(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090246.233147"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090366.322846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090384.358766"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090398.985325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090400.115169"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090402.851257"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "458090405.652936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "World::isCubeOccluded(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/generator/PerlinGenerator.cpp"
+            timestampString = "458118609.819674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "PerlinGenerator::PerlinGenerator()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
