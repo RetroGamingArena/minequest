@@ -68,6 +68,7 @@ class World : public Pool
 		OctreeEntry* getLeaf(int x, int y, int z);
 		bool isCubeOccluded(int x, int y, int z, int size);
 		OctreeEntry* collide(Ray * ray, int x, int y, int z);
+		double isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		vector<Chunk*> getChunks();

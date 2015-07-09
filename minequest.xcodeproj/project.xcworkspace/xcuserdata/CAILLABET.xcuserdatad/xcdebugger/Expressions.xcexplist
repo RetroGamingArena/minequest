@@ -414,6 +414,11 @@
       </ContextState>
       <ContextState
          contextName = "Octree::bufferize(VertexBuffer*, float, float, float):Octree.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "size">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "OctreeEntry&lt;unsigned char&gt;::getEntries():OctreeEntry.h">

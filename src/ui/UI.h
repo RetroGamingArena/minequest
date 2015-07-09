@@ -20,9 +20,9 @@
 
 
 #include "Shader.h"
-#include "Control.h"
 #include "DoubleBuffer.h"
 #include "Texture.h"
+#include "Control.h"
 
 using namespace std;
 
@@ -38,9 +38,9 @@ class UI
 	// Start of user code protected
 	// End of user code
 	Shader* shader;
-	vector<Control*> controls;
 	DoubleBuffer* doubleBuffer;
 	Texture* fontTexture;
+	vector<Control*> controls;
 
 	public:
 		// Start of user code public
@@ -52,12 +52,12 @@ class UI
 		virtual void refresh() = 0;
 		Shader* getShader();
 		void setShader(Shader* _shader);
-		vector<Control*> getControls();
-		void setControlsAt(Control* _controls, int indice);
 		DoubleBuffer* getDoubleBuffer();
 		void setDoubleBuffer(DoubleBuffer* _doubleBuffer);
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);
+		vector<Control*> getControls();
+		void setControlsAt(Control* _controls, int indice);
 };
 
 #endif

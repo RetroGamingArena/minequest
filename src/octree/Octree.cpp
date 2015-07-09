@@ -3,6 +3,8 @@
 #include "Octree.h"
 // Start of user code includes
 #include "WorldGenerator.h"
+#include "World.h"
+#include "Engine.h"
 // End of user code
 
 Octree::Octree(float _p, float _q, float _r, int _size, int _subSize)
@@ -76,6 +78,10 @@ void Octree::setR(float _r)
 void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 {
 	// Start of user code bufferize
+    World* world = Engine::getInstance()->getWorld();
+    if(!world->isCubeInFrustum(p*size,q*size,r*size,(p+1)*size,(q+1)*size,(r+1)*size))
+        return;
+    
     for(int i = 0; i < 8; i++)
     {
         int x = (*WorldGenerator::getXs())[i];
