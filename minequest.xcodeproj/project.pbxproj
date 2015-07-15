@@ -75,9 +75,12 @@
 		64C9866A1AFBF1A700A5B62E /* CubeType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986681AFBF1A700A5B62E /* CubeType.cpp */; };
 		64C9866D1AFC10D800A5B62E /* ChunkProcessorTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9866B1AFC10D800A5B62E /* ChunkProcessorTask.cpp */; };
 		64E590C81A61AB1300F65FC8 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64E590C61A61AAFE00F65FC8 /* Info.plist */; };
-		64E85D531A4F6C6E0042EE5A /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */; };
 		64E85D551A4F701D0042EE5A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D541A4F701D0042EE5A /* OpenGL.framework */; };
 		64E85D6A1A50AA9E0042EE5A /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E85D691A50AA9E0042EE5A /* libGLEW.a */; };
+		64F076EF1B56FBCF0064ED5F /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076EE1B56FBCF0064ED5F /* libglfw3.a */; };
+		64F076F11B56FE2C0064ED5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076F01B56FE2C0064ED5F /* Cocoa.framework */; };
+		64F076F31B56FE8D0064ED5F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076F21B56FE8D0064ED5F /* CoreVideo.framework */; };
+		64F076F51B56FEB90064ED5F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076F41B56FEB90064ED5F /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -481,9 +484,12 @@
 		64C9866C1AFC10D800A5B62E /* ChunkProcessorTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkProcessorTask.h; sourceTree = "<group>"; };
 		64E590C61A61AAFE00F65FC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64E85D411A4F65C30042EE5A /* Voxelengine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Voxelengine; sourceTree = BUILT_PRODUCTS_DIR; };
-		64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
 		64E85D541A4F701D0042EE5A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		64E85D691A50AA9E0042EE5A /* libGLEW.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGLEW.a; path = ../../../../../usr/lib/libGLEW.a; sourceTree = "<group>"; };
+		64F076EE1B56FBCF0064ED5F /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
+		64F076F01B56FE2C0064ED5F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = "<group>"; };
+		64F076F21B56FE8D0064ED5F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = ../../../../../System/Library/Frameworks/CoreVideo.framework; sourceTree = "<group>"; };
+		64F076F41B56FEB90064ED5F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,9 +498,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6458F6181A56E5490006BF88 /* libnoise.dylib in Frameworks */,
+				64F076F11B56FE2C0064ED5F /* Cocoa.framework in Frameworks */,
 				64E85D551A4F701D0042EE5A /* OpenGL.framework in Frameworks */,
-				64E85D531A4F6C6E0042EE5A /* libglfw3.3.0.dylib in Frameworks */,
 				64E85D6A1A50AA9E0042EE5A /* libGLEW.a in Frameworks */,
+				64F076EF1B56FBCF0064ED5F /* libglfw3.a in Frameworks */,
+				64F076F51B56FEB90064ED5F /* IOKit.framework in Frameworks */,
+				64F076F31B56FE8D0064ED5F /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,13 +1024,16 @@
 		64E85D381A4F65C30042EE5A = {
 			isa = PBXGroup;
 			children = (
+				64F076F41B56FEB90064ED5F /* IOKit.framework */,
 				64687A411A6C2F2D00C0CAC3 /* icon.icns */,
 				64E590C61A61AAFE00F65FC8 /* Info.plist */,
 				646172ED1A5B38B20008EBA0 /* textures */,
 				6458F6171A56E5490006BF88 /* libnoise.dylib */,
 				64E85D691A50AA9E0042EE5A /* libGLEW.a */,
+				64F076EE1B56FBCF0064ED5F /* libglfw3.a */,
+				64F076F21B56FE8D0064ED5F /* CoreVideo.framework */,
+				64F076F01B56FE2C0064ED5F /* Cocoa.framework */,
 				64E85D541A4F701D0042EE5A /* OpenGL.framework */,
-				64E85D521A4F6C6E0042EE5A /* libglfw3.3.0.dylib */,
 				64E85D851A51C4C50042EE5A /* depends */,
 				64E85D721A5168070042EE5A /* shaders */,
 				64E85D4B1A4F65FF0042EE5A /* src */,
@@ -1256,6 +1268,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1292,6 +1305,7 @@
 				LIBRARY_SEARCH_PATHS = /usr/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1309,9 +1323,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glfw3/3.0.4/lib,
+					/usr/local/Cellar/glfw3/3.1.1/lib,
 					/usr/local/lib,
 				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1329,9 +1344,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glfw3/3.0.4/lib,
+					/usr/local/Cellar/glfw3/3.1.1/lib,
 					/usr/local/lib,
 				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
