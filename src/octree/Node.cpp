@@ -143,7 +143,7 @@ OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)
             empty->setZ(empty->getZ()+(k << _log));
             return empty;
         }
-        return entry;
+        return _entry;
     }
     // End of user code
 }

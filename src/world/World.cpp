@@ -23,7 +23,7 @@ World::World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, in
 
 World::World()
 // Start of user code super class
-: Pool(8)
+: Pool(4)
 // End of user code
 {
 	// Start of user code constructor
@@ -89,7 +89,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 3;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -183,8 +183,8 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     //raycast occlusion
     if(!isCubeOccluded(x, y, z, size))
         return true;
-    
-    return false;
+    else
+        return false;
 	// End of user code
 }
 void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)
@@ -419,8 +419,15 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
     glm::vec3 d;
     
     double start = ray->enterCube(0, 0, 0, Chunk::size*(size*2+1) *Chunk::subsize-1, Chunk::size *Chunk::subsize-1, Chunk::size*(size*2+1) *Chunk::subsize-1);
+    double end = ray->exitCube(0, 0, 0, Chunk::size*(size*2+1) *Chunk::subsize-1, Chunk::size *Chunk::subsize-1, Chunk::size*(size*2+1) *Chunk::subsize-1);
     
-    for(double i = start; i<1600; )
+    double iX = (x - ray->getStart().x )/ray->getNormalizedPoint().x;
+    double iY = (y - ray->getStart().y )/ray->getNormalizedPoint().y;
+    double iZ = (z - ray->getStart().z )/ray->getNormalizedPoint().z;
+    
+    OctreeEntry* entry = this->getLeaf(x, y, z);
+    
+    for(double i = start; i<end; )
     {
         d = ray->move(i);
         
@@ -453,26 +460,15 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
             double x1 = p*div + empty->getX();
             double y1 = q*div + empty->getY();
             double z1 = r*div + empty->getZ();
-            double x2 = p*div + (empty->getX()+empty->getSize()-1);
-            double y2 = q*div + (empty->getY()+empty->getSize()-1);
-            double z2 = r*div + (empty->getZ()+empty->getSize()-1);
+            double x2 = p*div + (empty->getX()+empty->getSize());
+            double y2 = q*div + (empty->getY()+empty->getSize());
+            double z2 = r*div + (empty->getZ()+empty->getSize());
 
             double end = ray->exitCube(x1, y1, z1, x2, y2, z2);
             
-            glm::vec3 _d1 = ray->move(end);
-            glm::vec3 _d2 = ray->move(i);
-            
-            OctreeEntry* _entry1 = this->getLeaf(_d1.x, _d1.y, _d1.z);
-            OctreeEntry* _entry2 = this->getLeaf(_d2.x, _d2.y, _d2.z);
+            if(end > iX && end > iY && end > iZ)
+                return this->getLeaf(x, y, z);
 
-            Empty* empty1 = dynamic_cast<Empty*>(_entry1);
-            Empty* empty2 = dynamic_cast<Empty*>(_entry2);
-            
-            if(empty1 != NULL && empty2 != NULL)
-                if( empty1->getX() == empty2->getX() && empty1->getY() == empty2->getY() && empty1->getZ() == empty2->getZ() && empty1->getSize() == empty2->getSize() )
-                    return NULL;
-            if(end==i)
-                return NULL;
             i=end;
             delete empty;
         }
@@ -513,18 +509,6 @@ double World::isCubeInFrustum(double x1, double y1, double z1, double x2, double
 	// End of user code
 }
 
-WorldGenerator* World::getWorldGenerator()
-{
-	// Start of user code getWorldGenerator
-	// End of user code
-	return worldGenerator;
-}
-
-void World::setWorldGenerator(WorldGenerator* _worldGenerator)
-{
-	worldGenerator = _worldGenerator;
-}
-					
 vector<Chunk*> World::getChunks()
 {
 	// Start of user code getChunks
@@ -537,3 +521,15 @@ void World::setChunksAt(Chunk* _chunks, int indice)
 	chunks[indice] = _chunks;
 }
 
+WorldGenerator* World::getWorldGenerator()
+{
+	// Start of user code getWorldGenerator
+	// End of user code
+	return worldGenerator;
+}
+
+void World::setWorldGenerator(WorldGenerator* _worldGenerator)
+{
+	worldGenerator = _worldGenerator;
+}
+					

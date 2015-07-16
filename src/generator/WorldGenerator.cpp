@@ -84,21 +84,33 @@ Octree* WorldGenerator::generate(int p, int q, int r)
 OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
 {
 	// Start of user code generateOctreeEntry
-    Node* node = new Node();
-    unsigned char type = 0;
-    Leaf* _leaf = NULL;
-    unsigned char occlusion = 0;
-
+    unsigned char _type = 0;
+    
     bool isCompressible = true;
     
     int x = 0;
     int y = 0;
     int z = 0;
     
-    OctreeEntry* octreeEntry= NULL;
-    Leaf* leaf = NULL;
+    OctreeEntry* _tempOctreeEntry[8];
+    for(int i = 0; i < 8; i++)
+        _tempOctreeEntry[i] = NULL;
     
-    for(int i =0; i < 8; i++)
+    int size_2 = size >> 1;
+    
+    //0
+    if(size==2)
+    {
+        _type = getCubeType(p+x, q+y, r+z);
+        if(_type > 0)
+            _tempOctreeEntry[0] = new Leaf(_type, getOcclusion(p+x, q+y, r+z));
+    }
+    else
+    {
+        _tempOctreeEntry[0] = generateOctreeEntry(p+x*size_2, q+y*size_2, r+z*size_2, size_2);
+    }
+
+    for(int i =1; i < 8; i++)
     {
         x = (*xs)[i];
         y = (*ys)[i];
@@ -106,68 +118,47 @@ OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
         
         if(size==2)
         {            
-            unsigned char type = getCubeType(p+x, q+y, r+z);
-            if(type == 0)
-                octreeEntry = NULL;
-            else
-                octreeEntry = new Leaf(getCubeType(p+x, q+y, r+z), getOcclusion(p+x, q+y, r+z));
+            _type = getCubeType(p+x, q+y, r+z);
+            if(_type > 0)
+                _tempOctreeEntry[i] = new Leaf(_type, getOcclusion(p+x, q+y, r+z));
         }
         else
         {
-            octreeEntry = generateOctreeEntry(p+x*size/2, q+y*size/2, r+z*size/2, size/2);
+            _tempOctreeEntry[i] = generateOctreeEntry(p+x*size_2, q+y*size_2, r+z*size_2, size_2);
         }
-        
+
         if(isCompressible)
         {
-            if(octreeEntry == NULL)
+            if( (_tempOctreeEntry[i] == NULL && _tempOctreeEntry[i-1]!=NULL) || (_tempOctreeEntry[i] != NULL && _tempOctreeEntry[i-1] == NULL) )
+                isCompressible = false;
+            else if(_tempOctreeEntry[i-1]!=NULL && _tempOctreeEntry[i]!=NULL)
             {
-                if(i == 0)
-                {
-                    _leaf = NULL;
-                }
-                if(i > 0)
-                {
-                    if(_leaf != NULL || octreeEntry != NULL)
-                        isCompressible = false;
-                }
-            }
-            else
-            {
-                leaf = dynamic_cast<Leaf*>(octreeEntry);
-                if(leaf == NULL)
-                {
+                Leaf* leaf1 = dynamic_cast<Leaf*>(_tempOctreeEntry[i]);
+                Leaf* leaf2 = dynamic_cast<Leaf*>(_tempOctreeEntry[i-1]);
+                
+                if(leaf1==NULL || leaf2==NULL)
+                    isCompressible=false;
+                else if(leaf1->getType() != leaf2->getType() || leaf1->getOcclusion() != leaf2->getOcclusion())
                     isCompressible = false;
-                }
-                else if(i == 0)
-                {
-                    _leaf = leaf;
-                    type = leaf->getType();
-                    occlusion = leaf->getOcclusion();
-                }
-                else if(leaf->getType() != type || leaf->getOcclusion() != occlusion)
-                {
-                    isCompressible = false;
-                }
             }
         }
-        
-        node->setOctreeEntriesAt(octreeEntry, i);
     }
+
     if(isCompressible)
     {
-        if (_leaf == NULL)
-        {
-            delete node;
-            return NULL;
-        }
-        else
-        {
-            delete node;
-            return new Leaf(type, occlusion);
-        }
+        OctreeEntry* res = _tempOctreeEntry[0];
+        for(int i =1; i < 8; i++)
+            delete _tempOctreeEntry[i];
+        return res;
     }
     else
+    {
+        Node* node = new Node();
+        for(int i =0; i < 8; i++)
+            node->setOctreeEntriesAt(_tempOctreeEntry[i], i);
         return node;
+    }
+    return NULL;
     // End of user code
 }
 unsigned char WorldGenerator::getOcclusion(int x, int y, int z)

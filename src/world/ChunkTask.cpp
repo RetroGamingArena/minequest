@@ -2,6 +2,7 @@
 
 #include "ChunkTask.h"
 // Start of user code includes
+#include <iostream>
 // End of user code
 
 
@@ -30,7 +31,10 @@ ChunkTask::ChunkTask(Chunk* _chunk, WorldGenerator* _worldGenerator)
 void ChunkTask::run()
 {
 	// Start of user code run
+    double currentTime = glfwGetTime();
     chunk->setOctree(worldGenerator->generate(chunk->getP(), chunk->getQ(), chunk->getR()));
+    currentTime = glfwGetTime() - currentTime;
+    std::cout << currentTime << std::endl;
     chunk->setGenerated(true);
     chunk->setGenerating(false);
     //chunk->generate(worldGenerator);

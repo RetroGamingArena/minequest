@@ -14,7 +14,7 @@ IterativeProcessor::IterativeProcessor(int _chunkIndice)
 
 IterativeProcessor::IterativeProcessor()
 // Start of user code super class
-: Pool(8)
+: Pool(4)
 // End of user code
 {
 	// Start of user code constructor
@@ -31,6 +31,18 @@ IterativeProcessor::~IterativeProcessor()
 // Start of user code methods
 // End of user code
 
+vector<GLuint>* IterativeProcessor::bufferize(Octree * octree)
+{
+	// Start of user code bufferize
+    
+    VertexBuffer* vertexBuffer = new VertexBuffer();
+    octree->bufferize(vertexBuffer, 0, 0, 0);
+    vector<GLuint>* res = new vector<GLuint>();
+    res->insert(res->end(), vertexBuffer->getData()->begin(), vertexBuffer->getData()->end());
+    delete vertexBuffer;
+    return res;
+	// End of user code
+}
 Task* IterativeProcessor::buildTask()
 {
 	// Start of user code buildTask
@@ -59,18 +71,6 @@ Task* IterativeProcessor::buildTask()
         mutex->unlock();
     }
     return NULL;
-	// End of user code
-}
-vector<GLuint>* IterativeProcessor::bufferize(Octree * octree)
-{
-	// Start of user code bufferize
-    
-    VertexBuffer* vertexBuffer = new VertexBuffer();
-    octree->bufferize(vertexBuffer, 0, 0, 0);
-    vector<GLuint>* res = new vector<GLuint>();
-    res->insert(res->end(), vertexBuffer->getData()->begin(), vertexBuffer->getData()->end());
-    delete vertexBuffer;
-    return res;
 	// End of user code
 }
 

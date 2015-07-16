@@ -44,7 +44,6 @@ GameScene::GameScene(Player* player)
     //GameScene();
     background = new Background();
     worldProcessor = new WorldProcessor();
-    //worldProcessor->setThreadCount(9);
     ItemCamera* itemCamera = new ItemCamera();
     itemCamera->setItem(player);
     cameras.push_back(itemCamera);
@@ -52,35 +51,15 @@ GameScene::GameScene(Player* player)
     
     for(int i = 0; i  <cameras.size(); i++)
         cameras[i]->addListener(this);
-    
-    /*Chunk* first = Engine::getInstance()->getWorld()->getChunk(player->getX(), player->getY(), player->getZ());
-    ChunkProcessorTask* task = new ChunkProcessorTask();
-    task->setProcessor(worldProcessor);
-    task->setChunk(first);
-    
-    double currentTime = glfwGetTime();
-    task->run();
-    currentTime = glfwGetTime() - currentTime;
-    std::cout << currentTime << std::endl;*/
+
     updateChunksCpt = 0;
     updateChunksCpt++;
     reset();
     
     vector<GLuint>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
     
-    //updateIndices();
-    
-    //vector<GLuint>* chunkData = first->getVertexBuffer()->getData();
-        
-    //gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-    //chunkData->clear();
-    
-    
     setChunksOffset(gameSceneData->size());
-    
-    //for(int i=0; i < items.size() ; i++)
-    //    getItems()[0]->draw(getDoubleBuffer()->getVertexBuffer());
-    
+
     worldProcessor->setWorld(Engine::getInstance()->getWorld());
     
     updateBuffer = false;
@@ -89,13 +68,14 @@ GameScene::GameScene(Player* player)
     Engine::getInstance()->getWorld()->addListener(this);
     worldProcessor->addListener(this);
     
-    
+    selectedCameraIndex = 1;
     updateBufferCpt = 0;
     
     oldMask = getSelectedCamera()->getMask();
     cameraLock = new mutex();
     
     background = new Background();
+    
 }
 // End of user code
 
@@ -374,18 +354,6 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 	// End of user code
 }
 
-vector<Item*> GameScene::getItems()
-{
-	// Start of user code getItems
-	// End of user code
-	return items;
-}
-
-void GameScene::setItemsAt(Item* _items, int indice)
-{
-	items[indice] = _items;
-}
-
 WorldProcessor* GameScene::getWorldProcessor()
 {
 	// Start of user code getWorldProcessor
@@ -398,3 +366,15 @@ void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
 	worldProcessor = _worldProcessor;
 }
 					
+vector<Item*> GameScene::getItems()
+{
+	// Start of user code getItems
+	// End of user code
+	return items;
+}
+
+void GameScene::setItemsAt(Item* _items, int indice)
+{
+	items[indice] = _items;
+}
+

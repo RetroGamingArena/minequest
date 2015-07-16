@@ -46,18 +46,6 @@ InputCamera* Scene::getSelectedCamera()
 	// End of user code
 }
 
-UI* Scene::getUI()
-{
-	// Start of user code getUI
-	// End of user code
-	return uI;
-}
-
-void Scene::setUI(UI* _uI)
-{
-	uI = _uI;
-}
-					
 vector<InputCamera*> Scene::getCameras()
 {
 	// Start of user code getCameras
@@ -77,3 +65,15 @@ Background* Scene::getBackground()
 	return background;
 }
 
+UI* Scene::getUI()
+{
+	// Start of user code getUI
+	// End of user code
+	return uI;
+}
+
+void Scene::setUI(UI* _uI)
+{
+	uI = _uI;
+}
+					

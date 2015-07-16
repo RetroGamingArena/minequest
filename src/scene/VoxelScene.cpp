@@ -38,7 +38,7 @@ void VoxelScene::updateIndices()
 {
 	// Start of user code updateIndices
     cameras[selectedCameraIndex]->getMask();
-    unsigned char mask = cameras[selectedCameraIndex]->getMask();
+    unsigned char mask = 0b111111;//cameras[selectedCameraIndex]->getMask();
     
     int indices[4];
     int indicesRaw[4];

@@ -290,18 +290,6 @@ void Engine::setShadersAt(Shader* _shaders, int indice)
 	shaders[indice] = _shaders;
 }
 
-World* Engine::getWorld()
-{
-	// Start of user code getWorld
-	// End of user code
-	return world;
-}
-
-void Engine::setWorld(World* _world)
-{
-	world = _world;
-}
-					
 Engine* Engine::getInstance()
 {
 	// Start of user code getInstance
@@ -333,5 +321,17 @@ Scene* Engine::getScene()
 void Engine::setScene(Scene* _scene)
 {
 	scene = _scene;
+}
+					
+World* Engine::getWorld()
+{
+	// Start of user code getWorld
+	// End of user code
+	return world;
+}
+
+void Engine::setWorld(World* _world)
+{
+	world = _world;
 }
 					

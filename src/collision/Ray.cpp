@@ -166,147 +166,22 @@ double Ray::exitCube(double x1, double y1, double z1, double x2, double y2, doub
 {
 	// Start of user code exitCube
     glm::vec3 d = getNormalizedPoint();
-    double i = 0;
-    double x = 0;
-    double y = 0;
-    double z = 0;
     
-    double iLeft = 0;
-    i = (x1 - start.x )/d.x;
-    y = start.y + d.y * i;
-    z = start.z + d.z * i;
-    
-    double iTest = (x1 - start.x )/d.x;
-    double yTest = start.y + d.y * iTest;
-    
-    if( y<y1 || y>=(y2+1) || z<z1 || z>=(z2+1) )
-        iLeft = 0;
-    else
-        iLeft = ((x1) - start.x )/d.x;//i;//+0.0001;
-    
-    double iRight = 0;
-    i = ((x2+1)/**0.99999*/ - start.x )/d.x;
-    
-    double xTest = start.x + d.x * i;
-    y = start.y + d.y * i;
-    z = start.z + d.z * i;
-    if( y<y1 || y>=(y2+1) || z<z1 || z>=(z2+1) )
-        iRight = 0;
-    else
-        iRight = ((x2) - start.x )/d.x;//+0.0001;//i;
-    
-    double iTop = 0;
-    i = ((y2+1)/**0.99999*/ - start.y )/d.y;
-    x = start.x + d.x * i;
-    z = start.z + d.z * i;
-    if( x<x1 || x>=(x2+1) || z<z1 || z>=(z2+1) )
-        iTop = 0;
-    else
-        iTop = ((y2) - start.y )/d.y;//+0.0001;//i;
-    
-    double iBottom = 0;
-    i = (y1 - start.y )/d.y;
-    x = start.x + d.x * i;
-    double testY = start.y + d.y * i;
-    z = start.z + d.z * i;
-    if( x<x1 || x>=(x2+1) || z<z1 || z>=(z2+1) )
-        iBottom = 0;
-    else
-        iBottom = ((y1) - start.y )/d.y;//i;//+0.0001;
-    
-    double iFront = 0;
-    i = ((z2+1)/**0.99999*/ - start.z )/d.z;
-    x = start.x + d.x * i;
-    y = start.y + d.y * i;
-    if( x<x1 || x>=(x2+1) || y<y1 || y>=(y2+1) )
-        iFront = 0;
-    else
-        iFront = ((z2) - start.z )/d.z;//+0.0001;//i;
-    
-    double iBack = 0;
-    i = (z1  - start.z )/d.z;
-    x = start.x + d.x * i;
-    y = start.y + d.y * i;
-    if( x<x1 || x>=(x2+1) || y<y1 || y>=(y2+1) )
-        iBack = 0;
-    else
-        iBack = ((z1)  - start.z )/d.z;//i;//+0.0001;
-    
-    double res = iLeft;
-    res = max(res, iRight);
-    res = max(res, iTop);
-    res = max(res, iBottom);
-    res = max(res, iFront);
-    res = max(res, iBack);
-    
-    if(res <0)
-        res = 0;
-    
-    x = start.x + d.x * res;
-    y = start.y + d.y * res;
-    z = start.z + d.z * res;
-    
-    //TODO changer
-    if(res==iLeft || res==iRight)
-        x=(int)x;
-    if(res==iTop || res==iBottom)
-        y=(int)y;
-    if(res==iFront || res==iBack)
-        z=(int)z;
-    
-    int iX = x;
-    int iY = y;
-    int iZ = z;
-    
-    double decX = 0;
-    if(iX==x)
-        decX = d.x < 0 ? -1 : 1;
-    else
-        decX = d.x < 0 ? -(x-iX) : 1-(x-iX);
-    double decY = 0;
-    if(iY==y)
-        decY = d.y < 0 ? -1 : 1;
-    else
-        decY = d.y < 0 ? -(y-iY) : 1-(y-iY);
-    double decZ = 0;
-    if(iZ==z)
-        decZ = d.z < 0 ? -1 : 1;
-    else
-        decZ = d.z < 0 ? -(z-iZ) : 1-(z-iZ);
-    
-    if( x<1 && d.x< 0)
-        return -start.x/d.x;
-    if( y<1 && d.y< 0)
-        return -start.y/d.y;
-    if( z<1 && d.z< 0)
-        return -start.z/d.z;
+    double iX1 = (x1 - getStart().x )/getNormalizedPoint().x;
+    double iY1 = (y1 - getStart().y )/getNormalizedPoint().y;
+    double iZ1 = (z1 - getStart().z )/getNormalizedPoint().z;
+    double iX2 = (x2 - getStart().x )/getNormalizedPoint().x;
+    double iY2 = (y2 - getStart().y )/getNormalizedPoint().y;
+    double iZ2 = (z2 - getStart().z )/getNormalizedPoint().z;
 
-    double resX = ((x+decX)-start.x)/d.x;
-    double resY = ((y+decY)-start.y)/d.y;
-    double resZ = ((z+decZ)-start.z)/d.z;
-    
-    double res2 = 0;
-    if(res==iLeft || res==iRight)//resX>res)
-        res2 = resX;//max(res2,resX);
-    else if(res==iTop || res==iBottom)//resY>res)
-        res2 = resY;//max(res2,resY);
-    else if(res==iBack || res==iFront)//resZ>res)
-        res2 = resZ;//max(res2,resZ);
-    
-    if(res2==0)
-        return res2;
-    
-    if( ((start.x + d.x * res2) < 0) )
-        return -start.x/d.x;
-    if( ((start.y + d.y * res2) < 0) )
-        return -start.y/d.y;
-    if( ((start.z + d.z * res2) < 0) )
-        return -start.z/d.z;
-    
-    if( ((start.x + d.x * res2) < 0) || ((start.y + d.y * res2) < 0) || ((start.z + d.z * res2) < 0) )
-        return res2;
-    
-    return res2;
-	// End of user code
+    double res3 = iX1;
+    res3 = max(iY1,res3);
+    res3 = max(iZ1,res3);
+    res3 = max(iX2,res3);
+    res3 = max(iY2,res3);
+    res3 = max(iZ2,res3);
+
+    return res3;
+    // End of user code
 }
 

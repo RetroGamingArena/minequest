@@ -22,8 +22,8 @@
 
 #include "Pool.h"
 
-#include "WorldGenerator.h"
 #include "Chunk.h"
+#include "WorldGenerator.h"
 
 using namespace std;
 
@@ -34,8 +34,8 @@ class World : public Pool
 {
 	// Start of user code private
 	// End of user code
-	WorldGenerator* worldGenerator;
 	vector<Chunk*> chunks;
+	WorldGenerator* worldGenerator;
 	int chunkIndice;
 	int cubeCount;
 	int instanceCount;
@@ -69,10 +69,10 @@ class World : public Pool
 		bool isCubeOccluded(int x, int y, int z, int size);
 		OctreeEntry* collide(Ray * ray, int x, int y, int z);
 		double isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
-		WorldGenerator* getWorldGenerator();
-		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		vector<Chunk*> getChunks();
 		void setChunksAt(Chunk* _chunks, int indice);
+		WorldGenerator* getWorldGenerator();
+		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		Task* buildTask();
 };
 
