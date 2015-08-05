@@ -330,7 +330,10 @@ void GameScene::render()
         if(items[i]->live(Engine::getInstance()->getDt()))
             refresh = true;
     if(refresh)
+    {
+        getSelectedCamera()->look();
         refreshItemsBuffer();
+    }
     VoxelScene::render();
 	// End of user code
 }
