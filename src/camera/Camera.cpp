@@ -131,21 +131,37 @@ unsigned char Camera::getMask()
     {
         res |= BACK;
         res |= RIGHT;
+        if(delta.x<delta.z)
+            res |= FRONT;
+        else
+            res |= LEFT;
     }
     else if(delta.x >= 0 && delta.z >= 0)
     {
         res |= RIGHT;
         res |= FRONT;
+        if(delta.x<delta.z)
+            res |= BACK;
+        else
+            res |= LEFT;
     }
     else if(delta.x <= 0 && delta.z >= 0)
     {
         res |= FRONT;
         res |= LEFT;
+        if(delta.x<delta.z)
+            res |= BACK;
+        else
+            res |= RIGHT;
     }
     else if(delta.x <= 0 && delta.z <= 0)
     {
         res |= LEFT;
         res |= BACK;
+        if(delta.x<delta.z)
+            res |= FRONT;
+        else
+            res |= RIGHT;
     }
     return res;
 	// End of user code

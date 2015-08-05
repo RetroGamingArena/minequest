@@ -269,7 +269,7 @@ void GameScene::reset()
     
     doubleBuffer->bufferizeSquare(x+p, y+q+size, z+r, x+p+size, y+q+size, z+r+size, type, ao); //top
     
-    doubleBuffer->getVertexBuffer()->getData()->resize(72);
+    doubleBuffer->getVertexBuffer()->getData()->resize(96);
     updateIndices();
 
 	// End of user code
@@ -296,7 +296,7 @@ void GameScene::render()
     {
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         
-        gameSceneData->erase(gameSceneData->begin()+72, gameSceneData->end());
+        gameSceneData->erase(gameSceneData->begin()+96, gameSceneData->end());
         
         for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size(); i++)
         {
@@ -342,8 +342,8 @@ void GameScene::refreshItemsBuffer()
     vector<GLuint>* datas =  doubleBuffer->getVertexBuffer()->getData();
     
     doubleBuffer->getVertexBuffer()->getData()->erase(datas->begin()+offset, datas->end());
-    //for(int i=0; i < items.size() ; i++)
-    //    items[0]->draw(doubleBuffer->getVertexBuffer());
+    for(int i=0; i < items.size() ; i++)
+        items[0]->draw(doubleBuffer->getVertexBuffer());
     doubleBuffer->getVertexBuffer()->bind();
 	// End of user code
 }

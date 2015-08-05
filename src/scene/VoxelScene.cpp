@@ -38,7 +38,7 @@ void VoxelScene::updateIndices()
 {
 	// Start of user code updateIndices
     cameras[selectedCameraIndex]->getMask();
-    unsigned char mask = 0b111111;//cameras[selectedCameraIndex]->getMask();
+    unsigned char mask = cameras[selectedCameraIndex]->getMask();
     
     int indices[4];
     int indicesRaw[4];
@@ -49,7 +49,8 @@ void VoxelScene::updateIndices()
     if(mask & TOP)
         yOffset = 1;
     int hOffset = 0;
-    
+    int hOffset2 = 0;
+
     if(mask & RIGHT && mask & FRONT)
         hOffset = 2;
     if(mask & FRONT && mask & LEFT)
@@ -77,7 +78,7 @@ void VoxelScene::updateIndices()
     //V
     
     //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
+    /*doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
                                   (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
                                   (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
                                   (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 0);
@@ -187,8 +188,203 @@ void VoxelScene::updateIndices()
     doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4],
                                   (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+1],
                                   (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+3], 17);
+                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+3], 17);*/
     
+    int cpt=0;
+    
+    if(mask & TOP)
+    {
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[4*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+3], cpt++);
+
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[5*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+3], cpt++);
+
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[6*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+3], cpt++);
+        //
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[6*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[5*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[7*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+3], cpt++);
+    }
+    if(mask & BOTTOM)
+    {
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[0*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[1*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[2*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+3], cpt++);
+        //
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[2*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[1*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[3*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+3], cpt++);
+    }
+    if(mask & LEFT)
+    {
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[0*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[1*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[4*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+3], cpt++);
+        //
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[4*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[1*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[5*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+3], cpt++);
+    }
+    if(mask & RIGHT)
+    {
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[7*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[3*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[2*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+3], cpt++);
+        //
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[7*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[2*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[6*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+3], cpt++);
+    }
+    if(mask & FRONT)
+    {
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[1*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[1*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[3*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[5*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+3], cpt++);
+        //
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[5*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[5*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[3*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[3*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[7*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[7*4+3], cpt++);
+    }
+    if(mask & BACK)
+    {
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[4*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[2*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[0*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[0*4+3], cpt++);
+        //
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[6*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[6*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[2*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[2*4+3], cpt++);
+        
+        doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[4*4+0],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+1],
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+2], 0,
+                                (*doubleBuffer->getVertexBuffer()->getBase())[4*4+3], cpt++);
+    }
+
     doubleBuffer->getIndiceBuffer()->bind();
 	// End of user code
 }

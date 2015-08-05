@@ -79,8 +79,8 @@ void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 {
 	// Start of user code bufferize
     World* world = Engine::getInstance()->getWorld();
-    if(!world->isCubeInFrustum(p*Chunk::size,q*Chunk::size,r*Chunk::size,(p+1)*Chunk::size,(q+1)*Chunk::size,(r+1)*Chunk::size))
-        return;
+    //if(!world->isCubeInFrustum(p*Chunk::size,q*Chunk::size,r*Chunk::size,(p+1)*Chunk::size,(q+1)*Chunk::size,(r+1)*Chunk::size))
+    //    return;
     
     for(int i = 0; i < 8; i++)
     {

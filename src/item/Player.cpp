@@ -17,9 +17,9 @@ Player::Player()
 // End of user code
 {
 	// Start of user code constructor
-    x=(World::size)*Chunk::subsize*Chunk::size+64;
-    y=8*Chunk::subsize;
-    z=(World::size)*Chunk::subsize*Chunk::size+64;
+    x=(World::size)*Chunk::subsize*Chunk::size+128;
+    y=Chunk::size*Chunk::subsize;
+    z=(World::size)*Chunk::subsize*Chunk::size+128;
     
     lx=0;
     ly=1*Chunk::subsize;
@@ -45,7 +45,7 @@ bool Player::live(double dt)
 	// Start of user code live
     if(falling)
     {
-        dy += -0.5*g*dt*dt*Chunk::subsize;
+        dy += -3.0*g*dt*dt*Chunk::subsize;
     }
     return tryMove();
 	// End of user code
@@ -54,6 +54,31 @@ void Player::draw(VertexBuffer * buffer)
 {
 	// Start of user code draw
     
+    /*
+     
+     int pInt = (int)p;
+     double pDecimal = p-pInt;
+     
+     int qInt = (int)q;
+     double qDecimal = q-qInt;
+     
+     int rInt = (int)r;
+     double rDecimal = r-rInt;
+     
+     vector<GLuint>* data = vertexBuffer->getData();
+     
+     unsigned int _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%8) << 4) + ((pInt/8) << 7) +
+     (((int)(qDecimal / 0.0625) + (int)((qInt%8) << 4) + ((qInt/8) << 7)) << 10) +
+     ( (( (int)(rDecimal / 0.0625) + (int)((rInt%8) << 4) + ((rInt/8) << 7) )) << 20) );
+     
+     data->push_back(_offset);
+     
+     unsigned int size = (type << 20) + (occlusion << 18) + ((widthP-1) << 12) + ((widthQ-1) << 6) + (widthR-1);
+     
+     data->push_back(size);
+     return;
+    
+    */
     
     int pInt = (int)(x/Chunk::subsize);
     double pDecimal = (x/Chunk::subsize)-pInt;
