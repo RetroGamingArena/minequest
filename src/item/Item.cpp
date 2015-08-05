@@ -181,7 +181,7 @@ bool Item::tryMove()
         return false;
     }
     
-    if( abs(dx) > 1 )
+    if( abs(dx) >= 1 )
     {
         x += dx;
         dx = 0;
@@ -191,7 +191,7 @@ bool Item::tryMove()
         y += dy;
         dy = 0;
     }
-    if( abs(dz) > 1 )
+    if( abs(dz) >= 1 )
     {
         z += dz;
         dz = 0;

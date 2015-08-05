@@ -346,7 +346,7 @@ void GameScene::refreshItemsBuffer()
     
     doubleBuffer->getVertexBuffer()->getData()->erase(datas->begin()+offset, datas->end());
     for(int i=0; i < items.size() ; i++)
-        items[0]->draw(doubleBuffer->getVertexBuffer());
+        items[i]->draw(doubleBuffer->getVertexBuffer());
     doubleBuffer->getVertexBuffer()->bind();
 	// End of user code
 }
@@ -354,6 +354,26 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 {
 	// Start of user code onKey
     VoxelScene::onKey(key, scancode, action, mods);
+    if(action == GLFW_RELEASE && key == GLFW_KEY_SPACE)
+    {
+        items[0]->setDy(24);
+    }
+    else if(action == GLFW_RELEASE && key == GLFW_KEY_W)
+    {
+        items[0]->setDz(1);
+    }
+    else if(action == GLFW_RELEASE && key == GLFW_KEY_A)
+    {
+        items[0]->setDx(-1);
+    }
+    else if(action == GLFW_RELEASE && key == GLFW_KEY_S)
+    {
+        items[0]->setDz(-1);
+    }
+    else if(action == GLFW_RELEASE && key == GLFW_KEY_D)
+    {
+        items[0]->setDx(1);
+    }
 	// End of user code
 }
 
