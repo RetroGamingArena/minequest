@@ -47,6 +47,7 @@ class World : public Pool
 
 	public:
 		// Start of user code public
+        bool isCubeRayCasted(int x, int y, int z, int size);
 		// End of user code
 	static int size;
 		World(int _size, int _chunkIndice, int _cubeCount, int _instanceCount, int _occludedCount);

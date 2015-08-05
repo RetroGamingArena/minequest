@@ -11,6 +11,9 @@ Leaf::Leaf(unsigned char _type, unsigned char _occlusion)
 {
 	type = _type;
 	occlusion = _occlusion;
+    
+    occluded = 0;
+    visible = 0;
 }
 
 Leaf::Leaf()
@@ -18,6 +21,8 @@ Leaf::Leaf()
 // End of user code
 {
 	// Start of user code constructor
+    occluded = 0;
+    visible = 0;
 	// End of user code
 }
 
@@ -55,13 +60,22 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     
     if(getType() > 0)
     {
+        if(!occluded)
+        {
+            visible = world->isCubeVisible(p,q,r,size);
+            occluded = true;
+        }
+        
         if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
             return;
         
-        if(world->isCubeVisible(p,q,r,size))
+        if(visible)//world->isCubeVisible(p,q,r,size))
         {
-            world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
-            world->setOccludedCount(world->getOccludedCount()+1);
+            if(!world->isCubeOccluded(p,q,r,size))
+            {
+                world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
+                world->setOccludedCount(world->getOccludedCount()+1);
+            }
         }
         else
             world->setInstanceCount(world->getInstanceCount()+1);

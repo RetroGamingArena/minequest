@@ -39,6 +39,8 @@ class Leaf : public OctreeEntry
 
 	public:
 		// Start of user code public
+        bool occluded;
+        bool visible;
 		// End of user code
 		Leaf(unsigned char _type, unsigned char _occlusion);
 		Leaf();

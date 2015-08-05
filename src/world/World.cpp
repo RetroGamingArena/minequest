@@ -62,6 +62,14 @@ World::~World()
 }
 
 // Start of user code methods
+bool World::isCubeRayCasted(int x, int y, int z, int size)
+{
+    //raycast occlusion
+    if(!isCubeOccluded(x, y, z, size))
+        return true;
+    else
+        return false;
+}
 // End of user code
 
 Task* World::buildTask()
@@ -180,13 +188,7 @@ bool World::isCubeVisible(int x, int y, int z, int size)
             return false;
     }
     
-    //return true;
-    
-    //raycast occlusion
-    if(!isCubeOccluded(x, y, z, size))
-        return true;
-    else
-        return false;
+    return true;
 	// End of user code
 }
 void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)
