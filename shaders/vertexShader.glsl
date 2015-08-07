@@ -71,6 +71,7 @@ void main()
     else if(vertexColorIndex == 5)
         cubeColor = vec3(0.5,0.5,0.5);
     
+    //if(cubeColor != vec3(0.0,0.0,1.0))
     {
         fragmentColor.r = vertexPosition_modelspace.x;//*16;
         fragmentColor.g = vertexPosition_modelspace.y;//*16;
