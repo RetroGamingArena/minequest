@@ -8,7 +8,6 @@
 #include <mutex>
 #include <noise/noise.h>
 #include "noiseutils.h"
-#include "World.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -17,6 +16,7 @@
 // End of user code
 
 // Start of user code includes
+#include "World.h"
 // End of user code
 
 #include "OctreeEntry.h"
@@ -25,9 +25,8 @@
 using namespace std;
 
 // Start of user code class import
-// End of user code
-
 class World;
+// End of user code
 
 class Leaf : public OctreeEntry
 {
@@ -57,8 +56,7 @@ class Leaf : public OctreeEntry
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);
 		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
-		void bufferize2(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
-        OctreeEntry* getLeafAbs(int x, int y, int z, int size);
+		OctreeEntry* getLeafAbs(int x, int y, int z, int size);
 };
 
 #endif

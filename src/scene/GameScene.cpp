@@ -47,6 +47,7 @@ GameScene::GameScene(Player* player)
     ItemCamera* itemCamera = new ItemCamera();
     itemCamera->setItem(player);
     cameras.push_back(itemCamera);
+    setSelectedCameraIndex(getSelectedCameraIndex());
     items.push_back(player);
     
     for(int i = 0; i  <cameras.size(); i++)
@@ -88,6 +89,9 @@ void GameScene::handle(Event * event)
         if(camera != NULL)
         {
             cameraLock->lock();
+            camera = getSelectedCamera();
+            projection = camera->getProjection();
+            VM = camera->getView()*camera->getModel();
             unsigned char mask = camera->getMask();
             //if(mask != oldMask)
             {
@@ -377,18 +381,6 @@ void GameScene::onKey(int key, int scancode, int action, int mods)
 	// End of user code
 }
 
-WorldProcessor* GameScene::getWorldProcessor()
-{
-	// Start of user code getWorldProcessor
-	// End of user code
-	return worldProcessor;
-}
-
-void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
-{
-	worldProcessor = _worldProcessor;
-}
-					
 vector<Item*> GameScene::getItems()
 {
 	// Start of user code getItems
@@ -401,3 +393,15 @@ void GameScene::setItemsAt(Item* _items, int indice)
 	items[indice] = _items;
 }
 
+WorldProcessor* GameScene::getWorldProcessor()
+{
+	// Start of user code getWorldProcessor
+	// End of user code
+	return worldProcessor;
+}
+
+void GameScene::setWorldProcessor(WorldProcessor* _worldProcessor)
+{
+	worldProcessor = _worldProcessor;
+}
+					

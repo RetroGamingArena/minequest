@@ -10,9 +10,6 @@ Leaf::Leaf(unsigned char _type, unsigned char _occlusion)
 {
 	type = _type;
 	occlusion = _occlusion;
-    
-    occluded = 0;
-    visible = 0;
 }
 
 Leaf::Leaf()
@@ -53,66 +50,10 @@ unsigned char Leaf::getAbs(int x, int y, int z, int size)
     return type;
 	// End of user code
 }
-
 void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
-    // Start of user code bufferize
-    World* world = Engine::getInstance()->getWorld();
-    
-    if(getType() > 0)
-    {
-        if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
-            return;
-        
-        //if(world->isCubeVisible(p,q,r,size))
-        {
-            //if(!world->isCubeOccluded(p,q,r,size))
-            {
-                vector<GLuint>* data = vertexBuffer->getData();
-            
-                int _p = p/Chunk::subsize;
-                int _q = q/Chunk::subsize;
-                int _r = r/Chunk::subsize;
-            
-                int chp = _p / 8;
-                int chq = _q / 8;
-                int chr = _r / 8;
-            
-                int cup = _p % 8;
-                int cuq = _q % 8;
-                int cur = _r % 8;
-            
-                int pp = ((int)p)%Chunk::subsize;
-                int qq = ((int)q)%Chunk::subsize;
-                int rr = ((int)r)%Chunk::subsize;
-            
-                int sizeM1 = size-1;
-            
-                unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 7) +
-                                     ((qq + (int)(cuq << 4) + (chq << 7)) << 10) +
-                                     ( (( rr + (int)(cur << 4) + (chr << 7) )) << 20) );
-            
-                data->push_back(_offset);
-            
-                unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
-            
-                data->push_back(size);
-                //world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
-                //world->setOccludedCount(world->getOccludedCount()+1);
-            }
-        }
-        //else
-        //    world->setInstanceCount(world->getInstanceCount()+1);
-        //world->setCubeCount(world->getCubeCount()+size*size*size);
-    }
-    // End of user code
-}
-
-
-void Leaf::bufferize2(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
-{
 	// Start of user code bufferize
-    //World* world = bufferizeWorld;//Engine::getInstance()->getWorld();
+    World* world = bufferizeWorld;//Engine::getInstance()->getWorld();
     
     if(getType() > 0)
     {
@@ -122,18 +63,18 @@ void Leaf::bufferize2(VertexBuffer * vertexBuffer, float p, float q, float r, fl
             occluded = true;
         }
         
-        //if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
-        //    return;
+        if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
+            return;
         
         //if(visible)
         {
             //if(!world->isCubeOccluded(p,q,r,size))
             {
-                bufferizeWorld->bufferizeEntry(vertexBuffer, type, p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
+                //bufferizeWorld->bufferizeEntry(vertexBuffer, type, p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
                 
                 //---
                 
-                /*vector<GLuint>* data = vertexBuffer->getData();
+                vector<GLuint>* data = vertexBuffer->getData();
                 
                 int _p = p/Chunk::subsize;
                 int _q = q/Chunk::subsize;
@@ -161,7 +102,7 @@ void Leaf::bufferize2(VertexBuffer * vertexBuffer, float p, float q, float r, fl
                  
                 unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
                  
-                data->push_back(size);*/
+                data->push_back(size);
                 
                 /*int sizeM1 = size-1;
                 

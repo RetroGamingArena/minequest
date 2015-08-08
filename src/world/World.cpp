@@ -63,6 +63,8 @@ World::~World()
 // Start of user code methods
 glm::vec4 World::viewport = glm::vec4(0,0,1920,1080);
 Camera* World::camera = NULL;
+double World::near = 0.997;
+
 bool World::isCubeRayCasted(int x, int y, int z, int size)
 {
     //raycast occlusion
@@ -500,50 +502,48 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
 double World::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
 {
 	// Start of user code isCubeInFrustum
-    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
-    glm::mat4  projection = camera->getProjection();
+    /*Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
+    glm::mat4  projection = camera->getProjection();*/
     glm::vec3 project;
-    glm::mat4 VM = camera->getView()*camera->getModel();
-
-    project = glm::project(glm::vec3(x1,y1,z1), VM, projection, viewport);
+    //glm::mat4 VM = camera->getView()*camera->getModel();
     
-    double near = 0.997;
+    project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
     
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x2,y1,z1), VM, projection, viewport);
+    project = glm::project(glm::vec3(x2,y1,z1), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x1,y1,z2), VM, projection, viewport);
+    project = glm::project(glm::vec3(x1,y1,z2), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x2,y1,z2), VM, projection, viewport);
+    project = glm::project(glm::vec3(x2,y1,z2), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x1,y2,z1), VM, projection, viewport);
+    project = glm::project(glm::vec3(x1,y2,z1), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x2,y2,z1), VM, projection, viewport);
+    project = glm::project(glm::vec3(x2,y2,z1), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x1,y2,z2), VM, projection, viewport);
+    project = glm::project(glm::vec3(x1,y2,z2), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
-    project = glm::project(glm::vec3(x2,y2,z2), VM, projection, viewport);
+    project = glm::project(glm::vec3(x2,y2,z2), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
@@ -552,18 +552,6 @@ double World::isCubeInFrustum(double x1, double y1, double z1, double x2, double
     return false;
 
 	// End of user code
-}
-
-vector<Chunk*> World::getChunks()
-{
-	// Start of user code getChunks
-	// End of user code
-	return chunks;
-}
-
-void World::setChunksAt(Chunk* _chunks, int indice)
-{
-	chunks[indice] = _chunks;
 }
 
 WorldGenerator* World::getWorldGenerator()
@@ -578,3 +566,15 @@ void World::setWorldGenerator(WorldGenerator* _worldGenerator)
 	worldGenerator = _worldGenerator;
 }
 					
+vector<Chunk*> World::getChunks()
+{
+	// Start of user code getChunks
+	// End of user code
+	return chunks;
+}
+
+void World::setChunksAt(Chunk* _chunks, int indice)
+{
+	chunks[indice] = _chunks;
+}
+

@@ -14,13 +14,16 @@ Scene::Scene()
 // End of user code
 {
 	// Start of user code constructor
-    selectedCameraIndex = 0;
+    setSelectedCameraIndex(0);
     background = new Background();
 	// End of user code
 }
 
 
 // Start of user code methods
+Camera* Scene::camera = NULL;
+glm::mat4 Scene::projection;// = glm::mat4();
+glm::mat4 Scene::VM;// = glm::mat4();
 // End of user code
 
 
@@ -36,6 +39,13 @@ int Scene::getSelectedCameraIndex()
 void Scene::setSelectedCameraIndex(int _selectedCameraIndex)
 {
 	selectedCameraIndex = _selectedCameraIndex;
+    if(cameras.size()>0)
+    if(camera != getSelectedCamera())
+    {
+        camera = getSelectedCamera();
+        projection = camera->getProjection();
+        VM = camera->getView()*camera->getModel();
+    }
 }
 
 
@@ -44,18 +54,6 @@ InputCamera* Scene::getSelectedCamera()
 	// Start of user code getSelectedCamera
     return cameras[selectedCameraIndex];
 	// End of user code
-}
-
-vector<InputCamera*> Scene::getCameras()
-{
-	// Start of user code getCameras
-	// End of user code
-	return cameras;
-}
-
-void Scene::setCamerasAt(InputCamera* _cameras, int indice)
-{
-	cameras[indice] = _cameras;
 }
 
 Background* Scene::getBackground()
@@ -77,3 +75,15 @@ void Scene::setUI(UI* _uI)
 	uI = _uI;
 }
 					
+vector<InputCamera*> Scene::getCameras()
+{
+	// Start of user code getCameras
+	// End of user code
+	return cameras;
+}
+
+void Scene::setCamerasAt(InputCamera* _cameras, int indice)
+{
+	cameras[indice] = _cameras;
+}
+

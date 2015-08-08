@@ -63,18 +63,6 @@ void DebugUI::refresh()
 
 
 
-Label* DebugUI::getCubesCountLabel()
-{
-	// Start of user code getCubesCountLabel
-	// End of user code
-	return cubesCountLabel;
-}
-
-void DebugUI::setCubesCountLabel(Label* _cubesCountLabel)
-{
-	cubesCountLabel = _cubesCountLabel;
-}
-					
 Label* DebugUI::getOccludedCountLabel()
 {
 	// Start of user code getOccludedCountLabel
@@ -97,6 +85,18 @@ Label* DebugUI::getInstanceCountLabel()
 void DebugUI::setInstanceCountLabel(Label* _instanceCountLabel)
 {
 	instanceCountLabel = _instanceCountLabel;
+}
+					
+Label* DebugUI::getCubesCountLabel()
+{
+	// Start of user code getCubesCountLabel
+	// End of user code
+	return cubesCountLabel;
+}
+
+void DebugUI::setCubesCountLabel(Label* _cubesCountLabel)
+{
+	cubesCountLabel = _cubesCountLabel;
 }
 					
 Label* DebugUI::getFPSLabel()

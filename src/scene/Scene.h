@@ -19,9 +19,9 @@
 // End of user code
 
 
-#include "InputCamera.h"
 #include "Background.h"
 #include "UI.h"
+#include "InputCamera.h"
 
 using namespace std;
 
@@ -37,12 +37,15 @@ class Scene
 	// Start of user code protected
 	// End of user code
 	int selectedCameraIndex;
-	vector<InputCamera*> cameras;
 	Background* background;
 	UI* uI;
+	vector<InputCamera*> cameras;
 
 	public:
 		// Start of user code public
+        static Camera* camera;
+        static glm::mat4 projection;
+        static glm::mat4 VM;
 		// End of user code
 		Scene(int _selectedCameraIndex);
 		Scene();
@@ -55,11 +58,11 @@ class Scene
 		virtual void onMouseScroll(double xoffset, double yoffset) = 0;
 		InputCamera* getSelectedCamera();
 		virtual void onKey(int key, int scancode, int action, int mods) = 0;
-		vector<InputCamera*> getCameras();
-		void setCamerasAt(InputCamera* _cameras, int indice);
 		Background* getBackground();
 		UI* getUI();
 		void setUI(UI* _uI);
+		vector<InputCamera*> getCameras();
+		void setCamerasAt(InputCamera* _cameras, int indice);
 };
 
 #endif

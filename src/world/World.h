@@ -18,13 +18,13 @@
 // Start of user code includes
 #include "Leaf.h"
 #include "Ray.h"
+#include "Camera.h"
 // End of user code
 
 #include "Pool.h"
 
-#include "Chunk.h"
 #include "WorldGenerator.h"
-#include "Camera.h"
+#include "Chunk.h"
 
 using namespace std;
 
@@ -34,11 +34,12 @@ using namespace std;
 class World : public Pool
 {
 	// Start of user code private
+    static double near;
     // redondent for optimisation
     static glm::vec4 viewport;
 	// End of user code
-	vector<Chunk*> chunks;
 	WorldGenerator* worldGenerator;
+	vector<Chunk*> chunks;
 	int chunkIndice;
 	int cubeCount;
 	int instanceCount;
@@ -74,10 +75,10 @@ class World : public Pool
 		bool isCubeOccluded(int x, int y, int z, int size);
 		OctreeEntry* collide(Ray * ray, int x, int y, int z);
 		double isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
-		vector<Chunk*> getChunks();
-		void setChunksAt(Chunk* _chunks, int indice);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
+		vector<Chunk*> getChunks();
+		void setChunksAt(Chunk* _chunks, int indice);
 		Task* buildTask();
 };
 

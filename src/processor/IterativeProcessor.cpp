@@ -31,18 +31,6 @@ IterativeProcessor::~IterativeProcessor()
 // Start of user code methods
 // End of user code
 
-vector<GLuint>* IterativeProcessor::bufferize(Octree * octree)
-{
-	// Start of user code bufferize
-    
-    VertexBuffer* vertexBuffer = new VertexBuffer();
-    octree->bufferize(vertexBuffer, 0, 0, 0);
-    vector<GLuint>* res = new vector<GLuint>();
-    res->insert(res->end(), vertexBuffer->getData()->begin(), vertexBuffer->getData()->end());
-    delete vertexBuffer;
-    return res;
-	// End of user code
-}
 Task* IterativeProcessor::buildTask()
 {
 	// Start of user code buildTask
@@ -71,6 +59,18 @@ Task* IterativeProcessor::buildTask()
         mutex->unlock();
     }
     return NULL;
+	// End of user code
+}
+vector<GLuint>* IterativeProcessor::bufferize(Octree * octree)
+{
+	// Start of user code bufferize
+    
+    VertexBuffer* vertexBuffer = new VertexBuffer();
+    octree->bufferize(vertexBuffer, 0, 0, 0);
+    vector<GLuint>* res = new vector<GLuint>();
+    res->insert(res->end(), vertexBuffer->getData()->begin(), vertexBuffer->getData()->end());
+    delete vertexBuffer;
+    return res;
 	// End of user code
 }
 
