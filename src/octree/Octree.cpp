@@ -78,15 +78,15 @@ void Octree::setR(float _r)
 void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 {
 	// Start of user code bufferize
-    World* world = Engine::getInstance()->getWorld();
-    //if(!world->isCubeInFrustum(p*Chunk::size,q*Chunk::size,r*Chunk::size,(p+1)*Chunk::size,(q+1)*Chunk::size,(r+1)*Chunk::size))
-    //    return;
+    int x = 0;
+    int y = 0;
+    int z = 0;
     
     for(int i = 0; i < 8; i++)
     {
-        int x = (*WorldGenerator::getXs())[i];
-        int y = (*WorldGenerator::getYs())[i];
-        int z = (*WorldGenerator::getZs())[i];
+        x = (*WorldGenerator::getXs())[i];
+        y = (*WorldGenerator::getYs())[i];
+        z = (*WorldGenerator::getZs())[i];
         
         if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, this->p*size+x*size/2.0, this->q*size+y*size/2.0, this->r*size+z*size/2.0, size/2);

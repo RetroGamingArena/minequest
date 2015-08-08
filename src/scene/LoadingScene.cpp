@@ -96,6 +96,7 @@ void LoadingScene::initWorld()
     Engine* engine = Engine::getInstance();
     World* world = new World();
     //engine->getWorldProcessor()->setWorld(world);
+    Leaf::bufferizeWorld = world;
     Engine::getInstance()->setWorld(world);
     mutex->unlock();
 	// End of user code

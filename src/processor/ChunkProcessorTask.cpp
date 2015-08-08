@@ -28,8 +28,10 @@ void ChunkProcessorTask::run()
 	// Start of user code run
     chunk->getVertexBuffer()->getData()->clear();
     
+    double currentTime = glfwGetTime();
     vector<GLuint>* temp = processor->bufferize(chunk->getOctree());
-    
+    currentTime = glfwGetTime() - currentTime;
+    std::cout << currentTime << std::endl;
     chunk->getVertexBuffer()->getData()->insert(chunk->getVertexBuffer()->getData()->end(), temp->begin(), temp->end());
     temp->clear();
     delete temp;

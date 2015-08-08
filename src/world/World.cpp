@@ -97,7 +97,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;
+int World::size = 0;
 
 int World::getChunkIndice()
 {
@@ -214,7 +214,6 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
     unsigned int size = (type << 20) + (occlusion << 18) + ((widthP-1) << 12) + ((widthQ-1) << 6) + (widthR-1);
     
     data->push_back(size);
-    return;
 	// End of user code
 }
 unsigned char World::getCube(int x, int y, int z)

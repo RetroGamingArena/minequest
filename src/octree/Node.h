@@ -30,6 +30,12 @@ using namespace std;
 class Node : public OctreeEntry
 {
 	// Start of user code private
+    int bufferizeX;
+    int bufferizeY;
+    int bufferizeZ;
+    vector<int>* xs;
+    vector<int>* ys;
+    vector<int>* zs;
 	// End of user code
 
 	protected:

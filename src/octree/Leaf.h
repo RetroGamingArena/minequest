@@ -8,6 +8,7 @@
 #include <mutex>
 #include <noise/noise.h>
 #include "noiseutils.h"
+#include "World.h"
 
 #include "../depends/glm/glm.hpp"
 #include "../depends/glm/gtc/matrix_transform.hpp"
@@ -26,6 +27,8 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
+class World;
+
 class Leaf : public OctreeEntry
 {
 	// Start of user code private
@@ -40,6 +43,7 @@ class Leaf : public OctreeEntry
 	public:
 		// Start of user code public
         bool occluded;
+        static World* bufferizeWorld;
         bool visible;
 		// End of user code
 		Leaf(unsigned char _type, unsigned char _occlusion);
@@ -53,7 +57,8 @@ class Leaf : public OctreeEntry
 		int getCode();
 		unsigned char getAbs(int x, int y, int z, int size);
 		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
-		OctreeEntry* getLeafAbs(int x, int y, int z, int size);
+		void bufferize2(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
+        OctreeEntry* getLeafAbs(int x, int y, int z, int size);
 };
 
 #endif

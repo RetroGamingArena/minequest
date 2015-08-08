@@ -17,6 +17,9 @@ Node::Node()
 {
 	// Start of user code constructor
     split();
+    bufferizeX = 0;
+    bufferizeY = 0;
+    bufferizeZ = 0;
 	// End of user code
 }
 
@@ -100,14 +103,20 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
 void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
 	// Start of user code bufferize
+    int size_2 = (int)size>>1;
+    
+    xs = WorldGenerator::getXs();
+    ys = WorldGenerator::getYs();
+    zs = WorldGenerator::getZs();
+    
     for(int i = 0; i < 8; i++)
     {
-        int x = (*WorldGenerator::getXs())[i];
-        int y = (*WorldGenerator::getYs())[i];
-        int z = (*WorldGenerator::getZs())[i];
-            
+        bufferizeX = (*xs)[i];
+        bufferizeY = (*ys)[i];
+        bufferizeZ = (*zs)[i];
+        
         if(this->octreeEntries[i] != NULL)
-            this->octreeEntries[i]->bufferize(vertexBuffer, p+x*size/2.0, q+y*size/2.0, r+z*size/2.0, size/2.0);
+            this->octreeEntries[i]->bufferize(vertexBuffer, p+bufferizeX*size_2, q+bufferizeY*size_2, r+bufferizeZ*size_2, size_2);
     }
 	// End of user code
 }
