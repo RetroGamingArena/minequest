@@ -66,37 +66,40 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
         
         if(world->isCubeVisible(p,q,r,size))
         {
-            vector<GLuint>* data = vertexBuffer->getData();
+            if(!world->isCubeOccluded(p,q,r,size))
+            {
+                vector<GLuint>* data = vertexBuffer->getData();
             
-            int _p = p/Chunk::subsize;
-            int _q = q/Chunk::subsize;
-            int _r = r/Chunk::subsize;
+                int _p = p/Chunk::subsize;
+                int _q = q/Chunk::subsize;
+                int _r = r/Chunk::subsize;
             
-            int chp = _p / 8;
-            int chq = _q / 8;
-            int chr = _r / 8;
+                int chp = _p / 8;
+                int chq = _q / 8;
+                int chr = _r / 8;
             
-            int cup = _p % 8;
-            int cuq = _q % 8;
-            int cur = _r % 8;
+                int cup = _p % 8;
+                int cuq = _q % 8;
+                int cur = _r % 8;
             
-            int pp = ((int)p)%Chunk::subsize;
-            int qq = ((int)q)%Chunk::subsize;
-            int rr = ((int)r)%Chunk::subsize;
+                int pp = ((int)p)%Chunk::subsize;
+                int qq = ((int)q)%Chunk::subsize;
+                int rr = ((int)r)%Chunk::subsize;
             
-            int sizeM1 = size-1;
+                int sizeM1 = size-1;
             
-            unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 7) +
+                unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 7) +
                                      ((qq + (int)(cuq << 4) + (chq << 7)) << 10) +
                                      ( (( rr + (int)(cur << 4) + (chr << 7) )) << 20) );
             
-            data->push_back(_offset);
+                data->push_back(_offset);
             
-            unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
+                unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
             
-            data->push_back(size);
-            //world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
-            //world->setOccludedCount(world->getOccludedCount()+1);
+                data->push_back(size);
+                //world->bufferizeEntry(vertexBuffer, getType(), p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
+                //world->setOccludedCount(world->getOccludedCount()+1);
+            }
         }
         //else
         //    world->setInstanceCount(world->getInstanceCount()+1);

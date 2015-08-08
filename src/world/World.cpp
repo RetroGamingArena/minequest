@@ -97,7 +97,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 0;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -152,12 +152,14 @@ bool World::isCubeVisible(int x, int y, int z, int size)
 {
 	// Start of user code isCubeVisible
     
-    //ground occlusion
-    if( y==0 && x>0 && z>0 && (x+size-1)<(Chunk::size*Chunk::subsize-1) && (z+size-1)<(Chunk::size*Chunk::subsize-1) )
-        return false;
+    int maxPosition = (Chunk::size*Chunk::subsize-1);
+    int sizeM1 = size-1;
+    int yPSize = y+size;
+    int chunksWidth = World::size*2+1;
     
-    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
-    unsigned char mask = camera->getMask();
+    //ground occlusion
+    if( y==0 && x>0 && z>0 && (x+sizeM1)<maxPosition && (z+sizeM1)<maxPosition )
+        return false;
     
     //geometry occlusion
     if(!isCubeFree(x, y, z, size))
@@ -166,25 +168,25 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     //edge occlusion
     if( x==0 )
     {
-        if( getCube(x, y+size, z)>0 )
+        if( getCube(x, yPSize, z)>0 )
             return false;
     }
     
-    if( (x+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1))
+    if( (x+sizeM1)==((chunksWidth)*maxPosition))
     {
-        if( getCube(x, y+size, z)>0 )
+        if( getCube(x, yPSize, z)>0 )
             return false;
     }
     
-    if( (z+size-1)==((World::size*2+1)*Chunk::size*Chunk::subsize-1))
+    if( (z+sizeM1)==((chunksWidth)*maxPosition))
     {
-        if( getCube(x, y+size, z)>0 )
+        if( getCube(x, yPSize, z)>0 )
             return false;
     }
     
     if( z==0 )
     {
-        if( getCube(x, y+size, z)>0 )
+        if( getCube(x, yPSize, z)>0 )
             return false;
     }
     
@@ -235,7 +237,7 @@ unsigned char World::getCube(int x, int y, int z)
     int abs_z = z;
     
     int p = abs_x / (Chunk::size*Chunk::subsize);
-    int q = abs_y / (Chunk::size*Chunk::subsize);
+    //int q = abs_y / (Chunk::size*Chunk::subsize);
     int r = abs_z / (Chunk::size*Chunk::subsize);
     
     Chunk* chunk;
@@ -428,7 +430,22 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
     double iY = (y - ray->getStart().y )/ray->getNormalizedPoint().y;
     double iZ = (z - ray->getStart().z )/ray->getNormalizedPoint().z;
     
-    OctreeEntry* entry = this->getLeaf(x, y, z);
+    //OctreeEntry* entry = this->getLeaf(x, y, z);
+    
+    double div = (Chunk::size*Chunk::subsize);
+    
+    int p = 0;
+    int q = 0;
+    int r = 0;
+    
+    double x1 = 0;
+    double y1 = 0;
+    double z1 = 0;
+    double x2 = 0;
+    double y2 = 0;
+    double z2 = 0;
+    
+    double _end = 0;
     
     for(double i = start; i<end; )
     {
@@ -454,25 +471,25 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
         }
         else
         {
-            double div = (Chunk::size*Chunk::subsize);
+            div = (Chunk::size*Chunk::subsize);
             
-            int p = d.x / div;
-            int q = d.y / div;
-            int r = d.z / div;
+            p = d.x / div;
+            q = d.y / div;
+            r = d.z / div;
             
-            double x1 = p*div + empty->getX();
-            double y1 = q*div + empty->getY();
-            double z1 = r*div + empty->getZ();
-            double x2 = p*div + (empty->getX()+empty->getSize());
-            double y2 = q*div + (empty->getY()+empty->getSize());
-            double z2 = r*div + (empty->getZ()+empty->getSize());
+            x1 = p*div + empty->getX();
+            y1 = q*div + empty->getY();
+            z1 = r*div + empty->getZ();
+            x2 = p*div + (empty->getX()+empty->getSize());
+            y2 = q*div + (empty->getY()+empty->getSize());
+            z2 = r*div + (empty->getZ()+empty->getSize());
 
-            double end = ray->exitCube(x1, y1, z1, x2, y2, z2);
+            _end = ray->exitCube(x1, y1, z1, x2, y2, z2);
             
-            if(end > iX && end > iY && end > iZ)
+            if(_end > iX && _end > iY && _end > iZ)
                 return this->getLeaf(x, y, z);
 
-            i=end;
+            i=_end;
             delete empty;
         }
     }
