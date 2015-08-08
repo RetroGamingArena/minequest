@@ -24,6 +24,7 @@
 
 #include "Chunk.h"
 #include "WorldGenerator.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -33,6 +34,8 @@ using namespace std;
 class World : public Pool
 {
 	// Start of user code private
+    // redondent for optimisation
+    static glm::vec4 viewport;
 	// End of user code
 	vector<Chunk*> chunks;
 	WorldGenerator* worldGenerator;
@@ -47,6 +50,7 @@ class World : public Pool
 
 	public:
 		// Start of user code public
+        static Camera* camera;
         bool isCubeRayCasted(int x, int y, int z, int size);
 		// End of user code
 	static int size;

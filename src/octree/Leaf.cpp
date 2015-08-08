@@ -64,9 +64,9 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
         if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
             return;
         
-        if(world->isCubeVisible(p,q,r,size))
+        //if(world->isCubeVisible(p,q,r,size))
         {
-            if(!world->isCubeOccluded(p,q,r,size))
+            //if(!world->isCubeOccluded(p,q,r,size))
             {
                 vector<GLuint>* data = vertexBuffer->getData();
             

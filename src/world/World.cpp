@@ -5,7 +5,6 @@
 #include "PerlinGenerator.h"
 #include "ChunkTask.h"
 #include "Chunk.h"
-#include "Camera.h"
 #include "Engine.h"
 #include "CubeFace.h"
 #include "Empty.h"
@@ -62,6 +61,8 @@ World::~World()
 }
 
 // Start of user code methods
+glm::vec4 World::viewport = glm::vec4(0,0,1920,1080);
+Camera* World::camera = NULL;
 bool World::isCubeRayCasted(int x, int y, int z, int size)
 {
     //raycast occlusion
@@ -97,7 +98,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;
+int World::size = 0;
 
 int World::getChunkIndice()
 {
@@ -503,33 +504,53 @@ double World::isCubeInFrustum(double x1, double y1, double z1, double x2, double
     glm::mat4  projection = camera->getProjection();
     glm::vec3 project;
     glm::mat4 VM = camera->getView()*camera->getModel();
-    glm::vec4 viewport = glm::vec4(0,0,1920,1080);
-    
+
     project = glm::project(glm::vec3(x1,y1,z1), VM, projection, viewport);
+    
+    double near = 0.997;
+    
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x2,y1,z1), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x1,y1,z2), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x2,y1,z2), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x1,y2,z1), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x2,y2,z1), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x1,y2,z2), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
     project = glm::project(glm::vec3(x2,y2,z2), VM, projection, viewport);
+    if(project.z <= near)
+        return false;
     if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;
+    
     return false;
+
 	// End of user code
 }
 

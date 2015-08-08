@@ -93,7 +93,7 @@ void GameScene::handle(Event * event)
             {
                 oldMask = mask;
                 updateIndices();
-                if(updateChunksCpt==0)
+                if(updateChunksCpt==0 && updateBufferCpt==0)
                 {
                     World* world = Engine::getInstance()->getWorld();
                     
