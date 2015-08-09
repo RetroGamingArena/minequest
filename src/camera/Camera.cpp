@@ -132,7 +132,7 @@ unsigned char Camera::getMask()
     {
         res |= BACK;
         res |= RIGHT;
-        if(delta.x<delta.z)
+        if(abs(delta.x)>=abs(delta.z))
             res |= FRONT;
         else
             res |= LEFT;
@@ -141,7 +141,7 @@ unsigned char Camera::getMask()
     {
         res |= RIGHT;
         res |= FRONT;
-        if(delta.x<delta.z)
+        if(abs(delta.x)>=abs(delta.z))
             res |= BACK;
         else
             res |= LEFT;
@@ -150,7 +150,7 @@ unsigned char Camera::getMask()
     {
         res |= FRONT;
         res |= LEFT;
-        if(delta.x<delta.z)
+        if(abs(delta.x)>=abs(delta.z))
             res |= BACK;
         else
             res |= RIGHT;
@@ -159,7 +159,7 @@ unsigned char Camera::getMask()
     {
         res |= LEFT;
         res |= BACK;
-        if(delta.x<delta.z)
+        if(abs(delta.x)>=abs(delta.z))
             res |= FRONT;
         else
             res |= RIGHT;
