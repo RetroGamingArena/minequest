@@ -59,19 +59,18 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
     {
         if(!occluded)
         {
-            visible = true;//world->isCubeVisible(p,q,r,size);
+            visible = world->isCubeVisible(p,q,r,size);
             occluded = true;
         }
         
         if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
             return;
         
-        //if(visible)
+        if(visible)
         {
+            if(world->isCubeFreeWithMask(p, q, r, size))
             //if(!world->isCubeOccluded(p,q,r,size))
             {
-                //bufferizeWorld->bufferizeEntry(vertexBuffer, type, p/Chunk::subsize, q/Chunk::subsize, r/Chunk::subsize, size, size, size, occlusion);
-                
                 //---
                 
                 vector<GLuint>* data = vertexBuffer->getData();
@@ -128,12 +127,12 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
                 //data->push_back(size);
                 //---
                 
-                //world->setOccludedCount(world->getOccludedCount()+1);
+                world->setOccludedCount(world->getOccludedCount()+1);
             }
         }
-        //else
-        //{}//world->setInstanceCount(world->getInstanceCount()+1);
-        //world->setCubeCount(world->getCubeCount()+size*size*size);
+        else
+            world->setInstanceCount(world->getInstanceCount()+1);
+        world->setCubeCount(world->getCubeCount()+size*size*size);
     }
 	// End of user code
 }

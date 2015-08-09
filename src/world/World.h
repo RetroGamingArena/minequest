@@ -71,7 +71,8 @@ class World : public Pool
 		unsigned char getCube(int x, int y, int z);
 		Chunk* getChunk(int x, int y, int z);
 		bool isCubeFree(int x, int y, int z, int size);
-		OctreeEntry* getLeaf(int x, int y, int z);
+		bool isCubeFreeWithMask(int x, int y, int z, int size);
+        OctreeEntry* getLeaf(int x, int y, int z);
 		bool isCubeOccluded(int x, int y, int z, int size);
 		OctreeEntry* collide(Ray * ray, int x, int y, int z);
 		double isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);

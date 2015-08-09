@@ -65,6 +65,31 @@ glm::vec4 World::viewport = glm::vec4(0,0,1920,1080);
 Camera* World::camera = NULL;
 double World::near = 0.997;
 
+bool World::isCubeFreeWithMask(int x, int y, int z, int size)
+{
+    // Start of user code isCubeFree
+    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
+    
+    for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(this->getCube(x-1, y+i,   z+j) == 0)// && (mask & LEFT))
+                return true;
+            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)// && (mask & RIGHT))
+                return true;
+            if(this->getCube(x+i, y-1,   z+j) == 0)// && (mask & BOTTOM))
+                return true;
+            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)// && (mask & TOP))
+                return true;
+            if(this->getCube(x+i, y+j,   z-1) == 0)// && (mask & BACK))
+                return true;
+            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)// && (mask & FRONT))
+                return true;
+        }
+    return false;
+    // End of user code
+}
+
 bool World::isCubeRayCasted(int x, int y, int z, int size)
 {
     //raycast occlusion
@@ -100,7 +125,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 0;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -168,7 +193,7 @@ bool World::isCubeVisible(int x, int y, int z, int size)
     if(!isCubeFree(x, y, z, size))
         return false;
     
-    //edge occlusion
+    //side occlusion
     if( x==0 )
     {
         if( getCube(x, yPSize, z)>0 )
@@ -281,22 +306,20 @@ Chunk* World::getChunk(int x, int y, int z)
 bool World::isCubeFree(int x, int y, int z, int size)
 {
 	// Start of user code isCubeFree
-    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
-    
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
-            if(this->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
+            if(this->getCube(x-1, y+i,   z+j) == 0)// && (mask & LEFT))
                 return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)// && (mask & RIGHT))
                 return true;
-            if(this->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
+            if(this->getCube(x+i, y-1,   z+j) == 0)// && (mask & BOTTOM))
                 return true;
-            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
+            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)// && (mask & TOP))
                 return true;
-            if(this->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
+            if(this->getCube(x+i, y+j,   z-1) == 0)// && (mask & BACK))
                 return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)// && (mask & FRONT))
                 return true;
         }
     return false;
@@ -502,11 +525,8 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
 double World::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
 {
 	// Start of user code isCubeInFrustum
-    /*Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
-    glm::mat4  projection = camera->getProjection();*/
     glm::vec3 project;
-    //glm::mat4 VM = camera->getView()*camera->getModel();
-    
+
     project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
     
     if(project.z <= near)
