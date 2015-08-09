@@ -50,7 +50,7 @@ void main()
     viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
     gl_Position = P * viewSpace;
     
-    
+    ao = ao / 2.0;
     
     gl_Position.z = -0.3;
     
@@ -71,15 +71,18 @@ void main()
     else if(vertexColorIndex == 5)
         cubeColor = vec3(0.5,0.5,0.5);
     
+    if(cubeColor == vec3(0.0,0.0,1.0))
+        fragmentColor = vec4(cubeColor, 0.1);
+    else
+        fragmentColor = vec4(cubeColor, 1);
+    
     //if(cubeColor != vec3(0.0,0.0,1.0))
     {
-        fragmentColor.r = vertexPosition_modelspace.x;//*16;
-        fragmentColor.g = vertexPosition_modelspace.y;//*16;
-        fragmentColor.b = vertexPosition_modelspace.z;//*16;
-        fragmentColor.a = 1;
+        //fragmentColor.r = vertexPosition_modelspace.x;
+        //fragmentColor.g = vertexPosition_modelspace.y;
+        //fragmentColor.b = vertexPosition_modelspace.z;
+        //fragmentColor.a = 1;
     }
-    
-    fragmentColor.a = 1;
     
     vertexPosition = vec4(vertexPosition_temp,1);
     _vertexWidth = vec3(xWidth,yWidth,zWidth);

@@ -313,6 +313,10 @@ void GameScene::render()
                 //chunkData->clear();
                 updateBufferCpt--;
             }
+            else if(chunk->getBuffered())
+            {
+                updateBufferCpt--;
+            }
         }
         
         setChunksOffset(gameSceneData->size());

@@ -25,10 +25,10 @@ void main()
     
     float fogFactor = (80 - dist*2)/(80 - 20);
     
-    color.a = .1;
+    //color.a = .1;
     //if(cubeColor != vec3(0.0,0.0,1.0))
     {
-        if(fragmentColor.g == 0)
+        /*if(fragmentColor.g == 0)
         {
             if(fragmentColor.r<1.0 && mod(fragmentColor.r*2*_vertexWidth.x/16.0,2/16.0)<0.005)
                 color  = vec4(0.0, 0.0, 0.0, 1.0);
@@ -65,17 +65,17 @@ void main()
                 color  = vec4(0.0, 0.0, 0.0, 1.0);
             else
                 color  = vec4(cubeColor, 1.0);
-        }
+        }*/
         
         color = clamp(vec4(color * ao), vec4(0.0), vec4(1.0));
     }
 
-    color.a = 1;
+    //color.a = 1;
     
     fogFactor = clamp( fogFactor, 0.0, 1.0 );
     
     vec3 lightColor = vec3(color.rgb);
     vec3 finalColor = mix(fogColor, lightColor, fogFactor);
-    //color = vec4(finalColor, 1);
+    color = vec4(finalColor, 1);
 
 }

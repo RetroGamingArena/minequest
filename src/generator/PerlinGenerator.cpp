@@ -114,7 +114,7 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 
     height=(height+1);
     
-    height*=Chunk::size*Chunk::subsize/2;
+    height*=Chunk::size*Chunk::subsize/4;
     
     //height -= (int)height % Chunk::subsize;
     
