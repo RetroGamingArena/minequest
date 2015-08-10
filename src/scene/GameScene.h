@@ -39,9 +39,7 @@ class GameScene : public VoxelScene, public Listener
 	int chunksOffset;
 	bool updateChunks;
 	bool updateBuffer;
-	int updateChunksCpt;
 	std::mutex* bufferAddMutex;
-	int updateBufferCpt;
 	unsigned char oldMask;
 	std::mutex* cameraLock;
 
@@ -62,12 +60,8 @@ class GameScene : public VoxelScene, public Listener
 		void setUpdateChunks(bool _updateChunks);
 		bool getUpdateBuffer();
 		void setUpdateBuffer(bool _updateBuffer);
-		int getUpdateChunksCpt();
-		void setUpdateChunksCpt(int _updateChunksCpt);
 		std::mutex* getBufferAddMutex();
 		void setBufferAddMutex(std::mutex* _bufferAddMutex);
-		int getUpdateBufferCpt();
-		void setUpdateBufferCpt(int _updateBufferCpt);
 		unsigned char getOldMask();
 		void setOldMask(unsigned char _oldMask);
 		std::mutex* getCameraLock();

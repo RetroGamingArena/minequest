@@ -15,6 +15,8 @@ Thread::Thread()
 {
 	// Start of user code constructor
     mutex = new std::mutex;
+    task = NULL;
+    //mutex->lock();
 	// End of user code
 }
 

@@ -15,9 +15,7 @@ GameScene::GameScene(int _chunksOffset, bool _updateChunks, bool _updateBuffer, 
 	chunksOffset = _chunksOffset;
 	updateChunks = _updateChunks;
 	updateBuffer = _updateBuffer;
-	updateChunksCpt = _updateChunksCpt;
 	bufferAddMutex = _bufferAddMutex;
-	updateBufferCpt = _updateBufferCpt;
 	oldMask = _oldMask;
 	cameraLock = _cameraLock;
 }
@@ -53,8 +51,6 @@ GameScene::GameScene(Player* player)
     for(int i = 0; i  <cameras.size(); i++)
         cameras[i]->addListener(this);
 
-    updateChunksCpt = 0;
-    updateChunksCpt++;
     reset();
     
     vector<GLuint>* gameSceneData = getDoubleBuffer()->getVertexBuffer()->getData();
@@ -70,8 +66,7 @@ GameScene::GameScene(Player* player)
     worldProcessor->addListener(this);
     
     selectedCameraIndex = 1;
-    updateBufferCpt = 0;
-    
+
     oldMask = getSelectedCamera()->getMask();
     cameraLock = new mutex();
     
@@ -97,21 +92,18 @@ void GameScene::handle(Event * event)
             {
                 oldMask = mask;
                 updateIndices();
-                if(updateChunksCpt==0 && updateBufferCpt==0)
-                {
-                    World* world = Engine::getInstance()->getWorld();
+
+                World* world = Engine::getInstance()->getWorld();
                     
-                    world->setCubeCount(0);
-                    world->setInstanceCount(0);
-                    world->setOccludedCount(0);
+                world->setCubeCount(0);
+                world->setInstanceCount(0);
+                world->setOccludedCount(0);
                     
-                    vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
+                vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
                     
-                    for(int i = 0; i < chunks.size(); i++)
-                        chunks[i]->setBuffered(false);
-                    
-                    updateChunksCpt+=chunks.size();
-                }
+                for(int i = 0; i < chunks.size(); i++)
+                    chunks[i]->setBuffered(false);
+
             }
             updateCamera = true;
             cameraLock->unlock();
@@ -126,18 +118,10 @@ void GameScene::handle(Event * event)
             Task* task = thread->getTask();
             ChunkTask* chunkTask = dynamic_cast<ChunkTask*>(task);
             if(chunkTask != NULL)
-            {
-                updateChunksCpt++;
-                updateBuffer = true;
                 return;
-            }
             ChunkProcessorTask* chunkProcessorTask = dynamic_cast<ChunkProcessorTask*>(task);
             if(chunkProcessorTask != NULL)
-            {
-                updateChunksCpt--;
-                updateBufferCpt++;
                 return;
-            }
         }
     }
     // End of user code
@@ -181,18 +165,6 @@ void GameScene::setUpdateBuffer(bool _updateBuffer)
 	updateBuffer = _updateBuffer;
 }
 
-int GameScene::getUpdateChunksCpt()
-{
-	// Start of user code getUpdateChunksCpt
-	// End of user code
-	return updateChunksCpt;
-}
-
-void GameScene::setUpdateChunksCpt(int _updateChunksCpt)
-{
-	updateChunksCpt = _updateChunksCpt;
-}
-
 std::mutex* GameScene::getBufferAddMutex()
 {
 	// Start of user code getBufferAddMutex
@@ -203,18 +175,6 @@ std::mutex* GameScene::getBufferAddMutex()
 void GameScene::setBufferAddMutex(std::mutex* _bufferAddMutex)
 {
 	bufferAddMutex = _bufferAddMutex;
-}
-
-int GameScene::getUpdateBufferCpt()
-{
-	// Start of user code getUpdateBufferCpt
-	// End of user code
-	return updateBufferCpt;
-}
-
-void GameScene::setUpdateBufferCpt(int _updateBufferCpt)
-{
-	updateBufferCpt = _updateBufferCpt;
 }
 
 unsigned char GameScene::getOldMask()
@@ -291,12 +251,16 @@ void GameScene::render()
             updateChunks = false;
         }
     }
-    if(updateChunksCpt >= world->getChunks().size()-1)
+    if(world->isFinished() && !worldProcessor->isFinished())
+    //if(updateChunksCpt >= world->getChunks().size()-1)
     {
         if(!worldProcessor->isRunning())
+        {
             worldProcessor->start();
+            updateBuffer = true;
+        }
     }
-    if(updateBufferCpt == world->getChunks().size())
+    if(worldProcessor->isFinished() && updateBuffer)//updateBufferCpt == world->getChunks().size()-1)
     {
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         
@@ -310,12 +274,6 @@ void GameScene::render()
             {
                 vector<GLuint>* chunkData = chunk->getVertexBuffer()->getData();
                 gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-                //chunkData->clear();
-                updateBufferCpt--;
-            }
-            else if(chunk->getBuffered())
-            {
-                updateBufferCpt--;
             }
         }
         

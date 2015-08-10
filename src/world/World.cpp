@@ -114,11 +114,16 @@ Task* World::buildTask()
                 ChunkTask* chunkTask = new ChunkTask(chunk, worldGenerator);
                 chunkIndice = chunkIndice+1;
                 chunk->setGenerating(true);
-                mutex->unlock();
+                buildedTask = chunkTask;
+                //mutex->unlock();
                 return chunkTask;
             }
         }
         mutex->unlock();
+    }
+    else
+    {
+        return buildedTask;
     }
     return NULL;
 	// End of user code

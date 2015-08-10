@@ -12,6 +12,7 @@ Pool::Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mut
 	work = _work;
 	mutex = _mutex;
 	started = _started;
+    buildedTask = NULL;
 }
 
 Pool::Pool()
@@ -29,11 +30,22 @@ Pool::Pool()
         thread->addListener(this);
         threads.push_back(thread);
     }
+    buildedTask = NULL;
 	// End of user code
 }
 
 
 // Start of user code methods
+bool Pool::isFinished()
+{
+    for(int i = 0; i < threadCount; i++)
+        if(threads[i]->getTask() == NULL || threads[i]->isBusy())
+            return false;
+    if(buildTask() == NULL)
+        return true;
+    return false;
+}
+
 Pool::Pool(int _threadCount)
 {
     threadCount = _threadCount;
@@ -47,6 +59,7 @@ Pool::Pool(int _threadCount)
         thread->addListener(this);
         threads.push_back(thread);
     }
+    buildedTask = NULL;
 }
 // End of user code
 
@@ -149,6 +162,7 @@ void Pool::run(Pool * pool)
             {
                 pool->threads[i]->setTask(task);
                 pool->threads[i]->start();
+                pool->mutex->unlock();
                 task = pool->buildTask();
                 break;
             }

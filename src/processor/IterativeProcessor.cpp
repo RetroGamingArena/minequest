@@ -49,14 +49,15 @@ Task* IterativeProcessor::buildTask()
                 chunkProcessorTask->setProcessor(this);
                 chunkProcessorTask->setChunk(chunk);
                 chunk->setBuffering(true);
-                mutex->unlock();
+                buildedTask = chunkProcessorTask;
+                //mutex->unlock();
                 return chunkProcessorTask;
             }
         mutex->unlock();
     }
     else
     {
-        mutex->unlock();
+        return buildedTask;
     }
     return NULL;
 	// End of user code

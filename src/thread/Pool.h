@@ -41,6 +41,7 @@ class Pool : public Listener, public Transmitter
 
 	protected:
 	// Start of user code protected
+    Task* buildedTask;
 	// End of user code
 	int threadCount;
 	std::mutex* mutex;
@@ -48,6 +49,7 @@ class Pool : public Listener, public Transmitter
 	public:
 		// Start of user code public
         Pool(int _threadCount);
+        bool isFinished();
 		// End of user code
 		Pool(int _threadCount, bool _running, std::thread* _work, std::mutex* _mutex, bool _started);
 		Pool();
