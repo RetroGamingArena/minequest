@@ -78,7 +78,7 @@ void Octree::setR(float _r)
 void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
 {
 	// Start of user code bufferize
-    int x = 0;
+    /*int x = 0;
     int y = 0;
     int z = 0;
     
@@ -90,7 +90,7 @@ void Octree::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r)
         
         if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, this->p*size+x*size/2.0, this->q*size+y*size/2.0, this->r*size+z*size/2.0, size/2);
-    }
+    }*/
 	// End of user code
 }
 

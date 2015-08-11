@@ -16,6 +16,7 @@
 // End of user code
 
 // Start of user code includes
+#include "OctreeEntry.h"
 // End of user code
 
 #include "Pool.h"
@@ -30,6 +31,7 @@ using namespace std;
 class IterativeProcessor : public Pool, public Processor
 {
 	// Start of user code private
+    void bufferizeOctreeEntry(OctreeEntry* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size);
 	// End of user code
 
 	protected:

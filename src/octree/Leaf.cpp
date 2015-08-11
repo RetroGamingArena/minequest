@@ -29,7 +29,7 @@ Leaf::~Leaf()
 }
 
 // Start of user code methods
-World* Leaf::bufferizeWorld = NULL;;
+//World* Leaf::bufferizeWorld = NULL;;
 // End of user code
 
 bool Leaf::isCompressible()
@@ -53,7 +53,7 @@ unsigned char Leaf::getAbs(int x, int y, int z, int size)
 void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
 	// Start of user code bufferize
-    World* world = bufferizeWorld;//Engine::getInstance()->getWorld();
+    /*World* world = bufferizeWorld;//Engine::getInstance()->getWorld();
     
     if(getType() > 0)
     {
@@ -69,7 +69,7 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
         if(visible)
         {
             if(world->isCubeFreeWithMask(p, q, r, size))
-            //if(!world->isCubeOccluded(p,q,r,size))
+            if(!world->isCubeOccluded(p,q,r,size))
             {
                 //---
                 
@@ -102,17 +102,6 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
                 unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
                  
                 data->push_back(size);
-                
-                /*int sizeM1 = size-1;
-                
-                int pInt = (int)_p;
-                double pDecimal = _p-pInt;
-                 
-                int qInt = (int)_q;
-                double qDecimal = _q-qInt;
-                 
-                int rInt = (int)_r;
-                double rDecimal = _r-rInt;*/
                  
                 //vector<GLuint>* data = vertexBuffer->getData();
                  
@@ -133,7 +122,7 @@ void Leaf::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
         else
             world->setInstanceCount(world->getInstanceCount()+1);
         world->setCubeCount(world->getCubeCount()+size*size*size);
-    }
+    }*/
 	// End of user code
 }
 OctreeEntry* Leaf::getLeafAbs(int x, int y, int z, int size)

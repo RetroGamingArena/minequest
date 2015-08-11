@@ -17,6 +17,7 @@
 
 // Start of user code includes
 #include "Octree.h"
+#include "Leaf.h"
 // End of user code
 
 
@@ -33,10 +34,12 @@ class Processor
 
 	protected:
 	// Start of user code protected
+    static void bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
 	// End of user code
 
 	public:
 		// Start of user code public
+        static World* bufferizeWorld;
 		// End of user code
 		Processor();
 		virtual ~Processor(){};

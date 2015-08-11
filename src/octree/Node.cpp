@@ -17,9 +17,9 @@ Node::Node()
 {
 	// Start of user code constructor
     split();
-    bufferizeX = 0;
+    /*bufferizeX = 0;
     bufferizeY = 0;
-    bufferizeZ = 0;
+    bufferizeZ = 0;*/
 	// End of user code
 }
 
@@ -103,7 +103,7 @@ unsigned char Node::getAbs(int x, int y, int z, int size)
 void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size)
 {
 	// Start of user code bufferize
-    int size_2 = (int)size>>1;
+    /*int size_2 = (int)size>>1;
     
     xs = WorldGenerator::getXs();
     ys = WorldGenerator::getYs();
@@ -117,7 +117,7 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
         
         if(this->octreeEntries[i] != NULL)
             this->octreeEntries[i]->bufferize(vertexBuffer, p+bufferizeX*size_2, q+bufferizeY*size_2, r+bufferizeZ*size_2, size_2);
-    }
+    }*/
 	// End of user code
 }
 OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)

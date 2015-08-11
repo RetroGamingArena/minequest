@@ -39,8 +39,12 @@ Pool::Pool()
 bool Pool::isFinished()
 {
     for(int i = 0; i < threadCount; i++)
-        if(threads[i]->getTask() == NULL || threads[i]->isBusy())
+    {
+        if(threads[i]->isBusy())
             return false;
+        //if(threads[i]->getTask() == NULL)
+        //    return false;
+    }
     if(buildTask() == NULL)
         return true;
     return false;

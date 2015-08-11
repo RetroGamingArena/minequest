@@ -42,7 +42,7 @@ class Leaf : public OctreeEntry
 	public:
 		// Start of user code public
         bool occluded;
-        static World* bufferizeWorld;
+        //static World* bufferizeWorld;
         bool visible;
 		// End of user code
 		Leaf(unsigned char _type, unsigned char _occlusion);
