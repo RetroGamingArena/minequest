@@ -220,10 +220,10 @@ void GameScene::reset()
     
     float* ao = new float[4];
     
-    ao[0] = 0;
-    ao[1] = 0;
-    ao[2] = 0;
-    ao[3] = 0;
+    ao[0] = 1;
+    ao[1] = 1;
+    ao[2] = 1;
+    ao[3] = 1;
     
     doubleBuffer->bufferizeSquare(x+p, y+q,      z+r, x+p+size, y+q,      z+r+size, type, ao);
     

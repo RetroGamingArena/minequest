@@ -2065,7 +2065,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/Camera.cpp"
-            timestampString = "460735345.159484"
+            timestampString = "460995245.596422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -2129,7 +2129,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/Camera.cpp"
-            timestampString = "460735345.159484"
+            timestampString = "460993985.82842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -6788,7 +6788,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/Camera.cpp"
-            timestampString = "460735345.159484"
+            timestampString = "460993985.82842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -6804,7 +6804,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/Camera.cpp"
-            timestampString = "460735345.159484"
+            timestampString = "460993985.82842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -6852,7 +6852,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/Camera.cpp"
-            timestampString = "460735345.159484"
+            timestampString = "460995245.596422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -7952,7 +7952,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/Camera.cpp"
-            timestampString = "460806126.021832"
+            timestampString = "460993985.82842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -8342,6 +8342,38 @@
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "GameScene::handle(Event * event)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/camera/Camera.cpp"
+            timestampString = "460988269.166379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "Camera::getMask()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/camera/Camera.cpp"
+            timestampString = "460988337.527887"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "Camera::getMask()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

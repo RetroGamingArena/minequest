@@ -123,10 +123,10 @@ unsigned char Camera::getMask()
     
     glm::vec3 delta = getPosition()-getCenter();
     
-    if(delta.y >= 0)
+    //if(delta.y >= 0)
         res |= TOP;
-    else
-        res |= BOTTOM;
+    //else
+    //    res |= BOTTOM;
     
     if(delta.x >= 0 && delta.z <= 0)
     {
@@ -151,7 +151,7 @@ unsigned char Camera::getMask()
         res |= FRONT;
         res |= LEFT;
         if(abs(delta.x)>=abs(delta.z))
-            res |= BACK;
+            res |= RIGHT;
         else
             res |= RIGHT;
     }

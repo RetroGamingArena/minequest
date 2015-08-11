@@ -70,8 +70,8 @@ glm::vec3 ItemCamera::getPosition()
     position = item->getPosition();
     position /= Chunk::subsize;
     position.y += 2;
-    position.x += 0.5 + cos(angleZ)*6;
-    position.z += 0.5 + sin(angleZ)*6;
+    position.x += 0.5 + cos(angleZ)*3;
+    position.z += 0.5 + sin(angleZ)*3;
     return InputCamera::getPosition();
 	// End of user code
 }

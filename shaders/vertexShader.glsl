@@ -78,13 +78,13 @@ void main()
     
     //if(cubeColor != vec3(0.0,0.0,1.0))
     {
-        //fragmentColor.r = vertexPosition_modelspace.x;
-        //fragmentColor.g = vertexPosition_modelspace.y;
-        //fragmentColor.b = vertexPosition_modelspace.z;
+        fragmentColor.r = vertexPosition_modelspace.x;
+        fragmentColor.g = vertexPosition_modelspace.y;
+        fragmentColor.b = vertexPosition_modelspace.z;
         //fragmentColor.a = 1;
     }
     
-    vertexPosition = vec4(vertexPosition_temp,1);
+    vertexPosition = vec4(vertexPosition_modelspace, 1);//vertexPosition_temp,1);
     _vertexWidth = vec3(xWidth,yWidth,zWidth);
     
     _vertexColorIndex = vertexColorIndex;
