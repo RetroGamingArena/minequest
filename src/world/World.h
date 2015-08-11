@@ -34,9 +34,6 @@ using namespace std;
 class World : public Pool
 {
 	// Start of user code private
-    static double near;
-    // redondent for optimisation
-    static glm::vec4 viewport;
 	// End of user code
 	WorldGenerator* worldGenerator;
 	vector<Chunk*> chunks;
@@ -66,16 +63,12 @@ class World : public Pool
 		void setInstanceCount(int _instanceCount);
 		int getOccludedCount();
 		void setOccludedCount(int _occludedCount);
-		bool isCubeVisible(int x, int y, int z, int size);
-		void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion);
+        void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion);
 		unsigned char getCube(int x, int y, int z);
 		Chunk* getChunk(int x, int y, int z);
-		bool isCubeFree(int x, int y, int z, int size);
-		bool isCubeFreeWithMask(int x, int y, int z, int size);
-        OctreeEntry* getLeaf(int x, int y, int z);
+		OctreeEntry* getLeaf(int x, int y, int z);
 		bool isCubeOccluded(int x, int y, int z, int size);
 		OctreeEntry* collide(Ray * ray, int x, int y, int z);
-		double isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		vector<Chunk*> getChunks();

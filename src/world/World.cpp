@@ -61,34 +61,11 @@ World::~World()
 }
 
 // Start of user code methods
-glm::vec4 World::viewport = glm::vec4(0,0,1920,1080);
+//glm::vec4 World::viewport = glm::vec4(0,0,1920,1080);
 Camera* World::camera = NULL;
-double World::near = 0.997;
+//double World::near = 0;//0.997;
 
-bool World::isCubeFreeWithMask(int x, int y, int z, int size)
-{
-    // Start of user code isCubeFree
-    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
-    
-    for(int i = size-1; i >= 0; i--)
-        for(int j = size-1; j >= 0; j--)
-        {
-            if(this->getCube(x-1, y+i,   z+j) == 0)// && (mask & LEFT))
-                return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)// && (mask & RIGHT))
-                return true;
-            if(this->getCube(x+i, y-1,   z+j) == 0)// && (mask & BOTTOM))
-                return true;
-            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)// && (mask & TOP))
-                return true;
-            if(this->getCube(x+i, y+j,   z-1) == 0)// && (mask & BACK))
-                return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)// && (mask & FRONT))
-                return true;
-        }
-    return false;
-    // End of user code
-}
+
 
 bool World::isCubeRayCasted(int x, int y, int z, int size)
 {
@@ -180,52 +157,6 @@ void World::setOccludedCount(int _occludedCount)
 	occludedCount = _occludedCount;
 }
 
-
-bool World::isCubeVisible(int x, int y, int z, int size)
-{
-	// Start of user code isCubeVisible
-    
-    int maxPosition = (Chunk::size*Chunk::subsize-1);
-    int sizeM1 = size-1;
-    int yPSize = y+size;
-    int chunksWidth = World::size*2+1;
-    
-    //ground occlusion
-    if( y==0 && x>0 && z>0 && (x+sizeM1)<maxPosition && (z+sizeM1)<maxPosition )
-        return false;
-    
-    //geometry occlusion
-    if(!isCubeFree(x, y, z, size))
-        return false;
-    
-    //side occlusion
-    if( x==0 )
-    {
-        if( getCube(x, yPSize, z)>0 )
-            return false;
-    }
-    
-    if( (x+sizeM1)==((chunksWidth)*maxPosition))
-    {
-        if( getCube(x, yPSize, z)>0 )
-            return false;
-    }
-    
-    if( (z+sizeM1)==((chunksWidth)*maxPosition))
-    {
-        if( getCube(x, yPSize, z)>0 )
-            return false;
-    }
-    
-    if( z==0 )
-    {
-        if( getCube(x, yPSize, z)>0 )
-            return false;
-    }
-    
-    return true;
-	// End of user code
-}
 void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)
 {
 	// Start of user code bufferizeEntry
@@ -308,28 +239,7 @@ Chunk* World::getChunk(int x, int y, int z)
     return NULL;
 	// End of user code
 }
-bool World::isCubeFree(int x, int y, int z, int size)
-{
-	// Start of user code isCubeFree
-    for(int i = size-1; i >= 0; i--)
-        for(int j = size-1; j >= 0; j--)
-        {
-            if(this->getCube(x-1, y+i,   z+j) == 0)// && (mask & LEFT))
-                return true;
-            if(this->getCube((x+size-1)+1, y+i,   z+j) == 0)// && (mask & RIGHT))
-                return true;
-            if(this->getCube(x+i, y-1,   z+j) == 0)// && (mask & BOTTOM))
-                return true;
-            if(this->getCube(x+i, (y+size-1)+1,   z+j) == 0)// && (mask & TOP))
-                return true;
-            if(this->getCube(x+i, y+j,   z-1) == 0)// && (mask & BACK))
-                return true;
-            if(this->getCube(x+i, y+j,   (z+size-1)+1) == 0)// && (mask & FRONT))
-                return true;
-        }
-    return false;
-	// End of user code
-}
+
 OctreeEntry* World::getLeaf(int x, int y, int z)
 {
 	// Start of user code getLeaf
@@ -525,57 +435,6 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
         }
     }
     return NULL;
-	// End of user code
-}
-double World::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
-{
-	// Start of user code isCubeInFrustum
-    glm::vec3 project;
-
-    project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
-    
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y1,z1), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x1,y1,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y1,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x1,y2,z1), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y2,z1), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x1,y2,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y2,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    
-    return false;
-
 	// End of user code
 }
 

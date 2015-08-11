@@ -2,6 +2,7 @@
 
 #include "Processor.h"
 // Start of user code includes
+#include "CubeFace.h"
 // End of user code
 
 
@@ -15,13 +16,159 @@ Processor::Processor()
 
 
 // Start of user code methods
+glm::vec4 Processor::viewport = glm::vec4(0,0,1920,1080);
+//Camera* World::camera = NULL;
+double Processor::near = 0;//0.997;
 World* Processor::bufferizeWorld = NULL;
 
+double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+    // Start of user code isCubeInFrustum
+    glm::vec3 project;
+    
+    project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
+    
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x2,y1,z1), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x1,y1,z2), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x2,y1,z2), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x1,y2,z1), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x2,y2,z1), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x1,y2,z2), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    project = glm::project(glm::vec3(x2,y2,z2), Scene::VM, Scene::projection, viewport);
+    if(project.z <= near)
+        return false;
+    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+        return true;
+    
+    return false;
+    
+    // End of user code
+}
+
+bool Processor::isCubeVisible(int x, int y, int z, int size)
+{
+    // Start of user code isCubeVisible
+    
+    int maxPosition = (Chunk::size*Chunk::subsize-1);
+    int sizeM1 = size-1;
+    int yPSize = y+size;
+    int chunksWidth = World::size*2+1;
+    
+    //ground occlusion
+    if( y==0 )// && x>0 && z>0 && (x+sizeM1)<maxPosition && (z+sizeM1)<maxPosition )
+        return false;
+    
+    //geometry occlusion
+    if(!isCubeFree(x, y, z, size))
+        return false;
+    
+    //side occlusion
+    if( x==0 )
+    {
+        if( bufferizeWorld->getCube(x, yPSize, z)>0 )
+            return false;
+    }
+    
+    if( (x+sizeM1)==((chunksWidth)*maxPosition))
+    {
+        if( bufferizeWorld->getCube(x, yPSize, z)>0 )
+            return false;
+    }
+    
+    if( (z+sizeM1)==((chunksWidth)*maxPosition))
+    {
+        if( bufferizeWorld->getCube(x, yPSize, z)>0 )
+            return false;
+    }
+    
+    if( z==0 )
+    {
+        if( bufferizeWorld->getCube(x, yPSize, z)>0 )
+            return false;
+    }
+    
+    return true;
+    // End of user code
+}
+
+bool Processor::isCubeFree(int x, int y, int z, int size)
+{
+    // Start of user code isCubeFree
+    for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(bufferizeWorld->getCube(x-1, y+i,   z+j) == 0)
+                return true;
+            if(bufferizeWorld->getCube((x+size-1)+1, y+i,   z+j) == 0)
+                return true;
+            if(bufferizeWorld->getCube(x+i, y-1,   z+j) == 0)
+                return true;
+            if(bufferizeWorld->getCube(x+i, (y+size-1)+1,   z+j) == 0)
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   z-1) == 0)
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   (z+size-1)+1) == 0)
+                return true;
+        }
+    return false;
+    // End of user code
+}
+
+bool Processor::isCubeFreeWithMask(int x, int y, int z, int size)
+{
+    // Start of user code isCubeFree
+    unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
+    
+    for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(bufferizeWorld->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
+                return true;
+            if(bufferizeWorld->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
+                return true;
+            if(bufferizeWorld->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+                return true;
+        }
+    return false;
+    // End of user code
+}
 
 void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
 {
-    World* world = bufferizeWorld;//Engine::getInstance()->getWorld();
-    
     unsigned char type = leaf->getType();
     unsigned char occlusion = leaf->getOcclusion();
     
@@ -29,16 +176,16 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
     {
         if(!leaf->occluded)
         {
-            leaf->visible = world->isCubeVisible(p,q,r,size);
+            leaf->visible = isCubeVisible(p,q,r,size);
             leaf->occluded = true;
         }
         
-        if(!world->isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
+        if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
             return;
         
         if(leaf->visible)
         {
-            if(world->isCubeFreeWithMask(p, q, r, size))
+            if(isCubeFreeWithMask(p, q, r, size))
                 //if(!world->isCubeOccluded(p,q,r,size))
                 {
                     //---
@@ -86,12 +233,12 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
                     //data->push_back(size);
                     //---
                     
-                    world->setOccludedCount(world->getOccludedCount()+1);
+                    bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
                 }
         }
         else
-            world->setInstanceCount(world->getInstanceCount()+1);
-        world->setCubeCount(world->getCubeCount()+size*size*size);
+            bufferizeWorld->setInstanceCount(bufferizeWorld->getInstanceCount()+1);
+        bufferizeWorld->setCubeCount(bufferizeWorld->getCubeCount()+size*size*size);
     }
 }
 // End of user code

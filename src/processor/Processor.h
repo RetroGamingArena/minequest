@@ -18,6 +18,7 @@
 // Start of user code includes
 #include "Octree.h"
 #include "Leaf.h"
+#include "Engine.h"
 // End of user code
 
 
@@ -30,6 +31,13 @@ using namespace std;
 class Processor
 {
 	// Start of user code private
+    static double near;
+    // redondent for optimisation
+    static glm::vec4 viewport;
+    static bool isCubeVisible(int x, int y, int z, int size);
+    static bool isCubeFree(int x, int y, int z, int size);
+    static bool isCubeFreeWithMask(int x, int y, int z, int size);
+    static double isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
 	// End of user code
 
 	protected:
