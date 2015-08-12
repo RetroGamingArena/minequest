@@ -28,13 +28,36 @@ void ChunkProcessorTask::run()
 	// Start of user code run
     chunk->getVertexBuffer()->getData()->clear();
     
-    double currentTime = glfwGetTime();
-    vector<GLuint>* temp = processor->bufferize(chunk->getOctree());
-    currentTime = glfwGetTime() - currentTime;
-    std::cout << currentTime << std::endl;
-    chunk->getVertexBuffer()->getData()->insert(chunk->getVertexBuffer()->getData()->end(), temp->begin(), temp->end());
-    temp->clear();
-    delete temp;
+    //double currentTime = glfwGetTime();
+    
+    unsigned char type = 1;
+    unsigned char occlusion = 1;
+    int _p = chunk->getP();//Chunk::subsize;
+    int _q = chunk->getQ();//Chunk::subsize;
+    int _r = chunk->getR();//Chunk::subsize;
+    int chp = _p;
+    int chq = _q;
+    int chr = _r;
+    int cup = 0;//_p % 8;
+    int cuq = 0;//_q % 8;
+    int cur = 0;//_r % 8;
+    int pp = 0;//((int)chunk->getP())%Chunk::subsize;
+    int qq = 0;//((int)chunk->getQ())%Chunk::subsize;
+    int rr = 0;//((int)chunk->getR())%Chunk::subsize;
+    int sizeM1 = 63;//size-1;
+    unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 7) +
+                             ((qq + (int)(cuq << 4) + (chq << 7)) << 10) +
+                             ( (( rr + (int)(cur << 4) + (chr << 7) )) << 20) );
+    chunk->getVertexBuffer()->getData()->push_back(_offset);
+    unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
+    chunk->getVertexBuffer()->getData()->push_back(size);
+    
+    //vector<GLuint>* temp = processor->bufferize(chunk->getOctree());
+    //currentTime = glfwGetTime() - currentTime;
+    //std::cout << currentTime << std::endl;
+    //chunk->getVertexBuffer()->getData()->insert(chunk->getVertexBuffer()->getData()->end(), temp->begin(), temp->end());
+    //temp->clear();
+    //delete temp;
     chunk->setBuffered(true);
     chunk->setBuffering(false);
     // End of user code
