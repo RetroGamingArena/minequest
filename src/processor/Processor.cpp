@@ -196,13 +196,13 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
                     int _q = q/Chunk::subsize;
                     int _r = r/Chunk::subsize;
                     
-                    int chp = _p / 8;
-                    int chq = _q / 8;
-                    int chr = _r / 8;
+                    int chp = _p / 16;
+                    int chq = _q / 16;
+                    int chr = _r / 16;
                     
-                    int cup = _p % 8;
-                    int cuq = _q % 8;
-                    int cur = _r % 8;
+                    int cup = _p % 16;
+                    int cuq = _q % 16;
+                    int cur = _r % 16;
                     
                     int pp = ((int)p)%Chunk::subsize;
                     int qq = ((int)q)%Chunk::subsize;
@@ -210,9 +210,9 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
                     
                     int sizeM1 = size-1;
                     
-                    unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 7) +
-                                             ((qq + (int)(cuq << 4) + (chq << 7)) << 10) +
-                                             ( (( rr + (int)(cur << 4) + (chr << 7) )) << 20) );
+                    unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 8) +
+                                             ((qq + (int)(cuq << 4) + (chq << 8)) << 10) +
+                                             ( (( rr + (int)(cur << 4) + (chr << 8) )) << 20) );
                     
                     vec->push_back(_offset);
                     
