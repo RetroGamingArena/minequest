@@ -7775,7 +7775,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-<<<<<<< HEAD
             filePath = "src/processor/ChunkProcessorTask.cpp"
             timestampString = "461089335.602575"
             startingColumnNumber = "9223372036854775807"
@@ -7783,15 +7782,6 @@
             startingLineNumber = "38"
             endingLineNumber = "38"
             landmarkName = "ChunkProcessorTask::run()"
-=======
-            filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "461090645.333847"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
->>>>>>> master
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7801,7 +7791,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-<<<<<<< HEAD
             filePath = "src/processor/ChunkProcessorTask.cpp"
             timestampString = "461089807.26869"
             startingColumnNumber = "9223372036854775807"
@@ -7809,15 +7798,22 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "ChunkProcessorTask::run()"
-=======
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "461099053.685925"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/ChunkProcessorTask.cpp"
+            timestampString = "461147920.854206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
->>>>>>> master
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "ChunkProcessorTask::run()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

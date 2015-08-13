@@ -27,27 +27,21 @@ out vec4 viewSpace;
 void main()
 {
     uint iWidth = uint(vertexWidth);
-    uint xWidth = (iWidth & uint(0x3f))+1;
-    uint yWidth = ((iWidth & uint(0xfc0)) >> 6)+1;
-    uint zWidth = ((iWidth & uint(0x3f000)) >> 12)+1;
-    
-    float ao = ((iWidth & uint(0xC0000)) >> 18);
-    int vertexColorIndex = int((iWidth & uint(0xfffe0000)) >> 20);
+    uint xWidth = (iWidth & uint(0x1ff))+1;
+    uint yWidth = xWidth;//((iWidth & uint(0xfc0)) >> 6)+1;
+    uint zWidth = xWidth;//((iWidth & uint(0x3f000)) >> 12)+1;
+
+    float ao = ((iWidth & uint(0x600)) >> 18);
+    int vertexColorIndex = int((iWidth & uint(0xf800)) >> 20);
     
     vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth/16.0, vertexPosition_modelspace.y*yWidth/16.0, vertexPosition_modelspace.z*zWidth/16.0 );
     
     int iOffset = int(_offset);
     vec3 offset;
     
-<<<<<<< HEAD
-    float x = ((iOffset      & 0x380) >> 7)*16 +  ((iOffset      & 0x70) >> 4) +  float(((iOffset) & 0xf)/16.0);
-    float y = (((iOffset>>10) & 0x380) >> 7)*16 + (((iOffset>>10) & 0x70) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
-    float z = (((iOffset>>20) & 0x380) >> 7)*16 + (((iOffset>>20) & 0x70) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
-=======
     float x = ((iOffset      & 0x300) >> 8)*16 +  ((iOffset      & 0xf0) >> 4) +  float(((iOffset) & 0xf)/16.0);
     float y = (((iOffset>>10) & 0x300) >> 8)*16 + (((iOffset>>10) & 0xf0) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
     float z = (((iOffset>>20) & 0x300) >> 8)*16 + (((iOffset>>20) & 0xf0) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
->>>>>>> master
     
     offset.x = x;
     offset.y = y;

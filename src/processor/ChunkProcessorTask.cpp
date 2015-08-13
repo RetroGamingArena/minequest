@@ -44,12 +44,12 @@ void ChunkProcessorTask::run()
     int pp = 0;//((int)chunk->getP())%Chunk::subsize;
     int qq = 0;//((int)chunk->getQ())%Chunk::subsize;
     int rr = 0;//((int)chunk->getR())%Chunk::subsize;
-    int sizeM1 = 63;//size-1;
-    unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 7) +
-                             ((qq + (int)(cuq << 4) + (chq << 7)) << 10) +
-                             ( (( rr + (int)(cur << 4) + (chr << 7) )) << 20) );
+    int sizeM1 = 255;//size-1;
+    unsigned int _offset =  (   pp + (int)(cup << 4) + (chp << 8) +
+                             ((qq + (int)(cuq << 4) + (chq << 8)) << 10) +
+                             ( (( rr + (int)(cur << 4) + (chr << 8) )) << 20) );
     chunk->getVertexBuffer()->getData()->push_back(_offset);
-    unsigned int size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
+    unsigned int size = (type << 11) + (occlusion << 9) + (sizeM1);
     chunk->getVertexBuffer()->getData()->push_back(size);
     
     //vector<GLuint>* temp = processor->bufferize(chunk->getOctree());
