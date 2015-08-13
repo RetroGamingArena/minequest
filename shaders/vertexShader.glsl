@@ -76,12 +76,19 @@ void main()
     else
         fragmentColor = vec4(cubeColor, 1);
     
-    //if(cubeColor != vec3(0.0,0.0,1.0))
+    fragmentColor.r = 0;
+    fragmentColor.g = 0;
+    fragmentColor.b = 0;
+    
+    if(vertexPosition_modelspace.x == 1)
     {
-        fragmentColor.r = vertexPosition_modelspace.x;
         fragmentColor.g = vertexPosition_modelspace.y;
         fragmentColor.b = vertexPosition_modelspace.z;
-        //fragmentColor.a = 1;
+    }
+    if(vertexPosition_modelspace.z == 1)
+    {
+        fragmentColor.g = vertexPosition_modelspace.y;
+        fragmentColor.b = vertexPosition_modelspace.x;
     }
     
     vertexPosition = vec4(vertexPosition_modelspace, 1);//vertexPosition_temp,1);
