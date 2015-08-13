@@ -72,14 +72,15 @@ Task* IterativeProcessor::buildTask()
     if( mutex->try_lock())
     {
         std::vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
-        Chunk* chunk = chunks[chunkIndice];
+        Chunk* chunk;
             
         World* world = Engine::getInstance()->getWorld();
         
         for(int i = 0; i < world->getChunks().size(); i++)
-            if(!world->getChunks()[i]->getBuffered() && world->getChunks()[i]->getGenerated() && !world->getChunks()[i]->getBuffering() && !world->getChunks()[i]->getGenerating())
+        {
+            chunk = world->getChunks()[i];
+            if(!chunk->getBuffered() && chunk->getGenerated() && !chunk->getBuffering() && !chunk->getGenerating())
             {
-                chunk = world->getChunks()[i];
                 ChunkProcessorTask* chunkProcessorTask = new ChunkProcessorTask();
                 chunkProcessorTask->setProcessor(this);
                 chunkProcessorTask->setChunk(chunk);
@@ -88,6 +89,7 @@ Task* IterativeProcessor::buildTask()
                 //mutex->unlock();
                 return chunkProcessorTask;
             }
+        }
         mutex->unlock();
     }
     else

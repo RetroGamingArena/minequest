@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1953,11 +1953,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "IterativeProcessor::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1969,11 +1969,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "IterativeProcessor::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2601,11 +2601,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2617,11 +2617,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2765,11 +2765,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "IterativeProcessor::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2940,11 +2940,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "IterativeProcessor::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2956,11 +2956,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "IterativeProcessor::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3036,11 +3036,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "IterativeProcessor::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4250,11 +4250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "460971043.177949"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7792,11 +7792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "461090645.333847"
+            timestampString = "461150669.230863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7814,6 +7814,38 @@
             startingLineNumber = "87"
             endingLineNumber = "87"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "461150715.323705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "World::buildTask()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/world/World.cpp"
+            timestampString = "461150788.040818"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "World::buildTask()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
