@@ -296,15 +296,46 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
     
     glm::vec4 viewport = glm::vec4(0,0,1920,1080);
     
-    glm::vec3 projection1 = glm::project(glm::vec3(xRay/16.0, yRay/16.0, zRay/16.0)/*x/16.0,y/16.0,z/16.0)*/, Scene::VM, Scene::projection, viewport);
-    /*glm::vec3 projection2 = glm::project(glm::vec3((x+1)/16.0,y/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
-    glm::vec3 projection3 = glm::project(glm::vec3(x/16.0,y/16.0,(z+1)/16.0), Scene::VM, Scene::projection, viewport);
-    glm::vec3 projection4 = glm::project(glm::vec3((x+1)/16.0,y/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
-    glm::vec3 projection5 = glm::project(glm::vec3(x/16.0,y/16.0,(z+1)/16.0), Scene::VM, Scene::projection, viewport);
-    glm::vec3 projection6 = glm::project(glm::vec3(x/16.0,(y+1)/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
-    glm::vec3 projection7 = glm::project(glm::vec3((x+1)/16.0,(y+1)/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
-    glm::vec3 projection8 = glm::project(glm::vec3((x+1)/16.0,(y+1)/16.0,(z+1)/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection1 = glm::project(glm::vec3(x/16.0,       y/16.0,        z/16.0)/*x/16.0,y/16.0,z/16.0)*/, Scene::VM, Scene::projection, viewport);
+    
+    if(projection1.x < 0 || projection1.y < 0 || projection1.x > 1920 || projection1.y > 1080)
+        return true;
+    
+    glm::vec3 projection2 = glm::project(glm::vec3((x+size)/16.0,y/16.0,        z/16.0), Scene::VM, Scene::projection, viewport);
+    
+    if(projection2.x < 0 || projection2.y < 0 || projection2.x > 1920 || projection2.y > 1080)
+        return true;
+    
+    glm::vec3 projection3 = glm::project(glm::vec3(x/16.0,       y/16.0,        (z+size)/16.0), Scene::VM, Scene::projection, viewport);
+    
+    if(projection3.x < 0 || projection3.y < 0 || projection3.x > 1920 || projection3.y > 1080)
+        return true;
+    
+    glm::vec3 projection4 = glm::project(glm::vec3((x+size)/16.0,y/16.0,        (z+size)/16.0), Scene::VM, Scene::projection, viewport);
+    
+    if(projection4.x < 0 || projection4.y < 0 || projection4.x > 1920 || projection4.y > 1080)
+        return true;
+    
+    glm::vec3 projection5 = glm::project(glm::vec3(x/16.0,       (y+size)/16.0, z/16.0), Scene::VM, Scene::projection, viewport);
+    
+    if(projection5.x < 0 || projection5.y < 0 || projection5.x > 1920 || projection5.y > 1080)
+        return true;
+    
+    glm::vec3 projection6 = glm::project(glm::vec3((x+size)/16.0,(y+size)/16.0, z/16.0), Scene::VM, Scene::projection, viewport);
+    
+    if(projection6.x < 0 || projection6.y < 0 || projection6.x > 1920 || projection6.y > 1080)
+        return true;
+    
+    glm::vec3 projection7 = glm::project(glm::vec3(x/16.0,       (y+size)/16.0, (z+size)/16.0), Scene::VM, Scene::projection, viewport);
+    
+    if(projection7.x < 0 || projection7.y < 0 || projection7.x > 1920 || projection7.y > 1080)
+        return true;
+    
+    glm::vec3 projection8 = glm::project(glm::vec3((x+size)/16.0,(y+size)/16.0, (z+size)/16.0), Scene::VM, Scene::projection, viewport);
 
+    if(projection8.x < 0 || projection8.y < 0 || projection8.x > 1920 || projection8.y > 1080)
+        return true;
+    
     float projectionXmin = min(projection1.x, projection2.x);
     projectionXmin = min(projectionXmin, projection3.x);
     projectionXmin = min(projectionXmin, projection4.x);
@@ -314,12 +345,12 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
     projectionXmin = min(projectionXmin, projection8.x);
     
     float projectionXmax = max(projection1.x, projection2.x);
-    projectionXmax = max(projectionXmin, projection3.x);
-    projectionXmax = max(projectionXmin, projection4.x);
-    projectionXmax = max(projectionXmin, projection5.x);
-    projectionXmax = max(projectionXmin, projection6.x);
-    projectionXmax = max(projectionXmin, projection7.x);
-    projectionXmax = max(projectionXmin, projection8.x);
+    projectionXmax = max(projectionXmax, projection3.x);
+    projectionXmax = max(projectionXmax, projection4.x);
+    projectionXmax = max(projectionXmax, projection5.x);
+    projectionXmax = max(projectionXmax, projection6.x);
+    projectionXmax = max(projectionXmax, projection7.x);
+    projectionXmax = max(projectionXmax, projection8.x);
     
     float projectionYmin = min(projection1.y, projection2.y);
     projectionYmin = min(projectionYmin, projection3.y);
@@ -335,18 +366,18 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
     projectionYmax = max(projectionYmax, projection5.y);
     projectionYmax = max(projectionYmax, projection6.y);
     projectionYmax = max(projectionYmax, projection7.y);
-    projectionYmax = max(projectionYmax, projection8.y);*/
+    projectionYmax = max(projectionYmax, projection8.y);
     
     Ray* ray = NULL;
     
     glm::vec3 unprojection;
     float step = 0.1;
     position *= 16.0;
-    float i = projection1.x;
-    float j = projection1.y;
+    //float i = projection1.x;
+    //float j = projection1.y;
     
-    //for(float i = projectionXmin; i < projectionXmax; i+=step)
-    //    for(float j = projectionYmin; j < projectionYmax; j+=step)
+    for(float i = projectionXmin; i < projectionXmax; i+=step)
+        for(float j = projectionYmin; j < projectionYmax; j+=step)
         {
             unprojection = glm::unProject(glm::vec3(i, j, 1.0), Scene::VM, Scene::projection, viewport);
             
