@@ -39,9 +39,15 @@ void main()
     int iOffset = int(_offset);
     vec3 offset;
     
+<<<<<<< HEAD
     float x = ((iOffset      & 0x380) >> 7)*16 +  ((iOffset      & 0x70) >> 4) +  float(((iOffset) & 0xf)/16.0);
     float y = (((iOffset>>10) & 0x380) >> 7)*16 + (((iOffset>>10) & 0x70) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
     float z = (((iOffset>>20) & 0x380) >> 7)*16 + (((iOffset>>20) & 0x70) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
+=======
+    float x = ((iOffset      & 0x300) >> 8)*16 +  ((iOffset      & 0xf0) >> 4) +  float(((iOffset) & 0xf)/16.0);
+    float y = (((iOffset>>10) & 0x300) >> 8)*16 + (((iOffset>>10) & 0xf0) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
+    float z = (((iOffset>>20) & 0x300) >> 8)*16 + (((iOffset>>20) & 0xf0) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
+>>>>>>> master
     
     offset.x = x;
     offset.y = y;

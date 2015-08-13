@@ -90,9 +90,9 @@ void Player::draw(VertexBuffer * buffer)
     double rDecimal = (z/Chunk::subsize)-rInt;
     
     
-    unsigned int _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%8) << 4) + ((pInt/8) << 7) +
-                             (((int)(qDecimal / 0.0625) + (int)((qInt%8) << 4) + ((qInt/8) << 7)) << 10) +
-                             ( (( (int)(rDecimal / 0.0625) + (int)((rInt%8) << 4) + ((rInt/8) << 7) )) << 20) );
+    unsigned int _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%16) << 4) + ((pInt/16) << 8) +
+                             (((int)(qDecimal / 0.0625) + (int)((qInt%16) << 4) + ((qInt/16) << 8)) << 10) +
+                             ( (( (int)(rDecimal / 0.0625) + (int)((rInt%16) << 4) + ((rInt/16) << 8) )) << 20) );
     
     buffer->getData()->push_back(_offset);
     
@@ -107,9 +107,9 @@ void Player::draw(VertexBuffer * buffer)
     rInt = (int)(z/Chunk::subsize);
     rDecimal = (z/Chunk::subsize)-rInt;
     
-    _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%8) << 4) + ((pInt/8) << 7) +
-                             (((int)(qDecimal / 0.0625) + (int)((qInt%8) << 4) + ((qInt/8) << 7)) << 10) +
-                             ( (( (int)(rDecimal / 0.0625) + (int)((rInt%8) << 4) + ((rInt/8) << 7) )) << 20) );
+    _offset =  (   (int)(pDecimal / 0.0625) + (int)((pInt%16) << 4) + ((pInt/16) << 8) +
+                             (((int)(qDecimal / 0.0625) + (int)((qInt%16) << 4) + ((qInt/16) << 8)) << 10) +
+                             ( (( (int)(rDecimal / 0.0625) + (int)((rInt%16) << 4) + ((rInt/16) << 8) )) << 20) );
     
     buffer->getData()->push_back(_offset);
     
