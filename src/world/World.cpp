@@ -107,7 +107,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;
+int World::size = 0;
 
 int World::getChunkIndice()
 {
@@ -287,74 +287,77 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
     OctreeEntry* collided = NULL;
     
     unsigned char mask = Engine::getInstance()->getScene()->getSelectedCamera()->getMask();
-    glm::vec3 position = Engine::getInstance()->getScene()->getSelectedCamera()->getPosition();
+    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
+    glm::vec3 position = camera->getPosition();
     
-    position.x =  position.x * Chunk::subsize;
-    position.y =  position.y * Chunk::subsize;
-    position.z =  position.z * Chunk::subsize;
+    float xRay = x + size / 2.0;
+    float yRay = y + size / 2.0;
+    float zRay = z + size / 2.0;
+    
+    glm::vec4 viewport = glm::vec4(0,0,1920,1080);
+    
+    glm::vec3 projection1 = glm::project(glm::vec3(xRay/16.0, yRay/16.0, zRay/16.0)/*x/16.0,y/16.0,z/16.0)*/, Scene::VM, Scene::projection, viewport);
+    /*glm::vec3 projection2 = glm::project(glm::vec3((x+1)/16.0,y/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection3 = glm::project(glm::vec3(x/16.0,y/16.0,(z+1)/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection4 = glm::project(glm::vec3((x+1)/16.0,y/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection5 = glm::project(glm::vec3(x/16.0,y/16.0,(z+1)/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection6 = glm::project(glm::vec3(x/16.0,(y+1)/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection7 = glm::project(glm::vec3((x+1)/16.0,(y+1)/16.0,z/16.0), Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection8 = glm::project(glm::vec3((x+1)/16.0,(y+1)/16.0,(z+1)/16.0), Scene::VM, Scene::projection, viewport);
 
+    float projectionXmin = min(projection1.x, projection2.x);
+    projectionXmin = min(projectionXmin, projection3.x);
+    projectionXmin = min(projectionXmin, projection4.x);
+    projectionXmin = min(projectionXmin, projection5.x);
+    projectionXmin = min(projectionXmin, projection6.x);
+    projectionXmin = min(projectionXmin, projection7.x);
+    projectionXmin = min(projectionXmin, projection8.x);
+    
+    float projectionXmax = max(projection1.x, projection2.x);
+    projectionXmax = max(projectionXmin, projection3.x);
+    projectionXmax = max(projectionXmin, projection4.x);
+    projectionXmax = max(projectionXmin, projection5.x);
+    projectionXmax = max(projectionXmin, projection6.x);
+    projectionXmax = max(projectionXmin, projection7.x);
+    projectionXmax = max(projectionXmin, projection8.x);
+    
+    float projectionYmin = min(projection1.y, projection2.y);
+    projectionYmin = min(projectionYmin, projection3.y);
+    projectionYmin = min(projectionYmin, projection4.y);
+    projectionYmin = min(projectionYmin, projection5.y);
+    projectionYmin = min(projectionYmin, projection6.y);
+    projectionYmin = min(projectionYmin, projection7.y);
+    projectionYmin = min(projectionYmin, projection8.y);
+    
+    float projectionYmax = max(projection1.y, projection2.y);
+    projectionYmax = max(projectionYmax, projection3.y);
+    projectionYmax = max(projectionYmax, projection4.y);
+    projectionYmax = max(projectionYmax, projection5.y);
+    projectionYmax = max(projectionYmax, projection6.y);
+    projectionYmax = max(projectionYmax, projection7.y);
+    projectionYmax = max(projectionYmax, projection8.y);*/
+    
     Ray* ray = NULL;
     
-    for(int i = 0; i < size; i++)
-        for(int j = 0; j < size; j++)
-        {
-            if((mask & LEFT))
-            {
-                ray = new Ray(position, glm::vec3(x,(y+i),(z+j)));
-                collided = collide(ray, x, y+i, z+j);
-                if(collided == base)
-                    return false;
-                if(collided == NULL)
-                    return false;
-            }
-            if((mask & RIGHT))
-            {
-                ray = new Ray(position, glm::vec3((x+size-1),(y+i),(z+j)));
-                collided = collide(ray, (x+size-1), y+i, z+j);
-                if(collided == base)
-                    return false;
-                if(collided == NULL)
-                    return false;
-            }
-            if((mask & BOTTOM))
-            {
-                ray = new Ray(position, glm::vec3((x+i),y,(z+j)));
-                collided = collide(ray, x+i, y, z+j);
-                if(collided == base)
-                    return false;
-                if(collided == NULL)
-                    return false;
-            }
-            if((mask & TOP))
-            {
-                ray = new Ray(position, glm::vec3((x+i),(y+size-1),(z+j)));
-                collided = collide(ray, x+i, y+size-1, z+j);
-                if(collided == base)
-                    return false;
-                if(collided == NULL)
-                    return false;
-            }
-            if((mask & BACK))
-            {
-                ray = new Ray(position, glm::vec3((x+i),(y+i),z));
-                collided = collide(ray, x+i, y+j, z);
-                if(collided == base)
-                    return false;
-                if(collided == NULL)
-                    return false;
-            }
-            if((mask & FRONT))
-            {
-                ray = new Ray(position, glm::vec3((x+i),(y+j),(z+size-1)));
-                collided = collide(ray, x+i, y+i, z+size-1);
-                if(collided == base)
-                    return false;
-                if(collided == NULL)
-                    return false;
-            }
-        }
+    glm::vec3 unprojection;
+    float step = 0.1;
+    position *= 16.0;
+    float i = projection1.x;
+    float j = projection1.y;
     
-    delete ray;
+    //for(float i = projectionXmin; i < projectionXmax; i+=step)
+    //    for(float j = projectionYmin; j < projectionYmax; j+=step)
+        {
+            unprojection = glm::unProject(glm::vec3(i, j, 1.0), Scene::VM, Scene::projection, viewport);
+            
+            unprojection *= 16.0;
+            
+            ray = new Ray(position, unprojection);
+            
+            collided = collide(ray, xRay, yRay, zRay);
+            if(collided == base)
+                return false;
+        }
     
     return true;
 	// End of user code
