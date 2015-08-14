@@ -121,7 +121,8 @@ void VBOScene::render()
     }
     
     //2D
-    uI->render();
+    if(uI != NULL)
+        uI->render();
 	// End of user code
 }
 void VBOScene::onMouseMotion(double xpos, double ypos)

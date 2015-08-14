@@ -16,6 +16,7 @@ Scene::Scene()
 	// Start of user code constructor
     setSelectedCameraIndex(0);
     background = new Background();
+    uI = NULL;
 	// End of user code
 }
 

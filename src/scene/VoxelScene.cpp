@@ -13,6 +13,7 @@ VoxelScene::VoxelScene()
 {
 	// Start of user code constructor
     this->uI = new DebugUI();
+    _updateIndices = false;
 	// End of user code
 }
 
@@ -25,6 +26,11 @@ VoxelScene::~VoxelScene()
 // Start of user code methods
 void VoxelScene::render()
 {
+    if(_updateIndices)
+    {
+        updateIndices();
+        _updateIndices = false;
+    }
     VBOScene::render();
     glClearColor(0.5f, 0.9f, 1.0f, 0.0f);
 }
@@ -49,8 +55,7 @@ void VoxelScene::updateIndices()
     if(mask & TOP)
         yOffset = 1;
     int hOffset = 0;
-    int hOffset2 = 0;
-
+    
     if(mask & RIGHT && mask & FRONT)
         hOffset = 2;
     if(mask & FRONT && mask & LEFT)
@@ -74,122 +79,7 @@ void VoxelScene::updateIndices()
     indices2[3] = indicesRaw[(3 + hOffset)%4] + (1-yOffset)*4;
     
     doubleBuffer->getIndiceBuffer()->getData()->clear();
-    
-    //V
-    
-    //0
-    /*doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 0);
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+3], 1);
-    
-    //2
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+3], 2);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 3);
-    
-    //2
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[2]*4+3], 4);
-    
-    //3
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+3], 5);
-    
-    //L
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+3], 6);
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[1]*4+3], 7);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 8);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+3], 9);
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[1]*4+3], 10);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 11);
 
-    
-    //R
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 12);
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[3]*4+3], 13);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+3], 14);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices[0]*4+3], 15);
-    
-    //1
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[3]*4+3], 16);
-    
-    //0
-    doubleBuffer->setVertex((*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+1],
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+2], 0,
-                                  (*doubleBuffer->getVertexBuffer()->getBase())[indices2[0]*4+3], 17);*/
-    
     int cpt=0;
     
     if(mask & TOP)

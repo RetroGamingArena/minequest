@@ -10,6 +10,9 @@ Leaf::Leaf(unsigned char _type, unsigned char _occlusion)
 {
 	type = _type;
 	occlusion = _occlusion;
+    
+    occluded = false;
+    visible = false;
 }
 
 Leaf::Leaf()
@@ -17,8 +20,6 @@ Leaf::Leaf()
 // End of user code
 {
 	// Start of user code constructor
-    occluded = 0;
-    visible = 0;
 	// End of user code
 }
 

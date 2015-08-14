@@ -107,7 +107,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 0;
+int World::size = 1;
 
 int World::getChunkIndice()
 {
@@ -185,13 +185,16 @@ void World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, floa
 unsigned char World::getCube(int x, int y, int z)
 {
 	// Start of user code getCube
-    if(y >= Chunk::size*Chunk::subsize)
+    int chunkSize = Chunk::size*Chunk::subsize;
+    int worldSize = Chunk::size*Chunk::subsize*(1+size*2);
+    
+    if(y >= chunkSize)
         return 0;
     
-    if(x >= Chunk::size*Chunk::subsize*(1+size*2))
+    if(x >= worldSize)
         return 0;
     
-    if(z >= Chunk::size*Chunk::subsize*(1+size*2))
+    if(z >= worldSize)
         return 0;
     
     int abs_x = x;
@@ -200,25 +203,18 @@ unsigned char World::getCube(int x, int y, int z)
     
     int abs_z = z;
     
-    int p = abs_x / (Chunk::size*Chunk::subsize);
+    int p = abs_x / chunkSize;
     //int q = abs_y / (Chunk::size*Chunk::subsize);
-    int r = abs_z / (Chunk::size*Chunk::subsize);
+    int r = abs_z / chunkSize;
     
-    Chunk* chunk;
-    if(size == 0)
-        chunk = chunks[0];
-    else
-        chunk = chunks[ (p)*( (size)*2+1) + r ];
+    Chunk* chunk = chunks[ (p)*( (size)*2+1) + r ];
     
-    int sx = abs_x % (Chunk::size*Chunk::subsize);
-    int sy = abs_y % (Chunk::size*Chunk::subsize);
-    int sz = abs_z % (Chunk::size*Chunk::subsize);
-    
-    if(chunk != NULL)
-    {
-        Octree* octree = chunk->getOctree();
-        return octree->getAbs(sx, sy, sz, Octree::size);
-    }
+    int sx = abs_x % chunkSize;
+    int sy = abs_y % chunkSize;
+    int sz = abs_z % chunkSize;
+
+    Octree* octree = chunk->getOctree();
+    return octree->getAbs(sx, sy, sz, Octree::size);
     
     return 0;
 	// End of user code

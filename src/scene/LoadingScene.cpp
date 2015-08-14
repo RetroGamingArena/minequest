@@ -56,6 +56,8 @@ void LoadingScene::render()
         
         engine->refresh();
 
+        gameScene->updateIndices();
+        
         mutex->unlock();
     }
 }

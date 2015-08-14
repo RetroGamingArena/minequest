@@ -180,11 +180,11 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
             leaf->occluded = true;
         }
         
-        if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
-            return;
-        
         if(leaf->visible)
         {
+            if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
+                return;
+            
             if(isCubeFreeWithMask(p, q, r, size))
                 //if(!bufferizeWorld->isCubeOccluded(p,q,r,size))
                 {

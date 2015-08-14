@@ -88,12 +88,15 @@ void GameScene::handle(Event * event)
             projection = camera->getProjection();
             VM = camera->getView()*camera->getModel();
             unsigned char mask = camera->getMask();
-            if(worldProcessor->isFinished() && !worldProcessor->isRunning())
-            //if(mask != oldMask)
+            
+            if(mask != oldMask)
             {
+                _updateIndices = true;
                 oldMask = mask;
-                updateIndices();
+            }
 
+            if(worldProcessor->isFinished() && !worldProcessor->isRunning())
+            {
                 World* world = Engine::getInstance()->getWorld();
                     
                 world->setCubeCount(0);

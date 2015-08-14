@@ -33,6 +33,7 @@ class VoxelScene : public VBOScene
 
 	protected:
 	// Start of user code protected
+    bool _updateIndices;
 	// End of user code
 
 	public:
