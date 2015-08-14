@@ -20,21 +20,19 @@ out vec3 cubeColor;
 out vec3 vertexWidth;
 out vec4 viewSpace;
 
-vec4 viewport = vec4(0,0,1920,1080);
-
 void main() {
     bool _discard = false;
     
-    for(int i = 0; i < 3; i++)
+    /*for(int i = 0; i < 3; i++)
     {
         if(gl_in[i].gl_Position.x<-gl_in[i].gl_Position.w || gl_in[i].gl_Position.y<-gl_in[i].gl_Position.w || gl_in[i].gl_Position.x>gl_in[i].gl_Position.w || gl_in[i].gl_Position.y>gl_in[i].gl_Position.w )
         {
             _discard = true;
             break;
         }
-    }
+    }*/
 
-    if(!_discard)
+    //if(!_discard)
     {
         for(int i = 0; i < 3; i++)
         {
@@ -47,7 +45,8 @@ void main() {
             vertexWidth = _vertexWidth[i];
             viewSpace = _viewSpace[i];
         
-            EmitVertex();
+            if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
+                EmitVertex();
         }
         EndPrimitive();
     }
