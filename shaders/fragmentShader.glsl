@@ -2,7 +2,7 @@
 in vec4 fragmentColor;
 in vec3 cubeColor;
 in float fragmentAo;
-in vec3 _vertexWidth;
+in vec3 vertexWidth;
 
 in float _vertexColorIndex;
 
@@ -38,8 +38,8 @@ void main()
         
         if(fragmentColor.g == 0)
         {
-            float modr = mod(fragmentColor.r*2*_vertexWidth.x/16.0,2/16.0);
-            float modb = mod(fragmentColor.b*2*_vertexWidth.x/16.0,2/16.0);
+            float modr = mod(fragmentColor.r*2*vertexWidth.x/16.0,2/16.0);
+            float modb = mod(fragmentColor.b*2*vertexWidth.x/16.0,2/16.0);
             
             if(fragmentColor.r<1.0 && (modr<startGrid || modr>endGrid))
                 color  = gridColor;
@@ -50,8 +50,8 @@ void main()
         }
         else if(fragmentColor.r == 0)
         {
-            float modg = mod(fragmentColor.g*2*_vertexWidth.y/16.0,2/16.0);
-            float modb = mod(fragmentColor.b*2*_vertexWidth.y/16.0,2/16.0);
+            float modg = mod(fragmentColor.g*2*vertexWidth.y/16.0,2/16.0);
+            float modb = mod(fragmentColor.b*2*vertexWidth.y/16.0,2/16.0);
             
             if(fragmentColor.g<1.0 && (modg<startGrid || modg>endGrid))
                 color  = gridColor;
@@ -62,8 +62,8 @@ void main()
         }
         else if(fragmentColor.b == 0)
         {
-            float modr = mod(fragmentColor.r*2*_vertexWidth.z/16.0,2/16.0);
-            float modg = mod(fragmentColor.g*2*_vertexWidth.y/16.0,2/16.0);
+            float modr = mod(fragmentColor.r*2*vertexWidth.z/16.0,2/16.0);
+            float modg = mod(fragmentColor.g*2*vertexWidth.y/16.0,2/16.0);
             
             if(fragmentColor.r<1.0 && (modr<startGrid || modr>endGrid))
                 color  = gridColor;
@@ -88,8 +88,8 @@ void main()
         //}
         else if( vertexPosition.y >= 0.999999 )
         {
-            float modr = mod(fragmentColor.r*2*_vertexWidth.x/16.0,2/16.0);
-            float modb = mod(fragmentColor.b*2*_vertexWidth.x/16.0,2/16.0);
+            float modr = mod(fragmentColor.r*2*vertexWidth.x/16.0,2/16.0);
+            float modb = mod(fragmentColor.b*2*vertexWidth.x/16.0,2/16.0);
             
             if(fragmentColor.r<1.0 && (modr<startGrid || modr>endGrid))
                 color  = gridColor;
@@ -101,8 +101,8 @@ void main()
         }
         else
         {
-            float modg = mod(fragmentColor.g*2*_vertexWidth.y/16.0,2/16.0);
-            float modrb = mod(fragmentColor.r*fragmentColor.b*2*_vertexWidth.y/16.0,2/16.0);
+            float modg = mod(fragmentColor.g*2*vertexWidth.y/16.0,2/16.0);
+            float modrb = mod(fragmentColor.r*fragmentColor.b*2*vertexWidth.y/16.0,2/16.0);
             if(fragmentColor.g<1.0 && (modg<startGrid || modg>endGrid))// || modg>0.1))
                 color  = gridColor;
             else if(fragmentColor.r*fragmentColor.b<1.0 && (modrb<startGrid || modrb>endGrid ))// || modg>0.1))

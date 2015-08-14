@@ -14,15 +14,15 @@ uniform mat4 M;
 uniform mat4 V;
 uniform mat4 P;
 
-out vec4 vertexPosition;
-out vec4 fragmentColor;
-out vec3 cubeColor;
+out vec4 _vertexPosition;
+out vec4 _fragmentColor;
+out vec3 _cubeColor;
 
-out float fragmentAo;
+out float _fragmentAo;
 out vec3 _vertexWidth;
 out float _vertexColorIndex;
 
-out vec4 viewSpace;
+out vec4 _viewSpace;
 
 void main()
 {
@@ -47,44 +47,44 @@ void main()
     offset.y = y;
     offset.z = z;
     
-    viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
-    gl_Position = P * viewSpace;
+    _viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
+    gl_Position = P * _viewSpace;
     
     ao = ao / 2.0;
     
     gl_Position.z = -0.3;
     
-    fragmentAo = 0.3 + ( ambiant ) * 0.7;
-    fragmentAo *= ( (3-ao)/6 + 0.5);
+    _fragmentAo = 0.3 + ( ambiant ) * 0.7;
+    _fragmentAo *= ( (3-ao)/6 + 0.5);
     
-    fragmentColor.a = 0;
+    _fragmentColor.a = 0;
     
-    cubeColor = vec3(1.0,1.0,1.0);
+    _cubeColor = vec3(1.0,1.0,1.0);
     if(vertexColorIndex == 1)
-        cubeColor = vec3(0.0,1.0,0.0);
+        _cubeColor = vec3(0.0,1.0,0.0);
     else if(vertexColorIndex == 2)
-        cubeColor = vec3(0.0,0.0,1.0);
+        _cubeColor = vec3(0.0,0.0,1.0);
     else if(vertexColorIndex == 3)
-        cubeColor = vec3(1.0,1.0,0.0);
+        _cubeColor = vec3(1.0,1.0,0.0);
     else if(vertexColorIndex == 4)
-        cubeColor = vec3(0.3,0.3,0.0);
+        _cubeColor = vec3(0.3,0.3,0.0);
     else if(vertexColorIndex == 5)
-        cubeColor = vec3(0.5,0.5,0.5);
+        _cubeColor = vec3(0.5,0.5,0.5);
     
-    if(cubeColor == vec3(0.0,0.0,1.0))
-        fragmentColor = vec4(cubeColor, 0.1);
+    if(_cubeColor == vec3(0.0,0.0,1.0))
+        _fragmentColor = vec4(_cubeColor, 0.1);
     else
-        fragmentColor = vec4(cubeColor, 1);
+        _fragmentColor = vec4(_cubeColor, 1);
     
     //if(cubeColor != vec3(0.0,0.0,1.0))
     {
-        fragmentColor.r = vertexPosition_modelspace.x;
-        fragmentColor.g = vertexPosition_modelspace.y;
-        fragmentColor.b = vertexPosition_modelspace.z;
+        _fragmentColor.r = vertexPosition_modelspace.x;
+        _fragmentColor.g = vertexPosition_modelspace.y;
+        _fragmentColor.b = vertexPosition_modelspace.z;
         //fragmentColor.a = 1;
     }
     
-    vertexPosition = vec4(vertexPosition_modelspace, 1);//vertexPosition_temp,1);
+    _vertexPosition = vec4(vertexPosition_modelspace, 1);//vertexPosition_temp,1);
     _vertexWidth = vec3(xWidth,yWidth,zWidth);
     
     _vertexColorIndex = vertexColorIndex;

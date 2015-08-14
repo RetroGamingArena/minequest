@@ -1,39 +1,41 @@
-#version 150
+#version 400
 
 layout(triangles) in;
-in VertexData
-{
-    vec3 offset;
-    vec3 fragmentColor;
-    vec3 cubeColor;
-    float vertexWidth;
-    float ao;
-} VertexIn[];
+layout(triangle_strip, max_vertices = 3) out;
 
-/*out VertexData
-{
-    float fragmentColor;
-} VertexOut;*/
+in vec4 _fragmentColor[];
+in vec4 _vertexPosition[];
+in float _fragmentAo[];
+in vec3 _cubeColor[];
+in vec3 _vertexWidth[];
+in vec4 _viewSpace[];
 
-layout (triangle_strip, max_vertices=3) out;
-out vec3 fragmentColor;
-out vec3 cubeColor;
-out float _vertexWidth;
+/*fragmentColor' not written by geometry shader
+ERROR: Input of fragment shader 'vertexPosition' not written by geometry shader
+ERROR: Input of fragment shader 'fragmentAo' not written by geometry shader
+ERROR: Input of fragment shader 'cubeColor' not written by geometry shader
+ERROR: Input of fragment shader '_vertexWidth' not written by geometry shader
+ERROR: Input of fragment shader 'viewSpace' not written by geometry shader*/
+
+out vec4 fragmentColor;
+out vec4 vertexPosition;
 out float fragmentAo;
+out vec3 cubeColor;
+out vec3 vertexWidth;
+out vec4 viewSpace;
 
-void main()
-{
-    for(int i = 0; i < gl_in.length(); i++)
-    {
-        // copy attributes
+void main() {
+    for(int i = 0; i < 3; i++) { // You used triangles, so it's always 3
         gl_Position = gl_in[i].gl_Position;
         
-        // done with the vertex
-        cubeColor = VertexIn[i].cubeColor;
-        fragmentColor = VertexIn[i].fragmentColor;
-        _vertexWidth = VertexIn[i].vertexWidth;
-        fragmentAo = VertexIn[i].ao;
+        fragmentColor = _fragmentColor[i];
+        vertexPosition = _vertexPosition[i];
+        fragmentAo = _fragmentAo[i];
+        cubeColor = _cubeColor[i];
+        vertexWidth = _vertexWidth[i];
+        viewSpace = _viewSpace[i];
         
         EmitVertex();
     }
+    EndPrimitive();
 }

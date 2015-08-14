@@ -169,6 +169,9 @@ bool Processor::isCubeFreeWithMask(int x, int y, int z, int size)
 
 void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
 {
+    if(leaf->occluded && !leaf->visible)
+        return;
+    
     unsigned char type = leaf->getType();
     unsigned char occlusion = leaf->getOcclusion();
     
@@ -182,10 +185,10 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
         
         if(leaf->visible)
         {
-            if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
-                return;
+            //if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
+            //    return;
             
-            if(isCubeFreeWithMask(p, q, r, size))
+            //if(isCubeFreeWithMask(p, q, r, size))
                 //if(!bufferizeWorld->isCubeOccluded(p,q,r,size))
                 {
                     //---
@@ -233,12 +236,12 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
                     //data->push_back(size);
                     //---
                     
-                    bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
+                    //bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
                 }
         }
-        else
-            bufferizeWorld->setInstanceCount(bufferizeWorld->getInstanceCount()+1);
-        bufferizeWorld->setCubeCount(bufferizeWorld->getCubeCount()+size*size*size);
+        //else
+        //    bufferizeWorld->setInstanceCount(bufferizeWorld->getInstanceCount()+1);
+        //bufferizeWorld->setCubeCount(bufferizeWorld->getCubeCount()+size*size*size);
     }
 }
 // End of user code
