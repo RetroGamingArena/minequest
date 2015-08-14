@@ -24,6 +24,10 @@ out float _vertexColorIndex;
 
 out vec4 _viewSpace;
 
+out mat4 _M;
+out mat4 _V;
+out mat4 _P;
+
 void main()
 {
     uint iWidth = uint(vertexWidth);
@@ -88,4 +92,8 @@ void main()
     _vertexWidth = vec3(xWidth,yWidth,zWidth);
     
     _vertexColorIndex = vertexColorIndex;
+    
+    _M = M;
+    _V = V;
+    _P = P;
 }

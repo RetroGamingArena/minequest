@@ -73,11 +73,6 @@ glm::vec3 Ray::getNormalizedPoint()
     coef = max(coef, abs(d.y));
     coef = max(coef, abs(d.z));
     
-    if(coef == 0)
-    {
-        int a = 2;
-    }
-    
     d/=coef;
     return d;
 	// End of user code
