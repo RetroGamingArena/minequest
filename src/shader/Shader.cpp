@@ -34,6 +34,24 @@ Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path,
     mMatrixID = glGetUniformLocation(programID, "M");
     vMatrixID = glGetUniformLocation(programID, "V");
     pMatrixID = glGetUniformLocation(programID, "P");
+    
+    cameraID = glGetUniformLocation(programID, "camera");
+    rayLengthID = glGetUniformLocation(programID, "rayLength");
+    
+    glUniform1i(rayLengthID, 128);
+}
+
+GLuint Shader::getCameraID()
+{
+    // Start of user code getPMatrixID
+    // End of user code
+    return cameraID;
+}
+GLuint Shader::getRayLengthID()
+{
+    // Start of user code getPMatrixID
+    // End of user code
+    return rayLengthID;
 }
 // End of user code
 

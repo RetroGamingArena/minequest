@@ -69,6 +69,7 @@ void VBOScene::render()
         glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getModel()[0][0]);
         glUniformMatrix4fv(shader->getVMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getView()[0][0]);
         glUniformMatrix4fv(shader->getPMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getProjection()[0][0]);
+        glUniformMatrix4fv(shader->getCameraID(), 1, GL_FALSE, &getSelectedCamera()->getPosition()[0]);
         updateCamera = false;
     }
 

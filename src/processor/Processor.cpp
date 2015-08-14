@@ -186,7 +186,7 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
         if(leaf->visible)
         {
             if(isCubeFreeWithMask(p, q, r, size))
-                //if(!world->isCubeOccluded(p,q,r,size))
+                //if(!bufferizeWorld->isCubeOccluded(p,q,r,size))
                 {
                     //---
                     

@@ -1,4 +1,6 @@
 #version 410 core
+#pragma optionNV (unroll all)
+
 in vec4 fragmentColor;
 in vec3 cubeColor;
 in float fragmentAo;
@@ -9,102 +11,89 @@ in float _vertexColorIndex;
 in vec4 viewSpace;
 in vec4 vertexPosition;
 
+in mat4 _M;
+in mat4 _V;
+in mat4 _P;
+in vec3 _camera;
+in vec3 _offsetVec;
+
 out vec4 color;
 
+uniform int rayLength;
 uniform sampler2D myTextureSampler;
 
-const vec3 fogColor = vec3(0.5, 0.5,0.5);
+const vec3 fogColor = vec3(0.5, 0.5, 0.5);
+
+vec3 delta;
+
+vec4 getCollideColor(int i)
+{
+    vec3 current = _camera - delta*i;
+    //if(current.x <= 0)
+    return vec4(1.0, 0.0, 1.0, 1.0);
+    //else
+    //    return vec4(0.5, 0.0, 1.0, 1.0);
+}
+
+bool isCollided(int i)
+{
+    vec3 current = _camera - delta*i;
+    bool res = current.x > 0;
+    return res;
+}
 
 void main()
 {
+    //discard;
+    vec4 viewport = vec4(0,0,1920,1080);
     
+    mat4 VM = _V*_M;
     
-    color = vec4(fragmentColor.r, fragmentColor.g, fragmentColor.b, 1);
+    mat4 mvp = _P*VM;
+
+    mat4 _inverse = inverse(mvp);
+    vec4 tmp = vec4(gl_FragCoord.x, gl_FragCoord.y, 1.0, 1.0);
+    tmp.x = (tmp.x - viewport.x) / viewport.z;
+    tmp.y = (tmp.y - viewport.y) / viewport.t;
+    tmp = tmp * 2 - 1;
+    vec4 obj = _inverse * tmp;
+    obj /= obj.w;
+    vec3 unprojection = obj.xyz;
     
-    /*float ao = fragmentAo;
-    ao = min(1.0, ao);
+    //int length = 2;
+    delta = (_camera - unprojection)/rayLength;
     
-    color  = fragmentColor;
+    color = vec4(0.0, 0.0, 0.0, 1.0);
+    vec4 _color = vec4(0.0, 0.0, 0.0, 1.0);
     
-    float dist = length(viewSpace);
+    bool collided = false;
+    vec4 collideColor = vec4(0.0, 0.0, 0.0, 1.0);
     
-    float fogFactor = (80 - dist*2)/(80 - 20);
-    
-    float gridFade = 0.2;
-    vec4 gridColor = clamp(vec4(cubeColor.r-gridFade, cubeColor.g-gridFade, cubeColor.b-gridFade, 1.0), vec4(0.0), vec4(1.0));
-    
+    int i;
+    vec4 test;
+    i=0;
+    vec3 current = _camera - delta*0;
+    i=1;
+    vec3 current2 = _camera - delta*1;
+    if(current.x<=0)
     {
-        float gridWidth = 0.0025;
-        float startGrid = gridWidth;
-        float endGrid = 0.125-gridWidth;
-        
-        if(fragmentColor.g == 0)
+        color = vec4(1.0, 0.0, 0.0, 1.0);
+    }
+    else if(current2.x<=0)
+    {
+        color = vec4(1.0, 0.0, 0.0, 1.0);
+    }
+    else
+        discard;
+    /*else
+    {
+        i=1;
+        current = _camera - delta*i;
+        if(current.x<=0)
         {
-            float modr = mod(fragmentColor.r*2*_vertexWidth.x/16.0,2/16.0);
-            float modb = mod(fragmentColor.b*2*_vertexWidth.x/16.0,2/16.0);
-            
-            if(fragmentColor.r<1.0 && (modr<startGrid || modr>endGrid))
-                color  = gridColor;
-            else if(fragmentColor.b<1.0 && (modb<startGrid || modb>endGrid))
-                color  = gridColor;
-            else
-                color  = vec4(cubeColor, 1.0);
-        }
-        else if(fragmentColor.r == 0)
-        {
-            float modg = mod(fragmentColor.g*2*_vertexWidth.y/16.0,2/16.0);
-            float modb = mod(fragmentColor.b*2*_vertexWidth.y/16.0,2/16.0);
-            
-            if(fragmentColor.g<1.0 && (modg<startGrid || modg>endGrid))
-                color  = gridColor;
-            else if(fragmentColor.b<1.0 && (modb<startGrid || modb>endGrid))
-                color  = gridColor;
-            else
-                color  = vec4(cubeColor, 1.0);
-        }
-        else if(fragmentColor.b == 0)
-        {
-            float modr = mod(fragmentColor.r*2*_vertexWidth.z/16.0,2/16.0);
-            float modg = mod(fragmentColor.g*2*_vertexWidth.y/16.0,2/16.0);
-            
-            if(fragmentColor.r<1.0 && (modr<startGrid || modr>endGrid))
-                color  = gridColor;
-            else if(fragmentColor.g<1.0 && (modg<startGrid || modg>endGrid))
-                color  = gridColor;
-            else
-                color  = vec4(cubeColor, 1.0);
-        }
-        else if( vertexPosition.y >= 0.999999 )
-        {
-            float modr = mod(fragmentColor.r*2*_vertexWidth.x/16.0,2/16.0);
-            float modb = mod(fragmentColor.b*2*_vertexWidth.x/16.0,2/16.0);
-            
-            if(fragmentColor.r<1.0 && (modr<startGrid || modr>endGrid))
-                color  = gridColor;
-            else if(fragmentColor.b<1.0 && (modb<startGrid || modb>endGrid))
-                color  = gridColor;
-            else
-                color  = vec4(cubeColor, 1.0);
+            color = vec4(0.0, 1.0, 0.0, 1.0);
         }
         else
-        {
-            float modg = mod(fragmentColor.g*2*_vertexWidth.y/16.0,2/16.0);
-            float modrb = mod(fragmentColor.r*fragmentColor.b*2*_vertexWidth.y/16.0,2/16.0);
-            if(fragmentColor.g<1.0 && (modg<startGrid || modg>endGrid))
-                color  = gridColor;
-            else if(fragmentColor.r*fragmentColor.b<1.0 && (modrb<startGrid || modrb>endGrid ))
-                color  = gridColor;
-            else
-                color = vec4(cubeColor, 1.0);
-        }
-        
-        color = clamp(vec4(color * ao), vec4(0.0), vec4(1.0));
-    }
-    
-    fogFactor = clamp( fogFactor, 0.0, 1.0 );
-    
-    vec3 lightColor = vec3(color.rgb);
-    vec3 finalColor = mix(fogColor, lightColor, fogFactor);
-    color = vec4(finalColor, 1);*/
-
+            discard;
+    }*/
 }

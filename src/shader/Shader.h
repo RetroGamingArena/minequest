@@ -36,6 +36,8 @@ class Shader
 	GLuint mMatrixID;
 	GLuint vMatrixID;
 	GLuint pMatrixID;
+    GLuint cameraID;
+    GLuint rayLengthID;
 
 	protected:
 	// Start of user code protected
@@ -62,6 +64,8 @@ class Shader
 		void setVMatrixID(GLuint _vMatrixID);
 		GLuint getPMatrixID();
 		void setPMatrixID(GLuint _pMatrixID);
+        GLuint getCameraID();
+        GLuint getRayLengthID();
 		virtual void poly() = 0;
 };
 

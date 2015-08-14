@@ -32,7 +32,7 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = rand() % INT_MAX;
+    int seed = 100; //rand() % INT_MAX;
     
     module::Perlin module;
     

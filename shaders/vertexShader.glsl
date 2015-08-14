@@ -13,6 +13,7 @@ uniform mat4 MVP;
 uniform mat4 M;
 uniform mat4 V;
 uniform mat4 P;
+uniform vec3 camera;
 
 out vec4 vertexPosition;
 out vec4 fragmentColor;
@@ -23,6 +24,11 @@ out vec3 _vertexWidth;
 out float _vertexColorIndex;
 
 out vec4 viewSpace;
+out mat4 _M;
+out mat4 _V;
+out mat4 _P;
+out vec3 _camera;
+out vec3 _offsetVec;
 
 void main()
 {
@@ -95,4 +101,10 @@ void main()
     _vertexWidth = vec3(xWidth,yWidth,zWidth);
     
     _vertexColorIndex = vertexColorIndex;
+    
+    _M = M;
+    _V = V;
+    _P = P;
+    _camera = camera;
+    _offsetVec = offset;
 }
