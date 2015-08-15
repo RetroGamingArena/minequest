@@ -25,11 +25,25 @@ Item::Item()
 // End of user code
 {
 	// Start of user code constructor
+    dx = 0;
+    dy = 0;
+    dz = 0;
 	// End of user code
 }
 
 
 // Start of user code methods
+bool Player::getFalling()
+{
+    // Start of user code getFalling
+    // End of user code
+    return falling;
+}
+
+void Player::setFalling(bool _falling)
+{
+    falling = _falling;
+}
 // End of user code
 
 
@@ -173,11 +187,22 @@ bool Item::tryMove()
 {
 	// Start of user code tryMove
     World* world = Engine::getInstance()->getWorld();
+    if(dx == 0 && dy == 0 && dz == 0)
+        return false;
+    if(!falling)
+    {
+        unsigned char type = world->getCube(x, y+dy, z);
+        if(type == 0)
+        {
+            falling = true;
+        }
+    }
     if(world->getCube(x+dx, y+dy, z+dz) > 0)
     {
         dx = 0;
         dy = 0;
         dz = 0;
+        falling = false;
         return false;
     }
     

@@ -260,10 +260,10 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
         r = voxel.z;
         size = voxel.size;
         
-        //if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
+        if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
         {
-          //  bad++;
-          //  continue;
+            bad++;
+            continue;
         }
         good++;
 

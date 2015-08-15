@@ -117,20 +117,6 @@ void Player::draw(VertexBuffer * buffer)
 	// End of user code
 }
 
-
-
-bool Player::getFalling()
-{
-	// Start of user code getFalling
-	// End of user code
-	return falling;
-}
-
-void Player::setFalling(bool _falling)
-{
-	falling = _falling;
-}
-
 float Player::getHRotation()
 {
 	// Start of user code getHRotation

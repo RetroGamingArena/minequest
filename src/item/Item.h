@@ -33,6 +33,7 @@ class Item
 
 	protected:
 	// Start of user code protected
+    bool falling;
 	// End of user code
 	float x;
 	float y;
