@@ -1,5 +1,5 @@
 #version 410 core
-in vec4 _fragmentColor;
+/*in vec4 _fragmentColor;
 in vec3 _cubeColor;
 in float _fragmentAo;
 in vec3 _vertexWidth;
@@ -7,19 +7,17 @@ in vec3 _vertexWidth;
 in float _vertexColorIndex;
 
 in vec4 _viewSpace;
-in vec4 _vertexPosition;
+in vec4 _vertexPosition;*/
 
-/*
- in vec4 fragmentColor;
- in vec3 cubeColor;
- in float fragmentAo;
- in vec3 vertexWidth;
+in vec4 fragmentColor;
+in vec3 cubeColor;
+in float fragmentAo;
+in vec3 vertexWidth;
  
- in float _vertexColorIndex;
+in float _vertexColorIndex;
  
- in vec4 viewSpace;
- in vec4 vertexPosition;
- */
+in vec4 viewSpace;
+in vec4 vertexPosition; 
 
 out vec4 color;
 
@@ -29,13 +27,13 @@ const vec3 fogColor = vec3(0.5, 0.5,0.5);
 
 void main()
 {
-    vec4 fragmentColor = _fragmentColor;
+    /*vec4 fragmentColor = _fragmentColor;
     vec3 cubeColor = _cubeColor;
     float fragmentAo = _fragmentAo;
     vec3 vertexWidth = _vertexWidth;
     
     vec4 viewSpace = _viewSpace;
-    vec4 vertexPosition = _vertexPosition;
+    vec4 vertexPosition = _vertexPosition;*/
     
     float ao = fragmentAo;
     ao = min(1.0, ao);

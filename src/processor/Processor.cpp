@@ -31,23 +31,73 @@ void Processor::addVoxel(Voxel voxel)
     addVoxelMutex->unlock();
 }
 
+#define ANG2RAD 3.14159265358979323846/180.0
+
 double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
 {
     // Start of user code isCubeInFrustum
-    glm::vec3 project;
     
-    project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
+    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
     
-    glm::vec4 viewSpace = Scene::VM * glm::vec4(glm::vec3(x1,y1,z1)/*vertexPosition_temp+offset*/,1);
+    glm::vec3 p(x1,y1,z1);
+    
+    float pcz,pcx,pcy,aux;
+    
+    float farD = 200.0f;
+    float nearD = 0.009f;
+    float angle = 70.0f;
+    float ratio = 192.0f / 108.0f;
+    float tang = (float)tan(ANG2RAD * angle * 0.5);
+
+    // compute vector from camera position to p
+    glm::vec3 v = p-camera->getPosition();//camPos;
+    
+    glm::vec3 Z;
+    Z = camera->getCenter() - p;
+    
+    Z = glm::normalize(Z);
+
+    glm::vec3 X = Z * camera->getUp();
+    X= glm::normalize(X);
+    
+    // the real "up" vector is the cross product of X and Z
+    glm::vec3 Y = X * Z;
+    
+    // compute and test the Z coordinate
+    pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;//v.innerProduct(-Z);
+    if (pcz > farD || pcz < nearD)
+        return false;
+    
+    // compute and test the Y coordinate
+    pcy = v.x*Y.x + v.y*Y.y + v.z*Y.z;
+    aux = pcz * tang;
+    if (pcy > aux || pcy < -aux)
+        return false;
+    
+    // compute and test the X coordinate
+    pcz = v.x*X.x + v.y*X.y + v.z*X.z;//pcx = v.innerProduct(X);
+    aux = aux * ratio;
+    if (pcx > aux || pcx < -aux)
+        return false;
+    
+    return true;
+    
+    //glm::vec3 project;
+    
+    //project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
+    
+    /*glm::vec4 viewSpace = Scene::VM * glm::vec4(glm::vec3(x1,y1,z1),1);
     glm::vec4 position = Scene::projection * viewSpace;
     
     if( position.x>=-position.w && position.x<=position.w && position.y>=-position.w && position.y<=position.w)
-        return true;
-    
-    /*if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
         return true;*/
+    
+    //return true;
+    
+    //if(project.z <= near)
+    //    return false;
+    //if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
+    //    return true;
     /*project = glm::project(glm::vec3(x2,y1,z1), Scene::VM, Scene::projection, viewport);
     if(project.z <= near)
         return false;
@@ -226,9 +276,8 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
         r = voxel.z;
         size = voxel.size;
         
-
-        //if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
-        //    return;
+        if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
+            continue;
         
         occlusion = voxel.occlusion;
         type = voxel.type;

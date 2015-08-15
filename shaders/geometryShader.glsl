@@ -26,12 +26,12 @@ void main()
     {
         gl_Position = gl_in[i].gl_Position;
  
-        fragmentColor = _fragmentColor[0];
-        vertexPosition = _vertexPosition[0];
-        fragmentAo = _fragmentAo[0];
-        cubeColor = _cubeColor[0];
-        vertexWidth = _vertexWidth[0];
-        viewSpace = _viewSpace[0];s
+        fragmentColor = _fragmentColor[i];
+        vertexPosition = _vertexPosition[i];
+        fragmentAo = _fragmentAo[i];
+        cubeColor = _cubeColor[i];
+        vertexWidth = _vertexWidth[i];
+        viewSpace = _viewSpace[i];
         
         if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
             EmitVertex();
