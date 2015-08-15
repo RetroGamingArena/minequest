@@ -277,22 +277,8 @@ void GameScene::render()
         
         gameSceneData->erase(gameSceneData->begin()+96, gameSceneData->end());
         gameSceneData->insert(gameSceneData->end(), temp->begin(), temp->end());
-        temp->clear();
-        delete temp;
-        /*vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
-        
-        gameSceneData->erase(gameSceneData->begin()+96, gameSceneData->end());
-        
-        for(int i=0; i < Engine::getInstance()->getWorld()->getChunks().size(); i++)
-        {
-            Chunk* chunk = Engine::getInstance()->getWorld()->getChunks()[i];
-            
-            if(chunk->getBuffered() && chunk->getVertexBuffer()->getData()->size() > 0)
-            {
-                vector<GLuint>* chunkData = chunk->getVertexBuffer()->getData();
-                gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
-            }
-        }*/
+        //temp->clear();
+        //delete temp;
         
         setChunksOffset(gameSceneData->size());
         

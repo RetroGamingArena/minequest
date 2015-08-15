@@ -23,7 +23,7 @@ out vec4 color;
 
 uniform sampler2D myTextureSampler;
 
-const vec3 fogColor = vec3(0.5, 0.5,0.5);
+const vec3 fogColor = vec3(0.5, 0.5, 0.5);
 
 void main()
 {

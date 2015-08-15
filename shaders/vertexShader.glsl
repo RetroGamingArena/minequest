@@ -63,7 +63,7 @@ void main()
     
     _fragmentColor.a = 0;
     
-    _cubeColor = vec3(1.0,0.0,1.0);
+    _cubeColor = vec3(0.0,0.0,0.0);
     if(vertexColorIndex == 1)
         _cubeColor = vec3(0.0,1.0,0.0);
     else if(vertexColorIndex == 2)

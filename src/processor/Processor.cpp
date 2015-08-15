@@ -1,3 +1,4 @@
+
 #include <cstdlib>
 
 #include "Processor.h"
@@ -64,7 +65,7 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
     glm::vec3 Y = X * Z;
     
     // compute and test the Z coordinate
-    pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;//v.innerProduct(-Z);
+    pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;
     if (pcz > farD || pcz < nearD)
         return false;
     
@@ -75,66 +76,46 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
         return false;
     
     // compute and test the X coordinate
-    pcz = v.x*X.x + v.y*X.y + v.z*X.z;//pcx = v.innerProduct(X);
+    pcz = v.x*X.x + v.y*X.y + v.z*X.z;
+    aux = aux * ratio;
+    if (pcx > aux || pcx < -aux)
+        return false;
+    
+    p = glm::vec3(x2,y2,z2);
+    
+    // compute vector from camera position to p
+    v = p-camera->getPosition();//camPos;
+    
+    Z = camera->getCenter() - p;
+    
+    Z = glm::normalize(Z);
+    
+    X = Z * camera->getUp();
+    X= glm::normalize(X);
+    
+    // the real "up" vector is the cross product of X and Z
+    Y = X * Z;
+    
+    // compute and test the Z coordinate
+    pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;
+    if (pcz > farD || pcz < nearD)
+        return false;
+    
+    // compute and test the Y coordinate
+    pcy = v.x*Y.x + v.y*Y.y + v.z*Y.z;
+    aux = pcz * tang;
+    if (pcy > aux || pcy < -aux)
+        return false;
+    
+    // compute and test the X coordinate
+    pcz = v.x*X.x + v.y*X.y + v.z*X.z;
     aux = aux * ratio;
     if (pcx > aux || pcx < -aux)
         return false;
     
     return true;
     
-    //glm::vec3 project;
-    
-    //project = glm::project(glm::vec3(x1,y1,z1), Scene::VM, Scene::projection, viewport);
-    
-    /*glm::vec4 viewSpace = Scene::VM * glm::vec4(glm::vec3(x1,y1,z1),1);
-    glm::vec4 position = Scene::projection * viewSpace;
-    
-    if( position.x>=-position.w && position.x<=position.w && position.y>=-position.w && position.y<=position.w)
-        return true;*/
-    
-    //return true;
-    
-    //if(project.z <= near)
-    //    return false;
-    //if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-    //    return true;
-    /*project = glm::project(glm::vec3(x2,y1,z1), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x1,y1,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y1,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x1,y2,z1), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y2,z1), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x1,y2,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;
-    project = glm::project(glm::vec3(x2,y2,z2), Scene::VM, Scene::projection, viewport);
-    if(project.z <= near)
-        return false;
-    if( project.z>0 && project.x>=0 && project.x<=1920 && project.y>=0 && project.y<=1080)
-        return true;*/
-    
-    return false;
+
     
     // End of user code
 }
@@ -267,6 +248,9 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
     
     double currentTime = glfwGetTime();
 
+    int good = 0;
+    int bad = 0;
+    
     for(int i = 0; i < voxels.size(); i++)
     {
         voxel = voxels[i];
@@ -276,9 +260,13 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
         r = voxel.z;
         size = voxel.size;
         
-        if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
-            continue;
-        
+        //if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
+        {
+          //  bad++;
+          //  continue;
+        }
+        good++;
+
         occlusion = voxel.occlusion;
         type = voxel.type;
         
@@ -342,7 +330,10 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
         
         if(leaf->visible)
         {
-            voxels.push_back(Voxel(p,q,r,size, leaf->getOcclusion(), leaf->getType()));
+            addVoxel(Voxel(p,q,r,size, leaf->getOcclusion(), leaf->getType()));
+            
+            //voxels.push_back(Voxel(p,q,r,size, leaf->getOcclusion(), leaf->getType()));
+            
             //if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
             //    return;
             
