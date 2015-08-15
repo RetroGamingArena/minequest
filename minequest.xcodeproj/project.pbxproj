@@ -443,6 +443,7 @@
 		6458F6171A56E5490006BF88 /* libnoise.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnoise.dylib; path = ../../../../../usr/local/lib/libnoise.dylib; sourceTree = "<group>"; };
 		645D4A021AF000F700CA8592 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		645D4A031AF000F700CA8592 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = src/main.h; sourceTree = SOURCE_ROOT; };
+		646170DA1B7F42AA0022641D /* Voxel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voxel.h; sourceTree = "<group>"; };
 		64687A411A6C2F2D00C0CAC3 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		647F97871B0F99A400133A4C /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
 		647F97881B0F99A400133A4C /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
@@ -945,6 +946,7 @@
 				64C986561AFBBFBB00A5B62E /* ChunkTask.h */,
 				6440BB6D1AFAAA08006A0842 /* World.cpp */,
 				6440BB6E1AFAAA08006A0842 /* World.h */,
+				646170DA1B7F42AA0022641D /* Voxel.h */,
 			);
 			name = world;
 			path = src/world;

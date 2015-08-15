@@ -20,34 +20,23 @@ out vec3 cubeColor;
 out vec3 vertexWidth;
 out vec4 viewSpace;
 
-void main() {
-    bool _discard = false;
+void main()
+{
+    fragmentColor = _fragmentColor[0];
+    vertexPosition = _vertexPosition[0];
+    fragmentAo = _fragmentAo[0];
+    cubeColor = _cubeColor[0];
+    vertexWidth = _vertexWidth[0];
+    viewSpace = _viewSpace[0];
     
-    /*for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 3; i++)
     {
-        if(gl_in[i].gl_Position.x<-gl_in[i].gl_Position.w || gl_in[i].gl_Position.y<-gl_in[i].gl_Position.w || gl_in[i].gl_Position.x>gl_in[i].gl_Position.w || gl_in[i].gl_Position.y>gl_in[i].gl_Position.w )
-        {
-            _discard = true;
-            break;
-        }
-    }*/
-
-    //if(!_discard)
-    {
-        for(int i = 0; i < 3; i++)
-        {
-            gl_Position = gl_in[i].gl_Position;
+        gl_Position = gl_in[i].gl_Position;
         
-            fragmentColor = _fragmentColor[i];
-            vertexPosition = _vertexPosition[i];
-            fragmentAo = _fragmentAo[i];
-            cubeColor = _cubeColor[i];
-            vertexWidth = _vertexWidth[i];
-            viewSpace = _viewSpace[i];
         
-            if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
-                EmitVertex();
-        }
-        EndPrimitive();
+        
+        if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
+            EmitVertex();
     }
+    EndPrimitive();
 }

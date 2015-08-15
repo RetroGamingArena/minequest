@@ -97,7 +97,7 @@ void GameScene::handle(Event * event)
 
             if(worldProcessor->isFinished() && !worldProcessor->isRunning())
             {
-                World* world = Engine::getInstance()->getWorld();
+                /*World* world = Engine::getInstance()->getWorld();
                     
                 world->setCubeCount(0);
                 world->setInstanceCount(0);
@@ -106,8 +106,8 @@ void GameScene::handle(Event * event)
                 vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
                     
                 for(int i = 0; i < chunks.size(); i++)
-                    chunks[i]->setBuffered(false);
-
+                    chunks[i]->setBuffered(false);*/
+                updateBuffer = true;
             }
             updateCamera = true;
             cameraLock->unlock();
@@ -258,7 +258,7 @@ void GameScene::render()
     if(world->isFinished() && !worldProcessor->isFinished())
     //if(updateChunksCpt >= world->getChunks().size()-1)
     {
-        if(!worldProcessor->isRunning())
+        if(!worldProcessor->isRunning() && !worldProcessor->buffered)
         {
             worldProcessor->start();
             updateBuffer = true;
@@ -266,7 +266,13 @@ void GameScene::render()
     }
     if(worldProcessor->isFinished() && updateBuffer)//updateBufferCpt == world->getChunks().size()-1)
     {
+        if(!worldProcessor->buffered)
+            worldProcessor->buffered = true;
+
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
+        worldProcessor->bufferizeVoxels(gameSceneData);
+        
+        /*vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         
         gameSceneData->erase(gameSceneData->begin()+96, gameSceneData->end());
         
@@ -279,7 +285,7 @@ void GameScene::render()
                 vector<GLuint>* chunkData = chunk->getVertexBuffer()->getData();
                 gameSceneData->insert(gameSceneData->end(), chunkData->begin(), chunkData->end());
             }
-        }
+        }*/
         
         setChunksOffset(gameSceneData->size());
         

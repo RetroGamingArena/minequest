@@ -19,6 +19,7 @@
 #include "Octree.h"
 #include "Leaf.h"
 #include "Engine.h"
+#include "Voxel.h"
 // End of user code
 
 
@@ -32,6 +33,7 @@ class Processor
 {
 	// Start of user code private
     static double near;
+    static std::mutex* addVoxelMutex;
     // redondent for optimisation
     static glm::vec4 viewport;
     static bool isCubeVisible(int x, int y, int z, int size);
@@ -42,12 +44,16 @@ class Processor
 
 	protected:
 	// Start of user code protected
-    static void bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
+    void bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
 	// End of user code
 
 	public:
 		// Start of user code public
         static World* bufferizeWorld;
+        vector<Voxel> voxels;
+        bool buffered;
+        void addVoxel(Voxel voxel);
+        void bufferizeVoxels(vector<GLuint>* vec);
 		// End of user code
 		Processor();
 		virtual ~Processor(){};
