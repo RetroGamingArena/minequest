@@ -16,6 +16,8 @@ Thread::Thread()
 	// Start of user code constructor
     mutex = new std::mutex;
     task = NULL;
+    finishedEvent = new Event(Event::ID_FINISHED, this);
+    t = NULL;
     //mutex->lock();
 	// End of user code
 }
@@ -54,7 +56,12 @@ void Thread::start()
 {
 	// Start of user code start
     mutex->lock();
-    thread* t = new thread(run, this);
+    if(t != NULL)
+    {
+        t->join();
+        delete t;
+    }
+    t = new thread(run, this);
 	// End of user code
 }
 bool Thread::isBusy()
@@ -75,7 +82,7 @@ void Thread::run(Thread * thread)
     {
 
         thread->task->run();
-        thread->fireEvent(new Event(Event::ID_FINISHED, thread));
+        thread->fireEvent(thread->finishedEvent);//new Event(Event::ID_FINISHED, thread));
         thread->mutex->unlock();
     }
 	// End of user code

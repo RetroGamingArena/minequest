@@ -23,6 +23,7 @@ Event::Event()
 Event::~Event()
 {
 	// Start of user code destructor
+    //delete[] ID;
 	// End of user code
 }
 

@@ -14,6 +14,7 @@ Label::Label()
 // End of user code
 {
 	// Start of user code constructor
+    caption = NULL;
 	// End of user code
 }
 
@@ -56,6 +57,8 @@ char* Label::getCaption()
 
 void Label::setCaption(char* _caption)
 {
+    if(caption != NULL)
+        delete caption;
 	caption = _caption;
 }
 
