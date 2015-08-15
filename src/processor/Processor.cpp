@@ -281,7 +281,7 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
         
         occlusion = voxel.occlusion;
         type = voxel.type;
-    
+        
         //if(isCubeFreeWithMask(p, q, r, size))
         //if(!bufferizeWorld->isCubeOccluded(p,q,r,size))
         {
@@ -315,7 +315,7 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
          
             _size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
          
-            vec->push_back(size);
+            vec->push_back(_size);
         
             //bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
         }
