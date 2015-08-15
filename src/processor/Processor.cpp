@@ -227,8 +227,8 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
         size = voxel.size;
         
 
-        if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
-            return;
+        //if(!isCubeInFrustum(p/Chunk::subsize,q/Chunk::subsize,r/Chunk::subsize,(p+size)/Chunk::subsize,(q+size)/Chunk::subsize,(r+size)/Chunk::subsize))
+        //    return;
         
         occlusion = voxel.occlusion;
         type = voxel.type;

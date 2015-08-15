@@ -22,18 +22,16 @@ out vec4 viewSpace;
 
 void main()
 {
-    fragmentColor = _fragmentColor[0];
-    vertexPosition = _vertexPosition[0];
-    fragmentAo = _fragmentAo[0];
-    cubeColor = _cubeColor[0];
-    vertexWidth = _vertexWidth[0];
-    viewSpace = _viewSpace[0];
-    
     for(int i = 0; i < 3; i++)
     {
         gl_Position = gl_in[i].gl_Position;
-        
-        
+ 
+        fragmentColor = _fragmentColor[0];
+        vertexPosition = _vertexPosition[0];
+        fragmentAo = _fragmentAo[0];
+        cubeColor = _cubeColor[0];
+        vertexWidth = _vertexWidth[0];
+        viewSpace = _viewSpace[0];s
         
         if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
             EmitVertex();

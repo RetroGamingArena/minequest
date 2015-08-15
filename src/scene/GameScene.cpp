@@ -270,6 +270,7 @@ void GameScene::render()
             worldProcessor->buffered = true;
 
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
+        gameSceneData->erase(gameSceneData->begin()+96, gameSceneData->end());
         worldProcessor->bufferizeVoxels(gameSceneData);
         
         /*vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
