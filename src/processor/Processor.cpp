@@ -35,11 +35,26 @@ void Processor::addVoxel(Voxel voxel)
 
 #define ANG2RAD 3.14159265358979323846/180.0
 
-double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
+bool Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
 {
     // Start of user code isCubeInFrustum
     
-    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
+    glm::vec3 vertexPosition = glm::vec3(x1,y1,z1);
+    glm::vec4 viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
+    glm::vec4 position = Scene::projection * viewSpace;
+
+    if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
+        return false;
+    
+    vertexPosition = glm::vec3(x2,y2,z2);
+    viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
+    position = Scene::projection * viewSpace;
+    
+    if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
+        return false;
+    
+    
+    /*Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
     
     glm::vec3 p(x1,y1,z1);
     
@@ -51,35 +66,30 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
     float ratio = 192.0f / 108.0f;
     float tang = (float)tan(ANG2RAD * angle * 0.5);
 
-    // compute vector from camera position to p
-    glm::vec3 v = p-camera->getPosition();//camPos;
+    glm::vec3 v = p-camera->getPosition();
     
     glm::vec3 Z;
     Z = camera->getCenter() - p;
     
     float length = Z.length();
-    Z = Z / length;//glm::normalize(Z);
+    Z = Z / length;
 
     glm::vec3 X = Z * camera->getUp();
     
     length = Z.length();
-    X = X / length;//glm::normalize(X);
+    X = X / length;
     
-    // the real "up" vector is the cross product of X and Z
     glm::vec3 Y = X * Z;
     
-    // compute and test the Z coordinate
     pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;
     if (pcz > farD || pcz < nearD)
         return false;
     
-    // compute and test the Y coordinate
     pcy = v.x*Y.x + v.y*Y.y + v.z*Y.z;
     aux = pcz * tang;
     if (pcy > aux || pcy < -aux)
         return false;
     
-    // compute and test the X coordinate
     pcz = v.x*X.x + v.y*X.y + v.z*X.z;
     aux = aux * ratio;
     if (pcx > aux || pcx < -aux)
@@ -87,8 +97,7 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
     
     p = glm::vec3(x2,y2,z2);
     
-    // compute vector from camera position to p
-    v = p-camera->getPosition();//camPos;
+    v = p-camera->getPosition();
     
     Z = camera->getCenter() - p;
     
@@ -98,32 +107,26 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
     X = Z * camera->getUp();
     
     length = Z.length();
-    X= X / length;//glm::normalize(X);
+    X= X / length;
     
-    // the real "up" vector is the cross product of X and Z
     Y = X * Z;
     
-    // compute and test the Z coordinate
     pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;
     if (pcz > farD || pcz < nearD)
         return false;
     
-    // compute and test the Y coordinate
     pcy = v.x*Y.x + v.y*Y.y + v.z*Y.z;
     aux = pcz * tang;
     if (pcy > aux || pcy < -aux)
         return false;
     
-    // compute and test the X coordinate
     pcz = v.x*X.x + v.y*X.y + v.z*X.z;
     aux = aux * ratio;
     if (pcx > aux || pcx < -aux)
-        return false;
+        return false;*/
     
     return true;
-    
 
-    
     // End of user code
 }
 
@@ -272,7 +275,7 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
         {
             bad++;
-            //continue;
+            continue;
         }
         good++;
 
@@ -316,11 +319,6 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         
             //bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
         }
-    }
-    
-    if(vec->size() < 1000)
-    {
-        int a = 1;
     }
     
     currentTime = glfwGetTime() - currentTime;
