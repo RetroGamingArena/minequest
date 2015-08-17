@@ -17,6 +17,7 @@
 
 // Start of user code includes
 #include "WorldGenerator.h"
+#include "Voxel.h"
 // End of user code
 
 
@@ -50,8 +51,9 @@ class Chunk
 		// Start of user code public
         Chunk(float _p, float _q, float _r);
 		// End of user code
-	static int size;
-	static int subsize;
+        static int size;
+        static int subsize;
+        vector<Voxel> voxels;
 		Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered, bool _generated, bool _generating, bool _buffering);
 		Chunk();
 		~Chunk();

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "461150669.230863"
+            timestampString = "461538806.464013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "IterativeProcessor::bufferize(Chunk* chunk)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "461150669.230863"
+            timestampString = "461538806.464013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "IterativeProcessor::bufferize(Chunk* chunk)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2508,7 +2508,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
+            landmarkName = "IterativeProcessor::bufferize(Chunk* chunk)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2524,7 +2524,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
+            landmarkName = "IterativeProcessor::bufferize(Chunk* chunk)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4046,22 +4046,6 @@
             startingLineNumber = "172"
             endingLineNumber = "172"
             landmarkName = "World::bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "461150669.230863"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6979,7 +6963,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "IterativeProcessor::bufferizeOctreeEntry(OctreeEntry* octreeEntry, vector&lt;GLuint&gt;* buffer, int p, int q, int r, int size)"
+            landmarkName = "IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeEntry, vector&lt;GLuint&gt;* buffer, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6995,7 +6979,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "IterativeProcessor::bufferizeOctreeEntry(OctreeEntry* octreeEntry, vector&lt;GLuint&gt;* buffer, int p, int q, int r, int size)"
+            landmarkName = "IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeEntry, vector&lt;GLuint&gt;* buffer, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7054,12 +7038,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/IterativeProcessor.cpp"
-            timestampString = "461150669.230863"
+            timestampString = "461538806.464013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "IterativeProcessor::bufferize(Octree * octree)"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "IterativeProcessor::bufferize(Chunk* chunk)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7118,12 +7102,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7390,12 +7374,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7406,11 +7390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "Processor::isCubeFree(int x, int y, int z, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7438,11 +7422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "Processor::isCubeFree(int x, int y, int z, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7454,12 +7438,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7470,12 +7454,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7502,12 +7486,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7518,12 +7502,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7566,11 +7550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "Processor::bufferizeVoxels"
             landmarkType = "5">
          </BreakpointContent>
@@ -7582,28 +7566,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "Processor::bufferizeVoxels"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7628,11 +7596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7644,11 +7612,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7660,11 +7628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7676,11 +7644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7692,11 +7660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "Processor::bufferizeVoxels"
             landmarkType = "5">
          </BreakpointContent>
@@ -7708,11 +7676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "Processor::bufferizeVoxels"
             landmarkType = "5">
          </BreakpointContent>
@@ -7724,43 +7692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "Processor::bufferizeVoxels"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "Processor::bufferizeVoxels"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7772,11 +7708,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7788,11 +7724,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -7820,12 +7756,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "Processor::bufferizeLeaf(Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector&lt;GLuint&gt;* vec, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8091,11 +8027,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8161,38 +8097,6 @@
             startingLineNumber = "12"
             endingLineNumber = "12"
             landmarkName = "VoxelBufferingTask::run()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
-            landmarkName = "Processor::bufferizeVoxels"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/processor/Processor.cpp"
-            timestampString = "461515243.794331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "Processor::bufferizeVoxels"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8504,12 +8408,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/processor/Processor.cpp"
-            timestampString = "461515096.645014"
+            timestampString = "461542190.372564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/Processor.cpp"
+            timestampString = "461542190.372564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "Processor::bufferizeVoxels"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/Processor.cpp"
+            timestampString = "461542190.372564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "Processor::bufferizeVoxels"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/Processor.cpp"
+            timestampString = "461542190.372564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "Processor::bufferizeVoxels"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/Processor.cpp"
+            timestampString = "461542190.372564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/Processor.cpp"
+            timestampString = "461542184.335413"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "Processor::isPointInFrustum(double x, double y, double z)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/processor/Processor.cpp"
+            timestampString = "461542210.279621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "Processor::bufferizeVoxels"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

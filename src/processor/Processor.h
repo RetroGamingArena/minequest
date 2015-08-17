@@ -43,26 +43,27 @@ class Processor
     static bool isCubeVisible(int x, int y, int z, int size);
     static bool isCubeFree(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size);
+    static bool isPointInFrustum(double x, double y, double z);
     static bool isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
 	// End of user code
 
 	protected:
 	// Start of user code protected
-    void bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
+    void bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
 	// End of user code
 
 	public:
 		// Start of user code public
     vector<GLuint>* vec;
         static World* bufferizeWorld;
-        vector<Voxel> voxels;
+        //vector<Voxel> voxels;
         bool buffered;
         void addVoxel(Voxel voxel);
         void bufferizeVoxels(/*vector<GLuint>* vec*/);
 		// End of user code
 		Processor();
 		virtual ~Processor(){};
-		virtual vector<GLuint>* bufferize(Octree * octree) = 0;
+		virtual vector<GLuint>* bufferize(Chunk* octree) = 0;
 };
 
 #endif

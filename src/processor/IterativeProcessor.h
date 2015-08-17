@@ -31,7 +31,7 @@ using namespace std;
 class IterativeProcessor : public Pool, public Processor
 {
 	// Start of user code private
-    void bufferizeOctreeEntry(OctreeEntry* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size);
+    void bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size);
 	// End of user code
 
 	protected:
@@ -46,7 +46,7 @@ class IterativeProcessor : public Pool, public Processor
 		IterativeProcessor();
 		~IterativeProcessor();
 		Task* buildTask();
-		vector<GLuint>* bufferize(Octree * octree);
+		vector<GLuint>* bufferize(Chunk* chunk);
 };
 
 #endif

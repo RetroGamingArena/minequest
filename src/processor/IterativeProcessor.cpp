@@ -29,7 +29,7 @@ IterativeProcessor::~IterativeProcessor()
 }
 
 // Start of user code methods
-void IterativeProcessor::bufferizeOctreeEntry(OctreeEntry* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size)
+void IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size)
 {
     int size_2 = (int)size>>1;
     
@@ -54,14 +54,14 @@ void IterativeProcessor::bufferizeOctreeEntry(OctreeEntry* octreeEntry, vector<G
             bufferizeZ = (*zs)[i];
             
             if(node->getOctreeEntries()[i] != NULL)
-                bufferizeOctreeEntry(node->getOctreeEntries()[i], buffer, p+bufferizeX*size_2, q+bufferizeY*size_2, r+bufferizeZ*size_2, size_2);
+                bufferizeOctreeEntry(chunk, node->getOctreeEntries()[i], buffer, p+bufferizeX*size_2, q+bufferizeY*size_2, r+bufferizeZ*size_2, size_2);
         }
         return;
     }
     Leaf* leaf = dynamic_cast<Leaf*>(octreeEntry);
     if(leaf != NULL)
     {
-        bufferizeLeaf(leaf, buffer, p, q, r, size);//_2);
+        bufferizeLeaf(chunk, leaf, buffer, p, q, r, size);
     }
 }
 // End of user code
@@ -99,13 +99,12 @@ Task* IterativeProcessor::buildTask()
     return NULL;
 	// End of user code
 }
-vector<GLuint>* IterativeProcessor::bufferize(Octree * octree)
+vector<GLuint>* IterativeProcessor::bufferize(Chunk* chunk)
 {
 	// Start of user code bufferize
     vector<GLuint>* res = new vector<GLuint>();
-    //VertexBuffer* vertexBuffer = new VertexBuffer();
+    Octree* octree = chunk->getOctree();
     
-    //octree->bufferize(vertexBuffer, 0, 0, 0);
     int x = 0;
     int y = 0;
     int z = 0;
@@ -117,7 +116,7 @@ vector<GLuint>* IterativeProcessor::bufferize(Octree * octree)
         z = (*WorldGenerator::getZs())[i];
         
         if(octree->getOctreeEntries()[i] != NULL)
-            bufferizeOctreeEntry(octree->getOctreeEntries()[i], res, octree->getP()*Octree::size+x*Octree::size/2.0, octree->getQ()*Octree::size+y*Octree::size/2.0, octree->getR()*Octree::size+z*Octree::size/2.0, Octree::size/2);
+            bufferizeOctreeEntry(chunk, octree->getOctreeEntries()[i], res, octree->getP()*Octree::size+x*Octree::size/2.0, octree->getQ()*Octree::size+y*Octree::size/2.0, octree->getR()*Octree::size+z*Octree::size/2.0, Octree::size/2);
     }
     
     

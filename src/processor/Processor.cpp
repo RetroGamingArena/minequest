@@ -32,30 +32,46 @@ std::mutex* Processor::addVoxelMutex = new std::mutex();
 void Processor::addVoxel(Voxel voxel)
 {
     addVoxelMutex->lock();
-    voxels.push_back(voxel);
+    //voxels.push_back(voxel);
     addVoxelMutex->unlock();
 }
 
 #define ANG2RAD 3.14159265358979323846/180.0
 
+bool Processor::isPointInFrustum(double x, double y, double z)
+{
+    vertexPosition = glm::vec3(x,y,z);
+    viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
+    position = Scene::projection * viewSpace;
+    
+    if(position.z < 0)
+        return false;
+    if(position.x>=-position.w || position.y>=-position.w || position.x<=position.w || position.y<=position.w )
+        return true;
+    else
+        return false;
+}
+
 bool Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2)
 {
     // Start of user code isCubeInFrustum
     
-    vertexPosition = glm::vec3(x1,y1,z1);
-    viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
-    position = Scene::projection * viewSpace;
-
-    if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
-        return false;
-    
-    vertexPosition = glm::vec3(x2,y2,z2);
-    viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
-    position = Scene::projection * viewSpace;
-    
-    if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
-        return false;
-    
+    if(isPointInFrustum(x1, y1, z1))
+        return true;
+    if(isPointInFrustum(x2, y1, z1))
+        return true;
+    if(isPointInFrustum(x1, y1, z2))
+        return true;
+    if(isPointInFrustum(x2, y1, z2))
+        return true;
+    if(isPointInFrustum(x1, y2, z1))
+        return true;
+    if(isPointInFrustum(x2, y2, z1))
+        return true;
+    if(isPointInFrustum(x1, y2, z2))
+        return true;
+    if(isPointInFrustum(x2, y2, z2))
+        return true;
     
     /*Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
     
@@ -128,7 +144,7 @@ bool Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, doub
     if (pcx > aux || pcx < -aux)
         return false;*/
     
-    return true;
+    return false;
 
     // End of user code
 }
@@ -229,6 +245,8 @@ bool Processor::isCubeFreeWithMask(int x, int y, int z, int size)
 
 void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
 {
+    vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
+    
     Voxel voxel;
     
     int p = voxel.x;
@@ -263,9 +281,16 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     
     vec->clear();
     
-    for(int i = 0; i < voxels.size(); i++)
+    Chunk* chunk = NULL;
+    
+    for(int c = 0; c < chunks.size(); c++)
     {
-        voxel = voxels[i];
+        chunk = chunks[c];
+        if(!isCubeInFrustum(chunk->getP()*Chunk::size, chunk->getQ()*Chunk::size, chunk->getR()*Chunk::size, (chunk->getP()+1)*Chunk::size, (chunk->getQ()+1)*Chunk::size, (chunk->getR()+1)*Chunk::size))
+            continue;
+    for(int i = 0; i < chunks[c]->voxels.size(); i++)
+    {
+        voxel = chunk->voxels[i];
         
         p = voxel.x;
         q = voxel.y;
@@ -311,12 +336,13 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         
         }
     }
+    }
     
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;
 }
 
-void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
+void Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
 {
     if(leaf->occluded && !leaf->visible)
         return;
@@ -334,7 +360,8 @@ void Processor::bufferizeLeaf(Leaf * leaf, vector<GLuint>* vec, int p, int q, in
         
         if(leaf->visible)
         {
-            addVoxel(Voxel(p,q,r,size, leaf->getOcclusion(), leaf->getType()));
+            chunk->voxels.push_back(Voxel(p,q,r,size, occlusion, type));
+            //addVoxel(Voxel(p,q,r,size, leaf->getOcclusion(), leaf->getType()));
             
             //voxels.push_back(Voxel(p,q,r,size, leaf->getOcclusion(), leaf->getType()));
             
