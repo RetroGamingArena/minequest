@@ -7,6 +7,7 @@
 #include "ItemCamera.h"
 #include "Engine.h"
 #include "ChunkProcessorTask.h"
+#include "VoxelBufferingTask.h"
 #include <iostream>
 // End of user code
 
@@ -60,7 +61,10 @@ GameScene::GameScene(Player* player)
     worldProcessor->setWorld(Engine::getInstance()->getWorld());
     
     updateBuffer = false;
+    updateVoxels = false;
     updateChunks = true;
+    
+    voxelsThread = NULL;
     
     Engine::getInstance()->getWorld()->addListener(this);
     worldProcessor->addListener(this);
@@ -72,6 +76,13 @@ GameScene::GameScene(Player* player)
     
     background = new Background();
     
+    voxelsThread = new Thread();
+    VoxelBufferingTask* voxelBufferingTask = new VoxelBufferingTask();
+    voxelBufferingTask->gameScene = this;
+    voxelsThread->setTask(voxelBufferingTask);
+    voxelsThread->addListener(this);
+    
+    getSelectedCamera()->look();
 }
 // End of user code
 
@@ -84,7 +95,7 @@ void GameScene::handle(Event * event)
         if(camera != NULL)
         {
             cameraLock->lock();
-            camera = getSelectedCamera();
+            //camera = getSelectedCamera();
             projection = camera->getProjection();
             VM = camera->getView()*camera->getModel();
             unsigned char mask = camera->getMask();
@@ -94,20 +105,17 @@ void GameScene::handle(Event * event)
                 _updateIndices = true;
                 oldMask = mask;
             }
-
             if(worldProcessor->isFinished() && !worldProcessor->isRunning())
             {
-                /*World* world = Engine::getInstance()->getWorld();
-                    
-                world->setCubeCount(0);
-                world->setInstanceCount(0);
-                world->setOccludedCount(0);
-                    
-                vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
-                    
-                for(int i = 0; i < chunks.size(); i++)
-                    chunks[i]->setBuffered(false);*/
-                updateBuffer = true;
+                if(updateVoxels && !updateBuffer && !voxelsThread->isBusy())
+                {
+                    voxelsThread->start();
+                    updateVoxels = false;
+                }
+                else if(!updateVoxels && !updateBuffer)
+                {
+                    updateVoxels = true;
+                }
             }
             updateCamera = true;
             cameraLock->unlock();
@@ -120,12 +128,12 @@ void GameScene::handle(Event * event)
         if(thread != NULL)
         {
             Task* task = thread->getTask();
-            ChunkTask* chunkTask = dynamic_cast<ChunkTask*>(task);
-            if(chunkTask != NULL)
-                return;
-            ChunkProcessorTask* chunkProcessorTask = dynamic_cast<ChunkProcessorTask*>(task);
-            if(chunkProcessorTask != NULL)
-                return;
+            VoxelBufferingTask* voxelBufferingTask = dynamic_cast<VoxelBufferingTask*>(task);
+            if(voxelBufferingTask != NULL)
+            {
+                updateVoxels = false;
+                updateBuffer = true;
+            }
         }
     }
     // End of user code
@@ -248,7 +256,6 @@ void GameScene::render()
     World* world = Engine::getInstance()->getWorld();
     if(updateChunks)
     {
-        
         if(!world->isRunning())
         {
             world->start();
@@ -256,42 +263,29 @@ void GameScene::render()
         }
     }
     if(world->isFinished() && !worldProcessor->isFinished())
-    //if(updateChunksCpt >= world->getChunks().size()-1)
     {
         if(!worldProcessor->isRunning() && !worldProcessor->buffered)
         {
             worldProcessor->start();
-            updateBuffer = true;
+            //updateBuffer = true;
         }
     }
-    if(worldProcessor->isFinished() && updateBuffer)//updateBufferCpt == world->getChunks().size()-1)
+    if(worldProcessor->isFinished() && updateBuffer)
     {
-        if(!worldProcessor->buffered)
-            worldProcessor->buffered = true;
-
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         
-        vector<GLuint>* temp = new vector<GLuint>();
-        
-        worldProcessor->bufferizeVoxels(temp);
-        
         gameSceneData->erase(gameSceneData->begin()+96, gameSceneData->end());
-        gameSceneData->insert(gameSceneData->end(), temp->begin(), temp->end());
-        //temp->clear();
-        //delete temp;
+        gameSceneData->insert(gameSceneData->end(), worldProcessor->vec->begin(), worldProcessor->vec->end());
         
         setChunksOffset(gameSceneData->size());
         
-        //
-        for(int i=0; i < items.size() ; i++)
-        {
-            items[0]->draw(doubleBuffer->getVertexBuffer());
-        }
-        
-        doubleBuffer->getVertexBuffer()->bind();
+        bindBuffer = true;
         
         worldProcessor->setStarted(false);
         updateBuffer = false;
+        
+        if(!worldProcessor->buffered)
+            worldProcessor->buffered = true;
     }
     
     bool refresh = false;
@@ -300,9 +294,16 @@ void GameScene::render()
             refresh = true;
     if(refresh)
     {
-        getSelectedCamera()->look();
+        //getSelectedCamera()->look();
         refreshItemsBuffer();
     }
+    
+    if(bindBuffer)
+    {
+        doubleBuffer->getVertexBuffer()->bind();
+        bindBuffer = false;
+    }
+
     VoxelScene::render();
 	// End of user code
 }
@@ -316,7 +317,7 @@ void GameScene::refreshItemsBuffer()
     doubleBuffer->getVertexBuffer()->getData()->erase(datas->begin()+offset, datas->end());
     for(int i=0; i < items.size() ; i++)
         items[i]->draw(doubleBuffer->getVertexBuffer());
-    doubleBuffer->getVertexBuffer()->bind();
+    bindBuffer = true;
 	// End of user code
 }
 void GameScene::onKey(int key, int scancode, int action, int mods)

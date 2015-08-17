@@ -49,11 +49,12 @@ class Processor
 
 	public:
 		// Start of user code public
+    vector<GLuint>* vec;
         static World* bufferizeWorld;
         vector<Voxel> voxels;
         bool buffered;
         void addVoxel(Voxel voxel);
-        void bufferizeVoxels(vector<GLuint>* vec);
+        void bufferizeVoxels(/*vector<GLuint>* vec*/);
 		// End of user code
 		Processor();
 		virtual ~Processor(){};

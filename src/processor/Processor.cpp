@@ -14,6 +14,7 @@ Processor::Processor()
 {
 	// Start of user code constructor
     buffered = false;
+    vec = new vector<GLuint>;
 	// End of user code
 }
 
@@ -56,10 +57,13 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
     glm::vec3 Z;
     Z = camera->getCenter() - p;
     
-    Z = glm::normalize(Z);
+    float length = Z.length();
+    Z = Z / length;//glm::normalize(Z);
 
     glm::vec3 X = Z * camera->getUp();
-    X= glm::normalize(X);
+    
+    length = Z.length();
+    X = X / length;//glm::normalize(X);
     
     // the real "up" vector is the cross product of X and Z
     glm::vec3 Y = X * Z;
@@ -88,10 +92,13 @@ double Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, do
     
     Z = camera->getCenter() - p;
     
+    length = Z.length();
     Z = glm::normalize(Z);
     
     X = Z * camera->getUp();
-    X= glm::normalize(X);
+    
+    length = Z.length();
+    X= X / length;//glm::normalize(X);
     
     // the real "up" vector is the cross product of X and Z
     Y = X * Z;
@@ -214,7 +221,7 @@ bool Processor::isCubeFreeWithMask(int x, int y, int z, int size)
     // End of user code
 }
 
-void Processor::bufferizeVoxels(vector<GLuint>* vec)
+void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
 {
     Voxel voxel;
     
@@ -251,6 +258,8 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
     int good = 0;
     int bad = 0;
     
+    vec->clear();
+    
     for(int i = 0; i < voxels.size(); i++)
     {
         voxel = voxels[i];
@@ -263,7 +272,7 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
         if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
         {
             bad++;
-            continue;
+            //continue;
         }
         good++;
 
@@ -308,6 +317,12 @@ void Processor::bufferizeVoxels(vector<GLuint>* vec)
             //bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
         }
     }
+    
+    if(vec->size() < 1000)
+    {
+        int a = 1;
+    }
+    
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;
 }

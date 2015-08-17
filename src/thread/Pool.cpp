@@ -145,12 +145,6 @@ void Pool::setStarted(bool _started)
 void Pool::start()
 {
 	// Start of user code start
-    /*for(int i = 0; i < threadCount; i++)
-    {
-        Thread* thread = new Thread();
-        thread->addListener(this);
-        threads.push_back(thread);
-    }*/
     work = new thread(Pool::run, this);
 	// End of user code
 }

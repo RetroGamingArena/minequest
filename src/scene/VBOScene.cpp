@@ -23,6 +23,7 @@ VBOScene::VBOScene()
     vBO->setInstanceSize(6);
     doubleBuffer->setVBO(vBO);
     updateCamera = true;
+    bindBuffer = false;
     // End of user code
 }
 
@@ -64,7 +65,7 @@ void VBOScene::render()
     
     glUseProgram(shader->getProgramID());
     
-    //if(updateCamera)
+    if(updateCamera)
     {
         glUniformMatrix4fv(shader->getMMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getModel()[0][0]);
         glUniformMatrix4fv(shader->getVMatrixID(), 1, GL_FALSE, &getSelectedCamera()->getView()[0][0]);

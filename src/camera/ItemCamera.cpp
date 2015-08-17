@@ -40,6 +40,7 @@ void ItemCamera::onMouseMotion(double xpos, double ypos)
         else
             angleY = min(PI/2.0,(double)angleY);
         fireEvent(events[0]);
+        look();
     }
     oldX = xpos;
 	oldY = ypos;

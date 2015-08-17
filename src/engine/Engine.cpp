@@ -137,8 +137,8 @@ int Engine::run()
         double currentTime = glfwGetTime();
         
         
-        if(scene->getSelectedCamera() != NULL)
-            scene->getSelectedCamera()->look();
+        //if(scene->getSelectedCamera() != NULL)
+        //    scene->getSelectedCamera()->look();
         scene->render();
         
         //FPS

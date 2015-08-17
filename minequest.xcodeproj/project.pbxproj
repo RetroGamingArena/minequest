@@ -59,6 +59,7 @@
 		647F97891B0F99A400133A4C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F97871B0F99A400133A4C /* Background.cpp */; };
 		647F978C1B0F99B300133A4C /* BackgroundShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 647F978A1B0F99B300133A4C /* BackgroundShader.cpp */; };
 		6483FF3F1B27199800821BD8 /* InputCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6483FF3D1B27199800821BD8 /* InputCamera.cpp */; };
+		648C66D71B808B9A00612031 /* VoxelBufferingTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 648C66D51B808B9A00612031 /* VoxelBufferingTask.cpp */; };
 		649722B11B3FFC9600E356B6 /* Empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649722AF1B3FFC9600E356B6 /* Empty.cpp */; };
 		649D601E1B34E72000810DBA /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649D601C1B34E72000810DBA /* Ray.cpp */; };
 		649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 649DC5121B0E806300A6235E /* ItemCamera.cpp */; };
@@ -453,6 +454,8 @@
 		647F97901B0F9AEB00133A4C /* backgroundVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = backgroundVertexShader.glsl; path = shaders/backgroundVertexShader.glsl; sourceTree = "<group>"; };
 		6483FF3D1B27199800821BD8 /* InputCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputCamera.cpp; sourceTree = "<group>"; };
 		6483FF3E1B27199800821BD8 /* InputCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCamera.h; sourceTree = "<group>"; };
+		648C66D51B808B9A00612031 /* VoxelBufferingTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoxelBufferingTask.cpp; sourceTree = "<group>"; };
+		648C66D61B808B9A00612031 /* VoxelBufferingTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxelBufferingTask.h; sourceTree = "<group>"; };
 		649722AF1B3FFC9600E356B6 /* Empty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Empty.cpp; path = src/octree/Empty.cpp; sourceTree = SOURCE_ROOT; };
 		649722B01B3FFC9600E356B6 /* Empty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Empty.h; path = src/octree/Empty.h; sourceTree = SOURCE_ROOT; };
 		649D601C1B34E72000810DBA /* Ray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
@@ -815,6 +818,8 @@
 				6440BB061AF69C4A006A0842 /* VBOScene.h */,
 				6440BB021AF508E9006A0842 /* Scene.cpp */,
 				6440BB031AF508E9006A0842 /* Scene.h */,
+				648C66D51B808B9A00612031 /* VoxelBufferingTask.cpp */,
+				648C66D61B808B9A00612031 /* VoxelBufferingTask.h */,
 			);
 			name = scene;
 			path = src/scene;
@@ -1213,6 +1218,7 @@
 				6440BB2D1AF7D271006A0842 /* LoadingScene.cpp in Sources */,
 				6440BB631AFAA22B006A0842 /* Item.cpp in Sources */,
 				64C9864C1AFACD4300A5B62E /* Pool.cpp in Sources */,
+				648C66D71B808B9A00612031 /* VoxelBufferingTask.cpp in Sources */,
 				6440BB4E1AF91866006A0842 /* Label.cpp in Sources */,
 				64C986571AFBBFBB00A5B62E /* Chunk.cpp in Sources */,
 				6440BB221AF7B409006A0842 /* WorldShader.cpp in Sources */,

@@ -35,6 +35,7 @@ class VBOScene : public Scene
 	protected:
 	// Start of user code protected
     bool updateCamera;
+    bool bindBuffer;
 	// End of user code
 	DoubleBuffer* doubleBuffer;
 

@@ -36,12 +36,12 @@ class Pool : public Listener, public Transmitter
 	// End of user code
 	vector<Thread*> threads;
 	bool running;
-	std::thread* work;
 	bool started;
 
 	protected:
 	// Start of user code protected
     Task* buildedTask;
+    std::thread* work;
 	// End of user code
 	int threadCount;
 	std::mutex* mutex;

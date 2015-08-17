@@ -39,9 +39,11 @@ class GameScene : public VoxelScene, public Listener
 	int chunksOffset;
 	bool updateChunks;
 	bool updateBuffer;
+    bool updateVoxels;
 	std::mutex* bufferAddMutex;
 	unsigned char oldMask;
 	std::mutex* cameraLock;
+    Thread* voxelsThread;
 
 	protected:
 	// Start of user code protected
