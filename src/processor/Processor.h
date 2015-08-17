@@ -36,6 +36,10 @@ class Processor
     static std::mutex* addVoxelMutex;
     // redondent for optimisation
     static glm::vec4 viewport;
+    static glm::vec3 vertexPosition;
+    static glm::vec4 viewSpace;
+    static glm::vec4 position;
+    
     static bool isCubeVisible(int x, int y, int z, int size);
     static bool isCubeFree(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size);

@@ -21,6 +21,9 @@ Processor::Processor()
 
 // Start of user code methods
 glm::vec4 Processor::viewport = glm::vec4(0,0,1920,1080);
+glm::vec3 Processor::vertexPosition;
+glm::vec4 Processor::viewSpace;
+glm::vec4 Processor::position;
 //Camera* World::camera = NULL;
 double Processor::near = 0;//0.997;
 World* Processor::bufferizeWorld = NULL;
@@ -39,9 +42,9 @@ bool Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, doub
 {
     // Start of user code isCubeInFrustum
     
-    glm::vec3 vertexPosition = glm::vec3(x1,y1,z1);
-    glm::vec4 viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
-    glm::vec4 position = Scene::projection * viewSpace;
+    vertexPosition = glm::vec3(x1,y1,z1);
+    viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
+    position = Scene::projection * viewSpace;
 
     if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
         return false;
@@ -257,9 +260,6 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     unsigned int _size = 0;
     
     double currentTime = glfwGetTime();
-
-    int good = 0;
-    int bad = 0;
     
     vec->clear();
     
@@ -273,11 +273,7 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         size = voxel.size;
         
         if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
-        {
-            bad++;
             continue;
-        }
-        good++;
 
         occlusion = voxel.occlusion;
         type = voxel.type;
@@ -285,10 +281,6 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         //if(isCubeFreeWithMask(p, q, r, size))
         //if(!bufferizeWorld->isCubeOccluded(p,q,r,size))
         {
-            //---
-        
-            //vector<GLuint>* data = vertexBuffer->getData();
-        
             _p = p/Chunk::subsize;
             _q = q/Chunk::subsize;
             _r = r/Chunk::subsize;
@@ -317,7 +309,6 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
          
             vec->push_back(_size);
         
-            //bufferizeWorld->setOccludedCount(bufferizeWorld->getOccludedCount()+1);
         }
     }
     
