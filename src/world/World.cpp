@@ -107,7 +107,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 1;
+int World::size = 2;
 
 int World::getChunkIndice()
 {
@@ -278,7 +278,7 @@ OctreeEntry* World::getLeaf(int x, int y, int z)
 bool World::isCubeOccluded(int x, int y, int z, int size)
 {
 	// Start of user code isCubeOccluded
-    OctreeEntry* base = this->getLeaf(x, y, z);
+    /*OctreeEntry* base = this->getLeaf(x, y, z);
     
     OctreeEntry* collided = NULL;
     
@@ -292,7 +292,7 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
     
     glm::vec4 viewport = glm::vec4(0,0,1920,1080);
     
-    glm::vec3 projection1 = glm::project(glm::vec3(x/16.0,       y/16.0,        z/16.0)/*x/16.0,y/16.0,z/16.0)*/, Scene::VM, Scene::projection, viewport);
+    glm::vec3 projection1 = glm::project(glm::vec3(x/16.0,       y/16.0,        z/16.0), Scene::VM, Scene::projection, viewport);
     
     if(projection1.x < 0 || projection1.y < 0 || projection1.x > 1920 || projection1.y > 1080)
         return true;
@@ -384,7 +384,7 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
             collided = collide(ray, xRay, yRay, zRay);
             if(collided == base)
                 return false;
-        }
+        }*/
     
     return true;
 	// End of user code

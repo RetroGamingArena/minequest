@@ -43,6 +43,8 @@ class Processor
     static bool isCubeVisible(int x, int y, int z, int size);
     static bool isCubeFree(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size);
+    static bool isCubeOccluded(int x, int y, int z, int size);
+    static bool isPointOccluded(int x, int y, int z);
     static bool isPointInFrustum(double x, double y, double z);
     static bool isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);
 	// End of user code

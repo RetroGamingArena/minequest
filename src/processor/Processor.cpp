@@ -304,7 +304,7 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         type = voxel.type;
         
         //if(isCubeFreeWithMask(p, q, r, size))
-        //if(!bufferizeWorld->isCubeOccluded(p,q,r,size))
+        if(!isCubeOccluded(p,q,r,size))
         {
             _p = p/Chunk::subsize;
             _q = q/Chunk::subsize;
@@ -340,6 +340,93 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;
+}
+
+bool Processor::isCubeOccluded(int x, int y, int z, int size)
+{
+    if(!isPointOccluded(x, y, z))
+        return false;
+    if(isPointOccluded(x+size, y, z))
+        return false;
+    if(isPointOccluded(x, y, z+size))
+        return false;
+    if(isPointOccluded(x+size, y, z+size))
+        return false;
+    if(isPointOccluded(x, y+size, z))
+        return false;
+    if(isPointOccluded(x+size, y+size, z))
+        return false;
+    if(isPointOccluded(x, y+size, z+size))
+        return false;
+    if(isPointOccluded(x+size, y+size, z+size))
+        return false;
+    return true;
+}
+
+bool Processor::isPointOccluded(int x, int y, int z)
+{
+    vertexPosition = glm::vec3(x,y,z);
+    viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
+    position = Scene::projection * viewSpace;
+    
+    if(position.z < 0)
+        return true;
+    if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
+        return true;
+    
+    double _x = position.x+position.w;
+    double _y = position.y+position.w;
+    
+    _x = 1920 * _x / (2*position.w);
+    _y = 1080 * _y / (2*position.w);
+    
+    //glm::vec3 _2d2 = glm::vec3(_x, _y, 1);
+    //glm::vec4 _2d  = glm::vec4(_x, _y, 1, 1);
+    
+    glm::vec4 unproj = glm::inverse(Scene::projection * Scene::VM) * position;
+    
+    //vertexPosition = glm::vec3(unproj.x,unproj.y,unproj.z);
+    //viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
+    //glm::vec4 position2 = Scene::projection * Scene::VM * glm::vec4(vertexPosition,1);
+    
+    //glm::vec4 test2 = glm::unProject(_2d2, Scene::VM, Scene::projection, viewport);
+
+    OctreeEntry* base = bufferizeWorld->getLeaf(x, y, z);
+    
+    Ray* ray = new Ray(glm::vec3(x,y,z), glm::vec3(unproj.x, unproj.y, unproj.z));
+    
+    int size = 1;
+    
+    int end = 0;
+    
+    end = max(end, (int)abs(ray->getStart().x-ray->getDirection().x));
+    end = max(end, (int)abs(ray->getStart().y-ray->getDirection().y));
+    end = max(end, (int)abs(ray->getStart().z-ray->getDirection().z));
+    
+    //double start = ray->enterCube(0, 0, 0, Chunk::size*(size*2+1) *Chunk::subsize-1, Chunk::size *Chunk::subsize-1, Chunk::size*(size*2+1) *Chunk::subsize-1);
+    //double end = ray->exitCube(0, 0, 0, Chunk::size*(size*2+1) *Chunk::subsize-1, Chunk::size *Chunk::subsize-1, Chunk::size*(size*2+1) *Chunk::subsize-1);
+       
+    glm::vec3 move;
+    int step = 1;
+
+    glm::vec3 d;
+    
+    OctreeEntry* octreeEntry = NULL;
+    
+    for(int i = 0; i < end; i+=step)
+    {
+        d = ray->move(i);
+        if(d.x < 0 || d.y < 0 || d.z < 0 || d.x > Chunk::size*Chunk::subsize*(World::size*2+1) || d.z > Chunk::size*Chunk::subsize || d.z > Chunk::size*Chunk::subsize*(World::size*2+1))
+            return true;
+        
+        octreeEntry = bufferizeWorld->getLeaf(d.x, d.y, d.z);
+        
+        if(octreeEntry != NULL)
+            if(octreeEntry != base)
+                return true;
+    }
+    
+    return false;
 }
 
 void Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
