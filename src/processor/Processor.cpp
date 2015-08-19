@@ -44,9 +44,13 @@ bool Processor::isPointInFrustum(double x, double y, double z)
     viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
     position = Scene::projection * viewSpace;
     
+    //position.x /= position.w;
+    //position.y /= position.w;
+    
     if(position.z < 0)
         return false;
-    if(position.x>=-position.w || position.y>=-position.w || position.x<=position.w || position.y<=position.w )
+    if(position.x>=-position.w && position.y>=-position.w && position.x<=position.w && position.y<=position.w )
+    //if(position.x>=0 && position.y>=0 && position.x<=1920 && position.y<=1080 )
         return true;
     else
         return false;
@@ -283,6 +287,8 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     
     Chunk* chunk = NULL;
     
+    int bad = 0;
+    
     for(int c = 0; c < chunks.size(); c++)
     {
         chunk = chunks[c];
@@ -298,13 +304,15 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         size = voxel.size;
         
         if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
+        {
+            //bad++;
             continue;
-
+        }
         occlusion = voxel.occlusion;
         type = voxel.type;
         
-        //if(isCubeFreeWithMask(p, q, r, size))
-        if(!isCubeOccluded(p,q,r,size))
+        //if(isCubeFreeWithMask(p, q, r, size, unsigned char mask))
+        //if(!isCubeOccluded(p,q,r,size))
         {
             _p = p/Chunk::subsize;
             _q = q/Chunk::subsize;
@@ -335,9 +343,11 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             vec->push_back(_size);
         
         }
+        else
+            bad++;
     }
     }
-    
+    //usleep(1000000);
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;
 }
@@ -346,19 +356,19 @@ bool Processor::isCubeOccluded(int x, int y, int z, int size)
 {
     if(!isPointOccluded(x, y, z))
         return false;
-    if(isPointOccluded(x+size, y, z))
+    if(!isPointOccluded(x+size, y, z))
         return false;
-    if(isPointOccluded(x, y, z+size))
+    if(!isPointOccluded(x, y, z+size))
         return false;
-    if(isPointOccluded(x+size, y, z+size))
+    if(!isPointOccluded(x+size, y, z+size))
         return false;
-    if(isPointOccluded(x, y+size, z))
+    if(!isPointOccluded(x, y+size, z))
         return false;
-    if(isPointOccluded(x+size, y+size, z))
+    if(!isPointOccluded(x+size, y+size, z))
         return false;
-    if(isPointOccluded(x, y+size, z+size))
+    if(!isPointOccluded(x, y+size, z+size))
         return false;
-    if(isPointOccluded(x+size, y+size, z+size))
+    if(!isPointOccluded(x+size, y+size, z+size))
         return false;
     return true;
 }
@@ -383,7 +393,13 @@ bool Processor::isPointOccluded(int x, int y, int z)
     //glm::vec3 _2d2 = glm::vec3(_x, _y, 1);
     //glm::vec4 _2d  = glm::vec4(_x, _y, 1, 1);
     
-    glm::vec4 unproj = glm::inverse(Scene::projection * Scene::VM) * position;
+    glm::vec4 unproj = glm::inverse(Scene::projection * Scene::VM) * glm::vec4(_x,_y,0.0009f,1);
+    
+    unproj.w = 1.0 / unproj.w;
+    
+    unproj.x *= unproj.w;
+    unproj.y *= unproj.w;
+    unproj.z *= unproj.w;
     
     //vertexPosition = glm::vec3(unproj.x,unproj.y,unproj.z);
     //viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
@@ -416,8 +432,8 @@ bool Processor::isPointOccluded(int x, int y, int z)
     for(int i = 0; i < end; i+=step)
     {
         d = ray->move(i);
-        if(d.x < 0 || d.y < 0 || d.z < 0 || d.x > Chunk::size*Chunk::subsize*(World::size*2+1) || d.z > Chunk::size*Chunk::subsize || d.z > Chunk::size*Chunk::subsize*(World::size*2+1))
-            return true;
+        //if(d.x < 0 || d.y < 0 || d.z < 0 || d.x > Chunk::size*Chunk::subsize*(World::size*2+1) || d.y > Chunk::size*Chunk::subsize || d.z > Chunk::size*Chunk::subsize*(World::size*2+1))
+        //    return true;
         
         octreeEntry = bufferizeWorld->getLeaf(d.x, d.y, d.z);
         
