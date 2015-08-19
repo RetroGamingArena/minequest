@@ -488,6 +488,11 @@
       </ContextState>
       <ContextState
          contextName = "Processor::bufferizeVoxels():Processor.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "voxel.z/Chunk::subsize">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "Processor::isPointOccluded(int, int, int):Processor.cpp">

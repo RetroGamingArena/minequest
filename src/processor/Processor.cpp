@@ -247,6 +247,27 @@ bool Processor::isCubeFreeWithMask(int x, int y, int z, int size)
     // End of user code
 }
 
+bool Processor::isCubeFreeWithMask(int x, int y, int z, int size, unsigned char mask)
+{
+    for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(bufferizeWorld->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
+                return true;
+            if(bufferizeWorld->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
+                return true;
+            if(bufferizeWorld->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+                return true;
+        }
+    return false;
+}
+
 void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
 {
     vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
@@ -289,6 +310,10 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     
     int bad = 0;
     
+    glm::vec3 d;
+    
+    Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
+    
     for(int c = 0; c < chunks.size(); c++)
     {
         chunk = chunks[c];
@@ -311,7 +336,23 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         occlusion = voxel.occlusion;
         type = voxel.type;
         
-        //if(isCubeFreeWithMask(p, q, r, size, unsigned char mask))
+        d = glm::vec3(voxel.x/Chunk::subsize, voxel.y/Chunk::subsize, voxel.z/Chunk::subsize) - camera->getPosition();
+        
+        double h = sqrt(d.x * d.x + d.y * d.y);
+        
+        double a = asin(abs(d.y)/h);
+        
+        unsigned char mask = TOP;
+        if(voxel.z/Chunk::subsize>camera->getPosition().z)
+            mask |= BACK;
+        if(voxel.x/Chunk::subsize<camera->getPosition().x)
+            mask |= RIGHT;
+        if(voxel.z/Chunk::subsize<camera->getPosition().z)
+            mask |= FRONT;
+        if(voxel.x/Chunk::subsize>camera->getPosition().x)
+            mask |= LEFT;
+        
+        if(isCubeFreeWithMask(p, q, r, size, mask))
         //if(!isCubeOccluded(p,q,r,size))
         {
             _p = p/Chunk::subsize;

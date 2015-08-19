@@ -117,7 +117,7 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     height*=Chunk::size*Chunk::subsize/2;
     
     //height -= (int)height % Chunk::subsize;
-    
+
     if(y<height && y >= waterHeight+40)
         return 6;
     if(y<height && y >= waterHeight+10)
@@ -131,7 +131,7 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     if(height<y)
         return 0;
     
-    return 4;
+    return 6;
     
     //unsigned char type;
     
