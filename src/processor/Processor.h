@@ -20,6 +20,7 @@
 #include "Leaf.h"
 #include "Engine.h"
 #include "Voxel.h"
+#include "Empty.h"
 // End of user code
 
 
@@ -34,17 +35,27 @@ class Processor
 	// Start of user code private
     static double near;
     static std::mutex* addVoxelMutex;
+    static int rayCastStep;
     // redondent for optimisation
     static glm::vec4 viewport;
     static glm::vec3 vertexPosition;
     static glm::vec4 viewSpace;
     static glm::vec4 position;
+    static Ray* ray;
+    static double _x;
+    static double _y;
+    static glm::vec4 unproj;
+    static OctreeEntry* base;
+    static OctreeEntry* octreeEntry;
+    static Empty* empty;
+    static glm::vec3 d;
+    static int end;
     
     static bool isCubeVisible(int x, int y, int z, int size);
     static bool isCubeFree(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size, unsigned char mask);
-    static bool isCubeOccluded(int x, int y, int z, int size);
+    static bool isCubeOccluded(int x, int y, int z, int size, unsigned char mask);
     static bool isPointOccluded(int x, int y, int z);
     static bool isPointInFrustum(double x, double y, double z);
     static bool isCubeInFrustum(double x1, double y1, double z1, double x2, double y2, double z2);

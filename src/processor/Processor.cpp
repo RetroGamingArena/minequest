@@ -24,6 +24,18 @@ glm::vec4 Processor::viewport = glm::vec4(0,0,1920,1080);
 glm::vec3 Processor::vertexPosition;
 glm::vec4 Processor::viewSpace;
 glm::vec4 Processor::position;
+
+Ray* Processor::ray = NULL;
+int Processor::rayCastStep = 1;
+double Processor::_x = 0;
+double Processor::_y = 0;
+glm::vec4 Processor::unproj;
+OctreeEntry* Processor::base = NULL;
+OctreeEntry* Processor::octreeEntry = NULL;
+Empty* Processor::empty = NULL;
+glm::vec3 Processor::d;
+int Processor::end;
+
 //Camera* World::camera = NULL;
 double Processor::near = 0;//0.997;
 World* Processor::bufferizeWorld = NULL;
@@ -312,6 +324,8 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     
     glm::vec3 d;
     
+    unsigned char mask = TOP;
+    
     Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
     
     for(int c = 0; c < chunks.size(); c++)
@@ -338,11 +352,7 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         
         d = glm::vec3(voxel.x/Chunk::subsize, voxel.y/Chunk::subsize, voxel.z/Chunk::subsize) - camera->getPosition();
         
-        double h = sqrt(d.x * d.x + d.y * d.y);
-        
-        double a = asin(abs(d.y)/h);
-        
-        unsigned char mask = TOP;
+        mask = TOP;
         if(voxel.z/Chunk::subsize>camera->getPosition().z)
             mask |= BACK;
         if(voxel.x/Chunk::subsize<camera->getPosition().x)
@@ -353,7 +363,7 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             mask |= LEFT;
         
         if(isCubeFreeWithMask(p, q, r, size, mask))
-        //if(!isCubeOccluded(p,q,r,size))
+        //if(!isCubeOccluded(p,q,r,size, mask))
         {
             _p = p/Chunk::subsize;
             _q = q/Chunk::subsize;
@@ -384,8 +394,8 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             vec->push_back(_size);
         
         }
-        else
-            bad++;
+        //else
+        //    bad++;
     }
     }
     //usleep(1000000);
@@ -393,30 +403,35 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     std::cout << currentTime << std::endl;
 }
 
-bool Processor::isCubeOccluded(int x, int y, int z, int size)
+bool Processor::isCubeOccluded(int x, int y, int z, int size, unsigned char mask)
 {
-    if(!isPointOccluded(x, y, z))
-        return false;
-    if(!isPointOccluded(x+size, y, z))
-        return false;
-    if(!isPointOccluded(x, y, z+size))
-        return false;
-    if(!isPointOccluded(x+size, y, z+size))
-        return false;
-    if(!isPointOccluded(x, y+size, z))
-        return false;
-    if(!isPointOccluded(x+size, y+size, z))
-        return false;
-    if(!isPointOccluded(x, y+size, z+size))
-        return false;
-    if(!isPointOccluded(x+size, y+size, z+size))
-        return false;
+    if(mask & BOTTOM)
+        if(!isPointOccluded(x+size/2.0, y, z+size/2.0))
+            return false;
+    if(mask & LEFT)
+        if(!isPointOccluded(x, y+size/2.0, z+size/2.0))
+            return false;
+    if(mask & FRONT)
+        if(!isPointOccluded(x+size/2.0, y+size/2.0, z+size))
+            return false;
+    if(mask & RIGHT)
+        if(!isPointOccluded(x+size, y+size/2.0, z+size/2.0))
+            return false;
+    if(mask & BACK)
+        if(!isPointOccluded(x+size/2.0, y+size/2.0, z))
+            return false;
+    if(mask & TOP)
+        if(!isPointOccluded(x+size/2.0, y+size, z+size/2.0))
+            return false;
+    
     return true;
 }
 
 bool Processor::isPointOccluded(int x, int y, int z)
 {
     vertexPosition = glm::vec3(x,y,z);
+    vertexPosition /= Chunk::subsize;
+    
     viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
     position = Scene::projection * viewSpace;
     
@@ -425,16 +440,13 @@ bool Processor::isPointOccluded(int x, int y, int z)
     if(position.x<-position.w || position.y<-position.w || position.x>position.w || position.y>position.w )
         return true;
     
-    double _x = position.x+position.w;
-    double _y = position.y+position.w;
+    _x = position.x+position.w;
+    _y = position.y+position.w;
     
     _x = 1920 * _x / (2*position.w);
     _y = 1080 * _y / (2*position.w);
     
-    //glm::vec3 _2d2 = glm::vec3(_x, _y, 1);
-    //glm::vec4 _2d  = glm::vec4(_x, _y, 1, 1);
-    
-    glm::vec4 unproj = glm::inverse(Scene::projection * Scene::VM) * glm::vec4(_x,_y,0.0009f,1);
+    unproj = glm::inverse(Scene::projection * Scene::VM) * glm::vec4(_x,_y,0.0009f,1);
     
     unproj.w = 1.0 / unproj.w;
     
@@ -442,45 +454,34 @@ bool Processor::isPointOccluded(int x, int y, int z)
     unproj.y *= unproj.w;
     unproj.z *= unproj.w;
     
-    //vertexPosition = glm::vec3(unproj.x,unproj.y,unproj.z);
-    //viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
-    //glm::vec4 position2 = Scene::projection * Scene::VM * glm::vec4(vertexPosition,1);
+    base = bufferizeWorld->getLeaf(x, y, z);
     
-    //glm::vec4 test2 = glm::unProject(_2d2, Scene::VM, Scene::projection, viewport);
-
-    OctreeEntry* base = bufferizeWorld->getLeaf(x, y, z);
-    
-    Ray* ray = new Ray(glm::vec3(x,y,z), glm::vec3(unproj.x, unproj.y, unproj.z));
-    
-    int size = 1;
-    
-    int end = 0;
+    ray = new Ray(glm::vec3(x,y,z), glm::vec3(unproj.x*Chunk::subsize, unproj.y*Chunk::subsize, unproj.z*Chunk::subsize));
     
     end = max(end, (int)abs(ray->getStart().x-ray->getDirection().x));
     end = max(end, (int)abs(ray->getStart().y-ray->getDirection().y));
     end = max(end, (int)abs(ray->getStart().z-ray->getDirection().z));
     
-    //double start = ray->enterCube(0, 0, 0, Chunk::size*(size*2+1) *Chunk::subsize-1, Chunk::size *Chunk::subsize-1, Chunk::size*(size*2+1) *Chunk::subsize-1);
-    //double end = ray->exitCube(0, 0, 0, Chunk::size*(size*2+1) *Chunk::subsize-1, Chunk::size *Chunk::subsize-1, Chunk::size*(size*2+1) *Chunk::subsize-1);
-       
-    glm::vec3 move;
-    int step = 1;
-
-    glm::vec3 d;
+    //OctreeEntry* octreeEntry = NULL;
     
-    OctreeEntry* octreeEntry = NULL;
+    d = ray->move(end);
     
-    for(int i = 0; i < end; i+=step)
+    for(int i = 0; i < end/rayCastStep; i+=rayCastStep)
     {
         d = ray->move(i);
-        //if(d.x < 0 || d.y < 0 || d.z < 0 || d.x > Chunk::size*Chunk::subsize*(World::size*2+1) || d.y > Chunk::size*Chunk::subsize || d.z > Chunk::size*Chunk::subsize*(World::size*2+1))
-        //    return true;
+        if(d.x < 0 || d.y < 0 || d.z < 0 || d.x > Chunk::size*Chunk::subsize*(World::size*2+1) || d.y > Chunk::size*Chunk::subsize || d.z > Chunk::size*Chunk::subsize*(World::size*2+1))
+            return false;
         
         octreeEntry = bufferizeWorld->getLeaf(d.x, d.y, d.z);
         
         if(octreeEntry != NULL)
+        {
+            empty = dynamic_cast<Empty*>(octreeEntry);
+            if(empty!=NULL)
+                continue;
             if(octreeEntry != base)
                 return true;
+        }
     }
     
     return false;
