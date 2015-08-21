@@ -115,10 +115,10 @@
                value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
             <PersistentString
-               value = "sizeof(GLfloat)*9">
+               value = "getVertexCount()">
             </PersistentString>
             <PersistentString
-               value = "getVertexCount()">
+               value = "sizeof(GLfloat)*9">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -151,6 +151,9 @@
          <PersistentStrings>
             <PersistentString
                value = "node-&gt;getOctreeEntries()[i]">
+            </PersistentString>
+            <PersistentString
+               value = "generationResults[0].equals(generationResults[1]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -226,6 +229,20 @@
       </ContextState>
       <ContextState
          contextName = "Chunk::setBuffered(bool):Chunk.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GenerationResult::equals(GenerationResult):GenerationResult.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "generationResult.type == type">
+            </PersistentString>
+            <PersistentString
+               value = "generationResult.occlusion == occlusion">
+            </PersistentString>
+            <PersistentString
+               value = "octreeEntry == NULL">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "World::getLeaf(int, int, int):World.cpp">

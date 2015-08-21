@@ -17,6 +17,7 @@
 
 // Start of user code includes
 #include "Octree.h"
+#include "GenerationResult.h"
 // End of user code
 
 
@@ -33,7 +34,7 @@ class WorldGenerator
 	static vector<int>* xs;
 	static vector<int>* ys;
 	static vector<int>* zs;
-		OctreeEntry* generateOctreeEntry(int p, int q, int r, int size);
+    GenerationResult generateOctreeEntry(int p, int q, int r, int size);
 
 	protected:
 	// Start of user code protected

@@ -76,89 +76,76 @@ Octree* WorldGenerator::generate(int p, int q, int r)
         int y = (*ys)[i];
         int z = (*zs)[i];
         
-        octree->setOctreeEntriesAt(generateOctreeEntry(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2), i);
+        octree->setOctreeEntriesAt(generateOctreeEntry(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2).octreeEntry, i);
     }
     return octree;
 	// End of user code
 }
-OctreeEntry* WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
+GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)
 {
 	// Start of user code generateOctreeEntry
-    unsigned char _type = 0;
-    
-    bool isCompressible = true;
+    GenerationResult res;
     
     int x = 0;
     int y = 0;
     int z = 0;
-    
-    OctreeEntry* _tempOctreeEntry[8];
-    for(int i = 0; i < 8; i++)
-        _tempOctreeEntry[i] = NULL;
+
+    GenerationResult generationResults[8];
     
     int size_2 = size >> 1;
     
-    //0
-    if(size==2)
-    {
-        _type = getCubeType(p+x, q+y, r+z);
-        if(_type > 0)
-            _tempOctreeEntry[0] = new Leaf(_type, getOcclusion(p+x, q+y, r+z));
-    }
-    else
-    {
-        _tempOctreeEntry[0] = generateOctreeEntry(p+x*size_2, q+y*size_2, r+z*size_2, size_2);
-    }
-
-    for(int i =1; i < 8; i++)
+    Node* node;
+    
+    int i;
+    
+    for(i = 0; i < 8; i++)
     {
         x = (*xs)[i];
         y = (*ys)[i];
         z = (*zs)[i];
-        
+
         if(size==2)
-        {            
-            _type = getCubeType(p+x, q+y, r+z);
-            if(_type > 0)
-                _tempOctreeEntry[i] = new Leaf(_type, getOcclusion(p+x, q+y, r+z));
+        {
+            generationResults[i].octreeEntry = NULL;
+            generationResults[i].type = getCubeType(p+x, q+y, r+z);
+            generationResults[i].occlusion = getOcclusion(p+x, q+y, r+z);
         }
         else
         {
-            _tempOctreeEntry[i] = generateOctreeEntry(p+x*size_2, q+y*size_2, r+z*size_2, size_2);
-        }
-
-        if(isCompressible)
-        {
-            if( (_tempOctreeEntry[i] == NULL && _tempOctreeEntry[i-1]!=NULL) || (_tempOctreeEntry[i] != NULL && _tempOctreeEntry[i-1] == NULL) )
-                isCompressible = false;
-            else if(_tempOctreeEntry[i-1]!=NULL && _tempOctreeEntry[i]!=NULL)
-            {
-                Leaf* leaf1 = dynamic_cast<Leaf*>(_tempOctreeEntry[i]);
-                Leaf* leaf2 = dynamic_cast<Leaf*>(_tempOctreeEntry[i-1]);
-                
-                if(leaf1==NULL || leaf2==NULL)
-                    isCompressible=false;
-                else if(leaf1->getType() != leaf2->getType() || leaf1->getOcclusion() != leaf2->getOcclusion())
-                    isCompressible = false;
-            }
+            generationResults[i] = generateOctreeEntry(p+x*size_2, q+y*size_2, r+z*size_2, size_2);
         }
     }
-
-    if(isCompressible)
+    
+    if(   generationResults[0].equals(generationResults[1])
+       && generationResults[1].equals(generationResults[2])
+       && generationResults[2].equals(generationResults[3])
+       && generationResults[3].equals(generationResults[4])
+       && generationResults[4].equals(generationResults[5])
+       && generationResults[5].equals(generationResults[6])
+       && generationResults[6].equals(generationResults[7]) )
     {
-        OctreeEntry* res = _tempOctreeEntry[0];
-        for(int i =1; i < 8; i++)
-            delete _tempOctreeEntry[i];
-        return res;
+        res.octreeEntry = NULL;
+        res.type = generationResults[0].type;
+        res.occlusion = generationResults[0].occlusion;
     }
     else
     {
-        Node* node = new Node();
-        for(int i =0; i < 8; i++)
-            node->setOctreeEntriesAt(_tempOctreeEntry[i], i);
-        return node;
+        node = new Node();
+        for(i = 0; i < 8; i++)
+        {
+            if(generationResults[i].octreeEntry == NULL)
+                node->setOctreeEntriesAt(new Leaf(generationResults[i].type, generationResults[i].occlusion), i);
+            else
+                node->setOctreeEntriesAt(generationResults[i].octreeEntry, i);
+        }
+        
+        res.octreeEntry = node;
+        res.type = 0;
+        res.occlusion = 0;
     }
-    return NULL;
+    
+    return res;
+    
     // End of user code
 }
 unsigned char WorldGenerator::getOcclusion(int x, int y, int z)

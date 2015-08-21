@@ -56,13 +56,10 @@ bool Processor::isPointInFrustum(double x, double y, double z)
     viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
     position = Scene::projection * viewSpace;
     
-    //position.x /= position.w;
-    //position.y /= position.w;
-    
-    if(position.z < 0)
+    if(position.z / position.w < 0.0009f)
         return false;
+
     if(position.x>=-position.w && position.y>=-position.w && position.x<=position.w && position.y<=position.w )
-    //if(position.x>=0 && position.y>=0 && position.x<=1920 && position.y<=1080 )
         return true;
     else
         return false;
@@ -383,6 +380,11 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
          
             sizeM1 = size-1;
          
+            if(sizeM1 == 0)
+            {
+                int a = 2;
+            }
+            
             _offset =  (   pp + (cup << 4) + (chp << 8) +
          ((qq + (cuq << 4) + (chq << 8)) << 10) +
          ( (( rr + (cur << 4) + (chr << 8) )) << 20) );
