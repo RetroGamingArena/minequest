@@ -239,19 +239,17 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
     unsigned int _offset = 0;
     unsigned int _size = 0;
     
-    double currentTime = glfwGetTime();
-    
     vec->clear();
     
     Chunk* chunk = NULL;
-    
-    int bad = 0;
     
     glm::vec3 d;
     
     unsigned char mask = TOP;
     
     Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
+    
+    double currentTime = glfwGetTime();
     
     for(int c = 0; c < chunks.size(); c++)
     {
@@ -268,10 +266,8 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
         size = voxel.size;
         
         if(!isCubeInFrustum((float)p/Chunk::subsize,(float)q/Chunk::subsize,(float)r/Chunk::subsize,(float)(p+size)/Chunk::subsize,(float)(q+size)/Chunk::subsize,(float)(r+size)/Chunk::subsize))
-        {
-            //bad++;
             continue;
-        }
+        
         occlusion = voxel.occlusion;
         type = voxel.type;
         
@@ -288,7 +284,7 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             mask |= LEFT;
         
         if(isCubeFreeWithMask(p, q, r, size, mask))
-        //if(!isCubeOccluded(p,q,r,size, mask))
+        if(!isCubeOccluded(p,q,r,size, mask))
         {
             _p = p/Chunk::subsize;
             _q = q/Chunk::subsize;
@@ -307,11 +303,6 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             rr = r%Chunk::subsize;
          
             sizeM1 = size-1;
-         
-            if(sizeM1 == 0)
-            {
-                int a = 2;
-            }
             
             _offset =  (   pp + (cup << 4) + (chp << 8) +
          ((qq + (cuq << 4) + (chq << 8)) << 10) +
@@ -324,11 +315,8 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             vec->push_back(_size);
         
         }
-        //else
-        //    bad++;
     }
     }
-    //usleep(1000000);
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;
 }
@@ -338,22 +326,28 @@ bool Processor::isCubeOccluded(int x, int y, int z, int size, unsigned char mask
     unsigned char cpt = 0;
 
     if(mask & BOTTOM)
-        if(isPointOccluded(x+size/2.0, y, z+size/2.0))
+        if(isPointOccluded(x, y, z, size/2.0, 0, size/2.0))
+        //if(isPointOccluded(x+size/2.0, y, z+size/2.0))
             cpt++;//return false;
     if(mask & LEFT)
-        if(isPointOccluded(x, y+size/2.0, z+size/2.0))
+        if(isPointOccluded(x, y, z, 0, size/2.0,size/2.0))
+        //if(isPointOccluded(x, y+size/2.0, z+size/2.0))
             cpt++;//return false;
     if(mask & FRONT)
-        if(isPointOccluded(x+size/2.0, y+size/2.0, z+size))
+        if(isPointOccluded(x, y, z, size/2.0, size/2.0, size))
+        //if(isPointOccluded(x+size/2.0, y+size/2.0, z+size))
             cpt++;//return false;
     if(mask & RIGHT)
-        if(isPointOccluded(x+size, y+size/2.0, z+size/2.0))
+        if(isPointOccluded(x, y, z, size, size/2.0, size/2.0))
+        //if(isPointOccluded(x+size, y+size/2.0, z+size/2.0))
             cpt++;//return false;
     if(mask & BACK)
-        if(isPointOccluded(x+size/2.0, y+size/2.0, z))
+        if(isPointOccluded(x, y, z, size/2.0, size/2.0, 0))
+        //if(isPointOccluded(x+size/2.0, y+size/2.0, z))
             cpt++;//return false;
     if(mask & TOP)
-        if(isPointOccluded(x+size/2.0, y+size, z+size/2.0))
+        if(isPointOccluded(x, y, z, size/2.0, size, size/2.0))
+        //if(isPointOccluded(x+size/2.0, y+size, z+size/2.0))
             cpt++;//return false;
 
     if(cpt == 3)
@@ -361,9 +355,9 @@ bool Processor::isCubeOccluded(int x, int y, int z, int size, unsigned char mask
     return false;
 }
 
-bool Processor::isPointOccluded(int x, int y, int z)
+bool Processor::isPointOccluded(int x, int y, int z, double dx, double dy, double dz)
 {
-    vertexPosition = glm::vec3(x,y,z);
+    vertexPosition = glm::vec3(x+dx,y+dy,z+dz);
     vertexPosition /= Chunk::subsize;
     
     viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
@@ -390,13 +384,13 @@ bool Processor::isPointOccluded(int x, int y, int z)
     
     base = bufferizeWorld->getLeaf(x, y, z);
     
+    empty = dynamic_cast<Empty*>(base);
+    
     ray = new Ray(glm::vec3(x,y,z), glm::vec3(unproj.x*Chunk::subsize, unproj.y*Chunk::subsize, unproj.z*Chunk::subsize));
     
     end = max(end, (int)abs(ray->getStart().x-ray->getDirection().x));
     end = max(end, (int)abs(ray->getStart().y-ray->getDirection().y));
     end = max(end, (int)abs(ray->getStart().z-ray->getDirection().z));
-    
-    //OctreeEntry* octreeEntry = NULL;
     
     d = ray->move(end);
     
@@ -404,7 +398,10 @@ bool Processor::isPointOccluded(int x, int y, int z)
     {
         d = ray->move(i);
         if(d.x < 0 || d.y < 0 || d.z < 0 || d.x > Chunk::size*Chunk::subsize*(World::size*2+1) || d.y > Chunk::size*Chunk::subsize || d.z > Chunk::size*Chunk::subsize*(World::size*2+1))
+        {
+            delete ray;
             return false;
+        }
         
         octreeEntry = bufferizeWorld->getLeaf(d.x, d.y, d.z);
         
@@ -412,12 +409,19 @@ bool Processor::isPointOccluded(int x, int y, int z)
         {
             empty = dynamic_cast<Empty*>(octreeEntry);
             if(empty!=NULL)
+            {
+                delete empty;
                 continue;
+            }
             if(octreeEntry != base)
+            {
+                delete ray;
                 return true;
+            }
         }
     }
     
+    delete ray;
     return false;
 }
 

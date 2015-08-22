@@ -140,7 +140,7 @@ OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)
     
     OctreeEntry* entry = this->get(i,j,k);
     if(entry == NULL)
-        return new Empty(i << _log,j << _log,k << _log, size/2);
+        return new Empty(i << _log,j << _log,k << _log, size/2); // TODO : corriger fuite mémoire
     else
     {
         OctreeEntry* _entry = entry->getLeafAbs(offset_x,offset_y,offset_z, size/2);

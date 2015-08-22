@@ -11,15 +11,15 @@
 
 struct Voxel
 {
-    int x;
-    int y;
-    int z;
-    int size;
-    int occlusion;
-    int type;
-    
+    unsigned short int x;
+    unsigned short int y;
+    unsigned short int z;
+    unsigned short int size;
+    unsigned char occlusion;
+    unsigned char type;
+
     Voxel(){};
-    Voxel(int x, int y, int z, int size, int occlusion, int type)
+    Voxel(int x, int y, int z, int size, unsigned char occlusion, unsigned char type)
     {
         this->x = x;
         this->y = y;
