@@ -134,7 +134,12 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
         for(i = 0; i < 8; i++)
         {
             if(generationResults[i].octreeEntry == NULL)
-                node->setOctreeEntriesAt(new Leaf(generationResults[i].type, generationResults[i].occlusion), i);
+            {
+                if(generationResults[i].type > 0)
+                    node->setOctreeEntriesAt(new Leaf(generationResults[i].type, generationResults[i].occlusion), i);
+                else
+                    node->setOctreeEntriesAt(NULL, i);
+            }
             else
                 node->setOctreeEntriesAt(generationResults[i].octreeEntry, i);
         }

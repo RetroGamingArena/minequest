@@ -8,6 +8,11 @@
 
 Leaf::Leaf(unsigned char _type, unsigned char _occlusion)
 {
+    if(_type == 0)
+    {
+        int a = 2;
+    }
+    
 	type = _type;
 	occlusion = _occlusion;
     

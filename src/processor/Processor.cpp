@@ -58,7 +58,6 @@ bool Processor::isPointInFrustum(double x, double y, double z)
     
     if(position.z / position.w < 0.0009f)
         return false;
-
     if(position.x>=-position.w && position.y>=-position.w && position.x<=position.w && position.y<=position.w )
         return true;
     else
@@ -85,77 +84,6 @@ bool Processor::isCubeInFrustum(double x1, double y1, double z1, double x2, doub
         return true;
     if(isPointInFrustum(x2, y2, z2))
         return true;
-    
-    /*Camera* camera = Engine::getInstance()->getScene()->getSelectedCamera();
-    
-    glm::vec3 p(x1,y1,z1);
-    
-    float pcz,pcx,pcy,aux;
-    
-    float farD = 200.0f;
-    float nearD = 0.009f;
-    float angle = 70.0f;
-    float ratio = 192.0f / 108.0f;
-    float tang = (float)tan(ANG2RAD * angle * 0.5);
-
-    glm::vec3 v = p-camera->getPosition();
-    
-    glm::vec3 Z;
-    Z = camera->getCenter() - p;
-    
-    float length = Z.length();
-    Z = Z / length;
-
-    glm::vec3 X = Z * camera->getUp();
-    
-    length = Z.length();
-    X = X / length;
-    
-    glm::vec3 Y = X * Z;
-    
-    pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;
-    if (pcz > farD || pcz < nearD)
-        return false;
-    
-    pcy = v.x*Y.x + v.y*Y.y + v.z*Y.z;
-    aux = pcz * tang;
-    if (pcy > aux || pcy < -aux)
-        return false;
-    
-    pcz = v.x*X.x + v.y*X.y + v.z*X.z;
-    aux = aux * ratio;
-    if (pcx > aux || pcx < -aux)
-        return false;
-    
-    p = glm::vec3(x2,y2,z2);
-    
-    v = p-camera->getPosition();
-    
-    Z = camera->getCenter() - p;
-    
-    length = Z.length();
-    Z = glm::normalize(Z);
-    
-    X = Z * camera->getUp();
-    
-    length = Z.length();
-    X= X / length;
-    
-    Y = X * Z;
-    
-    pcz = v.x*-Z.x + v.y*-Z.y + v.z*-Z.z;
-    if (pcz > farD || pcz < nearD)
-        return false;
-    
-    pcy = v.x*Y.x + v.y*Y.y + v.z*Y.z;
-    aux = pcz * tang;
-    if (pcy > aux || pcy < -aux)
-        return false;
-    
-    pcz = v.x*X.x + v.y*X.y + v.z*X.z;
-    aux = aux * ratio;
-    if (pcx > aux || pcx < -aux)
-        return false;*/
     
     return false;
 
@@ -407,26 +335,30 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
 
 bool Processor::isCubeOccluded(int x, int y, int z, int size, unsigned char mask)
 {
+    unsigned char cpt = 0;
+
     if(mask & BOTTOM)
-        if(!isPointOccluded(x+size/2.0, y, z+size/2.0))
-            return false;
+        if(isPointOccluded(x+size/2.0, y, z+size/2.0))
+            cpt++;//return false;
     if(mask & LEFT)
-        if(!isPointOccluded(x, y+size/2.0, z+size/2.0))
-            return false;
+        if(isPointOccluded(x, y+size/2.0, z+size/2.0))
+            cpt++;//return false;
     if(mask & FRONT)
-        if(!isPointOccluded(x+size/2.0, y+size/2.0, z+size))
-            return false;
+        if(isPointOccluded(x+size/2.0, y+size/2.0, z+size))
+            cpt++;//return false;
     if(mask & RIGHT)
-        if(!isPointOccluded(x+size, y+size/2.0, z+size/2.0))
-            return false;
+        if(isPointOccluded(x+size, y+size/2.0, z+size/2.0))
+            cpt++;//return false;
     if(mask & BACK)
-        if(!isPointOccluded(x+size/2.0, y+size/2.0, z))
-            return false;
+        if(isPointOccluded(x+size/2.0, y+size/2.0, z))
+            cpt++;//return false;
     if(mask & TOP)
-        if(!isPointOccluded(x+size/2.0, y+size, z+size/2.0))
-            return false;
-    
-    return true;
+        if(isPointOccluded(x+size/2.0, y+size, z+size/2.0))
+            cpt++;//return false;
+
+    if(cpt == 3)
+        return true;
+    return false;
 }
 
 bool Processor::isPointOccluded(int x, int y, int z)
@@ -448,7 +380,7 @@ bool Processor::isPointOccluded(int x, int y, int z)
     _x = 1920 * _x / (2*position.w);
     _y = 1080 * _y / (2*position.w);
     
-    unproj = glm::inverse(Scene::projection * Scene::VM) * glm::vec4(_x,_y,0.0009f,1);
+    unproj = glm::inverse(Scene::projection * Scene::VM) * glm::vec4(_x,_y,0.0009f,200.0f);//1);
     
     unproj.w = 1.0 / unproj.w;
     
