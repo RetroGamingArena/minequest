@@ -51,7 +51,7 @@ class Processor
     static glm::vec3 d;
     static int end;
     
-    static bool isCubeVisible(int x, int y, int z, int size);
+    static char isCubeVisible(int x, int y, int z, int size);
     static bool isCubeFree(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size);
     static bool isCubeFreeWithMask(int x, int y, int z, int size, unsigned char mask);

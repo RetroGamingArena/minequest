@@ -33,8 +33,8 @@ void main()
         vertexWidth = _vertexWidth[i];
         viewSpace = _viewSpace[i];
         
-        if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
-            EmitVertex();
+        //if(gl_in[i].gl_Position.x>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.y>-gl_in[i].gl_Position.w && gl_in[i].gl_Position.x<gl_in[i].gl_Position.w && gl_in[i].gl_Position.y<gl_in[i].gl_Position.w )
+        EmitVertex();
     }
     EndPrimitive();
 }

@@ -123,8 +123,8 @@ void Node::bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, flo
 OctreeEntry* Node::getLeafAbs(int x, int y, int z, int size)
 {
 	// Start of user code getLeafAbs
-    if(this->octreeEntries.size() == 0)
-        this->split();
+    //if(this->octreeEntries.size() == 0)
+    //    this->split();
     
     int subsize = size >> 1;
     
