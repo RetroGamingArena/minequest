@@ -10,9 +10,9 @@ layout(location = 3) in uint vertexWidth;
 
 uniform mat4 MVP;
 
-uniform mat4 M;
+/*uniform mat4 M;
 uniform mat4 V;
-uniform mat4 P;
+uniform mat4 P;*/
 
 out vec4 _vertexPosition;
 out vec4 _fragmentColor;
@@ -22,11 +22,11 @@ out float _fragmentAo;
 out vec3 _vertexWidth;
 out float _vertexColorIndex;
 
-out vec4 _viewSpace;
+//out vec4 _viewSpace;
 
-out mat4 _M;
-out mat4 _V;
-out mat4 _P;
+//out mat4 _M;
+//out mat4 _V;
+//out mat4 _P;
 
 void main()
 {
@@ -51,8 +51,8 @@ void main()
     offset.y = y;
     offset.z = z;
     
-    _viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
-    gl_Position = P * _viewSpace;
+    //_viewSpace = V * M * vec4(vertexPosition_temp+offset,1);
+    gl_Position = MVP * vec4(vertexPosition_temp+offset,1);//P * _viewSpace;
     
     ao = ao / 2.0;
     
@@ -95,7 +95,7 @@ void main()
     
     _vertexColorIndex = vertexColorIndex;
     
-    _M = M;
+    /*_M = M;
     _V = V;
-    _P = P;
+    _P = P;*/
 }

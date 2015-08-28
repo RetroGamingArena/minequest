@@ -36,6 +36,7 @@ class Shader
 	GLuint mMatrixID;
 	GLuint vMatrixID;
 	GLuint pMatrixID;
+    GLuint mVPMatrixID;
 
 	protected:
 	// Start of user code protected
@@ -43,6 +44,7 @@ class Shader
 
 	public:
 		// Start of user code public
+        GLuint getMVPMatrixID();
         Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path);
 		// End of user code
 		Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path, GLuint _programID, GLuint _mMatrixID, GLuint _vMatrixID, GLuint _pMatrixID);

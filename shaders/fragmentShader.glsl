@@ -1,13 +1,13 @@
 #version 410 core
-/*in vec4 _fragmentColor;
+in vec4 _fragmentColor;
 in vec3 _cubeColor;
 in float _fragmentAo;
 in vec3 _vertexWidth;
 
 in float _vertexColorIndex;
 
-in vec4 _viewSpace;
-in vec4 _vertexPosition;*/
+//in vec4 _viewSpace;
+in vec4 _vertexPosition;/*
 
 in vec4 fragmentColor;
 in vec3 cubeColor;
@@ -17,7 +17,7 @@ in vec3 vertexWidth;
 in float _vertexColorIndex;
  
 in vec4 viewSpace;
-in vec4 vertexPosition;
+in vec4 vertexPosition;*/
 
 out vec4 color;
 
@@ -27,20 +27,20 @@ const vec3 fogColor = vec3(0.5, 0.5, 0.5);
 
 void main()
 {
-    /*vec4 fragmentColor = _fragmentColor;
+    vec4 fragmentColor = _fragmentColor;
     vec3 cubeColor = _cubeColor;
     float fragmentAo = _fragmentAo;
     vec3 vertexWidth = _vertexWidth;
     
-    vec4 viewSpace = _viewSpace;
-    vec4 vertexPosition = _vertexPosition;*/
+    //vec4 viewSpace = _viewSpace;
+    vec4 vertexPosition = _vertexPosition;
     
     float ao = fragmentAo;
     ao = min(1.0, ao);
     
     color  = fragmentColor;
     
-    float dist = length(viewSpace);
+    float dist = 0;//length(viewSpace);
     
     float fogFactor = (80 - dist*2)/(80 - 20);
     
@@ -151,10 +151,10 @@ void main()
 
     //color.a = 1;
     
-    fogFactor = clamp( fogFactor, 0.0, 1.0 );
+    /*fogFactor = clamp( fogFactor, 0.0, 1.0 );
     
     vec3 lightColor = vec3(color.rgb);
     vec3 finalColor = mix(fogColor, lightColor, fogFactor);
-    color = vec4(finalColor, 1);
+    color = vec4(finalColor, 1);*/
 
 }

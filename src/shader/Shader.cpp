@@ -26,6 +26,13 @@ Shader::Shader()
 
 
 // Start of user code methods
+GLuint Shader::getMVPMatrixID()
+{
+    // Start of user code getVMatrixID
+    // End of user code
+    return mVPMatrixID;
+}
+
 Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path, const char * _geometry_file_path) : Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0)
 {
     //Shader(_vertex_file_path, _fragment_file_path, _geometry_file_path,0,0,0,0);
@@ -34,6 +41,7 @@ Shader::Shader(const char * _vertex_file_path, const char * _fragment_file_path,
     mMatrixID = glGetUniformLocation(programID, "M");
     vMatrixID = glGetUniformLocation(programID, "V");
     pMatrixID = glGetUniformLocation(programID, "P");
+    mVPMatrixID = glGetUniformLocation(programID, "MVP");
 }
 // End of user code
 

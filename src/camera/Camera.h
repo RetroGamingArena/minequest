@@ -38,6 +38,7 @@ class Camera : public Transmitter
 	glm::mat4 model;
 	glm::mat4 view;
 	glm::mat4 projection;
+    glm::mat4 mvp;
 	float angleZ;
 	float angleY;
 
@@ -53,6 +54,7 @@ class Camera : public Transmitter
 		void setView(glm::mat4 _view);
 		glm::mat4 getProjection();
 		void setProjection(glm::mat4 _projection);
+        glm::mat4 getMVP();
 		float getAngleZ();
 		void setAngleZ(float _angleZ);
 		float getAngleY();

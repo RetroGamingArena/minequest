@@ -30,6 +30,10 @@ Camera::Camera()
 
 
 // Start of user code methods
+glm::mat4 Camera::getMVP()
+{
+    return mvp;
+}
 // End of user code
 
 void Camera::poly()
@@ -114,6 +118,7 @@ void Camera::look()
                              getCenter(), // and looks here : at the same position, plus "direction"
                              getUp()                  // Head is up (set to 0,-1,0 to look upside-down)
                              );
+    mvp = projection * view * model;
 	// End of user code
 }
 unsigned char Camera::getMask()
