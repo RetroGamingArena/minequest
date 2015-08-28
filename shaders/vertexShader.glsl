@@ -116,9 +116,9 @@ void main()
     
     //if(cubeColor != vec3(0.0,0.0,1.0))
     {
-        _fragmentColor.r = vertexPosition_modelspace.x;
+        /*_fragmentColor.r = vertexPosition_modelspace.x;
         _fragmentColor.g = vertexPosition_modelspace.y;
-        _fragmentColor.b = vertexPosition_modelspace.z;
+        _fragmentColor.b = vertexPosition_modelspace.z;*/
         //fragmentColor.a = 1;
     }
     
