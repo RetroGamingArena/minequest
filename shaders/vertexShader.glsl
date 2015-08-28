@@ -31,21 +31,44 @@ out float _vertexColorIndex;
 void main()
 {
     uint iWidth = uint(vertexWidth);
-    uint xWidth = (iWidth & uint(0x3f))+1;
+    /*uint xWidth = (iWidth & uint(0x3f))+1;
     uint yWidth = ((iWidth & uint(0xfc0)) >> 6)+1;
     uint zWidth = ((iWidth & uint(0x3f000)) >> 12)+1;
     
     float ao = ((iWidth & uint(0xC0000)) >> 18);
-    int vertexColorIndex = int((iWidth & uint(0xfffe0000)) >> 20);
+    int vertexColorIndex = int((iWidth & uint(0xfffe0000)) >> 20);*/
+    
+    uint xWidth = bitfieldExtract(iWidth,0,6)+1;
+    uint yWidth = bitfieldExtract(iWidth,6,6)+1;
+    uint zWidth = bitfieldExtract(iWidth,12,6)+1;
+    
+    float ao = float(bitfieldExtract(iWidth,18,2));
+    int vertexColorIndex = int(bitfieldExtract(iWidth,20,12));
     
     vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth/16.0, vertexPosition_modelspace.y*yWidth/16.0, vertexPosition_modelspace.z*zWidth/16.0 );
     
-    int iOffset = int(_offset);
+    uint iOffset = uint(_offset);
     vec3 offset;
     
-    float x = ((iOffset      & 0x300) >> 8)*16 +  ((iOffset      & 0xf0) >> 4) +  float(((iOffset) & 0xf)/16.0);
-    float y = (((iOffset>>10) & 0x300) >> 8)*16 + (((iOffset>>10) & 0xf0) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
-    float z = (((iOffset>>20) & 0x300) >> 8)*16 + (((iOffset>>20) & 0xf0) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
+    //float x = ((iOffset      & 0x300) >> 8)*16 +  ((iOffset      & 0xf0) >> 4) +  float(((iOffset) & 0xf)/16.0);
+    //float y = (((iOffset>>10) & 0x300) >> 8)*16 + (((iOffset>>10) & 0xf0) >> 4) + float(((iOffset>>10) & 0xf)/16.0);
+    //float z = (((iOffset>>20) & 0x300) >> 8)*16 + (((iOffset>>20) & 0xf0) >> 4) + float(((iOffset>>20) & 0xf)/16.0);
+    
+    uint chunkX = bitfieldExtract(iOffset,8,2);
+    uint cubeX  = bitfieldExtract(iOffset,4,4);
+    uint voxelX = bitfieldExtract(iOffset,0,4);
+    
+    uint chunkY = bitfieldExtract(iOffset,18,2);
+    uint cubeY  = bitfieldExtract(iOffset,14,4);
+    uint voxelY = bitfieldExtract(iOffset,10,4);
+    
+    uint chunkZ = bitfieldExtract(iOffset,28,2);
+    uint cubeZ  = bitfieldExtract(iOffset,24,4);
+    uint voxelZ = bitfieldExtract(iOffset,20,4);
+    
+    float x = chunkX * 16.0 + cubeX + voxelX / 16.0;
+    float y = chunkY * 16.0 + cubeY + voxelY / 16.0;
+    float z = chunkZ * 16.0 + cubeZ + voxelZ / 16.0;
     
     offset.x = x;
     offset.y = y;
