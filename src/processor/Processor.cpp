@@ -594,7 +594,7 @@ bool Processor::isPointOccluded(int x, int y, int z, double dx, double dy, doubl
     return false;
 }
 
-void Processor::bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
+void Processor::bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
 {
     if(leaf->occluded && !leaf->visible)
         return;

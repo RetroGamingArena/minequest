@@ -41,9 +41,9 @@ Chunk::Chunk(float _p, float _q, float _r)
     this->q=_q;
     this->r=_r;
     
-    this->octree = new Octree();
-    Octree::size = Chunk::size*Chunk::subsize;
-    Octree::subSize = Chunk::subsize;
+    this->octree = new Octree<Voxel*>();
+    Octree<Voxel*>::size = Chunk::size*Chunk::subsize;
+    Octree<Voxel*>::subSize = Chunk::subsize;
     
     octree->setP(p);
     octree->setQ(q);
@@ -161,7 +161,7 @@ void Chunk::generate(WorldGenerator * worldGenerator)
 void Chunk::bufferize()
 {
 	// Start of user code bufferize
-    octree->bufferize(vertexBuffer, 0, 0, 0);
+    //octree->bufferize(vertexBuffer, 0, 0, 0);
 	// End of user code
 }
 
@@ -177,14 +177,14 @@ void Chunk::setVertexBuffer(VertexBuffer* _vertexBuffer)
 	vertexBuffer = _vertexBuffer;
 }
 					
-Octree* Chunk::getOctree()
+Octree<Voxel*>* Chunk::getOctree()
 {
 	// Start of user code getOctree
 	// End of user code
 	return octree;
 }
 
-void Chunk::setOctree(Octree* _octree)
+void Chunk::setOctree(Octree<Voxel*>* _octree)
 {
 	octree = _octree;
 }

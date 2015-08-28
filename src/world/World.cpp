@@ -213,8 +213,8 @@ unsigned char World::getCube(int x, int y, int z)
     int sy = abs_y % chunkSize;
     int sz = abs_z % chunkSize;
 
-    Octree* octree = chunk->getOctree();
-    return octree->getAbs(sx, sy, sz, Octree::size);
+    Octree<Voxel*>* octree = chunk->getOctree();
+    return octree->getAbs(sx, sy, sz, Octree<Voxel*>::size);
     
     return 0;
 	// End of user code
@@ -267,8 +267,8 @@ OctreeEntry* World::getLeaf(int x, int y, int z)
     
     if(chunk != NULL)
     {
-        Octree* octree = chunk->getOctree();
-        OctreeEntry* entry = octree->getLeafAbs(sx, sy, sz, Octree::size);
+        Octree<Voxel*>* octree = chunk->getOctree();
+        OctreeEntry* entry = octree->getLeafAbs(sx, sy, sz, Octree<Voxel*>::size);
         return entry;
     }
     

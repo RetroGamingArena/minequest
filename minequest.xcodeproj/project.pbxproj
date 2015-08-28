@@ -69,7 +69,6 @@
 		64C986571AFBBFBB00A5B62E /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986531AFBBFBB00A5B62E /* Chunk.cpp */; };
 		64C986581AFBBFBB00A5B62E /* ChunkTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986551AFBBFBB00A5B62E /* ChunkTask.cpp */; };
 		64C9865A1AFBD85700A5B62E /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986591AFBD85700A5B62E /* Cube.cpp */; };
-		64C986621AFBDBE100A5B62E /* Leaf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9865C1AFBDBE100A5B62E /* Leaf.cpp */; };
 		64C986631AFBDBE100A5B62E /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C9865E1AFBDBE100A5B62E /* Node.cpp */; };
 		64C986641AFBDBE100A5B62E /* Octree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986601AFBDBE100A5B62E /* Octree.cpp */; };
 		64C986671AFBED1D00A5B62E /* noiseutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64C986651AFBED1D00A5B62E /* noiseutils.cpp */; };
@@ -475,7 +474,6 @@
 		64C986561AFBBFBB00A5B62E /* ChunkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkTask.h; sourceTree = "<group>"; };
 		64C986591AFBD85700A5B62E /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		64C9865B1AFBD86E00A5B62E /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
-		64C9865C1AFBDBE100A5B62E /* Leaf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Leaf.cpp; path = src/octree/Leaf.cpp; sourceTree = SOURCE_ROOT; };
 		64C9865D1AFBDBE100A5B62E /* Leaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Leaf.h; path = src/octree/Leaf.h; sourceTree = SOURCE_ROOT; };
 		64C9865E1AFBDBE100A5B62E /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Node.cpp; path = src/octree/Node.cpp; sourceTree = SOURCE_ROOT; };
 		64C9865F1AFBDBE100A5B62E /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Node.h; path = src/octree/Node.h; sourceTree = SOURCE_ROOT; };
@@ -520,7 +518,6 @@
 			children = (
 				649722AF1B3FFC9600E356B6 /* Empty.cpp */,
 				649722B01B3FFC9600E356B6 /* Empty.h */,
-				64C9865C1AFBDBE100A5B62E /* Leaf.cpp */,
 				64C9865D1AFBDBE100A5B62E /* Leaf.h */,
 				64C9865E1AFBDBE100A5B62E /* Node.cpp */,
 				64C9865F1AFBDBE100A5B62E /* Node.h */,
@@ -1179,7 +1176,6 @@
 				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
 				6440BB781AFAC3AD006A0842 /* PerlinGenerator.cpp in Sources */,
 				6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */,
-				64C986621AFBDBE100A5B62E /* Leaf.cpp in Sources */,
 				649D601E1B34E72000810DBA /* Ray.cpp in Sources */,
 				6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */,
 				6440BB071AF69C4A006A0842 /* VBOScene.cpp in Sources */,

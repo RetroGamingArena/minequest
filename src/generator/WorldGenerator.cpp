@@ -62,10 +62,10 @@ vector<int>* WorldGenerator::getZs()
 
 
 
-Octree* WorldGenerator::generate(int p, int q, int r)
+Octree<Voxel*>* WorldGenerator::generate(int p, int q, int r)
 {
 	// Start of user code generate
-    Octree* octree = new Octree();
+    Octree<Voxel*>* octree = new Octree<Voxel*>();
     octree->setP(p);
     octree->setQ(q);
     octree->setR(r);
@@ -94,7 +94,7 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
     
     int size_2 = size >> 1;
     
-    Node* node;
+    Node<Voxel*>* node;
     
     int i;
     
@@ -130,13 +130,13 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
     }
     else
     {
-        node = new Node();
+        node = new Node<Voxel*>();
         for(i = 0; i < 8; i++)
         {
             if(generationResults[i].octreeEntry == NULL)
             {
                 if(generationResults[i].type > 0)
-                    node->setOctreeEntriesAt(new Leaf(generationResults[i].type, generationResults[i].occlusion), i);
+                    node->setOctreeEntriesAt(new Leaf<Voxel*>(generationResults[i].type, generationResults[i].occlusion), i);
                 else
                     node->setOctreeEntriesAt(NULL, i);
             }

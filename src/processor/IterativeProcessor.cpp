@@ -33,7 +33,7 @@ void IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeE
 {
     int size_2 = (int)size>>1;
     
-    Node* node = dynamic_cast<Node*>(octreeEntry);
+    Node<Voxel*>* node = dynamic_cast<Node<Voxel*>*>(octreeEntry);
     if(node != NULL)
     {
         int bufferizeX;
@@ -58,7 +58,7 @@ void IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeE
         }
         return;
     }
-    Leaf* leaf = dynamic_cast<Leaf*>(octreeEntry);
+    Leaf<Voxel*>* leaf = dynamic_cast<Leaf<Voxel*>*>(octreeEntry);
     if(leaf != NULL)
     {
         bufferizeLeaf(chunk, leaf, buffer, p, q, r, size);
@@ -103,7 +103,7 @@ vector<GLuint>* IterativeProcessor::bufferize(Chunk* chunk)
 {
 	// Start of user code bufferize
     vector<GLuint>* res = new vector<GLuint>();
-    Octree* octree = chunk->getOctree();
+    Octree<Voxel*>* octree = chunk->getOctree();
     
     int x = 0;
     int y = 0;
@@ -116,7 +116,7 @@ vector<GLuint>* IterativeProcessor::bufferize(Chunk* chunk)
         z = (*WorldGenerator::getZs())[i];
         
         if(octree->getOctreeEntries()[i] != NULL)
-            bufferizeOctreeEntry(chunk, octree->getOctreeEntries()[i], res, octree->getP()*Octree::size+x*Octree::size/2.0, octree->getQ()*Octree::size+y*Octree::size/2.0, octree->getR()*Octree::size+z*Octree::size/2.0, Octree::size/2);
+            bufferizeOctreeEntry(chunk, octree->getOctreeEntries()[i], res, octree->getP()*Octree<Voxel*>::size+x*Octree<Voxel*>::size/2.0, octree->getQ()*Octree<Voxel*>::size+y*Octree<Voxel*>::size/2.0, octree->getR()*Octree<Voxel*>::size+z*Octree<Voxel*>::size/2.0, Octree<Voxel*>::size/2);
     }
     
     

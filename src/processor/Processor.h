@@ -63,7 +63,7 @@ class Processor
 
 	protected:
 	// Start of user code protected
-    void bufferizeLeaf(Chunk* chunk, Leaf * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
+    void bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>* vec, int p, int q, int r, int size);
 	// End of user code
 
 	public:

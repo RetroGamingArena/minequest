@@ -16,24 +16,23 @@
 // End of user code
 
 // Start of user code includes
-#include "World.h"
+//#include "World.h"
 // End of user code
-
-#include "OctreeEntry.h"
-
 
 using namespace std;
 
 // Start of user code class import
-class World;
+#include "OctreeEntry.h"
 // End of user code
 
+template <class T>
 class Leaf : public OctreeEntry
 {
 	// Start of user code private
 	// End of user code
 	unsigned char type;
 	unsigned char occlusion;
+    T value;
 
 	protected:
 	// Start of user code protected
@@ -45,18 +44,78 @@ class Leaf : public OctreeEntry
         //static World* bufferizeWorld;
         unsigned char visible;
 		// End of user code
-		Leaf(unsigned char _type, unsigned char _occlusion);
-		Leaf();
-		~Leaf();
-		unsigned char getType();
-		void setType(unsigned char _type);
-		unsigned char getOcclusion();
-		void setOcclusion(unsigned char _occlusion);
-		bool isCompressible();
-		int getCode();
-		unsigned char getAbs(int x, int y, int z, int size);
-		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size);
-		OctreeEntry* getLeafAbs(int x, int y, int z, int size);
+		
+            Leaf(unsigned char _type, unsigned char _occlusion)
+            {
+   
+        
+        type = _type;
+        occlusion = _occlusion;
+        
+        occluded = false;
+        visible = false;
+                }
+    
+            Leaf(){};
+    ~Leaf(){};
+		
+
+            unsigned char getType()
+            {
+                    // Start of user code getType
+                    // End of user code
+                    return type;
+                }
+    
+    void setType(unsigned char _type)
+    {
+        type = _type;
+    }
+		
+
+        unsigned char getOcclusion()
+        {
+            // Start of user code getOcclusion
+            // End of user code
+            return occlusion;
+        }
+    
+    void setOcclusion(unsigned char _occlusion)
+    {
+        occlusion = _occlusion;
+    }
+		
+    bool isCompressible()
+    {
+        // Start of user code isCompressible
+        return false;
+        // End of user code
+    }
+    
+
+    int getCode()
+    {
+        // Start of user code getCode
+        return type;
+        // End of user code
+    }
+    
+
+    unsigned char getAbs(int x, int y, int z, int size)
+    {
+        // Start of user code getAbs
+        return type;
+        // End of user code
+    }
+
+		
+    OctreeEntry* getLeafAbs(int x, int y, int z, int size)
+    {
+        // Start of user code getLeafAbs
+        return this;
+        // End of user code
+    }
+
 };
 
 #endif

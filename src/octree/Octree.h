@@ -27,7 +27,8 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class Octree : public Node
+template <class T>
+class Octree : public Node<T>
 {
 	// Start of user code private
 	// End of user code
@@ -44,16 +45,72 @@ class Octree : public Node
 		// End of user code
 	static int size;
 	static int subSize;
-		Octree(float _p, float _q, float _r, int _size, int _subSize);
-		Octree();
-		~Octree();
-		float getP();
-		void setP(float _p);
-		float getQ();
-		void setQ(float _q);
-		float getR();
-		void setR(float _r);
-		void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r);
+    Octree(float _p, float _q, float _r, int _size, int _subSize)
+    {
+        p = _p;
+        q = _q;
+        r = _r;
+        size = _size;
+        subSize = _subSize;
+    }
+    
+    Octree()
+    // Start of user code super class
+    // End of user code
+    {
+        // Start of user code constructor
+        // End of user code
+    }
+    
+    ~Octree()
+    {
+        // Start of user code destructor
+        // End of user code
+    }
+
+    float getP()
+    {
+        // Start of user code getP
+        // End of user code
+        return p;
+    }
+
+    void setP(float _p)
+    {
+        p = _p;
+    }
+
+    float getQ()
+    {
+        // Start of user code getQ
+        // End of user code
+        return q;
+    }
+
+    void setQ(float _q)
+    {
+        q = _q;
+    }
+
+    float getR()
+    {
+        // Start of user code getR
+        // End of user code
+        return r;
+    }
+
+    void setR(float _r)
+    {
+        r = _r;
+    }
 };
+
+template<class T>
+int Octree<T>::size = 0;
+
+template<class T>
+int Octree<T>::subSize = 0;
+
+
 
 #endif

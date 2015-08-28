@@ -39,14 +39,13 @@ class OctreeEntry
 	public:
 		// Start of user code public
 		// End of user code
-	static int NODE;
+    static int NODE;
 		OctreeEntry(int _NODE);
 		OctreeEntry();
 		virtual ~OctreeEntry(){};
 		virtual bool isCompressible() = 0;
 		virtual int getCode() = 0;
 		virtual unsigned char getAbs(int x, int y, int z, int size) = 0;
-		virtual void bufferize(VertexBuffer * vertexBuffer, float p, float q, float r, float size) = 0;
 		virtual OctreeEntry* getLeafAbs(int x, int y, int z, int size) = 0;
 };
 

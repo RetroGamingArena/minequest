@@ -34,7 +34,7 @@ class Chunk
 	// Start of user code private
 	// End of user code
 	VertexBuffer* vertexBuffer;
-	Octree* octree;
+	Octree<Voxel*>* octree;
 	float p;
 	float q;
 	float r;
@@ -75,8 +75,8 @@ class Chunk
 		void bufferize();
 		VertexBuffer* getVertexBuffer();
 		void setVertexBuffer(VertexBuffer* _vertexBuffer);
-		Octree* getOctree();
-		void setOctree(Octree* _octree);
+		Octree<Voxel*>* getOctree();
+		void setOctree(Octree<Voxel*>* _octree);
 };
 
 #endif
