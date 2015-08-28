@@ -22,6 +22,13 @@ out float _fragmentAo;
 out vec3 _vertexWidth;
 out float _vertexColorIndex;
 
+uniform vec4 cubeColors[6] = vec4[6]( vec4(0.0,1.0,0.0,0.0),
+                                     vec4(0.0,0.0,1.0,0.0),
+                                     vec4(1.0,1.0,0.0,0.0),
+                                     vec4(0.3,0.3,0.0,0.0),
+                                     vec4(0.5,0.5,0.5,0.0),
+                                     vec4(1.0,1.0,1.0,0.0) );
+
 //out vec4 _viewSpace;
 
 //out mat4 _M;
@@ -86,7 +93,7 @@ void main()
     
     _fragmentColor.a = 0;
     
-    _cubeColor = vec3(0.0,0.0,0.0);
+    /*_cubeColor = vec3(0.0,0.0,0.0);
     if(vertexColorIndex == 1)
         _cubeColor = vec3(0.0,1.0,0.0);
     else if(vertexColorIndex == 2)
@@ -103,7 +110,9 @@ void main()
     if(_cubeColor == vec3(0.0,0.0,1.0))
         _fragmentColor = vec4(_cubeColor, 0.1);
     else
-        _fragmentColor = vec4(_cubeColor, 1);
+        _fragmentColor = vec4(_cubeColor, 1);*/
+    
+    _cubeColor = cubeColors[vertexColorIndex-1].rgb;
     
     //if(cubeColor != vec3(0.0,0.0,1.0))
     {
