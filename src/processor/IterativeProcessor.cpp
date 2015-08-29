@@ -29,7 +29,7 @@ IterativeProcessor::~IterativeProcessor()
 }
 
 // Start of user code methods
-void IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size)
+void IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry<Voxel*>* octreeEntry, vector<GLuint>* buffer, int p, int q, int r, int size)
 {
     int size_2 = (int)size>>1;
     

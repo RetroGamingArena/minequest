@@ -6,12 +6,14 @@
 //  Copyright © 2015 RGA. All rights reserved.
 //
 
+#include "Voxel.h"
+
 #ifndef GenerationResult_h
 #define GenerationResult_h
 
 struct GenerationResult
 {
-    OctreeEntry* octreeEntry;
+    OctreeEntry<Voxel*>* octreeEntry;
     unsigned char type;
     unsigned char occlusion;
     

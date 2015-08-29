@@ -26,12 +26,12 @@ using namespace std;
 // End of user code
 
 template <class T>
-class Leaf : public OctreeEntry
+class Leaf : public OctreeEntry<T>
 {
 	// Start of user code private
 	// End of user code
-	unsigned char type;
-	unsigned char occlusion;
+	//unsigned char type;
+	//unsigned char occlusion;
     T value;
 
 	protected:
@@ -45,44 +45,22 @@ class Leaf : public OctreeEntry
         unsigned char visible;
 		// End of user code
 		
-            Leaf(unsigned char _type, unsigned char _occlusion)
-            {
-   
-        
-        type = _type;
-        occlusion = _occlusion;
-        
-        occluded = false;
-        visible = false;
-                }
-    
-            Leaf(){};
-    ~Leaf(){};
-		
-
-            unsigned char getType()
-            {
-                    // Start of user code getType
-                    // End of user code
-                    return type;
-                }
-    
-    void setType(unsigned char _type)
-    {
-        type = _type;
-    }
-		
-
-        unsigned char getOcclusion()
+        Leaf()
         {
-            // Start of user code getOcclusion
-            // End of user code
-            return occlusion;
+        
         }
     
-    void setOcclusion(unsigned char _occlusion)
+        Leaf(T value)
+        {
+            this->value = value;
+            occluded = false;
+            visible = false;
+        };
+    ~Leaf(){};
+
+    T getValue()
     {
-        occlusion = _occlusion;
+        return value;
     }
 		
     bool isCompressible()
@@ -95,21 +73,15 @@ class Leaf : public OctreeEntry
 
     int getCode()
     {
-        // Start of user code getCode
-        return type;
-        // End of user code
+        return 0;
+    }
+		
+    T /*unsigned char*/ getAbs(int x, int y, int z, int size)
+    {
+        return value;
     }
     
-
-    unsigned char getAbs(int x, int y, int z, int size)
-    {
-        // Start of user code getAbs
-        return type;
-        // End of user code
-    }
-
-		
-    OctreeEntry* getLeafAbs(int x, int y, int z, int size)
+    OctreeEntry<T>* getLeafAbs(int x, int y, int z, int size)
     {
         // Start of user code getLeafAbs
         return this;

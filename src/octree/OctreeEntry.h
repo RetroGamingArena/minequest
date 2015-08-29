@@ -27,6 +27,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
+template <class T>
 class OctreeEntry
 {
 	// Start of user code private
@@ -40,12 +41,18 @@ class OctreeEntry
 		// Start of user code public
 		// End of user code
     static int NODE;
-		OctreeEntry(int _NODE);
-		OctreeEntry();
+		OctreeEntry(int _NODE)
+        {
+    
+        }
+		OctreeEntry()
+        {
+    
+        }
 		virtual ~OctreeEntry(){};
 		virtual bool isCompressible() = 0;
 		virtual int getCode() = 0;
-		virtual unsigned char getAbs(int x, int y, int z, int size) = 0;
+		virtual T getAbs(int x, int y, int z, int size) = 0;
 		virtual OctreeEntry* getLeafAbs(int x, int y, int z, int size) = 0;
 };
 

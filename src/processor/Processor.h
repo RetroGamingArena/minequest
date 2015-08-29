@@ -45,9 +45,9 @@ class Processor
     static double _x;
     static double _y;
     static glm::vec4 unproj;
-    static OctreeEntry* base;
-    static OctreeEntry* octreeEntry;
-    static Empty* empty;
+    static OctreeEntry<Voxel*>* base;
+    static OctreeEntry<Voxel*>* octreeEntry;
+    static Empty<Voxel*>* empty;
     static glm::vec3 d;
     static int end;
     

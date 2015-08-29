@@ -32,7 +32,7 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = (rand() % INT_MAX)*2+INT_MIN;
+    int seed = 100;//(rand() % INT_MAX)*2+INT_MIN;
     
     module::Perlin module;
     
@@ -116,7 +116,10 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     
     height*=Chunk::size*Chunk::subsize/2;
     
+    //height = 127;
+    
     //height -= (int)height % Chunk::subsize;
+    
     if(y<height && y >= waterHeight+40)
         return 6;
     if(y<height && y >= waterHeight+10)

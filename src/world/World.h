@@ -66,9 +66,9 @@ class World : public Pool
         void bufferizeEntry(VertexBuffer * vertexBuffer, unsigned char type, float p, float q, float r, int widthP, int widthQ, int widthR, unsigned char occlusion);
 		unsigned char getCube(int x, int y, int z);
 		Chunk* getChunk(int x, int y, int z);
-		OctreeEntry* getLeaf(int x, int y, int z);
+		OctreeEntry<Voxel*>* getLeaf(int x, int y, int z);
 		bool isCubeOccluded(int x, int y, int z, int size);
-		OctreeEntry* collide(Ray * ray, int x, int y, int z);
+		OctreeEntry<Voxel*>* collide(Ray * ray, int x, int y, int z);
 		WorldGenerator* getWorldGenerator();
 		void setWorldGenerator(WorldGenerator* _worldGenerator);
 		vector<Chunk*> getChunks();

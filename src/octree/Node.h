@@ -26,7 +26,7 @@ using namespace std;
 // End of user code
 
 template <class T>
-class Node : public OctreeEntry
+class Node : public OctreeEntry<T>
 {
 	// Start of user code private
     /*int bufferizeX;
@@ -40,7 +40,7 @@ class Node : public OctreeEntry
 	protected:
 	// Start of user code protected
 	// End of user code
-	vector<OctreeEntry*> octreeEntries;
+	vector<OctreeEntry<T>*> octreeEntries;
 
 	public:
 		// Start of user code public
@@ -89,13 +89,13 @@ class Node : public OctreeEntry
         }
         
         int code = octreeEntries[0]->getCode();
-        if(code == NODE)
+        if(code == 1)
             return false;
         for( int i = 1 ; i < octreeEntries.size(); i++ )
         {
             if(octreeEntries[i]== NULL)
                 return false;
-            if(octreeEntries[0]->getCode() == NODE)
+            if(octreeEntries[0]->getCode() == 1)
                 return false;
             if(octreeEntries[i]->getCode() != code)
                 return false;
@@ -107,13 +107,13 @@ class Node : public OctreeEntry
     int getCode()
     {
         // Start of user code getCode
-        return NODE;
+        return 1;
         // End of user code
     }
     
-    unsigned char getAbs(int x, int y, int z, int size)
+    T getAbs(int x, int y, int z, int size)
     {
-        // Start of user code getAbs
+   
         if(this->octreeEntries.size() == 0)
             this->split();
         
@@ -129,7 +129,7 @@ class Node : public OctreeEntry
         int offset_y = y - (j << _log);
         int offset_z = z - (k << _log);
         
-        OctreeEntry* entry = this->get(i,j,k);
+        OctreeEntry<T>* entry = this->get(i,j,k);
         if(entry == NULL)
             return 0;
         else
@@ -137,12 +137,12 @@ class Node : public OctreeEntry
         // End of user code
     }
     
-    OctreeEntry* getLeafAbs(int x, int y, int z, int size)
+    //virtual T getAbs(int x, int y, int z, int size) = 0;
+    //virtual OctreeEntry* getLeafAbs(int x, int y, int z, int size) = 0;
+    
+    
+    OctreeEntry<T>* getLeafAbs(int x, int y, int z, int size)
     {
-        // Start of user code getLeafAbs
-        //if(this->octreeEntries.size() == 0)
-        //    this->split();
-        
         int subsize = size >> 1;
         
         int i = !!(x & subsize);
@@ -155,13 +155,13 @@ class Node : public OctreeEntry
         int offset_y = y - (j << _log);
         int offset_z = z - (k << _log);
         
-        OctreeEntry* entry = this->get(i,j,k);
+        OctreeEntry<T>* entry = this->get(i,j,k);
         if(entry == NULL)
-            return new Empty(i << _log,j << _log,k << _log, size/2); // TODO : corriger fuite mémoire
+            return new Empty<T>(i << _log,j << _log,k << _log, size/2); // TODO : corriger fuite mémoire
         else
         {
-            OctreeEntry* _entry = entry->getLeafAbs(offset_x,offset_y,offset_z, size/2);
-            Empty* empty = dynamic_cast<Empty*>(_entry);
+            OctreeEntry<T>* _entry = entry->getLeafAbs(offset_x,offset_y,offset_z, size/2); //getLeafAbs(offset_x,offset_y,offset_z, size/2);
+            Empty<T>* empty = dynamic_cast<Empty<T>*>(_entry);
             if( empty != NULL )
             {
                 empty->setX(empty->getX()+(i << _log));
@@ -171,13 +171,13 @@ class Node : public OctreeEntry
             }
             return _entry;
         }
-        // End of user code
+
     }
     
     void compress(int x, int y, int z, unsigned char type)
     {
         // Start of user code compress
-        OctreeEntry* octreeEntry = this->get(x,y,z);
+        OctreeEntry<T>* octreeEntry = this->get(x,y,z);
         
         int entryIndex = x + (y << 2) + (z << 1);
         
@@ -200,7 +200,7 @@ class Node : public OctreeEntry
         // End of user code
     }
     
-    OctreeEntry* get(int x, int y, int z)
+    OctreeEntry<T>* get(int x, int y, int z)
     {
         // Start of user code get
         if(this->octreeEntries.size() > 0 )
@@ -219,14 +219,14 @@ class Node : public OctreeEntry
         // End of user code
     }
 
-    vector<OctreeEntry*> getOctreeEntries()
+    vector<OctreeEntry<T>*> getOctreeEntries()
     {
         // Start of user code getOctreeEntries
         // End of user code
         return octreeEntries;
     }
 
-    void setOctreeEntriesAt(OctreeEntry* _octreeEntries, int indice)
+    void setOctreeEntriesAt(OctreeEntry<T>* _octreeEntries, int indice)
     {
         octreeEntries[indice] = _octreeEntries;
     }

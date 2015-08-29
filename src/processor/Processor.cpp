@@ -30,9 +30,9 @@ int Processor::rayCastStep = 1;
 double Processor::_x = 0;
 double Processor::_y = 0;
 glm::vec4 Processor::unproj;
-OctreeEntry* Processor::base = NULL;
-OctreeEntry* Processor::octreeEntry = NULL;
-Empty* Processor::empty = NULL;
+OctreeEntry<Voxel*>* Processor::base = NULL;
+OctreeEntry<Voxel*>* Processor::octreeEntry = NULL;
+Empty<Voxel*>* Processor::empty = NULL;
 glm::vec3 Processor::d;
 int Processor::end;
 
@@ -102,7 +102,7 @@ char Processor::isCubeVisible(int x, int y, int z, int size)
     int chunksWidth = World::size*2+1;
     
     //ground occlusion
-    if( y==0 )
+    if( y==0 && bufferizeWorld->getCube(x, y+size, z) > 0)
         return 0;
     
     //geometry occlusion
@@ -240,14 +240,14 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
 {
     vector<Chunk*> chunks = Engine::getInstance()->getWorld()->getChunks();
     
-    Voxel voxel;
+    Voxel* voxel;
     
-    int p = voxel.x;
+    /*int p = voxel.x;
     int q = voxel.y;
     int r = voxel.z;
     int size = voxel.size;
     int occlusion = voxel.occlusion;
-    int type = voxel.type;
+    int type = voxel.type;*/
     
     vec->clear();
     
@@ -276,13 +276,13 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             size = voxel.size;*/
             
             mask = TOP;
-            if(voxel.z/Chunk::subsize>camera->getPosition().z)
+            if(voxel->z/Chunk::subsize>camera->getPosition().z)
                 mask |= BACK;
-            if(voxel.x/Chunk::subsize<camera->getPosition().x)
+            if(voxel->x/Chunk::subsize<camera->getPosition().x)
                 mask |= RIGHT;
-            if(voxel.z/Chunk::subsize<camera->getPosition().z)
+            if(voxel->z/Chunk::subsize<camera->getPosition().z)
                 mask |= FRONT;
-            if(voxel.x/Chunk::subsize>camera->getPosition().x)
+            if(voxel->x/Chunk::subsize>camera->getPosition().x)
                 mask |= LEFT;
             
             /*if(isPointInFrustum(x1, y1, z1))
@@ -309,17 +309,17 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             //if(!isCubeFreeWithMask(p, q, r, size, mask))
             //    continue;
             
-            if( (mask & TOP && !(voxel.visible & TOP)) &&
-                (mask & BOTTOM && !(voxel.visible & BOTTOM)) &&
-                (mask & LEFT && !(voxel.visible & LEFT)) &&
-                (mask & RIGHT && !(voxel.visible & RIGHT)) &&
-                (mask & FRONT && !(voxel.visible & FRONT)) &&
-                (mask & BACK && !(voxel.visible & BACK)))
+            if( (mask & TOP && !(voxel->visible & TOP)) &&
+                (mask & BOTTOM && !(voxel->visible & BOTTOM)) &&
+                (mask & LEFT && !(voxel->visible & LEFT)) &&
+                (mask & RIGHT && !(voxel->visible & RIGHT)) &&
+                (mask & FRONT && !(voxel->visible & FRONT)) &&
+                (mask & BACK && !(voxel->visible & BACK)))
                     continue;
             
             bool draw = true;
             
-            vertexPosition = glm::vec3(voxel.x_size_16_2, voxel.y_size_16_2, voxel.z_size_16_2);
+            vertexPosition = glm::vec3(voxel->x_size_16_2, voxel->y_size_16_2, voxel->z_size_16_2);
             viewSpace = Scene::VM * glm::vec4(vertexPosition,1);
             position = Scene::projection * viewSpace;
                 
@@ -384,8 +384,8 @@ void Processor::bufferizeVoxels(/*vector<GLuint>* vec*/)
             
             if(draw)
             {
-                vec->push_back(voxel.offsetRegister.raw);
-                vec->push_back(voxel.sizeRegister.raw);
+                vec->push_back(voxel->offsetRegister.raw);
+                vec->push_back(voxel->sizeRegister.raw);
             }
             
             /*if(mask & TOP)
@@ -553,7 +553,7 @@ bool Processor::isPointOccluded(int x, int y, int z, double dx, double dy, doubl
     
     base = bufferizeWorld->getLeaf(x, y, z);
     
-    empty = dynamic_cast<Empty*>(base);
+    empty = dynamic_cast<Empty<Voxel*>*>(base);
     
     ray = new Ray(glm::vec3(x,y,z), glm::vec3(unproj.x*Chunk::subsize, unproj.y*Chunk::subsize, unproj.z*Chunk::subsize));
     
@@ -576,7 +576,7 @@ bool Processor::isPointOccluded(int x, int y, int z, double dx, double dy, doubl
         
         if(octreeEntry != NULL)
         {
-            empty = dynamic_cast<Empty*>(octreeEntry);
+            empty = dynamic_cast<Empty<Voxel*>*>(octreeEntry);
             if(empty!=NULL)
             {
                 delete empty;
@@ -599,10 +599,10 @@ void Processor::bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>*
     if(leaf->occluded && !leaf->visible)
         return;
     
-    unsigned char type = leaf->getType();
-    unsigned char occlusion = leaf->getOcclusion();
+    //unsigned char type = leaf->getType();
+    //unsigned char occlusion = leaf->getOcclusion();
     
-    if(type > 0)
+    if(leaf->getValue()->type > 0)
     {
         if(!leaf->occluded)
         {
@@ -612,7 +612,7 @@ void Processor::bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>*
         
         if(leaf->visible)
         {
-            chunk->voxels.push_back(Voxel(p,q,r,size, occlusion, type, leaf->visible));
+            chunk->voxels.push_back(leaf->getValue());//Voxel(p,q,r,size, occlusion, type, leaf->visible));
         }
     }
 }

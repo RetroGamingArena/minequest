@@ -76,7 +76,11 @@ Octree<Voxel*>* WorldGenerator::generate(int p, int q, int r)
         int y = (*ys)[i];
         int z = (*zs)[i];
         
-        octree->setOctreeEntriesAt(generateOctreeEntry(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2).octreeEntry, i);
+        GenerationResult generationResult = generateOctreeEntry(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2);
+        if(generationResult.type>0 && generationResult.octreeEntry == NULL)
+            octree->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2, generationResult.occlusion, generationResult.type, true)), i);
+        else
+            octree->setOctreeEntriesAt(generationResult.octreeEntry, i);
     }
     return octree;
 	// End of user code
@@ -108,7 +112,8 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
         {
             generationResults[i].octreeEntry = NULL;
             generationResults[i].type = getCubeType(p+x, q+y, r+z);
-            generationResults[i].occlusion = getOcclusion(p+x, q+y, r+z);
+            unsigned char occlusion = getOcclusion(p+x, q+y, r+z);
+            generationResults[i].occlusion = occlusion;
         }
         else
         {
@@ -133,10 +138,14 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
         node = new Node<Voxel*>();
         for(i = 0; i < 8; i++)
         {
+            x = (*xs)[i];
+            y = (*ys)[i];
+            z = (*zs)[i];
+            
             if(generationResults[i].octreeEntry == NULL)
             {
                 if(generationResults[i].type > 0)
-                    node->setOctreeEntriesAt(new Leaf<Voxel*>(generationResults[i].type, generationResults[i].occlusion), i);
+                    node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+x*size_2, q+y*size_2, r+z*size_2, size_2, generationResults[i].occlusion, generationResults[i].type, true)), i);
                 else
                     node->setOctreeEntriesAt(NULL, i);
             }
@@ -156,6 +165,33 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
 unsigned char WorldGenerator::getOcclusion(int x, int y, int z)
 {
 	// Start of user code getOcclusion
+    if( getCubeType(x-1, y+1, z-1) == 0 &&
+        getCubeType(x-1, y+1, z)   == 0 &&
+        getCubeType(x-1, y+1, z+1) == 0 &&
+        getCubeType(x, y+1, z-1)   == 0 &&
+        getCubeType(x, y+1, z)     == 0 &&
+        getCubeType(x, y+1, z+1)   == 0 &&
+        getCubeType(x+1, y+1, z-1) == 0 &&
+        getCubeType(x+1, y+1, z)   == 0 &&
+        getCubeType(x+1, y+1, z+1) == 0)
+    {
+        return 0;
+    }
+    
+    if( getCubeType(x-1, y+1, z-1) > 0 &&
+       getCubeType(x-1, y+1, z)   > 0 &&
+       getCubeType(x-1, y+1, z+1) > 0 &&
+       getCubeType(x, y+1, z-1)   > 0 &&
+       getCubeType(x, y+1, z)     > 0 &&
+       getCubeType(x, y+1, z+1)   > 0 &&
+       getCubeType(x+1, y+1, z-1) > 0 &&
+       getCubeType(x+1, y+1, z)   > 0 &&
+       getCubeType(x+1, y+1, z+1) > 0)
+    {
+        return 0;
+    }
+    
+    
     float ao = 0;
     if( getCubeType(x-1, y+1, z) > 0 )
         ao += 1;

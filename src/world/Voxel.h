@@ -84,7 +84,7 @@ struct Voxel
 
     Voxel(){};
     Voxel(int x, int y, int z, int size, unsigned char occlusion, unsigned char type, unsigned char visible)
-    {
+    {        
         this->offsetRegister.raw = 0;
         this->sizeRegister.raw = 0;
         

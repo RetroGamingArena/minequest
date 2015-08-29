@@ -197,6 +197,9 @@ unsigned char World::getCube(int x, int y, int z)
     if(z >= worldSize)
         return 0;
     
+    if(y < 0)
+        return 1;
+    
     int abs_x = x;
     
     int abs_y = y;
@@ -214,8 +217,11 @@ unsigned char World::getCube(int x, int y, int z)
     int sz = abs_z % chunkSize;
 
     Octree<Voxel*>* octree = chunk->getOctree();
-    return octree->getAbs(sx, sy, sz, Octree<Voxel*>::size);
     
+    Voxel* voxel = octree->getAbs(sx, sy, sz, Octree<Voxel*>::size);
+    
+    if(voxel != NULL)
+        return voxel->type;
     return 0;
 	// End of user code
 }
@@ -236,7 +242,7 @@ Chunk* World::getChunk(int x, int y, int z)
 	// End of user code
 }
 
-OctreeEntry* World::getLeaf(int x, int y, int z)
+OctreeEntry<Voxel*>* World::getLeaf(int x, int y, int z)
 {
 	// Start of user code getLeaf
     if(y > Chunk::size*Chunk::subsize || y < 0)
@@ -268,7 +274,7 @@ OctreeEntry* World::getLeaf(int x, int y, int z)
     if(chunk != NULL)
     {
         Octree<Voxel*>* octree = chunk->getOctree();
-        OctreeEntry* entry = octree->getLeafAbs(sx, sy, sz, Octree<Voxel*>::size);
+        OctreeEntry<Voxel*>* entry = octree->getLeafAbs(sx, sy, sz, Octree<Voxel*>::size);
         return entry;
     }
     
@@ -389,7 +395,7 @@ bool World::isCubeOccluded(int x, int y, int z, int size)
     return true;
 	// End of user code
 }
-OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
+OctreeEntry<Voxel*>* World::collide(Ray * ray, int x, int y, int z)
 {
 	// Start of user code collide
     glm::vec3 d;
@@ -422,11 +428,11 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
     {
         d = ray->move(i);
         
-        OctreeEntry* entry = this->getLeaf(d.x, d.y, d.z);
+        OctreeEntry<Voxel*>* entry = this->getLeaf(d.x, d.y, d.z);
         
         if(entry==NULL)
         {
-            OctreeEntry* _entry = this->getLeaf(d.x*Chunk::subsize, d.y*Chunk::subsize, d.z*Chunk::subsize);
+            OctreeEntry<Voxel*>* _entry = this->getLeaf(d.x*Chunk::subsize, d.y*Chunk::subsize, d.z*Chunk::subsize);
             if(_entry==NULL)
             {
                 _entry = this->getLeaf(d.x*Chunk::subsize, d.y*Chunk::subsize, d.z*Chunk::subsize);
@@ -434,7 +440,7 @@ OctreeEntry* World::collide(Ray * ray, int x, int y, int z)
             _entry = NULL;
         }
         
-        Empty* empty = dynamic_cast<Empty*>(entry);
+        Empty<Voxel*>* empty = dynamic_cast<Empty<Voxel*>*>(entry);
         
         if(empty == NULL)
         {

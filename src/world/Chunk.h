@@ -53,7 +53,7 @@ class Chunk
 		// End of user code
         static int size;
         static int subsize;
-        vector<Voxel> voxels;
+        vector<Voxel*> voxels;
 		Chunk(float _p, float _q, float _r, int _size, int _subsize, bool _buffered, bool _generated, bool _generating, bool _buffering);
 		Chunk();
 		~Chunk();
