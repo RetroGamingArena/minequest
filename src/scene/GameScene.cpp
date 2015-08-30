@@ -8,6 +8,7 @@
 #include "Engine.h"
 #include "ChunkProcessorTask.h"
 #include "VoxelBufferingTask.h"
+#include "GameUI.h"
 #include <iostream>
 // End of user code
 
@@ -127,6 +128,9 @@ void GameScene::handle(Event * event)
         Thread* thread = dynamic_cast<Thread*>((Transmitter*)event->getSource());
         if(thread != NULL)
         {
+            GameUI* gameUI = dynamic_cast<GameUI*>(uI);
+            gameUI->getProgressBar()->setValue(gameUI->getProgressBar()->getValue()+1);
+            
             Task* task = thread->getTask();
             VoxelBufferingTask* voxelBufferingTask = dynamic_cast<VoxelBufferingTask*>(task);
             if(voxelBufferingTask != NULL)

@@ -2,7 +2,7 @@
 
 #include "VoxelScene.h"
 // Start of user code includes
-#include "DebugUI.h"
+#include "GameUI.h"
 #include "CubeFace.h"
 // End of user code
 
@@ -12,7 +12,7 @@ VoxelScene::VoxelScene()
 // End of user code
 {
 	// Start of user code constructor
-    this->uI = new DebugUI();
+    this->uI = new GameUI();
     _updateIndices = false;
 	// End of user code
 }

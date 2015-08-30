@@ -11,7 +11,9 @@
 		64196BB91B921F560079C07A /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BB71B921F560079C07A /* MainUI.cpp */; };
 		64196BBC1B9222BA0079C07A /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BBA1B9222BA0079C07A /* Button.cpp */; };
 		64196BBF1B925F650079C07A /* SizableControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BBD1B925F650079C07A /* SizableControl.cpp */; };
+		64196BC21B932B550079C07A /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BC01B932B550079C07A /* ProgressBar.cpp */; };
 		642FE33A1B0D0BD900BFB4FE /* Processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642FE3381B0D0BD900BFB4FE /* Processor.cpp */; };
+		643C84221B93670400E4C47A /* GameUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643C84201B93670400E4C47A /* GameUI.cpp */; };
 		6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BA0A1AF044C4006A0842 /* OctreeEntry.cpp */; };
 		6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAF91AF177A8006A0842 /* lodepng.cpp */; };
 		6440BAFF1AF17D71006A0842 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAFD1AF17D71006A0842 /* Engine.cpp */; };
@@ -145,9 +147,13 @@
 		64196BBB1B9222BA0079C07A /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		64196BBD1B925F650079C07A /* SizableControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizableControl.cpp; sourceTree = "<group>"; };
 		64196BBE1B925F650079C07A /* SizableControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizableControl.h; sourceTree = "<group>"; };
+		64196BC01B932B550079C07A /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressBar.cpp; sourceTree = "<group>"; };
+		64196BC11B932B550079C07A /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
 		642FE3381B0D0BD900BFB4FE /* Processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Processor.cpp; sourceTree = "<group>"; };
 		642FE3391B0D0BD900BFB4FE /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
 		643A10401B8794E20039CADE /* GenerationResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerationResult.h; sourceTree = "<group>"; };
+		643C84201B93670400E4C47A /* GameUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI.cpp; sourceTree = "<group>"; };
+		643C84211B93670400E4C47A /* GameUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUI.h; sourceTree = "<group>"; };
 		6440BA0A1AF044C4006A0842 /* OctreeEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OctreeEntry.cpp; path = src/octree/OctreeEntry.cpp; sourceTree = SOURCE_ROOT; };
 		6440BA0B1AF044C4006A0842 /* OctreeEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OctreeEntry.h; path = src/octree/OctreeEntry.h; sourceTree = SOURCE_ROOT; };
 		6440BA0D1AF1778D006A0842 /* fragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragmentShader.glsl; path = shaders/fragmentShader.glsl; sourceTree = "<group>"; };
@@ -912,6 +918,10 @@
 				64196BBB1B9222BA0079C07A /* Button.h */,
 				64196BBD1B925F650079C07A /* SizableControl.cpp */,
 				64196BBE1B925F650079C07A /* SizableControl.h */,
+				64196BC01B932B550079C07A /* ProgressBar.cpp */,
+				64196BC11B932B550079C07A /* ProgressBar.h */,
+				643C84201B93670400E4C47A /* GameUI.cpp */,
+				643C84211B93670400E4C47A /* GameUI.h */,
 			);
 			name = ui;
 			path = src/ui;
@@ -1195,6 +1205,7 @@
 			files = (
 				6440BB381AF820AB006A0842 /* DoubleBuffer.cpp in Sources */,
 				6440BB781AFAC3AD006A0842 /* PerlinGenerator.cpp in Sources */,
+				64196BC21B932B550079C07A /* ProgressBar.cpp in Sources */,
 				6440BB5D1AFA4C78006A0842 /* Texture.cpp in Sources */,
 				649D601E1B34E72000810DBA /* Ray.cpp in Sources */,
 				6440BB6F1AFAAA08006A0842 /* World.cpp in Sources */,
@@ -1242,6 +1253,7 @@
 				648C66D71B808B9A00612031 /* VoxelBufferingTask.cpp in Sources */,
 				6440BB4E1AF91866006A0842 /* Label.cpp in Sources */,
 				64C986571AFBBFBB00A5B62E /* Chunk.cpp in Sources */,
+				643C84221B93670400E4C47A /* GameUI.cpp in Sources */,
 				6440BB221AF7B409006A0842 /* WorldShader.cpp in Sources */,
 				64C986631AFBDBE100A5B62E /* Node.cpp in Sources */,
 				6440BB4F1AF91866006A0842 /* LoadingUI.cpp in Sources */,

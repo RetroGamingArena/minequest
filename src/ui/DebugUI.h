@@ -21,9 +21,6 @@
 #include "UI.h"
 
 #include "Label.h"
-#include "Label.h"
-#include "Label.h"
-#include "Label.h"
 
 using namespace std;
 
