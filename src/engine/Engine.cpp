@@ -2,7 +2,7 @@
 
 #include "Engine.h"
 // Start of user code includes
-#include "LoadingScene.h"
+#include "MenuScene.h"
 #include "WorldShader.h"
 #include "TextShader.h"
 #include "BackgroundShader.h"
@@ -173,7 +173,8 @@ void Engine::mouseButtonCallback(GLFWwindow* window, int button, int action, int
 {
 	// Start of user code mouseButtonCallback
     Engine* engine = getInstance();
-    engine->getScene()->getSelectedCamera()->onMouseButton(button, action);
+    engine->getScene()->onMouseButton(button, action);
+    //engine->getScene()->getSelectedCamera()->onMouseButton(button, action);
 	// End of user code
 }
 void Engine::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
@@ -256,7 +257,7 @@ void Engine::init()
     player = new Player();
     
     //camera = new TrackBallCamera();
-    scene = new LoadingScene();
+    scene = new MenuScene();
     //scene = new VoxelScene(window);
     scene->init();
     

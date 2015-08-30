@@ -51,6 +51,7 @@ class VBOScene : public Scene
 		void onMouseMotion(double xpos, double ypos);
 		void onMouseScroll(double xoffset, double yoffset);
 		void onKey(int key, int scancode, int action, int mods);
+        void onMouseButton(int button, int action){};
 };
 
 #endif

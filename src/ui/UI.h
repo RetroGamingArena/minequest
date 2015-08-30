@@ -23,13 +23,15 @@
 #include "DoubleBuffer.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "Transmitter.h"
 
 using namespace std;
 
 // Start of user code class import
+class Control;
 // End of user code
 
-class UI
+class UI : public Transmitter
 {
 	// Start of user code private
 	// End of user code
@@ -46,8 +48,9 @@ class UI
 		// Start of user code public
 		// End of user code
 		UI();
-		virtual ~UI(){};
+        ~UI(){};
 		virtual void render() = 0;
+        void poly(){};
 		void printText(const char * text, int x, int y, int size);
 		virtual void refresh() = 0;
 		vector<Control*> getControls();
@@ -58,6 +61,8 @@ class UI
 		void setShader(Shader* _shader);
 		Texture* getFontTexture();
 		void setFontTexture(Texture* _fontTexture);
+        void onMouseMotion(double xpos, double ypos);
+        void onMouseButton(int button, int action);
 };
 
 #endif

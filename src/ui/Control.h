@@ -16,6 +16,7 @@
 // End of user code
 
 // Start of user code includes
+#include "UI.h"
 // End of user code
 
 
@@ -23,6 +24,7 @@
 using namespace std;
 
 // Start of user code class import
+class UI;
 // End of user code
 
 class Control
@@ -35,6 +37,7 @@ class Control
 	// End of user code
 	int x;
 	int y;
+    static int pixelSize;
 
 	public:
 		// Start of user code public
@@ -46,8 +49,11 @@ class Control
 		void setX(int _x);
 		int getY();
 		void setY(int _y);
-		virtual void render() = 0;
+		virtual void render(std::vector<glm::vec2> &vertices, std::vector<glm::vec2> &UVs) = 0;
+        static void drawRect(std::vector<glm::vec2> &vertices, std::vector<glm::vec2> &UVs, int x, int y, int w, int h);
 		virtual void refresh() = 0;
+        virtual void mouseMove(double xpos, double ypos) = 0;
+        virtual void mouseButton(int button, int action) = 0;
 };
 
 #endif

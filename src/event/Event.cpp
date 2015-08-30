@@ -39,6 +39,7 @@ Event::Event(const char * _ID, void* _source)
 
 const char * Event::ID_CHANGED = "CHANGED";	
 const char * Event::ID_FINISHED = "FINISHED";	
+const char * Event::ID_CLICKED = "CLICKED";
 
 const char * Event::getID()
 {

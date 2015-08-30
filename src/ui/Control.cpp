@@ -20,9 +20,28 @@ Control::Control()
 
 
 // Start of user code methods
+int Control::pixelSize = 2;
+
+void Control::drawRect(std::vector<glm::vec2> &vertices, std::vector<glm::vec2> &UVs, int x, int y, int w, int h)
+{
+    vertices.push_back(glm::vec2(x*pixelSize, y*pixelSize));
+    vertices.push_back(glm::vec2(x*pixelSize, (y-h)*pixelSize));
+    vertices.push_back(glm::vec2((x+w)*pixelSize, y*pixelSize));
+    
+    vertices.push_back(glm::vec2((x+w)*pixelSize, (y-h)*pixelSize));
+    vertices.push_back(glm::vec2((x+w)*pixelSize, y*pixelSize));
+    vertices.push_back(glm::vec2(x*pixelSize, (y-h)*pixelSize));
+    
+    UVs.push_back(glm::vec2(-1, -1));
+    UVs.push_back(glm::vec2(-1, -1));
+    UVs.push_back(glm::vec2(-1, -1));
+    
+    UVs.push_back(glm::vec2(-1, -1));
+    UVs.push_back(glm::vec2(-1, -1));
+    UVs.push_back(glm::vec2(-1, -1));
+}
+
 // End of user code
-
-
 
 
 int Control::getX()

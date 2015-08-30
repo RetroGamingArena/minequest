@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64196BB61B921AC10079C07A /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BB41B921AC10079C07A /* MenuScene.cpp */; };
+		64196BB91B921F560079C07A /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BB71B921F560079C07A /* MainUI.cpp */; };
+		64196BBC1B9222BA0079C07A /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BBA1B9222BA0079C07A /* Button.cpp */; };
+		64196BBF1B925F650079C07A /* SizableControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64196BBD1B925F650079C07A /* SizableControl.cpp */; };
 		642FE33A1B0D0BD900BFB4FE /* Processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 642FE3381B0D0BD900BFB4FE /* Processor.cpp */; };
 		6440BA0C1AF044C4006A0842 /* OctreeEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BA0A1AF044C4006A0842 /* OctreeEntry.cpp */; };
 		6440BAFC1AF177A8006A0842 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6440BAF91AF177A8006A0842 /* lodepng.cpp */; };
@@ -133,6 +137,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		64196BB41B921AC10079C07A /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		64196BB51B921AC10079C07A /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		64196BB71B921F560079C07A /* MainUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
+		64196BB81B921F560079C07A /* MainUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainUI.h; sourceTree = "<group>"; };
+		64196BBA1B9222BA0079C07A /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
+		64196BBB1B9222BA0079C07A /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		64196BBD1B925F650079C07A /* SizableControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SizableControl.cpp; sourceTree = "<group>"; };
+		64196BBE1B925F650079C07A /* SizableControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizableControl.h; sourceTree = "<group>"; };
 		642FE3381B0D0BD900BFB4FE /* Processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Processor.cpp; sourceTree = "<group>"; };
 		642FE3391B0D0BD900BFB4FE /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
 		643A10401B8794E20039CADE /* GenerationResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerationResult.h; sourceTree = "<group>"; };
@@ -818,6 +830,8 @@
 				6440BB031AF508E9006A0842 /* Scene.h */,
 				648C66D51B808B9A00612031 /* VoxelBufferingTask.cpp */,
 				648C66D61B808B9A00612031 /* VoxelBufferingTask.h */,
+				64196BB41B921AC10079C07A /* MenuScene.cpp */,
+				64196BB51B921AC10079C07A /* MenuScene.h */,
 			);
 			name = scene;
 			path = src/scene;
@@ -892,6 +906,12 @@
 				6440BB4A1AF91866006A0842 /* LoadingUI.h */,
 				6440BB4B1AF91866006A0842 /* UI.cpp */,
 				6440BB4C1AF91866006A0842 /* UI.h */,
+				64196BB71B921F560079C07A /* MainUI.cpp */,
+				64196BB81B921F560079C07A /* MainUI.h */,
+				64196BBA1B9222BA0079C07A /* Button.cpp */,
+				64196BBB1B9222BA0079C07A /* Button.h */,
+				64196BBD1B925F650079C07A /* SizableControl.cpp */,
+				64196BBE1B925F650079C07A /* SizableControl.h */,
 			);
 			name = ui;
 			path = src/ui;
@@ -1201,12 +1221,15 @@
 				649DC5141B0E806300A6235E /* ItemCamera.cpp in Sources */,
 				6440BB531AF91E44006A0842 /* TextShader.cpp in Sources */,
 				6450304D1B17ACC9009DAC36 /* Listener.cpp in Sources */,
+				64196BBF1B925F650079C07A /* SizableControl.cpp in Sources */,
 				6440BB141AF6A75B006A0842 /* TrackBallCamera.cpp in Sources */,
 				6440BB3A1AF820AB006A0842 /* VertexBuffer.cpp in Sources */,
 				64C986641AFBDBE100A5B62E /* Octree.cpp in Sources */,
+				64196BB91B921F560079C07A /* MainUI.cpp in Sources */,
 				64C9866D1AFC10D800A5B62E /* ChunkProcessorTask.cpp in Sources */,
 				6440BB371AF820AB006A0842 /* Buffer.cpp in Sources */,
 				64C9865A1AFBD85700A5B62E /* Cube.cpp in Sources */,
+				64196BBC1B9222BA0079C07A /* Button.cpp in Sources */,
 				6440BB6B1AFAA88A006A0842 /* WorldProcessor.cpp in Sources */,
 				6440BB501AF91866006A0842 /* UI.cpp in Sources */,
 				6440BB0D1AF6A304006A0842 /* VoxelScene.cpp in Sources */,
@@ -1222,6 +1245,7 @@
 				6440BB221AF7B409006A0842 /* WorldShader.cpp in Sources */,
 				64C986631AFBDBE100A5B62E /* Node.cpp in Sources */,
 				6440BB4F1AF91866006A0842 /* LoadingUI.cpp in Sources */,
+				64196BB61B921AC10079C07A /* MenuScene.cpp in Sources */,
 				64C986581AFBBFBB00A5B62E /* ChunkTask.cpp in Sources */,
 				64C986671AFBED1D00A5B62E /* noiseutils.cpp in Sources */,
 				645030511B17B687009DAC36 /* Event.cpp in Sources */,

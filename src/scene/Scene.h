@@ -56,6 +56,7 @@ class Scene
 		virtual void render() = 0;
 		virtual void onMouseMotion(double xpos, double ypos) = 0;
 		virtual void onMouseScroll(double xoffset, double yoffset) = 0;
+        virtual void onMouseButton(int button, int action) = 0;
 		InputCamera* getSelectedCamera();
 		virtual void onKey(int key, int scancode, int action, int mods) = 0;
 		Background* getBackground();

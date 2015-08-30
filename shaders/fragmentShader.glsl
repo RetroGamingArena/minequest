@@ -128,5 +128,8 @@ void main()
     vec3 finalColor = mix(fogColor, lightColor, fogFactor);
     color = vec4(finalColor, 1);*/
     
+    if(gl_FragCoord.y<55)
+        discard;
+    
     color = clamp(vec4(color * ao), vec4(0.0), vec4(1.0));
 }

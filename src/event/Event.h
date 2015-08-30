@@ -42,6 +42,7 @@ class Event
 		// End of user code
 	static const char * ID_CHANGED;
 	static const char * ID_FINISHED;
+    static const char * ID_CLICKED;
 		Event(const char * _ID, void* _source, const char * _ID_CHANGED, const char * _ID_FINISHED);
 		Event();
 		~Event();

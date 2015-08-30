@@ -30,10 +30,11 @@ class Label : public Control
 {
 	// Start of user code private
 	// End of user code
-	char* caption;
 
 	protected:
 	// Start of user code protected
+    char* caption;
+    static int size;
 	// End of user code
 
 	public:
@@ -45,8 +46,10 @@ class Label : public Control
 		~Label();
 		char* getCaption();
 		void setCaption(char* _caption);
-		void render();
+		void render(std::vector<glm::vec2> &vertices, std::vector<glm::vec2> &UVs);
 		void refresh();
+        virtual void mouseMove(double xpos, double ypos){};
+        virtual void mouseButton(int button, int action){};
 };
 
 #endif
