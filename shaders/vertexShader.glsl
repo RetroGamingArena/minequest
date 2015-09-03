@@ -45,12 +45,12 @@ void main()
     float ao = ((iWidth & uint(0xC0000)) >> 18);
     int vertexColorIndex = int((iWidth & uint(0xfffe0000)) >> 20);*/
     
-    uint xWidth = bitfieldExtract(iWidth,0,6)+1;
-    uint yWidth = bitfieldExtract(iWidth,6,6)+1;
-    uint zWidth = bitfieldExtract(iWidth,12,6)+1;
+    uint xWidth = bitfieldExtract(iWidth,0,7)+1;
+    uint yWidth = bitfieldExtract(iWidth,7,7)+1;
+    uint zWidth = bitfieldExtract(iWidth,14,7)+1;
     
-    float ao = float(bitfieldExtract(iWidth,18,2));
-    int vertexColorIndex = int(bitfieldExtract(iWidth,20,12));
+    float ao = float(bitfieldExtract(iWidth,21,2));
+    int vertexColorIndex = int(bitfieldExtract(iWidth,23,12));
     
     vec3 vertexPosition_temp = vec3(vertexPosition_modelspace.x*xWidth/16.0, vertexPosition_modelspace.y*yWidth/16.0, vertexPosition_modelspace.z*zWidth/16.0 );
     

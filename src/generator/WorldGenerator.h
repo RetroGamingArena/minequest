@@ -19,6 +19,7 @@
 #include "Octree.h"
 #include "GenerationResult.h"
 #include "Voxel.h"
+#include "Node.h"
 // End of user code
 
 
@@ -36,7 +37,8 @@ class WorldGenerator
 	static vector<int>* ys;
 	static vector<int>* zs;
     GenerationResult generateOctreeEntry(int p, int q, int r, int size);
-
+    void generateNode(Node<Voxel*>* node, int p, int q, int r, int size);
+    
 	protected:
 	// Start of user code protected
 	// End of user code
@@ -55,6 +57,7 @@ class WorldGenerator
 		static void setZs(int _zs);
 		virtual float getY(float x, float z) = 0;
 		virtual unsigned char getCubeType(int x, int y, int z) = 0;
+    virtual bool isCubeFilled(int x, int y, int z, int size) = 0;
 		Octree<Voxel*>* generate(int p, int q, int r);
 		unsigned char getOcclusion(int x, int y, int z);
 };

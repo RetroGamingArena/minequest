@@ -49,6 +49,7 @@ class PerlinGenerator : public WorldGenerator
 		static void setWaterHeight(int _waterHeight);
 		float getY(float x, float z);
 		unsigned char getCubeType(int x, int y, int z);
+    bool isCubeFilled(int x, int y, int z, int size);
 };
 
 #endif

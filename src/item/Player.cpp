@@ -96,7 +96,7 @@ void Player::draw(VertexBuffer * buffer)
     
     buffer->getData()->push_back(_offset);
     
-    buffer->getData()->push_back( (4 << 20) + (1 << 18) + ((16-1) << 12) + ((16-1) << 6) + (16-1));
+    buffer->getData()->push_back( (4 << 23) + (1 << 21) + ((16-1) << 14) + ((16-1) << 7) + (16-1));
     
     pInt = (int)(x/Chunk::subsize);
     pDecimal = (x/Chunk::subsize)-pInt;
@@ -113,7 +113,7 @@ void Player::draw(VertexBuffer * buffer)
     
     buffer->getData()->push_back(_offset);
     
-    buffer->getData()->push_back( (4 << 20) + (1 << 18) + ((16-1) << 12) + ((16-1) << 6) + (16-1));
+    buffer->getData()->push_back( (4 << 23) + (1 << 21) + ((16-1) << 14) + ((16-1) << 7) + (16-1));
 	// End of user code
 }
 

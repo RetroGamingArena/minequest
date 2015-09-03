@@ -60,7 +60,76 @@ vector<int>* WorldGenerator::getZs()
 	return zs;
 }
 
+void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int size)
+{
+    int _x = 0;
+    int _y = 0;
+    int _z = 0;
+    
+    int xx = 0;
+    int yy = 0;
+    int zz = 0;
+    
+    int size_2_size_2 = size * size;
+    int j_mod_size_2_size_2 = 0;
+    
+    unsigned char type = 0;
+    unsigned char occlusion = 0;
+    unsigned char _type = 0;
+    unsigned char _occlusion = 0;
 
+    int j = 0;
+    
+    int x_size;
+    int y_size;
+    int z_size;
+    
+    Node<Voxel*>* _node = NULL;
+    
+    for(int i = 0; i < 8; i++)
+    {
+        _x = (*xs)[i];
+        _y = (*ys)[i];
+        _z = (*zs)[i];
+        
+        x_size = _x*size;
+        y_size = _y*size;
+        z_size = _z*size;
+
+        type = getCubeType(p+x_size, q+y_size, r+z_size);
+        occlusion = getOcclusion(p+x_size, q+y_size, r+z_size);
+
+        if(size==1)
+        {
+             node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+_x, q+_y, r+_z, 1, occlusion, type, true)), i);
+        }
+        else
+        {
+            for(j = 0; j < size*size*size; j++)
+            {
+                j_mod_size_2_size_2 = j%size_2_size_2;
+            
+                xx = j_mod_size_2_size_2 % size;
+                yy = j/size_2_size_2;
+                zz = j_mod_size_2_size_2 / size;
+            
+                _type = getCubeType(p+x_size+xx, q+y_size+yy, r+z_size+zz);
+                _occlusion = getOcclusion(p+x_size+xx, q+y_size+yy, r+z_size+zz);
+            
+                if(_type != type || _occlusion != occlusion)
+                {
+                    _node = new Node<Voxel*>();
+                    node->setOctreeEntriesAt(_node, i);
+                    generateNode(_node, p+x_size, q+y_size, r+z_size, size >> 1);
+                    j = -1;
+                    break;
+                }
+            }
+            if(j != -1 && type > 0)
+                node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+x_size, q+y_size, r+z_size, size, occlusion, type, true)), i);
+        }
+    }
+}
 
 Octree<Voxel*>* WorldGenerator::generate(int p, int q, int r)
 {
@@ -70,7 +139,7 @@ Octree<Voxel*>* WorldGenerator::generate(int p, int q, int r)
     octree->setQ(q);
     octree->setR(r);
     int size = Chunk::size*Chunk::subsize;
-    for(int i =0; i < 8; i++)
+    /*for(int i =0; i < 8; i++)
     {
         int x = (*xs)[i];
         int y = (*ys)[i];
@@ -81,7 +150,8 @@ Octree<Voxel*>* WorldGenerator::generate(int p, int q, int r)
             octree->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2, generationResult.occlusion, generationResult.type, true)), i);
         else
             octree->setOctreeEntriesAt(generationResult.octreeEntry, i);
-    }
+    }*/
+    generateNode(octree, p*size, q*size, r*size, size >> 1);
     return octree;
 	// End of user code
 }
@@ -165,32 +235,22 @@ GenerationResult/*OctreeEntry**/ WorldGenerator::generateOctreeEntry(int p, int 
 unsigned char WorldGenerator::getOcclusion(int x, int y, int z)
 {
 	// Start of user code getOcclusion
+    /*if( getCubeType(x, y+1, z)     > 0)
+    {
+        return 0;
+    }
+
     if( getCubeType(x-1, y+1, z-1) == 0 &&
         getCubeType(x-1, y+1, z)   == 0 &&
         getCubeType(x-1, y+1, z+1) == 0 &&
         getCubeType(x, y+1, z-1)   == 0 &&
-        getCubeType(x, y+1, z)     == 0 &&
         getCubeType(x, y+1, z+1)   == 0 &&
         getCubeType(x+1, y+1, z-1) == 0 &&
         getCubeType(x+1, y+1, z)   == 0 &&
         getCubeType(x+1, y+1, z+1) == 0)
     {
         return 0;
-    }
-    
-    if( getCubeType(x-1, y+1, z-1) > 0 &&
-       getCubeType(x-1, y+1, z)   > 0 &&
-       getCubeType(x-1, y+1, z+1) > 0 &&
-       getCubeType(x, y+1, z-1)   > 0 &&
-       getCubeType(x, y+1, z)     > 0 &&
-       getCubeType(x, y+1, z+1)   > 0 &&
-       getCubeType(x+1, y+1, z-1) > 0 &&
-       getCubeType(x+1, y+1, z)   > 0 &&
-       getCubeType(x+1, y+1, z+1) > 0)
-    {
-        return 0;
-    }
-    
+    }*/
     
     float ao = 0;
     if( getCubeType(x-1, y+1, z) > 0 )

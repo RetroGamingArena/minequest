@@ -57,12 +57,11 @@ struct Voxel
 
     struct sizeBitField
     {
-        unsigned int sizeX  : 6;
-        unsigned int sizeY  : 6;
-        unsigned int sizeZ  : 6;
+        unsigned int sizeX  : 7;
+        unsigned int sizeY  : 7;
+        unsigned int sizeZ  : 7;
         unsigned int occlusion  : 2;
-        unsigned int type  : 8;
-        unsigned int : 2;
+        unsigned int type  : 9;
     };
     
     union SizeField
