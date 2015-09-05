@@ -50,6 +50,7 @@ class PerlinGenerator : public WorldGenerator
 		float getY(float x, float z);
 		unsigned char getCubeType(int x, int y, int z);
     bool isCubeFilled(int x, int y, int z, int size);
+    bool isCubeUniform(int x, int y, int z, int size);
 };
 
 #endif

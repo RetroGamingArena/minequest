@@ -49,9 +49,9 @@ void IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry<Voxel*>*
         
         for(int i = 0; i < 8; i++)
         {
-            bufferizeX = (*xs)[i];
-            bufferizeY = (*ys)[i];
-            bufferizeZ = (*zs)[i];
+            bufferizeX = (*xs)[i] & 0x1;
+            bufferizeY = (*ys)[i] & 0x1;
+            bufferizeZ = (*zs)[i] & 0x1;
             
             if(node->getOctreeEntries()[i] != NULL)
                 bufferizeOctreeEntry(chunk, node->getOctreeEntries()[i], buffer, p+bufferizeX*size_2, q+bufferizeY*size_2, r+bufferizeZ*size_2, size_2);

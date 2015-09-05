@@ -93,9 +93,27 @@ float PerlinGenerator::getY(float x, float z)
     // End of user code
 }
 
+bool PerlinGenerator::isCubeUniform(int x, int y, int z, int size)
+{
+    if( getCubeType(x+size/2,y,z+size/2) == getCubeType(x+size/2,y+size-1,z+size/2) )
+       return true;
+    return false;
+}
+
 bool PerlinGenerator::isCubeFilled(int x, int y, int z, int size)
 {
-    return false;
+    float height = getY(x,z);
+    if(height < y+size-1)
+        return false;
+    
+    for(int _x = x; _x<x+size; _x++)
+            for(int _z = z; _z<z+size; _z++)
+            {
+                float height = getY(_x,_z);
+                if(height<y+size-1)
+                    return false;
+            }
+    return true;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)

@@ -20,10 +20,21 @@ WorldGenerator::WorldGenerator()
 	// Start of user code constructor    
     for(int i =0; i < 8; i++)
     {
-        xs->push_back((i%4)&1);
-        ys->push_back(i >> 2);
-        zs->push_back((i%4) >> 1);
+        xs->push_back( ((i%4)&1    )*0x1ff );
+        ys->push_back( (i >> 2     )*0x1ff );
+        zs->push_back( ((i%4) >> 1 )*0x1ff );
     }
+
+    sizes = new short*[9];
+    for(int i = 0; i <=8; i++ )
+    {
+        sizes[i] = new short[2];
+        sizes[i][0] = 0;
+        sizes[i][1] = pow(2, i);
+    }
+    
+    cpt = 0;
+    
 	// End of user code
 }
 
@@ -35,7 +46,8 @@ WorldGenerator::WorldGenerator()
 
 vector<int>* WorldGenerator::xs = new vector<int>();	
 vector<int>* WorldGenerator::ys = new vector<int>();	
-vector<int>* WorldGenerator::zs = new vector<int>();	
+vector<int>* WorldGenerator::zs = new vector<int>();
+short** WorldGenerator::sizes = NULL;
 
 vector<int>* WorldGenerator::getXs()
 {
@@ -60,7 +72,7 @@ vector<int>* WorldGenerator::getZs()
 	return zs;
 }
 
-void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int size)
+/*void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int size)
 {
     int _x = 0;
     int _y = 0;
@@ -77,7 +89,7 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
     unsigned char occlusion = 0;
     unsigned char _type = 0;
     unsigned char _occlusion = 0;
-
+    
     int j = 0;
     
     int x_size;
@@ -95,27 +107,27 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
         x_size = _x*size;
         y_size = _y*size;
         z_size = _z*size;
-
+        
         type = getCubeType(p+x_size, q+y_size, r+z_size);
         occlusion = getOcclusion(p+x_size, q+y_size, r+z_size);
-
+        
         if(size==1)
         {
-             node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+_x, q+_y, r+_z, 1, occlusion, type, true)), i);
+            node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+_x, q+_y, r+_z, 1, occlusion, type, true)), i);
         }
         else
         {
             for(j = 0; j < size*size*size; j++)
             {
                 j_mod_size_2_size_2 = j%size_2_size_2;
-            
+                
                 xx = j_mod_size_2_size_2 % size;
                 yy = j/size_2_size_2;
                 zz = j_mod_size_2_size_2 / size;
-            
+                
                 _type = getCubeType(p+x_size+xx, q+y_size+yy, r+z_size+zz);
                 _occlusion = getOcclusion(p+x_size+xx, q+y_size+yy, r+z_size+zz);
-            
+                
                 if(_type != type || _occlusion != occlusion)
                 {
                     _node = new Node<Voxel*>();
@@ -127,6 +139,68 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
             }
             if(j != -1 && type > 0)
                 node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+x_size, q+y_size, r+z_size, size, occlusion, type, true)), i);
+        }
+    }
+}*/
+
+void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int size)
+{
+    int _x = 0;
+    int _y = 0;
+    int _z = 0;
+    
+    /*int xx = 0;
+    int yy = 0;
+    int zz = 0;
+    
+    int size_2_size_2 = size * size;
+    int j_mod_size_2_size_2 = 0;*/
+    
+    unsigned char type = 0;
+    unsigned char occlusion = 0;
+    /*unsigned char _type = 0;
+    unsigned char _occlusion = 0;
+
+    int j = 0;*/
+    
+    int x_size;
+    int y_size;
+    int z_size;
+    
+    Node<Voxel*>* _node = NULL;
+    
+    for(int i = 0; i < 8; i++)
+    {
+        _x = (*xs)[i];
+        _y = (*ys)[i];
+        _z = (*zs)[i];
+        
+        x_size = _x & size;
+        y_size = _y & size;
+        z_size = _z & size;
+
+        type = getCubeType(p+x_size, q+y_size, r+z_size);
+        occlusion = getOcclusion(p+x_size, q+y_size, r+z_size);
+
+        if(size==1)
+        {
+             node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+(_x & 0x1), q+( _y & 0x1), r+(_z & 0x1), 1, occlusion, type, true)), i);
+        }
+        else
+        {
+            bool cubeFilled  = isCubeFilled(p+x_size, q+y_size, r+z_size, size);
+            bool cubeUniform = isCubeUniform(p+x_size, q+y_size, r+z_size, size);
+            
+            if(!cubeFilled ||
+               !cubeUniform)
+            {
+                _node = new Node<Voxel*>();
+                node->setOctreeEntriesAt(_node, i);
+                generateNode(_node, p+x_size, q+y_size, r+z_size, size >> 1);
+                continue;
+            }
+
+            node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+x_size, q+y_size, r+z_size, size, occlusion, type, true)), i);
         }
     }
 }

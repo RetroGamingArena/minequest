@@ -33,9 +33,12 @@ class WorldGenerator
 {
 	// Start of user code private
 	// End of user code
+    int cpt;
 	static vector<int>* xs;
 	static vector<int>* ys;
 	static vector<int>* zs;
+    static short** sizes;
+    
     GenerationResult generateOctreeEntry(int p, int q, int r, int size);
     void generateNode(Node<Voxel*>* node, int p, int q, int r, int size);
     
@@ -58,6 +61,7 @@ class WorldGenerator
 		virtual float getY(float x, float z) = 0;
 		virtual unsigned char getCubeType(int x, int y, int z) = 0;
     virtual bool isCubeFilled(int x, int y, int z, int size) = 0;
+    virtual bool isCubeUniform(int x, int y, int z, int size) = 0;
 		Octree<Voxel*>* generate(int p, int q, int r);
 		unsigned char getOcclusion(int x, int y, int z);
 };
