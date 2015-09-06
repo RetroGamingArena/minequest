@@ -32,8 +32,23 @@ using namespace std;
 class WorldGenerator
 {
 	// Start of user code private
+    int _x = 0;
+    int _y = 0;
+    int _z = 0;
+    
+    unsigned char type = 0;
+    unsigned char occlusion = 0;
+    
+    int x_size;
+    int y_size;
+    int z_size;
+    
+    int p_x_size = 0;
+    int q_y_size = 0;
+    int r_z_size = 0;
+    
+    Node<Voxel*>* _node = NULL;
 	// End of user code
-    int cpt;
 	static vector<int>* xs;
 	static vector<int>* ys;
 	static vector<int>* zs;

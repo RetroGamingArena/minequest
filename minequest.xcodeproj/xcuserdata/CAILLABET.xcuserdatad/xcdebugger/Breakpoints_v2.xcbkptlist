@@ -518,11 +518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340">
+            startingLineNumber = "321"
+            endingLineNumber = "321">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -532,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342">
+            startingLineNumber = "323"
+            endingLineNumber = "323">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -546,11 +546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344">
+            startingLineNumber = "325"
+            endingLineNumber = "325">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -560,11 +560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "WorldGenerator::getOcclusion(int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1146,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "WorldGenerator::getOcclusion(int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1162,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "WorldGenerator::getOcclusion(int x, int y, int z)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6510,11 +6510,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8136,11 +8136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8152,11 +8152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8168,11 +8168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "WorldGenerator::generate(int p, int q, int r)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8184,11 +8184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "WorldGenerator::generate(int p, int q, int r)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8200,27 +8200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8232,11 +8216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8248,55 +8232,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
-            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
-            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
@@ -8312,11 +8248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8328,11 +8264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8344,11 +8280,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/generator/WorldGenerator.cpp"
+            timestampString = "463192419.541808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/generator/WorldGenerator.cpp"
+            timestampString = "463192419.541808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/generator/WorldGenerator.cpp"
+            timestampString = "463192419.541808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/generator/WorldGenerator.cpp"
+            timestampString = "463192419.541808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8804,11 +8804,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9010,11 +9010,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "WorldGenerator::generate(int p, int q, int r)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9038,7 +9038,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/ChunkTask.cpp"
@@ -9058,11 +9058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "WorldGenerator::generate(int p, int q, int r)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9602,11 +9602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9618,11 +9618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "WorldGenerator::generate(int p, int q, int r)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9634,11 +9634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463183612.234692"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9650,11 +9650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463183612.234692"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9666,27 +9666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "WorldGenerator::generate(int p, int q, int r)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9730,11 +9714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463183612.234692"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9746,11 +9730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463183612.234692"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9762,11 +9746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9778,11 +9762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463183612.234692"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9794,27 +9778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463183612.234692"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "WorldGenerator::generateOctreeEntry(int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9874,27 +9842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            timestampString = "463192419.541808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9937,12 +9889,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/generator/WorldGenerator.cpp"
-            timestampString = "463186854.681641"
+            filePath = "src/generator/PerlinGenerator.cpp"
+            timestampString = "463184009.475509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "PerlinGenerator::isCubeFilled(int x, int y, int z, int size)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/generator/WorldGenerator.cpp"
+            timestampString = "463192419.541808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9953,13 +9921,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/generator/PerlinGenerator.cpp"
-            timestampString = "463184009.475509"
+            filePath = "src/generator/WorldGenerator.cpp"
+            timestampString = "463191177.661672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "PerlinGenerator::isCubeFilled(int x, int y, int z, int size)"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;* node, int p, int q, int r, int size)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
