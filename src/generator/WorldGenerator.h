@@ -59,6 +59,7 @@ class WorldGenerator
     
 	protected:
 	// Start of user code protected
+    utils::NoiseMap heightMap;
 	// End of user code
 
 	public:

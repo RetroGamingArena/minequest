@@ -158,9 +158,6 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
         q_y_size = q+y_size;
         r_z_size = r+z_size;
         
-        //type = getCubeType(p_x_size, q_y_size, r_z_size);
-        //occlusion = getOcclusion(p_x_size, q_y_size, r_z_size);
-        
         if(sizes[8-size][1]==1)
         {
             type = getCubeType(p_x_size, q_y_size, r_z_size);
@@ -170,37 +167,36 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
         else
         {
             if( getCubeType(p_x_size+sizes[8-size][1]/2,q_y_size,r_z_size+sizes[8-size][1]/2) != getCubeType(p_x_size+sizes[8-size][1]/2,q_y_size+sizes[8-size][1]-1,r_z_size+sizes[8-size][1]/2) )
-            //if(!isCubeUniform(p_x_size, q_y_size, r_z_size, sizes[8-size][1]))
-            {
-                _node = new Node<Voxel*>();
-                node->setOctreeEntriesAt(_node, i);
-                generateNode(_node, p_x_size, q_y_size, r_z_size, size+1);
-                continue;
-            }
             
-            /*bool cubeFilled = true;
+            _node = new Node<Voxel*>();
+            node->setOctreeEntriesAt(_node, i);
+            generateNode(_node, p_x_size, q_y_size, r_z_size, size+1);
+            continue;
+            
+            
+            /*float yHeightMap = (q_y_size+sizes[8-size][1]-1)*2.0/(Chunk::size*Chunk::subsize-1)-1;
+            
+            bool cubeFilled = true;
             float height = getY(p_x_size,r_z_size);
             if(height < q_y_size+sizes[8-size][1]-1)
                 cubeFilled = cubeFilled;
-            
-            if(cubeFilled)
+
+            for(int _x = p_x_size; _x<p_x_size+sizes[8-size][1]; _x++)
             {
-                for(int _x = p_x_size; _x<p_x_size+sizes[8-size][1]; _x++)
+                for(int _z = r_z_size; _z<r_z_size+sizes[8-size][1]; _z++)
                 {
-                    for(int _z = r_z_size; _z<r_z_size+sizes[8-size][1]; _z++)
+                    if(heightMap.GetValue(_x, _z)<yHeightMap)
                     {
-                        height = getY(_x,_z);
-                        if(height<q_y_size+sizes[8-size][1]-1)
-                        {
-                            cubeFilled = false;
-                            break;
-                        }
-                    }
-                    if(!cubeFilled)
+                        cubeFilled = false;
                         break;
+                    }
                 }
-            }
-            if(!cubeFilled)*/
+                if(!cubeFilled)
+                    break;
+            }*/
+            
+            //if(!cubeFilled)
+            
             if(!isCubeFilled(p_x_size, q_y_size, r_z_size, sizes[8-size][1]))
             {
                 _node = new Node<Voxel*>();
