@@ -83,13 +83,7 @@ PerlinGenerator::~PerlinGenerator()
 float PerlinGenerator::getY(float x, float z)
 {
 	// Start of user code getY
-    float height = heightMap.GetValue(x, z);
-    
-    height=(height+1);
-    
-    height*=Chunk::size*Chunk::subsize/2;
-    
-    return height;
+    return  (heightMap.GetValue(x, z)+1)*Chunk::size*Chunk::subsize/2;
     // End of user code
 }
 
@@ -102,24 +96,21 @@ bool PerlinGenerator::isCubeUniform(int x, int y, int z, int size)
 
 bool PerlinGenerator::isCubeFilled(int x, int y, int z, int size)
 {
-    float height = getY(x,z);
-    if(height < y+size-1)
-        return false;
+    float yHeightMap = (y+size-1)*2.0/(Chunk::size*Chunk::subsize-1)-1;
     
     for(int _x = x; _x<x+size; _x++)
-            for(int _z = z; _z<z+size; _z++)
-            {
-                float height = getY(_x,_z);
-                if(height<y+size-1)
-                    return false;
-            }
+        for(int _z = z; _z<z+size; _z++)
+        {
+            if(heightMap.GetValue(_x, _z)<yHeightMap)
+                return false;
+        }
     return true;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 {
 	// Start of user code getCubeType
-    float height = getY(x, z);//heightMap.GetValue(x, z);
+    float height = (heightMap.GetValue(x, z)+1)*Chunk::size*Chunk::subsize/2;//getY(x, z);//heightMap.GetValue(x, z);
 
     //height=(height+1);
     
