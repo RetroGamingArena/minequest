@@ -17,6 +17,7 @@
 
 // Start of user code includes
 #include "Octree.h"
+#include "Chunk.h"
 #include "GenerationResult.h"
 #include "Voxel.h"
 #include "Node.h"
@@ -27,6 +28,7 @@
 using namespace std;
 
 // Start of user code class import
+//class Chunk;
 // End of user code
 
 class WorldGenerator
@@ -76,9 +78,10 @@ class WorldGenerator
 		static void setZs(int _zs);
 		virtual float getY(float x, float z) = 0;
 		virtual unsigned char getCubeType(int x, int y, int z) = 0;
-    virtual bool isCubeFilled(int x, int y, int z, int size) = 0;
-    virtual bool isCubeUniform(int x, int y, int z, int size) = 0;
-		Octree<Voxel*>* generate(int p, int q, int r);
+        virtual bool isCubeFilled(int x, int y, int z, int size) = 0;
+        virtual bool isCubeUniform(int x, int y, int z, int size) = 0;
+        bool isCubeVisible(int x,int y,int z,int size);
+		Octree<Voxel*>* generate(Chunk* chunk, int p, int q, int r);
 		unsigned char getOcclusion(int x, int y, int z);
 };
 

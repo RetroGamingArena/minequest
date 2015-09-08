@@ -16,7 +16,7 @@
 // End of user code
 
 // Start of user code includes
-#include "WorldGenerator.h"
+//#include "WorldGenerator.h"
 #include "Voxel.h"
 // End of user code
 
@@ -71,7 +71,7 @@ class Chunk
 		void setGenerating(bool _generating);
 		bool getBuffering();
 		void setBuffering(bool _buffering);
-		void generate(WorldGenerator * worldGenerator);
+		//void generate(WorldGenerator * worldGenerator);
 		void bufferize();
 		VertexBuffer* getVertexBuffer();
 		void setVertexBuffer(VertexBuffer* _vertexBuffer);

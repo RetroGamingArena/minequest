@@ -147,17 +147,17 @@ void Chunk::setBuffering(bool _buffering)
 }
 
 
-void Chunk::generate(WorldGenerator * worldGenerator)
-{
+//void Chunk::generate(WorldGenerator * worldGenerator)
+//{
 	// Start of user code generate
-    float pp = p * Chunk::size * Chunk::subsize * Cube::size;
-    float rr = r * Chunk::size * Chunk::subsize * Cube::size;
+    //float pp = p * Chunk::size * Chunk::subsize * Cube::size;
+    //float rr = r * Chunk::size * Chunk::subsize * Cube::size;
     
-    unsigned char type = 0;
+    //unsigned char type = 0;
     
     //octree->generate(worldGenerator, p*Chunk::size * Chunk::subsize, q, r*Chunk::size * Chunk::subsize, size*subsize);
 	// End of user code
-}
+//}
 void Chunk::bufferize()
 {
 	// Start of user code bufferize

@@ -4,7 +4,8 @@
 #include "WorldGenerator.h"
 // Start of user code includes
 #include "Leaf.h"
-#include "Chunk.h"
+#include "World.h"
+#include "CubeFace.h"
 // End of user code
 
 WorldGenerator::WorldGenerator(vector<int>* _xs, vector<int>* _ys, vector<int>* _zs)
@@ -144,6 +145,94 @@ vector<int>* WorldGenerator::getZs()
 
 void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int size)
 {
+
+}
+
+bool WorldGenerator::isCubeVisible(int x,int y,int z,int size)
+{
+    // Start of user code isCubeFree
+    char visible = 0;
+    
+    int maxPosition = (Chunk::size*Chunk::subsize-1);
+    int sizeM1 = size-1;
+    int yPSize = y+size;
+    int chunksWidth = World::size*2+1;
+    
+    //ground occlusion
+    if( y==0 && getCubeType(x, y+size, z) > 0)
+        return 0;
+    
+    //geometry occlusion
+    //if(!isCubeFree(x, y, z, size))
+    //    return 0;
+    
+    //side occlusion
+    if( x==0 )
+    {
+        if( getCubeType(x, yPSize, z)>0 )
+            return false;
+    }
+    
+    if( (x+sizeM1)==((chunksWidth)*maxPosition))
+    {
+        if( getCubeType(x, yPSize, z)>0 )
+            return 0;
+    }
+    
+    if( (z+sizeM1)==((chunksWidth)*maxPosition))
+    {
+        if( getCubeType(x, yPSize, z)>0 )
+            return 0;
+    }
+    
+    if( z==0 )
+    {
+        if( getCubeType(x, yPSize, z)>0 )
+            return 0;
+    }
+    
+    if(y+size==Chunk::size*Chunk::subsize)
+        return true;
+    
+    //geometry occlusion
+    for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(!(visible & LEFT))
+                if(getCubeType(x-1, y+i,   z+j) == 0)
+                    visible |= LEFT;
+            if(!(visible & RIGHT))
+                if(getCubeType((x+size-1)+1, y+i,   z+j) == 0)
+                    visible |= RIGHT;
+            if(!(visible & BOTTOM))
+                if(getCubeType(x+i, y-1,   z+j) == 0)
+                    visible |= BOTTOM;
+            if(!(visible & TOP))
+                if(getCubeType(x+i, (y+size-1)+1,   z+j) == 0)
+                    visible |= TOP;
+            if(!(visible & BACK))
+                if(getCubeType(x+i, y+j,   z-1) == 0)
+                    visible |= BACK;
+            if(!(visible & FRONT))
+                if(getCubeType(x+i, y+j,   (z+size-1)+1) == 0)
+                    visible |= FRONT;
+        }
+    
+    return visible;
+    // End of user code
+}
+
+Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
+{
+	// Start of user code generate
+    Octree<Voxel*>* octree = new Octree<Voxel*>();
+    octree->setP(p);
+    octree->setQ(q);
+    octree->setR(r);
+    int size = Chunk::size*Chunk::subsize;
+    
+    Node<Voxel*>* node = octree;
+    
     Node<Voxel*>** currentEntries = new Node<Voxel*>*[9];
     int currents[9];
     int p_x_sizes[9];
@@ -162,7 +251,7 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
         q_y_sizes[i] = 0;
         r_z_sizes[i] = 0;
     }
-
+    
     int currentPower = 1;
     currents[1] = 0;
     p_x_sizes[0] = p;
@@ -180,6 +269,8 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
     int current = 0;
     int eight_currentPower = 0;
     int currentPower_1 = 0;
+    
+    Voxel* voxel = NULL;
     
     while(currents[1] > -1)
     {
@@ -209,18 +300,18 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
         p_x_sizes[currentPower] = p_x_sizes[currentPower_1]+x_size;
         q_y_sizes[currentPower] = q_y_sizes[currentPower_1]+y_size;
         r_z_sizes[currentPower] = r_z_sizes[currentPower_1]+z_size;
-
+        
         if( getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
                         q_y_sizes[currentPower],
                         r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2) !=
-            getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
-                        q_y_sizes[currentPower]+sizes[eight_currentPower][1]-1,
-                        r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2) )
+           getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
+                       q_y_sizes[currentPower]+sizes[eight_currentPower][1]-1,
+                       r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2) )
         {
             _node = new Node<Voxel*>();
             currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
             currentEntries[currentPower] = _node;
-
+            
             currentPower++;
             currents[currentPower] = 0;
             //continue;
@@ -230,7 +321,7 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
             _node = new Node<Voxel*>();
             currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
             currentEntries[currentPower] = _node;
-                
+            
             currentPower++;
             currents[currentPower] = 0;
             //continue;*/
@@ -242,35 +333,23 @@ void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int s
             {
                 //if(sizes[eight_currentPower][1] == 1)
                 occlusion = getOcclusion(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
-                currentEntries[currentPower_1]->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true)), currents[currentPower]);
+                voxel = new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true);
+                currentEntries[currentPower_1]->setOctreeEntriesAt(new Leaf<Voxel*>(voxel), currents[currentPower]);
+                if(isCubeVisible(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
+                    chunk->voxels.push_back(voxel);
+                else
+                    voxel->visible = false;
+                //voxel->occluded = true;
+                
             }
             currents[currentPower]++;
         }
         //currents[currentPower]++;
     }
-}
 
-Octree<Voxel*>* WorldGenerator::generate(int p, int q, int r)
-{
-	// Start of user code generate
-    Octree<Voxel*>* octree = new Octree<Voxel*>();
-    octree->setP(p);
-    octree->setQ(q);
-    octree->setR(r);
-    int size = Chunk::size*Chunk::subsize;
-    /*for(int i =0; i < 8; i++)
-    {
-        int x = (*xs)[i];
-        int y = (*ys)[i];
-        int z = (*zs)[i];
-        
-        GenerationResult generationResult = generateOctreeEntry(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2);
-        if(generationResult.type>0 && generationResult.octreeEntry == NULL)
-            octree->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p*size+x*size/2, q*size+y*size/2, r*size+z*size/2, size/2, generationResult.occlusion, generationResult.type, true)), i);
-        else
-            octree->setOctreeEntriesAt(generationResult.octreeEntry, i);
-    }*/
-    generateNode(octree, p*size, q*size, r*size, 1); //size >> 1);
+    chunk->setOctree(octree);
+    
+    //generateNode(octree, p*size, q*size, r*size, 1); //size >> 1);
     return octree;
 	// End of user code
 }
