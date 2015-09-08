@@ -254,9 +254,9 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
     
     int currentPower = 1;
     currents[1] = 0;
-    p_x_sizes[0] = p;
-    q_y_sizes[0] = q;
-    r_z_sizes[0] = r;
+    p_x_sizes[0] = p*Chunk::size*Chunk::subsize;
+    q_y_sizes[0] = q*Chunk::size*Chunk::subsize;
+    r_z_sizes[0] = r*Chunk::size*Chunk::subsize;
     
     int x_size;
     int y_size;
@@ -283,8 +283,7 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
         
         if(currents[1] == -1)
             break;
-        //std::cout << currents[0] << " " << currents[1] << " " << currents[2] << " " << currents[3] << " " << currents[4] << " " << currents[5] << " " << currents[6] << " " << currents[7] << " " << currents[8] << std::endl;
-        
+
         current = currents[currentPower];
         eight_currentPower = 8-currentPower;
         currentPower_1 = currentPower-1;
@@ -314,7 +313,6 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
             
             currentPower++;
             currents[currentPower] = 0;
-            //continue;
         }
         else if(!isCubeFilled(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
         {
@@ -324,14 +322,12 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
             
             currentPower++;
             currents[currentPower] = 0;
-            //continue;*/
         }
         else
         {
             type = getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
             if(type > 0)
             {
-                //if(sizes[eight_currentPower][1] == 1)
                 occlusion = getOcclusion(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
                 voxel = new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true);
                 currentEntries[currentPower_1]->setOctreeEntriesAt(new Leaf<Voxel*>(voxel), currents[currentPower]);
