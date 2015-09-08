@@ -16,6 +16,9 @@
             <PersistentString
                value = "y+size-1">
             </PersistentString>
+            <PersistentString
+               value = "heightMap.GetValue(_x, _z)">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -556,6 +559,17 @@
             </PersistentString>
             <PersistentString
                value = "(float)(q+size)/Chunk::subsize">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WorldGenerator::generateNode(Node&lt;Voxel*&gt;*, int, int, int, int):WorldGenerator.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "q_y_sizes[currentPower]+sizes[8-currentPower][1]-1">
+            </PersistentString>
+            <PersistentString
+               value = "q_y_sizes[currentPower]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

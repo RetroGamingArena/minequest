@@ -9,6 +9,8 @@
 #ifndef Voxel_h
 #define Voxel_h
 
+#include <iostream>
+
 struct Voxel
 {
     unsigned short int x;
@@ -83,7 +85,9 @@ struct Voxel
 
     Voxel(){};
     Voxel(int x, int y, int z, int size, unsigned char occlusion, unsigned char type, unsigned char visible)
-    {        
+    {
+        //std::cout << x << " " << y << " " << z << " " << size << endl;
+        
         this->offsetRegister.raw = 0;
         this->sizeRegister.raw = 0;
         
@@ -120,7 +124,7 @@ struct Voxel
         this->offsetRegister.field.cubeZ  = (this->z/16)%16;
         this->offsetRegister.field.chunkZ = (this->z/16)/16;
         
-        /*/*_p = p/Chunk::subsize;
+         /*_p = p/Chunk::subsize;
          _q = q/Chunk::subsize;
          _r = r/Chunk::subsize;
          

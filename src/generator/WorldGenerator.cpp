@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 
 #include "WorldGenerator.h"
 // Start of user code includes
@@ -143,71 +144,109 @@ vector<int>* WorldGenerator::getZs()
 
 void WorldGenerator::generateNode(Node<Voxel*>* node, int p, int q, int r, int size)
 {
-
-    for(int i = 0; i < 8; i++)
+    Node<Voxel*>** currentEntries = new Node<Voxel*>*[9];
+    int currents[9];
+    int p_x_sizes[9];
+    int q_y_sizes[9];
+    int r_z_sizes[9];
+    
+    unsigned char type = 0;
+    unsigned char occlusion = 0;
+    
+    currentEntries[0] = node;
+    currents[0] = 0;
+    for(int i = 1; i < 9; i++)
     {
-        _x = (*xs)[i];
-        _y = (*ys)[i];
-        _z = (*zs)[i];
-        
-        x_size = sizes[8-size][_x];
-        y_size = sizes[8-size][_y];
-        z_size = sizes[8-size][_z];
-        
-        p_x_size = p+x_size;
-        q_y_size = q+y_size;
-        r_z_size = r+z_size;
-        
-        if(sizes[8-size][1]==1)
+        currents[i] = -1;
+        p_x_sizes[i] = 0;
+        q_y_sizes[i] = 0;
+        r_z_sizes[i] = 0;
+    }
+
+    int currentPower = 1;
+    currents[1] = 0;
+    p_x_sizes[0] = p;
+    q_y_sizes[0] = q;
+    r_z_sizes[0] = r;
+    
+    int x_size;
+    int y_size;
+    int z_size;
+    
+    int _x;
+    int _y;
+    int _z;
+    
+    int current = 0;
+    int eight_currentPower = 0;
+    int currentPower_1 = 0;
+    
+    while(currents[1] > -1)
+    {
+        while(currents[currentPower] == 8)
         {
-            type = getCubeType(p_x_size, q_y_size, r_z_size);
-            occlusion = getOcclusion(p_x_size, q_y_size, r_z_size);
-            node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p+_x, q+_y, r+_z, 1, occlusion, type, true)), i);
+            currents[currentPower] = -1;
+            currentPower--;
+            currents[currentPower]++;
+        }
+        
+        if(currents[1] == -1)
+            break;
+        //std::cout << currents[0] << " " << currents[1] << " " << currents[2] << " " << currents[3] << " " << currents[4] << " " << currents[5] << " " << currents[6] << " " << currents[7] << " " << currents[8] << std::endl;
+        
+        current = currents[currentPower];
+        eight_currentPower = 8-currentPower;
+        currentPower_1 = currentPower-1;
+        
+        _x = (*xs)[current];
+        _y = (*ys)[current];
+        _z = (*zs)[current];
+        
+        x_size = sizes[eight_currentPower][_x];
+        y_size = sizes[eight_currentPower][_y];
+        z_size = sizes[eight_currentPower][_z];
+        
+        p_x_sizes[currentPower] = p_x_sizes[currentPower_1]+x_size;
+        q_y_sizes[currentPower] = q_y_sizes[currentPower_1]+y_size;
+        r_z_sizes[currentPower] = r_z_sizes[currentPower_1]+z_size;
+
+        if( getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
+                        q_y_sizes[currentPower],
+                        r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2) !=
+            getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
+                        q_y_sizes[currentPower]+sizes[eight_currentPower][1]-1,
+                        r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2) )
+        {
+            _node = new Node<Voxel*>();
+            currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
+            currentEntries[currentPower] = _node;
+
+            currentPower++;
+            currents[currentPower] = 0;
+            //continue;
+        }
+        else if(!isCubeFilled(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
+        {
+            _node = new Node<Voxel*>();
+            currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
+            currentEntries[currentPower] = _node;
+                
+            currentPower++;
+            currents[currentPower] = 0;
+            //continue;*/
         }
         else
         {
-            if( getCubeType(p_x_size+sizes[8-size][1]/2,q_y_size,r_z_size+sizes[8-size][1]/2) != getCubeType(p_x_size+sizes[8-size][1]/2,q_y_size+sizes[8-size][1]-1,r_z_size+sizes[8-size][1]/2) )
-            
-            _node = new Node<Voxel*>();
-            node->setOctreeEntriesAt(_node, i);
-            generateNode(_node, p_x_size, q_y_size, r_z_size, size+1);
-            continue;
-            
-            
-            /*float yHeightMap = (q_y_size+sizes[8-size][1]-1)*2.0/(Chunk::size*Chunk::subsize-1)-1;
-            
-            bool cubeFilled = true;
-            float height = getY(p_x_size,r_z_size);
-            if(height < q_y_size+sizes[8-size][1]-1)
-                cubeFilled = cubeFilled;
-
-            for(int _x = p_x_size; _x<p_x_size+sizes[8-size][1]; _x++)
+            type = getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
+            if(type > 0)
             {
-                for(int _z = r_z_size; _z<r_z_size+sizes[8-size][1]; _z++)
-                {
-                    if(heightMap.GetValue(_x, _z)<yHeightMap)
-                    {
-                        cubeFilled = false;
-                        break;
-                    }
-                }
-                if(!cubeFilled)
-                    break;
-            }*/
-            
-            //if(!cubeFilled)
-            
-            if(!isCubeFilled(p_x_size, q_y_size, r_z_size, sizes[8-size][1]))
-            {
-                _node = new Node<Voxel*>();
-                node->setOctreeEntriesAt(_node, i);
-                generateNode(_node, p_x_size, q_y_size, r_z_size, size+1);
-                continue;
+                //if(sizes[eight_currentPower][1] == 1)
+                occlusion = getOcclusion(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
+                currentEntries[currentPower_1]->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true)), currents[currentPower]);
             }
-            type = getCubeType(p_x_size, q_y_size, r_z_size);
-            occlusion = getOcclusion(p_x_size, q_y_size, r_z_size);
-            node->setOctreeEntriesAt(new Leaf<Voxel*>(new Voxel(p_x_size, q_y_size, r_z_size, sizes[8-size][1], occlusion, type, true)), i);
+            currents[currentPower]++;
         }
+        //currents[currentPower]++;
     }
 }
 

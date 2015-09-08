@@ -96,6 +96,8 @@ bool PerlinGenerator::isCubeUniform(int x, int y, int z, int size)
 
 bool PerlinGenerator::isCubeFilled(int x, int y, int z, int size)
 {
+    if(size==1)
+        return true;
     float yHeightMap = (y+size-1)*2.0/(Chunk::size*Chunk::subsize-1)-1;
     
     for(int _x = x; _x<x+size; _x++)

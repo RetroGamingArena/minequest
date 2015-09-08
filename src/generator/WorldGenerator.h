@@ -32,7 +32,7 @@ using namespace std;
 class WorldGenerator
 {
 	// Start of user code private
-    int _x = 0;
+    /*int _x = 0;
     int _y = 0;
     int _z = 0;
     
@@ -45,7 +45,7 @@ class WorldGenerator
     
     int p_x_size = 0;
     int q_y_size = 0;
-    int r_z_size = 0;
+    int r_z_size = 0;*/
     
     Node<Voxel*>* _node = NULL;
 	// End of user code
