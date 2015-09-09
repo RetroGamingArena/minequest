@@ -17,6 +17,7 @@
 
 // Start of user code includes
 #include "VertexBuffer.h"
+#include "Transmitter.h"
 // End of user code
 
 
@@ -26,7 +27,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class Item
+class Item : public Transmitter
 {
 	// Start of user code private
 	// End of user code
@@ -77,7 +78,8 @@ class Item
 		virtual void draw(VertexBuffer * buffer) = 0;
 		glm::vec3 getPosition();
 		glm::vec3 getLook();
-		bool tryMove();
+        bool tryMove();
+        void poly(){};
 };
 
 #endif

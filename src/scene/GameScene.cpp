@@ -307,6 +307,12 @@ void GameScene::render()
         doubleBuffer->getVertexBuffer()->bind();
         bindBuffer = false;
     }
+    
+    if(updateCamera)
+    {
+        getSelectedCamera()->look();
+        //updateCamera = false;
+    }
 
     VoxelScene::render();
 	// End of user code

@@ -39,8 +39,9 @@ void ItemCamera::onMouseMotion(double xpos, double ypos)
             angleY = max(-PI/2.0,(double)angleY);
         else
             angleY = min(PI/2.0,(double)angleY);
-        fireEvent(events[0]);
-        look();
+        handle(events[0]);
+        //fireEvent(events[0]);
+        //look();
     }
     oldX = xpos;
 	oldY = ypos;
@@ -68,24 +69,41 @@ void ItemCamera::onMouseWheel(double xoffset, double yoffset)
 glm::vec3 ItemCamera::getPosition()
 {
 	// Start of user code getPosition
-    position = item->getPosition();
+    /*position = item->getPosition();
     position /= Chunk::subsize;
     position.y += 2;
     position.x += 0.5 + cos(angleZ)*3;
-    position.z += 0.5 + sin(angleZ)*3;
+    position.z += 0.5 + sin(angleZ)*3;*/
     return InputCamera::getPosition();
 	// End of user code
 }
 glm::vec3 ItemCamera::getCenter()
 {
 	// Start of user code getCenter
+    /*center = item->getPosition();
+    center /= Chunk::subsize;
+    center.y += 2 + sin(angleY);
+    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI)*cos(angleY);
+    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI)*cos(angleY);*/
+    return InputCamera::getCenter();
+	// End of user code
+}
+
+void ItemCamera::handle(Event * event)
+{
+    position = item->getPosition();
+    position /= Chunk::subsize;
+    position.y += 2;
+    position.x += 0.5 + cos(angleZ)*3;
+    position.z += 0.5 + sin(angleZ)*3;
+    
     center = item->getPosition();//item->getLook();
     center /= Chunk::subsize;
     center.y += 2 + sin(angleY);
     center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI)*cos(angleY);
     center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI)*cos(angleY);
-    return InputCamera::getCenter();
-	// End of user code
+    
+    fireEvent(events[0]);
 }
 
 Item* ItemCamera::getItem()
@@ -98,5 +116,6 @@ Item* ItemCamera::getItem()
 void ItemCamera::setItem(Item* _item)
 {
 	item = _item;
+    item->addListener(this);
 }
 					

@@ -28,6 +28,7 @@ Item::Item()
     dx = 0;
     dy = 0;
     dz = 0;
+    events.push_back(new Event(Event::ID_CHANGED, this));
 	// End of user code
 }
 
@@ -221,6 +222,7 @@ bool Item::tryMove()
         z += dz;
         dz = 0;
     }
+    fireEvent(events[0]);
     return true;
     // End of user code
 }

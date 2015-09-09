@@ -16,6 +16,7 @@
 // End of user code
 
 // Start of user code includes
+#include "Listener.h"
 // End of user code
 
 #include "InputCamera.h"
@@ -27,7 +28,7 @@ using namespace std;
 // Start of user code class import
 // End of user code
 
-class ItemCamera : public InputCamera
+class ItemCamera : public InputCamera, public Listener
 {
 	// Start of user code private
 	// End of user code
@@ -50,6 +51,7 @@ class ItemCamera : public InputCamera
 		void onMouseButton(int button, int action);
 		void onKeyboard(int key, int scancode, int action, int mods);
 		void onMouseWheel(double xoffset, double yoffset);
+        void handle(Event * event);
 };
 
 #endif
