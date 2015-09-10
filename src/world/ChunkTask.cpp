@@ -33,16 +33,13 @@ void ChunkTask::run()
 	// Start of user code run
     double currentTime = glfwGetTime();
     
-    //chunk->setOctree(worldGenerator->generate(chunk->getP(), chunk->getQ(), chunk->getR()));
-    
     worldGenerator->generate(chunk, chunk->getP(), chunk->getQ(), chunk->getR());
     
     currentTime = glfwGetTime() - currentTime;
     std::cout << currentTime << std::endl;
     chunk->setGenerated(true);
     chunk->setGenerating(false);
-    //chunk->generate(worldGenerator);
-	// End of user code
+    // End of user code
 }
 
 

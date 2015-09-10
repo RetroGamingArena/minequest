@@ -3,6 +3,8 @@
 #include "ItemCamera.h"
 // Start of user code includes
 #include "Chunk.h"
+#include "Engine.h"
+#include <iostream>
 // End of user code
 
 
@@ -11,7 +13,7 @@ ItemCamera::ItemCamera()
 // End of user code
 {
 	// Start of user code constructor
-    angleZ = 3*PI/2;
+    angleZ = PI;//3*PI/2;
     //angleY = PI;
 	// End of user code
 }
@@ -28,23 +30,43 @@ ItemCamera::~ItemCamera()
 void ItemCamera::onMouseMotion(double xpos, double ypos)
 {
 	// Start of user code onMouseMotion
-    if(oldX >= 0 && oldY >= 0)
+    if(oldX == -1 && oldY == -1)
+    {
+        oldX = 960;
+        oldY = 540;
+    }
+    //if(oldX >= 0 && oldY >= 0)
+    else
     {
         double dx = (xpos-oldX)/100;
+        
         double dy = (ypos-oldY)/100;
 
         angleZ += dx;
-        angleY -= dy;
+        angleY += dy;
         if(dy<0)
-            angleY = max(-PI/2.0,(double)angleY);
+            angleY = max(PI/2.0,(double)angleY);
         else
-            angleY = min(PI/2.0,(double)angleY);
+            angleY = min(3*PI/2.0,(double)angleY);
+        
+        std::cout << angleY << std::endl;
+        
+        if(abs(oldX-960) > 100)
+        {
+            glfwSetCursorPos(Engine::getInstance()->getWindow(), 960, ypos);
+            oldX = 960;
+        }
+        else
+            oldX = xpos;
+        if(abs(oldY-540) > 100)
+        {
+            glfwSetCursorPos(Engine::getInstance()->getWindow(), xpos, 540);
+            oldY = 540;
+        }
+        else
+            oldY = ypos;
         handle(events[0]);
-        //fireEvent(events[0]);
-        //look();
     }
-    oldX = xpos;
-	oldY = ypos;
     // End of user code
 }
 void ItemCamera::onMouseButton(int button, int action)
@@ -69,22 +91,12 @@ void ItemCamera::onMouseWheel(double xoffset, double yoffset)
 glm::vec3 ItemCamera::getPosition()
 {
 	// Start of user code getPosition
-    /*position = item->getPosition();
-    position /= Chunk::subsize;
-    position.y += 2;
-    position.x += 0.5 + cos(angleZ)*3;
-    position.z += 0.5 + sin(angleZ)*3;*/
     return InputCamera::getPosition();
 	// End of user code
 }
 glm::vec3 ItemCamera::getCenter()
 {
 	// Start of user code getCenter
-    /*center = item->getPosition();
-    center /= Chunk::subsize;
-    center.y += 2 + sin(angleY);
-    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI)*cos(angleY);
-    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI)*cos(angleY);*/
     return InputCamera::getCenter();
 	// End of user code
 }
@@ -99,9 +111,9 @@ void ItemCamera::handle(Event * event)
     
     center = item->getPosition();//item->getLook();
     center /= Chunk::subsize;
-    center.y += 2 + sin(angleY);
-    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI)*cos(angleY);
-    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI)*cos(angleY);
+    center.y += 2 + sin(angleY+PI);
+    center.x = (item->getPosition().x / Chunk::subsize) + 0.5 + cos(angleZ+PI)*cos(angleY+PI);
+    center.z = (item->getPosition().z / Chunk::subsize) + 0.5 + sin(angleZ+PI)*cos(angleY+PI);
     
     fireEvent(events[0]);
 }

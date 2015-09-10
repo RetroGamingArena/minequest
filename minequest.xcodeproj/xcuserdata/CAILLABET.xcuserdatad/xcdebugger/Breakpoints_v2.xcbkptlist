@@ -394,13 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "ItemCamera::getCenter()"
-            landmarkType = "5">
+            startingLineNumber = "127"
+            endingLineNumber = "127">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -410,25 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "ItemCamera::setItem(Item* _item)"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127">
+            startingLineNumber = "139"
+            endingLineNumber = "139">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -834,11 +818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "ItemCamera::getCenter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3454,11 +3438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "ItemCamera::getPosition()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3470,11 +3454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "ItemCamera::getItem()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3524,22 +3508,6 @@
             startingLineNumber = "147"
             endingLineNumber = "147"
             landmarkName = "VBOScene::onKey(int key, int scancode, int action, int mods)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "ItemCamera::getPosition()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3662,108 +3630,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "458168727.695094"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "ItemCamera::getPosition()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "ItemCamera::getCenter()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "ItemCamera::getCenter()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "ItemCamera::getPosition()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "ItemCamera::getCenter()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "ItemCamera::getPosition()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3790,11 +3662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "458168727.695094"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5448,11 +5320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "458168727.695094"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5464,11 +5336,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "458168727.695094"
+            timestampString = "463530165.623635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5480,11 +5352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "458170296.923273"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5496,11 +5368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463514711.420035"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5512,11 +5384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "458777341.723341"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -5528,11 +5400,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463514711.420035"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6212,11 +6084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "460743148.045028"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "ItemCamera::ItemCamera()"
             landmarkType = "5">
          </BreakpointContent>
@@ -6442,22 +6314,6 @@
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "IterativeProcessor::bufferizeOctreeEntry(Chunk* chunk, OctreeEntry&lt;Voxel*&gt;* octreeEntry, vector&lt;GLuint&gt;* buffer, int p, int q, int r, int size)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/world/ChunkTask.cpp"
-            timestampString = "463443939.837387"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "ChunkTask::run()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7502,27 +7358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
@@ -8126,11 +7966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/ChunkTask.cpp"
-            timestampString = "463443939.837387"
+            timestampString = "463516275.963788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "ChunkTask::run()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9000,11 +8840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/ChunkTask.cpp"
-            timestampString = "463443939.837387"
+            timestampString = "463516275.963788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "ChunkTask::run()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9016,11 +8856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/world/ChunkTask.cpp"
-            timestampString = "463443939.837387"
+            timestampString = "463516275.963788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "ChunkTask::run()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9840,11 +9680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463601642.726963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "ItemCamera::handle(Event * event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -9952,11 +9792,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/camera/ItemCamera.cpp"
-            timestampString = "463516033.501295"
+            timestampString = "463529112.406144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/camera/ItemCamera.cpp"
+            timestampString = "463529112.406144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/camera/ItemCamera.cpp"
+            timestampString = "463529648.12712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/camera/ItemCamera.cpp"
+            timestampString = "463601838.347847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "ItemCamera::onMouseMotion(double xpos, double ypos)"
             landmarkType = "5">
          </BreakpointContent>
