@@ -87,6 +87,7 @@
 		64F076F11B56FE2C0064ED5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076F01B56FE2C0064ED5F /* Cocoa.framework */; };
 		64F076F31B56FE8D0064ED5F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076F21B56FE8D0064ED5F /* CoreVideo.framework */; };
 		64F076F51B56FEB90064ED5F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F076F41B56FEB90064ED5F /* IOKit.framework */; };
+		64F176FD1BA206BA007A85A0 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64F176FB1BA206BA007A85A0 /* Cursor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -511,6 +512,8 @@
 		64F076F01B56FE2C0064ED5F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = "<group>"; };
 		64F076F21B56FE8D0064ED5F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = ../../../../../System/Library/Frameworks/CoreVideo.framework; sourceTree = "<group>"; };
 		64F076F41B56FEB90064ED5F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
+		64F176FB1BA206BA007A85A0 /* Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cursor.cpp; sourceTree = "<group>"; };
+		64F176FC1BA206BA007A85A0 /* Cursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cursor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -922,6 +925,8 @@
 				64196BC11B932B550079C07A /* ProgressBar.h */,
 				643C84201B93670400E4C47A /* GameUI.cpp */,
 				643C84211B93670400E4C47A /* GameUI.h */,
+				64F176FB1BA206BA007A85A0 /* Cursor.cpp */,
+				64F176FC1BA206BA007A85A0 /* Cursor.h */,
 			);
 			name = ui;
 			path = src/ui;
@@ -1260,6 +1265,7 @@
 				64196BB61B921AC10079C07A /* MenuScene.cpp in Sources */,
 				64C986581AFBBFBB00A5B62E /* ChunkTask.cpp in Sources */,
 				64C986671AFBED1D00A5B62E /* noiseutils.cpp in Sources */,
+				64F176FD1BA206BA007A85A0 /* Cursor.cpp in Sources */,
 				645030511B17B687009DAC36 /* Event.cpp in Sources */,
 				6440BB211AF7B409006A0842 /* Shader.cpp in Sources */,
 				6440BB0C1AF6A304006A0842 /* GameScene.cpp in Sources */,

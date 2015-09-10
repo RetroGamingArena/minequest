@@ -14,11 +14,13 @@
 #include "Label.h"
 #include "ProgressBar.h"
 #include "UI.h"
+#include "Cursor.h"
 
 class GameUI : public UI
 {
     Label* fPSLabel;
     ProgressBar* progressBar;
+    Cursor* cursor;
     
     public:
         GameUI();

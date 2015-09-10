@@ -15,6 +15,8 @@ GameUI::GameUI()
     controls.push_back(fPSLabel);
     progressBar = new ProgressBar(100,100, 17);
     controls.push_back(progressBar);
+    cursor = new Cursor(955/2, 535/2);
+    controls.push_back(cursor);
 }
 
 Label* GameUI::getFPSLabel()

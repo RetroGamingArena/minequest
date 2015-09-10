@@ -54,6 +54,8 @@ void LoadingScene::render()
         engine->setScene(gameScene);
         engine->getPlayer()->setFalling(true);
         
+        glfwSetInputMode(engine->getWindow(), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+        
         engine->refresh();
 
         gameScene->updateIndices();

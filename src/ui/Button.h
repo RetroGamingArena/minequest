@@ -10,6 +10,7 @@
 #define Button_cpp
 
 #include <stdio.h>
+#include <vector>
 
 #include "Label.h"
 #include "SizableControl.h"

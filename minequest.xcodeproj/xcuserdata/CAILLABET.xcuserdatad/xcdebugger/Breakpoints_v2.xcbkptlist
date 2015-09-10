@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/scene/LoadingScene.cpp"
-            timestampString = "461263436.786619"
+            timestampString = "463603124.735408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "LoadingScene::setMutex(std::mutex* _mutex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/scene/LoadingScene.cpp"
-            timestampString = "461263436.786619"
+            timestampString = "463603124.735408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "LoadingScene::setMutex(std::mutex* _mutex)"
             landmarkType = "5">
          </BreakpointContent>
@@ -6644,11 +6644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/scene/LoadingScene.cpp"
-            timestampString = "461263417.70593"
+            timestampString = "463603124.735408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "LoadingScene::render()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9352,11 +9352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/ui/GameUI.cpp"
-            timestampString = "462648983.063979"
+            timestampString = "463612491.12462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "GameUI::refresh()"
             landmarkType = "5">
          </BreakpointContent>
@@ -9368,11 +9368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/ui/GameUI.cpp"
-            timestampString = "462648983.063979"
+            timestampString = "463612491.12462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "GameUI::refresh()"
             landmarkType = "5">
          </BreakpointContent>
