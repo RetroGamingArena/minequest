@@ -111,13 +111,13 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
     
     if(y<=height)
     {
-        if(height < waterHeight-10)
+        if(y < waterHeight-10)
             return 4;
-        if(height < 127)
+        if(y < 127)
             return 3;
-        if(height == 127)
+        if(y == 127)
             return 1;
-        if(height < 200)
+        if(y < 200)
             return 5;
         else
             return 6;
