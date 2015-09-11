@@ -316,12 +316,25 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
         }
         else if(!isCubeFilled(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
         {
-            _node = new Node<Voxel*>();
-            currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
-            currentEntries[currentPower] = _node;
+            unsigned char bottom = getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
+                                        q_y_sizes[currentPower],
+                                        r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2);
+            unsigned char top = getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
+                                            q_y_sizes[currentPower]+sizes[eight_currentPower][1]-1,
+                                            r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2);
+            if(!isCubeEmpty(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
+            {
+                _node = new Node<Voxel*>();
+                currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
+                currentEntries[currentPower] = _node;
             
-            currentPower++;
-            currents[currentPower] = 0;
+                currentPower++;
+                currents[currentPower] = 0;
+            }
+            else
+            {
+                currents[currentPower]++;
+            }
         }
         else
         {
@@ -331,10 +344,10 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
                 occlusion = getOcclusion(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
                 voxel = new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true);
                 currentEntries[currentPower_1]->setOctreeEntriesAt(new Leaf<Voxel*>(voxel), currents[currentPower]);
-                if(isCubeVisible(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
+                //if(isCubeVisible(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
                     chunk->voxels.push_back(voxel);
-                else
-                    voxel->visible = false;
+                //else
+                //    voxel->visible = false;
                 //voxel->occluded = true;
                 
             }

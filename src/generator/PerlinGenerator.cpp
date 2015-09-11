@@ -42,7 +42,7 @@ PerlinGenerator::PerlinGenerator()
     flatTerrain.SetScale (0.5);
     
     module::Const ground;
-    ground.SetConstValue(-0.0078125);
+    ground.SetConstValue(-0.00392156886);//-0.0078125);
     
     module::Billow selector;
     
@@ -93,6 +93,7 @@ bool PerlinGenerator::isCubeFilled(int x, int y, int z, int size)
 {
     if(size==1)
         return true;
+
     float yHeightMap = (y+size-1)*2.0/(Chunk::size*Chunk::subsize-1)-1;
     
     for(int _x = x; _x<x+size; _x++)
@@ -102,6 +103,22 @@ bool PerlinGenerator::isCubeFilled(int x, int y, int z, int size)
                 return false;
         }
     return true;
+}
+
+bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
+{
+    if(size==1)
+        return true;
+    
+    float yHeightMap = (y)*2.0/(Chunk::size*Chunk::subsize-1)-1;
+    
+    for(int _x = x; _x<x+size; _x++)
+        for(int _z = z; _z<z+size; _z++)
+        {
+            if(heightMap.GetValue(_x, _z)>=yHeightMap)
+                return false;
+        }
+    return false;//true;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
@@ -128,7 +145,6 @@ unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
         return 0;
 	// End of user code
 }
-
 
 int PerlinGenerator::waterHeight = 117;
 
