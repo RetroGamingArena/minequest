@@ -32,35 +32,30 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = 100;//(rand() % INT_MAX)*2+INT_MIN;
-    
-    module::Perlin module;
-    
-    module::Perlin terrainType;
-    terrainType.SetFrequency (0.7);
-    terrainType.SetPersistence (0.25);
+    int seed = (rand() % INT_MAX)*2+INT_MIN;
     
     module::Billow baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
-    baseFlatTerrain.SetSeed(seed);
     
     module::ScaleBias flatTerrain;
     flatTerrain.SetSourceModule (0, baseFlatTerrain);
+    flatTerrain.SetScale (0.5);
     
-    module::RidgedMulti mountainTerrain;
-    mountainTerrain.SetSeed(seed);
+    module::Const ground;
+    ground.SetConstValue(-0.0078125);
     
-    module::Select finalTerrain;
-    finalTerrain.SetSourceModule (0, flatTerrain);
-    finalTerrain.SetSourceModule (1, mountainTerrain);
-    finalTerrain.SetControlModule (terrainType);
-    finalTerrain.SetBounds (0.0, 1000.0);
-    finalTerrain.SetEdgeFalloff (0.125);
+    module::Billow selector;
+    
+    module::Select blend;
+    blend.SetSourceModule(0, baseFlatTerrain);
+    blend.SetSourceModule(1, ground);
+    blend.SetControlModule(selector);
+    blend.SetBounds(0, 1);
+    blend.SetEdgeFalloff (0.125);
     
     utils::NoiseMapBuilderPlane heightMapBuilder;
-    
-    module.SetSeed(seed);
-    heightMapBuilder.SetSourceModule (finalTerrain);
+
+    heightMapBuilder.SetSourceModule (blend);
     heightMapBuilder.SetDestNoiseMap (heightMap);
     heightMapBuilder.SetDestSize (destSize, destSize);
     
@@ -112,55 +107,30 @@ bool PerlinGenerator::isCubeFilled(int x, int y, int z, int size)
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 {
 	// Start of user code getCubeType
-    float height = (heightMap.GetValue(x, z)+1)*Chunk::size*Chunk::subsize/2;//getY(x, z);//heightMap.GetValue(x, z);
-
-    //height=(height+1);
+    float height = (heightMap.GetValue(x, z)+1)*Chunk::size*Chunk::subsize/2;
     
-    //height*=Chunk::size*Chunk::subsize/2;
-    
-    /*if(y<=height)
-        return 4;
-    else
-        return 0;*/
-    
-    //height -= (int)height % Chunk::subsize;
-    
-    if(y<height && y >= waterHeight+40)
-        return 6;
-    if(y<height && y >= waterHeight+10)
-        return 5;
-    if(y<height && y >= waterHeight+2)
-        return 1;
-    if(y<height && y >= waterHeight+1)
-        return 3;
-    if(y>height && y <= waterHeight)
+    if(y<=height)
+    {
+        if(height < waterHeight-10)
+            return 4;
+        if(height < 127)
+            return 3;
+        if(height == 127)
+            return 1;
+        if(height < 200)
+            return 5;
+        else
+            return 6;
+    }
+    else if(y>height && y <= waterHeight)
         return 2;
-    if(height<y)
-        return 0;
-    
-    return 6;
-    
-    //unsigned char type;
-    
-    /*if(y<16*Chunk::size*Chunk::subsize/32)
-        type = 2; //dirt
-    else if(y<18*Chunk::size*Chunk::subsize/32)
-        type = 3; //sand
-    else if(y<20*Chunk::size*Chunk::subsize/32)
-        type = 1; //grass
-    else if(y<25*Chunk::size*Chunk::subsize/32)
-        type = 4; //dirt
-    else if(y<28*Chunk::size*Chunk::subsize/32)
-        type = 5; //rock
     else
-        type = 6; //snow*/
-    
-    //return type;
+        return 0;
 	// End of user code
 }
 
 
-int PerlinGenerator::waterHeight = 10;	
+int PerlinGenerator::waterHeight = 117;
 
 utils::NoiseMap PerlinGenerator::getHeightMap()
 {
