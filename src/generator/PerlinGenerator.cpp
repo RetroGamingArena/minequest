@@ -112,13 +112,15 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
     
     float yHeightMap = (y)*2.0/(Chunk::size*Chunk::subsize-1)-1;
     
+    float waterHeightMap = (waterHeight)*2.0/(Chunk::size*Chunk::subsize)-1;
+    
     for(int _x = x; _x<x+size; _x++)
         for(int _z = z; _z<z+size; _z++)
         {
-            if(heightMap.GetValue(_x, _z)>=yHeightMap)
+            if(heightMap.GetValue(_x, _z) >= yHeightMap || heightMap.GetValue(_x, _z)<waterHeightMap)
                 return false;
         }
-    return false;//true;
+    return true;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
