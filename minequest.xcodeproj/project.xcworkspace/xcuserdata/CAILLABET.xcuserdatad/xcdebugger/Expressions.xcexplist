@@ -273,6 +273,23 @@
          contextName = "Chunk::setBuffered(bool):Chunk.cpp">
       </ContextState>
       <ContextState
+         contextName = "PerlinGenerator::isCubeEmpty(int, int, int, int):PerlinGenerator.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "heightMap.GetValue(_x, _z) &gt;= yHeightMap">
+            </PersistentString>
+            <PersistentString
+               value = "heightMap.GetValue(_x, _z)&lt;waterHeightMap">
+            </PersistentString>
+            <PersistentString
+               value = "getCubeType(x,y,z)">
+            </PersistentString>
+            <PersistentString
+               value = "heightMap.GetValue(10, 10)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "World::getLeaf(int, int, int):World.cpp">
          <PersistentStrings>
             <PersistentString
@@ -381,6 +398,27 @@
          <PersistentStrings>
             <PersistentString
                value = "currentEntries[currentPower_1]">
+            </PersistentString>
+            <PersistentString
+               value = "currents[currentPower_1-1]">
+            </PersistentString>
+            <PersistentString
+               value = "r_z_sizes[currentPower-1]">
+            </PersistentString>
+            <PersistentString
+               value = "test4-&gt;getOctreeEntries()[currents[currentPower_1-1]]">
+            </PersistentString>
+            <PersistentString
+               value = "getCubeType(p_x_sizes[currentPower-1], q_y_sizes[currentPower-1], r_z_sizes[currentPower-1])">
+            </PersistentString>
+            <PersistentString
+               value = "p_x_sizes[currentPower-1]">
+            </PersistentString>
+            <PersistentString
+               value = "getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower])">
+            </PersistentString>
+            <PersistentString
+               value = "q_y_sizes[currentPower-1]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

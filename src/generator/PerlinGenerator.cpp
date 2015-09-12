@@ -36,6 +36,7 @@ PerlinGenerator::PerlinGenerator()
     
     module::Billow baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
+    baseFlatTerrain.SetSeed(seed);
     
     module::ScaleBias flatTerrain;
     flatTerrain.SetSourceModule (0, baseFlatTerrain);
@@ -45,7 +46,8 @@ PerlinGenerator::PerlinGenerator()
     ground.SetConstValue(-0.00392156886);//-0.0078125);
     
     module::Billow selector;
-    
+    selector.SetSeed(seed);
+
     module::Select blend;
     blend.SetSourceModule(0, baseFlatTerrain);
     blend.SetSourceModule(1, ground);
@@ -118,7 +120,9 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
         for(int _z = z; _z<z+size; _z++)
         {
             if(heightMap.GetValue(_x, _z) >= yHeightMap || heightMap.GetValue(_x, _z)<waterHeightMap)
+            {
                 return false;
+            }
         }
     return true;
 }

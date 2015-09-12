@@ -233,7 +233,9 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
     
     Node<Voxel*>* node = octree;
     
-    Node<Voxel*>** currentEntries = new Node<Voxel*>*[9];
+    OctreeEntry<Voxel*>** currentEntries = new OctreeEntry<Voxel*>*[9];
+    Node<Voxel*>* currentNode = NULL;
+    Leaf<Voxel*>* leaf = NULL;
     int currents[9];
     int p_x_sizes[9];
     int q_y_sizes[9];
@@ -250,6 +252,7 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
         p_x_sizes[i] = 0;
         q_y_sizes[i] = 0;
         r_z_sizes[i] = 0;
+        currentEntries[i] = NULL;
     }
     
     int currentPower = 1;
@@ -276,6 +279,29 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
     {
         while(currents[currentPower] == 8)
         {
+            /*if(currentEntries[currentPower] == NULL)
+            {
+                OctreeEntry<Voxel*>* test = currentEntries[currentPower_1];
+                Node<Voxel*>* test2 = dynamic_cast< Node<Voxel*>*>(test);
+                if( test2->getOctreeEntries()[0] == NULL &&
+                    test2->getOctreeEntries()[1] == NULL &&
+                    test2->getOctreeEntries()[2] == NULL &&
+                    test2->getOctreeEntries()[3] == NULL &&
+                    test2->getOctreeEntries()[4] == NULL &&
+                    test2->getOctreeEntries()[5] == NULL &&
+                    test2->getOctreeEntries()[6] == NULL &&
+                    test2->getOctreeEntries()[7] == NULL)
+                {
+                    OctreeEntry<Voxel*>* test3  = currentEntries[currentPower_1-1];
+                    Node<Voxel*>* test4 = dynamic_cast< Node<Voxel*>*>(test3);
+                    
+                    OctreeEntry<Voxel*>* test5 = test4->getOctreeEntries()[currents[currentPower_1-1]];
+                    Node<Voxel*>* test6 = dynamic_cast< Node<Voxel*>*>(test5);
+                    
+                    delete test5;
+                    test4->getOctreeEntries()[currents[currentPower_1-1]] = NULL;
+                }
+            }*/
             currents[currentPower] = -1;
             currentPower--;
             currents[currentPower]++;
@@ -308,24 +334,20 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
                        r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2) )
         {
             _node = new Node<Voxel*>();
-            currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
+            currentNode = dynamic_cast<Node<Voxel*>*>(currentEntries[currentPower_1]);
+            currentNode/*currentEntries[currentPower_1]*/->setOctreeEntriesAt(_node, current);
             currentEntries[currentPower] = _node;
             
             currentPower++;
             currents[currentPower] = 0;
         }
         else if(!isCubeFilled(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
-        {
-            unsigned char bottom = getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
-                                        q_y_sizes[currentPower],
-                                        r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2);
-            unsigned char top = getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
-                                            q_y_sizes[currentPower]+sizes[eight_currentPower][1]-1,
-                                            r_z_sizes[currentPower]+sizes[eight_currentPower][1]/2);
+        {            
             if(!isCubeEmpty(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
             {
                 _node = new Node<Voxel*>();
-                currentEntries[currentPower_1]->setOctreeEntriesAt(_node, current);
+                currentNode = dynamic_cast<Node<Voxel*>*>(currentEntries[currentPower_1]);
+                currentNode/*currentEntries[currentPower_1]*/->setOctreeEntriesAt(_node, current);
                 currentEntries[currentPower] = _node;
             
                 currentPower++;
@@ -343,17 +365,21 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
             {
                 occlusion = getOcclusion(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
                 voxel = new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true);
-                currentEntries[currentPower_1]->setOctreeEntriesAt(new Leaf<Voxel*>(voxel), currents[currentPower]);
+                currentNode = dynamic_cast<Node<Voxel*>*>(currentEntries[currentPower_1]);
+                leaf = new Leaf<Voxel*>(voxel);
+                currentNode/*currentEntries[currentPower_1]*/->setOctreeEntriesAt(leaf, currents[currentPower]);
                 if(isCubeVisible(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
                     chunk->voxels.push_back(voxel);
                 else
                     voxel->visible = false;
-                //voxel->occluded = true;
+                
+                currentEntries[currentPower] = leaf;
                 
             }
+            else
+                currentEntries[currentPower] = NULL;
             currents[currentPower]++;
         }
-        //currents[currentPower]++;
     }
 
     chunk->setOctree(octree);
