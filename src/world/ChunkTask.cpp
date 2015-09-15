@@ -33,9 +33,6 @@ void ChunkTask::run()
 	// Start of user code run
     double currentTime = glfwGetTime();
     
-    Node<Voxel*> test = Node<Voxel*>();
-    int test2 = sizeof(test);
-    
     worldGenerator->generate(chunk, chunk->getP(), chunk->getQ(), chunk->getR());
     
     currentTime = glfwGetTime() - currentTime;

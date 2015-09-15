@@ -11,6 +11,7 @@ ChunkProcessorTask::ChunkProcessorTask()
 // End of user code
 {
 	// Start of user code constructor
+    int a = 2;
 	// End of user code
 }
 

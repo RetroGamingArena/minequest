@@ -17,13 +17,13 @@ struct Voxel
     unsigned short int y;
     unsigned short int z;
     
-    double x_16;
+    /*double x_16;
     double y_16;
     double z_16;
     
     double x_size_16;
     double y_size_16;
-    double z_size_16;
+    double z_size_16;*/
     
     double x_size_16_2;
     double y_size_16_2;
@@ -74,20 +74,10 @@ struct Voxel
     
     OffsetField offsetRegister;
     SizeField sizeRegister;
-    
-    //_offset =  (   pp + (cup << 4) + (chp << 8) +
-     //           ((qq + (cuq << 4) + (chq << 8)) << 10) +
-     //           ( (( rr + (cur << 4) + (chr << 8) )) << 20) );
-    
-    //vec->push_back(_offset);
-    
-    //_size = (type << 20) + (occlusion << 18) + ((sizeM1) << 12) + ((sizeM1) << 6) + (sizeM1);
 
     Voxel(){};
     Voxel(int x, int y, int z, int size, unsigned char occlusion, unsigned char type, unsigned char visible)
     {
-        //std::cout << x << " " << y << " " << z << " " << size << endl;
-        
         this->offsetRegister.raw = 0;
         this->sizeRegister.raw = 0;
         
@@ -95,15 +85,15 @@ struct Voxel
         this->y = y;
         this->z = z;
         
-        this->x_16 = this->x/16.0;
+        /*this->x_16 = this->x/16.0;
         this->y_16 = this->y/16.0;
-        this->z_16 = this->z/16.0;
+        this->z_16 = this->z/16.0;*/
         
         this->size = size;
         
-        this->x_size_16 = (this->x+this->size)/16.0;
+        /*this->x_size_16 = (this->x+this->size)/16.0;
         this->y_size_16 = (this->y+this->size)/16.0;
-        this->z_size_16 = (this->z+this->size)/16.0;
+        this->z_size_16 = (this->z+this->size)/16.0;*/
         
         this->x_size_16_2 = (this->x+this->size/2.0)/16;
         this->y_size_16_2 = (this->y+this->size/2.0)/16;
@@ -123,22 +113,6 @@ struct Voxel
         this->offsetRegister.field.pixelZ = this->z%16;
         this->offsetRegister.field.cubeZ  = (this->z/16)%16;
         this->offsetRegister.field.chunkZ = (this->z/16)/16;
-        
-         /*_p = p/Chunk::subsize;
-         _q = q/Chunk::subsize;
-         _r = r/Chunk::subsize;
-         
-         chp = _p / 16;
-         chq = _q / 16;
-         chr = _r / 16;
-         
-         cup = _p % 16;
-         cuq = _q % 16;
-         cur = _r % 16;
-         
-         pp = p%Chunk::subsize;
-         qq = q%Chunk::subsize;
-         rr = r%Chunk::subsize;*/
         
         sizeRegister.field.sizeX = this->size-1;
         sizeRegister.field.sizeY = this->size-1;

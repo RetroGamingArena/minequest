@@ -275,33 +275,34 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
     
     Voxel* voxel = NULL;
     
+    vector<OctreeEntry<Voxel*>*> tempVector = vector<OctreeEntry<Voxel*>*>();
+    
     while(currents[1] > -1)
     {
         while(currents[currentPower] == 8)
         {
-            /*if(currentEntries[currentPower] == NULL)
+            if(currentEntries[currentPower] == NULL)
             {
-                OctreeEntry<Voxel*>* test = currentEntries[currentPower_1];
-                Node<Voxel*>* test2 = dynamic_cast< Node<Voxel*>*>(test);
-                if( test2->getOctreeEntries()[0] == NULL &&
-                    test2->getOctreeEntries()[1] == NULL &&
-                    test2->getOctreeEntries()[2] == NULL &&
-                    test2->getOctreeEntries()[3] == NULL &&
-                    test2->getOctreeEntries()[4] == NULL &&
-                    test2->getOctreeEntries()[5] == NULL &&
-                    test2->getOctreeEntries()[6] == NULL &&
-                    test2->getOctreeEntries()[7] == NULL)
+                OctreeEntry<Voxel*>* parentEntry = currentEntries[currentPower_1];
+                Node<Voxel*>* parentNode = dynamic_cast< Node<Voxel*>*>(parentEntry);
+                if(parentNode->getOctreeEntries().size()>0)
+                if( parentNode->getOctreeEntries()[parentNode->getOctreeEntries().size()-1] == NULL )
                 {
-                    OctreeEntry<Voxel*>* test3  = currentEntries[currentPower_1-1];
-                    Node<Voxel*>* test4 = dynamic_cast< Node<Voxel*>*>(test3);
-                    
-                    OctreeEntry<Voxel*>* test5 = test4->getOctreeEntries()[currents[currentPower_1-1]];
-                    Node<Voxel*>* test6 = dynamic_cast< Node<Voxel*>*>(test5);
-                    
-                    delete test5;
-                    test4->getOctreeEntries()[currents[currentPower_1-1]] = NULL;
+                    vector<OctreeEntry<Voxel*>*> newVector = vector<OctreeEntry<Voxel*>*>();
+                    int copyCount = 7;
+                    for(int i = 6; i >= 0; i--)
+                        if(parentNode->getOctreeEntries()[i] == NULL)
+                            copyCount--;
+                        else
+                            break;
+                    for(int i = 0; i < copyCount; i++)
+                        tempVector.push_back( parentNode->getOctreeEntries()[i]);
+                    parentNode->getOctreeEntries().clear();
+                    for(int i = 0; i < tempVector.size(); i++)
+                        parentNode->getOctreeEntries().push_back( parentNode->getOctreeEntries()[i]);
+                    tempVector.clear();
                 }
-            }*/
+            }
             currents[currentPower] = -1;
             currentPower--;
             currents[currentPower]++;
@@ -377,7 +378,10 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
                 
             }
             else
+            {
+                currentNode = dynamic_cast<Node<Voxel*>*>(currentEntries[currentPower_1]);
                 currentEntries[currentPower] = NULL;
+            }
             currents[currentPower]++;
         }
     }

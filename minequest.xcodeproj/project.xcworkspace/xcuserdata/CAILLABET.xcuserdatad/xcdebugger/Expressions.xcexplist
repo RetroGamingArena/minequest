@@ -298,6 +298,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Node&lt;Voxel*&gt;::setOctreeEntriesAt(OctreeEntry&lt;Voxel*&gt;*, int):Node.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "octreeEntries.size() &lt; indice + 1">
+            </PersistentString>
+            <PersistentString
+               value = "octreeEntries.size()">
+            </PersistentString>
+            <PersistentString
+               value = "octreeEntries">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Node::get(int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
@@ -383,6 +397,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "WorldGenerator::generate(Chunk*, int, int, int):WorldGenerator.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "parentNode-&gt;getOctreeEntries()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Octree&lt;unsigned char&gt;::bufferize(VBOScene*, float, float, float):Octree.cpp">
          <PersistentStrings>
             <PersistentString
@@ -392,35 +414,6 @@
       </ContextState>
       <ContextState
          contextName = "OctreeEntry&lt;unsigned char&gt;::~OctreeEntry():OctreeEntry.h">
-      </ContextState>
-      <ContextState
-         contextName = "WorldGenerator::generate(Chunk*, int, int, int):WorldGenerator.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "currentEntries[currentPower_1]">
-            </PersistentString>
-            <PersistentString
-               value = "currents[currentPower_1-1]">
-            </PersistentString>
-            <PersistentString
-               value = "r_z_sizes[currentPower-1]">
-            </PersistentString>
-            <PersistentString
-               value = "test4-&gt;getOctreeEntries()[currents[currentPower_1-1]]">
-            </PersistentString>
-            <PersistentString
-               value = "getCubeType(p_x_sizes[currentPower-1], q_y_sizes[currentPower-1], r_z_sizes[currentPower-1])">
-            </PersistentString>
-            <PersistentString
-               value = "p_x_sizes[currentPower-1]">
-            </PersistentString>
-            <PersistentString
-               value = "getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower])">
-            </PersistentString>
-            <PersistentString
-               value = "q_y_sizes[currentPower-1]">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "Chunk::contains(int, int, int):Chunk.cpp">

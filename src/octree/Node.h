@@ -204,7 +204,10 @@ class Node : public OctreeEntry<T>
     {
         // Start of user code get
         if(this->octreeEntries.size() > 0 )
-            return this->octreeEntries[x+y*4+z*2];
+            if(x+y*4+z*2+1 > octreeEntries.size() )
+                return 0;
+            else
+               return this->octreeEntries[x+y*4+z*2];
         else
             return 0;
         // End of user code
@@ -224,6 +227,13 @@ class Node : public OctreeEntry<T>
         // Start of user code getOctreeEntries
         // End of user code
         return octreeEntries;
+    }
+    
+    void setOctreeEntries(vector<OctreeEntry<T>*> octreeEntries)
+    {
+        // Start of user code getOctreeEntries
+        // End of user code
+        this->octreeEntries = octreeEntries;
     }
 
     void setOctreeEntriesAt(OctreeEntry<T>* _octreeEntries, int indice)

@@ -34,10 +34,10 @@ PerlinGenerator::PerlinGenerator()
     
     int seed = (rand() % INT_MAX)*2+INT_MIN;
     
-    module::Billow baseFlatTerrain;
+    module::Perlin baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
     baseFlatTerrain.SetSeed(seed);
-    
+
     module::ScaleBias flatTerrain;
     flatTerrain.SetSourceModule (0, baseFlatTerrain);
     flatTerrain.SetScale (0.5);
@@ -55,14 +55,18 @@ PerlinGenerator::PerlinGenerator()
     blend.SetBounds(0, 1);
     blend.SetEdgeFalloff (0.125);
     
+    module::Clamp sourceClamp;
+    sourceClamp.SetSourceModule(0, blend);
+    sourceClamp.SetBounds(-1, 1);
+    
     utils::NoiseMapBuilderPlane heightMapBuilder;
 
-    heightMapBuilder.SetSourceModule (blend);
+    heightMapBuilder.SetSourceModule (sourceClamp);
     heightMapBuilder.SetDestNoiseMap (heightMap);
-    heightMapBuilder.SetDestSize (destSize, destSize);
     
+    heightMapBuilder.SetDestSize (destSize, destSize);
+
     heightMapBuilder.SetBounds (lowerXBound, upperXBound, lowerYBound, upperYBound);
-    //heightMapBuilder.SetBounds (6.0, 10.0, 1.0, 5.0);
     
     heightMapBuilder.Build ();
 	// End of user code
@@ -119,6 +123,12 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
     for(int _x = x; _x<x+size; _x++)
         for(int _z = z; _z<z+size; _z++)
         {
+            float value = heightMap.GetValue(_x, _z);
+            if(value < -1 )
+            {
+                int a = 1;
+            }
+            
             if(heightMap.GetValue(_x, _z) >= yHeightMap || heightMap.GetValue(_x, _z)<waterHeightMap)
             {
                 return false;

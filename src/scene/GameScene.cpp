@@ -84,6 +84,8 @@ GameScene::GameScene(Player* player)
     voxelsThread->addListener(this);
     
     getSelectedCamera()->look();
+    
+    updateVoxels = true;
 }
 // End of user code
 
@@ -106,7 +108,8 @@ void GameScene::handle(Event * event)
                 _updateIndices = true;
                 oldMask = mask;
             }
-            if(worldProcessor->isFinished() && !worldProcessor->isRunning())
+
+            //if(worldProcessor->isFinished() && !worldProcessor->isRunning())
             {
                 if(updateVoxels && !updateBuffer && !voxelsThread->isBusy())
                 {
@@ -266,15 +269,15 @@ void GameScene::render()
             updateChunks = false;
         }
     }
-    if(world->isFinished() && !worldProcessor->isFinished())
+    /*if(world->isFinished() && !worldProcessor->isFinished())
     {
         if(!worldProcessor->isRunning() && !worldProcessor->buffered)
         {
             worldProcessor->start();
-            //updateBuffer = true;
         }
-    }
-    if(worldProcessor->isFinished() && updateBuffer)
+    }*/
+    
+    if(/*worldProcessor->isFinished() &&*/ updateBuffer)
     {
         vector<GLuint>* gameSceneData = doubleBuffer->getVertexBuffer()->getData();
         
