@@ -34,6 +34,7 @@ struct Voxel
     unsigned char type;
     
     unsigned char visible;
+    bool occluded;
 
     struct offsetBitFiled
     {

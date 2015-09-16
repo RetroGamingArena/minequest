@@ -238,6 +238,11 @@ class Node : public OctreeEntry<T>
 
     void setOctreeEntriesAt(OctreeEntry<T>* _octreeEntries, int indice)
     {
+        if(octreeEntries[indice] != NULL)
+        {
+            //delete _octreeEntries;
+            return;
+        }
         octreeEntries[indice] = _octreeEntries;
     }
 

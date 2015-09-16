@@ -40,9 +40,9 @@ class Leaf : public OctreeEntry<T>
 
 	public:
 		// Start of user code public
-        bool occluded;
+        //bool occluded;
         //static World* bufferizeWorld;
-        unsigned char visible;
+        //unsigned char visible;
 		// End of user code
 		
         Leaf()
@@ -53,8 +53,8 @@ class Leaf : public OctreeEntry<T>
         Leaf(T value)
         {
             this->value = value;
-            occluded = false;
-            visible = false;
+            //occluded = false;
+            //visible = false;
         };
     ~Leaf(){};
 

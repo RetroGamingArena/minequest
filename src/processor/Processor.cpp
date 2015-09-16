@@ -596,7 +596,7 @@ bool Processor::isPointOccluded(int x, int y, int z, double dx, double dy, doubl
 
 void Processor::bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>* vec, int p, int q, int r, int size)
 {
-    if(leaf->occluded && !leaf->visible)
+    if(leaf->getValue()->occluded && !leaf->getValue()->visible)
         return;
     
     //unsigned char type = leaf->getType();
@@ -604,13 +604,13 @@ void Processor::bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>*
     
     if(leaf->getValue()->type > 0)
     {
-        if(!leaf->occluded)
+        if(!leaf->getValue()->occluded)
         {
-            leaf->visible = isCubeVisible(p,q,r,size);
-            leaf->occluded = true;
+            leaf->getValue()->visible = isCubeVisible(p,q,r,size);
+            leaf->getValue()->occluded = true;
         }
         
-        if(leaf->visible)
+        if(leaf->getValue()->visible)
         {
             chunk->voxels.push_back(leaf->getValue());//Voxel(p,q,r,size, occlusion, type, leaf->visible));
         }

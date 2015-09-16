@@ -32,7 +32,7 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = (rand() % INT_MAX)*2+INT_MIN;
+    int seed = 0;//rand() % INT_MAX)*2+INT_MIN;
     
     module::Perlin baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
@@ -124,11 +124,6 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
         for(int _z = z; _z<z+size; _z++)
         {
             float value = heightMap.GetValue(_x, _z);
-            if(value < -1 )
-            {
-                int a = 1;
-            }
-            
             if(heightMap.GetValue(_x, _z) >= yHeightMap || heightMap.GetValue(_x, _z)<waterHeightMap)
             {
                 return false;
