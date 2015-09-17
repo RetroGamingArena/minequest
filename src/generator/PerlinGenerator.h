@@ -52,6 +52,7 @@ class PerlinGenerator : public WorldGenerator
         bool isCubeFilled(int x, int y, int z, int size);
         bool isCubeUniform(int x, int y, int z, int size);
         bool isCubeEmpty(int x, int y, int z, int size);
+        bool isCubeDrawable(int x, int y, int z, int size);
 };
 
 #endif

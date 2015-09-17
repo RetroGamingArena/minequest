@@ -602,7 +602,7 @@ void Processor::bufferizeLeaf(Chunk* chunk, Leaf<Voxel*> * leaf, vector<GLuint>*
     //unsigned char type = leaf->getType();
     //unsigned char occlusion = leaf->getOcclusion();
     
-    if(leaf->getValue()->type > 0)
+    if(leaf->getValue()->sizeRegister.field.type > 0)
     {
         if(!leaf->getValue()->occluded)
         {

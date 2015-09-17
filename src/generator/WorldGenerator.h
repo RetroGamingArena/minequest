@@ -81,6 +81,7 @@ class WorldGenerator
         virtual bool isCubeEmpty(int x, int y, int z, int size) = 0;
         virtual bool isCubeFilled(int x, int y, int z, int size) = 0;
         virtual bool isCubeUniform(int x, int y, int z, int size) = 0;
+        virtual bool isCubeDrawable(int x, int y, int z, int size) = 0;
         bool isCubeVisible(int x,int y,int z,int size);
 		Octree<Voxel*>* generate(Chunk* chunk, int p, int q, int r);
 		unsigned char getOcclusion(int x, int y, int z);

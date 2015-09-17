@@ -30,8 +30,8 @@ struct Voxel
     double z_size_16_2;
     
     unsigned short int size;
-    unsigned char occlusion;
-    unsigned char type;
+    //unsigned char occlusion;
+    //unsigned char type;
     
     unsigned char visible;
     bool occluded;
@@ -100,8 +100,8 @@ struct Voxel
         this->y_size_16_2 = (this->y+this->size/2.0)/16;
         this->z_size_16_2 = (this->z+this->size/2.0)/16;
         
-        this->occlusion = occlusion;
-        this->type = type;
+        //this->occlusion = occlusion;
+        //this->type = type;
         
         this->offsetRegister.field.pixelX = this->x%16;
         this->offsetRegister.field.cubeX  = (this->x/16)%16;
@@ -118,8 +118,8 @@ struct Voxel
         sizeRegister.field.sizeX = this->size-1;
         sizeRegister.field.sizeY = this->size-1;
         sizeRegister.field.sizeZ = this->size-1;
-        sizeRegister.field.type = this->type;
-        sizeRegister.field.occlusion = this->occlusion;
+        sizeRegister.field.type = /*this->*/type;
+        sizeRegister.field.occlusion = /*this->*/occlusion;
 
         this->visible = visible;
     }

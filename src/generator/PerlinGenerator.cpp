@@ -132,6 +132,27 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
     return true;
 }
 
+bool PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
+{
+    /*for(int i = size-1; i >= 0; i--)
+        for(int j = size-1; j >= 0; j--)
+        {
+            if(bufferizeWorld->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
+                return true;
+            if(bufferizeWorld->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
+                return true;
+            if(bufferizeWorld->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
+                return true;
+            if(bufferizeWorld->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
+                return true;
+        }*/
+    return false;
+}
+
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 {
 	// Start of user code getCubeType

@@ -107,7 +107,7 @@ Task* World::buildTask()
 }
 
 
-int World::size = 2;
+int World::size = 0;
 
 int World::getChunkIndice()
 {
@@ -221,7 +221,7 @@ unsigned char World::getCube(int x, int y, int z)
     Voxel* voxel = octree->getAbs(sx, sy, sz, Octree<Voxel*>::size);
     
     if(voxel != NULL)
-        return voxel->type;
+        return voxel->sizeRegister.field.type;
     return 0;
 	// End of user code
 }
