@@ -120,16 +120,30 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PerlinGenerator::isCubeDrawable(int, int, int, int):PerlinGenerator.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "Chunk::size*Chunk::subsize*World::size-1">
+            </PersistentString>
+            <PersistentString
+               value = "z+size-1&lt;Chunk::size*Chunk::subsize*World::size-1">
+            </PersistentString>
+            <PersistentString
+               value = "Chunk::size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "VBOScene::bindBuffer():VBOScene.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "sizeof(g_vertex_buffer_data)">
+               value = "sizeof(GLfloat)*9">
             </PersistentString>
             <PersistentString
                value = "getVertexCount()">
             </PersistentString>
             <PersistentString
-               value = "sizeof(GLfloat)*9">
+               value = "sizeof(g_vertex_buffer_data)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -137,7 +151,7 @@
          contextName = "Button::mouseMove(double, double):Button.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "1080-y*pixelSize">
+               value = "1080-(y+h)*pixelSize">
             </PersistentString>
             <PersistentString
                value = "y*pixelSize">
@@ -146,7 +160,7 @@
                value = "(y+h)*pixelSize">
             </PersistentString>
             <PersistentString
-               value = "1080-(y+h)*pixelSize">
+               value = "1080-y*pixelSize">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -178,10 +192,10 @@
          contextName = "WorldGenerator::generateOctreeEntry(int, int, int, int):WorldGenerator.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "node-&gt;getOctreeEntries()[i]">
+               value = "generationResults[0].equals(generationResults[1]">
             </PersistentString>
             <PersistentString
-               value = "generationResults[0].equals(generationResults[1]">
+               value = "node-&gt;getOctreeEntries()[i]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -301,13 +315,13 @@
          contextName = "Node&lt;Voxel*&gt;::setOctreeEntriesAt(OctreeEntry&lt;Voxel*&gt;*, int):Node.h">
          <PersistentStrings>
             <PersistentString
+               value = "octreeEntries">
+            </PersistentString>
+            <PersistentString
                value = "octreeEntries.size() &lt; indice + 1">
             </PersistentString>
             <PersistentString
                value = "octreeEntries.size()">
-            </PersistentString>
-            <PersistentString
-               value = "octreeEntries">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -513,10 +527,10 @@
          contextName = "Node::generate(WorldGenerator*, int, int, int, int):Node.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "q+y*size/2.0">
+               value = "this-&gt;entries[i]">
             </PersistentString>
             <PersistentString
-               value = "this-&gt;entries[i]">
+               value = "q+y*size/2.0">
             </PersistentString>
             <PersistentString
                value = "(q+size*(y+1)/2)">

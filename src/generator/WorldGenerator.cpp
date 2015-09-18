@@ -307,6 +307,7 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
                     }
             }
            
+            drawed[currentPower] = false;
             currents[currentPower] = -1;
             currentPower--;
             drawed[currentPower] = false;
@@ -332,7 +333,7 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
         q_y_sizes[currentPower] = q_y_sizes[currentPower_1]+y_size;
         r_z_sizes[currentPower] = r_z_sizes[currentPower_1]+z_size;
         
-        if( isCubeDrawable(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]) && drawed[currentPower-1] != true)
+        /*if( isCubeDrawable(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]) && drawed[currentPower-1] != true)
         {
             type = getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
             if(type > 0)
@@ -343,7 +344,7 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
                 chunk->voxels.push_back(voxel);
             }
             drawed[currentPower] = true;
-        }
+        }*/
         
         if( getCubeType(p_x_sizes[currentPower]+sizes[eight_currentPower][1]/2,
                         q_y_sizes[currentPower],
@@ -379,7 +380,24 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
         }
         else
         {
-            
+            /*if(isCubeDrawable(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]) && drawed[currentPower-1] == false)
+            {
+                type = getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
+                if(type > 0)
+                {
+                    occlusion = getOcclusion(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
+                    voxel = new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true);
+                    currentNode = dynamic_cast<Node<Voxel*>*>(currentEntries[currentPower_1]);
+                    leaf = new Leaf<Voxel*>(voxel);
+                    
+                    currentNode->setOctreeEntriesAt(leaf, currents[currentPower]);
+                    if(isCubeVisible(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))
+                            chunk->voxels.push_back(voxel);
+                    else
+                        voxel->visible = false;
+                    drawed[currentPower] = true;
+                }
+            }*/
             
             type = getCubeType(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower]);
             if(type > 0)
@@ -388,11 +406,6 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
                 voxel = new Voxel(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1], occlusion, type, true);
                 currentNode = dynamic_cast<Node<Voxel*>*>(currentEntries[currentPower_1]);
                 leaf = new Leaf<Voxel*>(voxel);
-                
-                if(currentPower == 7 && currents[currentPower]==0)
-                {
-                    int a = 1;
-                }
                 
                 currentNode/*currentEntries[currentPower_1]*/->setOctreeEntriesAt(leaf, currents[currentPower]);
                 if(isCubeVisible(p_x_sizes[currentPower], q_y_sizes[currentPower], r_z_sizes[currentPower], sizes[eight_currentPower][1]))

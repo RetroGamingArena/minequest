@@ -134,23 +134,73 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
 
 bool PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
 {
-    /*for(int i = size-1; i >= 0; i--)
+    short type = -1;
+    
+    if(size==64)
+    {
+        int a = 2;
+    }
+    
+    for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
-            if(bufferizeWorld->getCube(x-1, y+i,   z+j) == 0 && (mask & LEFT))
-                return true;
-            if(bufferizeWorld->getCube((x+size-1)+1, y+i,   z+j) == 0 && (mask & RIGHT))
-                return true;
-            if(bufferizeWorld->getCube(x+i, y-1,   z+j) == 0 && (mask & BOTTOM))
-                return true;
-            if(bufferizeWorld->getCube(x+i, (y+size-1)+1,   z+j) == 0 && (mask & TOP))
-                return true;
-            if(bufferizeWorld->getCube(x+i, y+j,   z-1) == 0 && (mask & BACK))
-                return true;
-            if(bufferizeWorld->getCube(x+i, y+j,   (z+size-1)+1) == 0 && (mask & FRONT))
-                return true;
-        }*/
-    return false;
+            //LEFT
+            if(x>0)
+            if(getCubeType(x-1,y+i,z+i) == 0)
+            {
+                if(type==-1)
+                    type = getCubeType(x,y+i,z+i);
+                else if(type != getCubeType(x,y+i,z+i))
+                    return false;
+            }
+            //FRONT
+            if(z+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
+                if(getCubeType(x+i,y+i,z+size) == 0)
+                {
+                    if(type==-1)
+                        type = getCubeType(x+i,y+i,z+size-1);
+                    else if(type != getCubeType(x,y+i,z+size-1))
+                        return false;
+                }
+            //RIGHT
+            if(x+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
+                if(getCubeType(x+size,y+i,z+i) == 0)
+                {
+                    if(type==-1)
+                        type = getCubeType(x+size-1,y+i,z+i);
+                    else if(type != getCubeType(x+size-1,y+i,z+i))
+                        return false;
+                }
+            //BACK
+            if(z>0)
+                if(getCubeType(x+i,y+i,z-1) == 0)
+                {
+                    if(type==-1)
+                        type = getCubeType(x+i,y+i,z);
+                    else if(type != getCubeType(x+i,y+i,z))
+                        return false;
+                }
+            //TOP
+            if(y<Chunk::size*Chunk::subsize)
+                if(getCubeType(x+i,y+size,z+i) == 0)
+                {
+                    if(type==-1)
+                        type = getCubeType(x+i,y+size-1,z+i);
+                    else if(type != getCubeType(x+i,y+size-1,z+i))
+                        return false;
+                }
+            //BOTTOM
+            if(y>0)
+                if(getCubeType(x+i,y-1,z+i) == 0)
+                {
+                    if(type==-1)
+                        type = getCubeType(x+i,y,z+i);
+                    else if(type != getCubeType(x+i,y,z+i))
+                        return false;
+                }
+            
+        }
+    return true;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
