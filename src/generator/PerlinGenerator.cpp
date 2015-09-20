@@ -132,12 +132,15 @@ bool PerlinGenerator::isCubeEmpty(int x, int y, int z, int size)
     return true;
 }
 
-bool PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
+unsigned short PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
 {
     short type = -1;
+    short occlusion = -1;
     
     if(size==1)
-        return true;
+    {
+        return getCubeType(x,y,z) | getOcclusion(x, y, z) << 8;
+    }
     
     
     for(int i = size-1; i >= 0; i--)
@@ -145,64 +148,82 @@ bool PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
         {
             //LEFT
             if(x>0)
-            if(getCubeType(x-1,y+i,z+j) == 0)
-            {
-                if(type==-1)
-                    type = getCubeType(x,y+i,z+j);
-                else if(type != getCubeType(x,y+i,z+j))
-                    return false;
-            }
+                if(getCubeType(x-1,y+i,z+j) == 0)
+                {
+                    if(type==-1 && occlusion == -1)
+                    {
+                        type = getCubeType(x,y+i,z+j);
+                        occlusion = getOcclusion(x,y+i,z+j);
+                    }
+                    else if(type != getCubeType(x,y+i,z+j))
+                        return 0;
+                }
             //FRONT
             if(z+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
                 if(getCubeType(x+i,y+j,z+size) == 0)
                 {
-                    if(type==-1)
+                    if(type==-1 && occlusion == -1)
+                    {
                         type = getCubeType(x+i,y+j,z+size-1);
+                        occlusion = getOcclusion(x+i,y+j,z+size-1);
+                    }
                     else if(type != getCubeType(x+i,y+j,z+size-1))
-                        return false;
+                        return 0;
                 }
             //RIGHT
             if(x+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
                 if(getCubeType(x+size,y+i,z+j) == 0)
                 {
-                    if(type==-1)
+                    if(type==-1 && occlusion == -1)
+                    {
                         type = getCubeType(x+size-1,y+i,z+j);
+                        occlusion = getOcclusion(x+size-1,y+i,z+j);
+                    }
                     else if(type != getCubeType(x+size-1,y+i,z+j))
-                        return false;
+                        return 0;
                 }
             //BACK
             if(z>0)
                 if(getCubeType(x+i,y+j,z-1) == 0)
                 {
-                    if(type==-1)
+                    if(type==-1 && occlusion == -1)
+                    {
                         type = getCubeType(x+i,y+j,z);
+                        occlusion = getOcclusion(x+i,y+j,z);
+                    }
                     else if(type != getCubeType(x+i,y+j,z))
-                        return false;
+                        return 0;
                 }
             //TOP
             if(y<Chunk::size*Chunk::subsize)
                 if(getCubeType(x+i,y+size,z+j) == 0)
                 {
-                    if(type==-1)
+                    if(type==-1 && occlusion == -1)
+                    {
                         type = getCubeType(x+i,y+size-1,z+j);
+                        occlusion = getOcclusion(x+i,y+size-1,z+j);
+                    }
                     else if(type != getCubeType(x+i,y+size-1,z+j))
-                        return false;
+                        return 0;
                 }
             //BOTTOM
             if(y>0)
                 if(getCubeType(x+i,y-1,z+j) == 0)
                 {
-                    if(type==-1)
+                    if(type==-1 && occlusion == -1)
+                    {
                         type = getCubeType(x+i,y,z+j);
+                        occlusion = getOcclusion(x+i,y,z+j);
+                    }
                     else if(type != getCubeType(x+i,y,z+j))
-                        return false;
+                        return 0;
                 }
             
         }
     if(type==-1)
-        return false;
+        return 0;
     else
-        return true;
+        return type | occlusion << 8;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
