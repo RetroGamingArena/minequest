@@ -136,76 +136,85 @@ bool PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
 {
     short type = -1;
     
-    if(size==64)
-    {
-        int a = 2;
-    }
+    if(size==1)
+        return true;
+    
     
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
             //LEFT
             if(x>0)
-            if(getCubeType(x-1,y+i,z+i) == 0)
+            if(getCubeType(x-1,y+i,z+j) == 0)
             {
                 if(type==-1)
-                    type = getCubeType(x,y+i,z+i);
-                else if(type != getCubeType(x,y+i,z+i))
+                    type = getCubeType(x,y+i,z+j);
+                else if(type != getCubeType(x,y+i,z+j))
                     return false;
             }
             //FRONT
             if(z+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
-                if(getCubeType(x+i,y+i,z+size) == 0)
+                if(getCubeType(x+i,y+j,z+size) == 0)
                 {
                     if(type==-1)
-                        type = getCubeType(x+i,y+i,z+size-1);
-                    else if(type != getCubeType(x,y+i,z+size-1))
+                        type = getCubeType(x+i,y+j,z+size-1);
+                    else if(type != getCubeType(x+i,y+j,z+size-1))
                         return false;
                 }
             //RIGHT
             if(x+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
-                if(getCubeType(x+size,y+i,z+i) == 0)
+                if(getCubeType(x+size,y+i,z+j) == 0)
                 {
                     if(type==-1)
-                        type = getCubeType(x+size-1,y+i,z+i);
-                    else if(type != getCubeType(x+size-1,y+i,z+i))
+                        type = getCubeType(x+size-1,y+i,z+j);
+                    else if(type != getCubeType(x+size-1,y+i,z+j))
                         return false;
                 }
             //BACK
             if(z>0)
-                if(getCubeType(x+i,y+i,z-1) == 0)
+                if(getCubeType(x+i,y+j,z-1) == 0)
                 {
                     if(type==-1)
-                        type = getCubeType(x+i,y+i,z);
-                    else if(type != getCubeType(x+i,y+i,z))
+                        type = getCubeType(x+i,y+j,z);
+                    else if(type != getCubeType(x+i,y+j,z))
                         return false;
                 }
             //TOP
             if(y<Chunk::size*Chunk::subsize)
-                if(getCubeType(x+i,y+size,z+i) == 0)
+                if(getCubeType(x+i,y+size,z+j) == 0)
                 {
                     if(type==-1)
-                        type = getCubeType(x+i,y+size-1,z+i);
-                    else if(type != getCubeType(x+i,y+size-1,z+i))
+                        type = getCubeType(x+i,y+size-1,z+j);
+                    else if(type != getCubeType(x+i,y+size-1,z+j))
                         return false;
                 }
             //BOTTOM
             if(y>0)
-                if(getCubeType(x+i,y-1,z+i) == 0)
+                if(getCubeType(x+i,y-1,z+j) == 0)
                 {
                     if(type==-1)
-                        type = getCubeType(x+i,y,z+i);
-                    else if(type != getCubeType(x+i,y,z+i))
+                        type = getCubeType(x+i,y,z+j);
+                    else if(type != getCubeType(x+i,y,z+j))
                         return false;
                 }
             
         }
-    return true;
+    if(type==-1)
+        return false;
+    else
+        return true;
 }
 
 unsigned char PerlinGenerator::getCubeType(int x, int y, int z)
 {
 	// Start of user code getCubeType
+    /*if( y < 127)
+        return 3;
+    else if(y == 127)
+        return 1;
+    else
+        return 0;*/
+
     float height = (heightMap.GetValue(x, z)+1)*Chunk::size*Chunk::subsize/2;
     
     if(y<=height)
