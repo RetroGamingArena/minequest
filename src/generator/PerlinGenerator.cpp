@@ -32,7 +32,7 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = 0;//rand() % INT_MAX)*2+INT_MIN;
+    int seed = 0;//(rand() % INT_MAX)*2+INT_MIN;
     
     module::Perlin baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
@@ -142,80 +142,79 @@ unsigned short PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
         return getCubeType(x,y,z) | getOcclusion(x, y, z) << 8;
     }
     
+    if(x==0 && y==0 && z==0 && size==64)
+    {
+        int a = 2;
+    }
+    
     
     for(int i = size-1; i >= 0; i--)
         for(int j = size-1; j >= 0; j--)
         {
             //LEFT
-            if(x>0)
-                if(getCubeType(x-1,y+i,z+j) == 0)
-                {
+            if( (x>0 && getCubeType(x-1,y+i,z+j) == 0) || x==0 )
+               {
                     if(type==-1 && occlusion == -1)
                     {
                         type = getCubeType(x,y+i,z+j);
                         occlusion = getOcclusion(x,y+i,z+j);
                     }
-                    else if(type != getCubeType(x,y+i,z+j))
+                    else if(type != getCubeType(x,y+i,z+j) && occlusion != getOcclusion(x,y+i,z+j))
                         return 0;
                 }
             //FRONT
-            if(z+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
-                if(getCubeType(x+i,y+j,z+size) == 0)
+            if( ( (z+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1) && getCubeType(x+i,y+j,z+size) == 0) || z+size-1==(Chunk::size*Chunk::subsize*(World::size*2+1)-1) )
                 {
                     if(type==-1 && occlusion == -1)
                     {
                         type = getCubeType(x+i,y+j,z+size-1);
                         occlusion = getOcclusion(x+i,y+j,z+size-1);
                     }
-                    else if(type != getCubeType(x+i,y+j,z+size-1))
+                    else if(type != getCubeType(x+i,y+j,z+size-1) && occlusion != getOcclusion(x+i,y+j,z+size-1))
                         return 0;
                 }
             //RIGHT
-            if(x+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1)
-                if(getCubeType(x+size,y+i,z+j) == 0)
+            if( ( (x+size-1<Chunk::size*Chunk::subsize*(World::size*2+1)-1) && getCubeType(x+size,y+i,z+j) == 0) || x+size-1==(Chunk::size*Chunk::subsize*(World::size*2+1)-1) )
                 {
                     if(type==-1 && occlusion == -1)
                     {
                         type = getCubeType(x+size-1,y+i,z+j);
                         occlusion = getOcclusion(x+size-1,y+i,z+j);
                     }
-                    else if(type != getCubeType(x+size-1,y+i,z+j))
+                    else if(type != getCubeType(x+size-1,y+i,z+j) && occlusion != getOcclusion(x+size-1,y+i,z+j))
                         return 0;
                 }
             //BACK
-            if(z>0)
-                if(getCubeType(x+i,y+j,z-1) == 0)
+            if( (z>0 && getCubeType(x+i,y+j,z-1) == 0) || z==0)
                 {
                     if(type==-1 && occlusion == -1)
                     {
                         type = getCubeType(x+i,y+j,z);
                         occlusion = getOcclusion(x+i,y+j,z);
                     }
-                    else if(type != getCubeType(x+i,y+j,z))
+                    else if(type != getCubeType(x+i,y+j,z) && occlusion != getOcclusion(x+i,y+j,z))
                         return 0;
                 }
             //TOP
-            if(y<Chunk::size*Chunk::subsize)
-                if(getCubeType(x+i,y+size,z+j) == 0)
+            if( ( (y<Chunk::size*Chunk::subsize) && getCubeType(x+i,y+size,z+j) == 0) || (y==Chunk::size*Chunk::subsize) )
                 {
                     if(type==-1 && occlusion == -1)
                     {
                         type = getCubeType(x+i,y+size-1,z+j);
                         occlusion = getOcclusion(x+i,y+size-1,z+j);
                     }
-                    else if(type != getCubeType(x+i,y+size-1,z+j))
+                    else if(type != getCubeType(x+i,y+size-1,z+j) && occlusion != getOcclusion(x+i,y+size-1,z+j))
                         return 0;
                 }
             //BOTTOM
-            if(y>0)
-                if(getCubeType(x+i,y-1,z+j) == 0)
+            if( (y>0 && getCubeType(x+i,y-1,z+j) == 0) || (y==0) )
                 {
                     if(type==-1 && occlusion == -1)
                     {
                         type = getCubeType(x+i,y,z+j);
                         occlusion = getOcclusion(x+i,y,z+j);
                     }
-                    else if(type != getCubeType(x+i,y,z+j))
+                    else if(type != getCubeType(x+i,y,z+j) && occlusion != getOcclusion(x+i,y,z+j))
                         return 0;
                 }
             
