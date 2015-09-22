@@ -333,6 +333,8 @@ Octree<Voxel*>* WorldGenerator::generate(Chunk* chunk, int p, int q, int r)
         q_y_sizes[currentPower] = q_y_sizes[currentPower_1]+y_size;
         r_z_sizes[currentPower] = r_z_sizes[currentPower_1]+z_size;
         
+        drawed[currentPower] = false;
+        
         bool parentDrawed = false;
         for(int i = 1; i < currentPower; i++)
         {

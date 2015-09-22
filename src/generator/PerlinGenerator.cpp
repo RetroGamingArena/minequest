@@ -32,7 +32,7 @@ PerlinGenerator::PerlinGenerator()
     
     destSize = Chunk::size*Chunk::subsize*(World::size*2+1);
     
-    int seed = 0;//(rand() % INT_MAX)*2+INT_MIN;
+    int seed = (rand() % INT_MAX)*2+INT_MIN;
     
     module::Perlin baseFlatTerrain;
     baseFlatTerrain.SetFrequency (2.0);
@@ -142,7 +142,7 @@ unsigned short PerlinGenerator::isCubeDrawable(int x, int y, int z, int size)
         return getCubeType(x,y,z) | getOcclusion(x, y, z) << 8;
     }
     
-    if(x==0 && y==0 && z==0 && size==64)
+    if(x==16 && y==64 && z==16 && size==16)
     {
         int a = 2;
     }
